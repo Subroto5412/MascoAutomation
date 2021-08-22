@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.hr_info.HRInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_production_management_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_production_management_full_boby_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/activity_production_management_search"
+                layout="@layout/layout_common_header" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_production_management_top_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_90sdp"
+            android:layout_marginBottom="@dimen/_68sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_production_management_full_boby_cl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_hr_daily_attendance_cl2"
+                android:layout_width="@dimen/_245sdp"
+                android:layout_height="@dimen/_69sdp"
+                android:layout_marginTop="@dimen/_45sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/hr_btn_bg_under"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_hr_daily_attendance_cl"
+                android:layout_width="@dimen/_258sdp"
+                android:layout_height="@dimen/_69sdp"
+                android:layout_marginTop="@dimen/_38sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/hr_btn_bg">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_login_user_id_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Daily Attendance"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_18sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_hr_leave_details_cl2"
+                android:layout_width="@dimen/_245sdp"
+                android:layout_height="@dimen/_69sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                app:layout_constraintTop_toBottomOf="@+id/activity_hr_daily_attendance_cl2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/hr_btn_bg_under"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_hr_leave_details_cl"
+                android:layout_width="@dimen/_258sdp"
+                android:layout_height="@dimen/_69sdp"
+                android:layout_marginTop="@dimen/_23sdp"
+                app:layout_constraintTop_toBottomOf="@+id/activity_hr_daily_attendance_cl2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/hr_btn_bg">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_details_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Leave Details"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_18sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_production_management_footer_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_78sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <include
+                android:id="@+id/activity_production_management_footer"
+                layout="@layout/layout_footer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

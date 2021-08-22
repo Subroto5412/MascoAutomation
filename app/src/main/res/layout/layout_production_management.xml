@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_body_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/home_body_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <ScrollView
+                android:id="@+id/home_body_scrollView_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/home_innerbody_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:paddingTop="@dimen/_24sdp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_115sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_human_resource_cl"
+                            android:layout_width="@dimen/_131sdp"
+                            android:layout_height="@dimen/_115sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_human_resource_top_cl"
+                                android:layout_width="@dimen/_92sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:background="@drawable/white_half_circle">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/layout_human_resource_top_im"
+                                    android:layout_width="@dimen/_46sdp"
+                                    android:layout_height="@dimen/_28sdp"
+                                    android:src="@drawable/knitting_roduction_icon"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_human_resource_down_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_68sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_human_resource_top_cl"
+                                android:background="@drawable/knitting_production_btn_bg">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_human_resource_top_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Knitting Production Management\n(KPMS)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_supply_chain_cl"
+                            android:layout_width="166dp"
+                            android:layout_height="149dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_supply_chain_top_cl"
+                                android:layout_width="@dimen/_92sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                android:background="@drawable/white_half_circle"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/layout_supply_chain_top_im"
+                                    android:layout_width="@dimen/_42sdp"
+                                    android:layout_height="@dimen/_33sdp"
+                                    android:src="@drawable/dyeing_production_icon"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_supply_chain_down_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_68sdp"
+                                android:background="@drawable/dyein_production_btn_bg"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_supply_chain_top_cl">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_supply_chain_top_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:gravity="center_horizontal"
+                                    android:text="Dyeing Production Management\n(DPMS)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_10sdp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    //------------------------------------------------
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_115sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_one">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_production_management_cl"
+                            android:layout_width="@dimen/_131sdp"
+                            android:layout_height="@dimen/_115sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_production_management_top_cl"
+                                android:layout_width="@dimen/_92sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:background="@drawable/white_half_circle">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/layout_production_management_top_im"
+                                    android:layout_width="@dimen/_65sdp"
+                                    android:layout_height="@dimen/_31sdp"
+                                    android:src="@drawable/garments_production_icon"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_production_management_down_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_68sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_production_management_top_cl"
+                                android:background="@drawable/garments_production_btn_bg">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_production_management_top_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Garments Production Management\n(GPMS)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_merchandising_marketing_cl"
+                            android:layout_width="@dimen/_131sdp"
+                            android:layout_height="@dimen/_115sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_merchandising_marketing_top_cl"
+                                android:layout_width="@dimen/_92sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:background="@drawable/white_half_circle">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/layout_merchandising_marketing_top_im"
+                                    android:layout_width="@dimen/_56sdp"
+                                    android:layout_height="@dimen/_31sdp"
+                                    android:src="@drawable/garments_printing_icon"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_merchandising_marketing_down_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_68sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_merchandising_marketing_top_cl"
+                                android:background="@drawable/garments_printing_btn_bg">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_merchandising_marketing_top_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Garments Printing Management\n(PPMS)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    //------------------------------------------------
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_115sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_two">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_asset_tracking_cl"
+                            android:layout_width="@dimen/_131sdp"
+                            android:layout_height="@dimen/_115sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_asset_tracking_top_cl"
+                                android:layout_width="@dimen/_92sdp"
+                                android:layout_height="@dimen/_46sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:background="@drawable/white_half_circle">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/layout_asset_tracking_top_im"
+                                    android:layout_width="@dimen/_57sdp"
+                                    android:layout_height="@dimen/_31sdp"
+                                    android:src="@drawable/garments_embroidery_icon"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"/>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_asset_tracking_down_cl"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_68sdp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_asset_tracking_top_cl"
+                                android:background="@drawable/garments_embroidery_btn_bg">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_asset_tracking_top_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Garments Embroidery Management\n(EPMS)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

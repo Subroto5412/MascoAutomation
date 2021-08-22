@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bd.mascogroup.automation.ui.home.HomeActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_home_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background = "@drawable/home_bg">
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_home_full_search_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+          android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+          <androidx.appcompat.widget.AppCompatImageView
+              android:id="@+id/activity_home_side_menu_im"
+              android:layout_width="@dimen/_38sdp"
+              android:layout_height="@dimen/_38sdp"
+              android:layout_marginStart="@dimen/_8sdp"
+              android:src="@drawable/side_menu"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toTopOf="parent" />
+
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:id="@+id/activity_home_search_parent_cl"
+              android:layout_width="@dimen/_230sdp"
+              android:layout_height="match_parent"
+              android:background="@drawable/home_top"
+              android:layout_marginEnd="@dimen/_8sdp"
+              app:layout_constraintTop_toTopOf="parent"
+              app:layout_constraintEnd_toEndOf="parent">
+
+              <androidx.appcompat.widget.AppCompatImageView
+                  android:id="@+id/activity_home_search_im"
+                  android:layout_width="@dimen/_28sdp"
+                  android:layout_height="@dimen/_28sdp"
+                  android:layout_marginEnd="@dimen/_8sdp"
+                  android:src="@drawable/search"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintBottom_toBottomOf="parent"/>
+
+              <androidx.appcompat.widget.AppCompatEditText
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="@dimen/_8sdp"
+                  android:layout_marginEnd="@dimen/_40sdp"
+                  android:background="@null"
+                  android:textColor="@color/text_color"
+                  android:hint="Search Here"
+                  android:textColorHint="@color/text_color"
+                  app:layout_constraintEnd_toEndOf="@+id/activity_home_search_parent_cl"
+                  app:layout_constraintStart_toStartOf="@+id/activity_home_search_parent_cl"
+                  app:layout_constraintTop_toTopOf="@+id/activity_home_search_parent_cl"
+                  app:layout_constraintBottom_toBottomOf="@+id/activity_home_search_parent_cl"/>
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_home_top_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_90sdp"
+            android:layout_marginBottom="@dimen/_68sdp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_home_full_search_cl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <include
+                android:id="@+id/activity_main_parent_search"
+                layout="@layout/layout_home_body" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+         android:id="@+id/activity_login_parent_cl31"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/_78sdp"
+         app:layout_constraintBottom_toBottomOf="parent">
+
+        <include
+            android:id="@+id/activity_main_parent_search1"
+            layout="@layout/layout_home_footer" />
+
+     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

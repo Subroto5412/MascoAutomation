@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#164193</color>
+    <color name="purple2_700">#FF000066</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bg_color">#164193</color>
+    <color name="text_color_user_id">#689CFF</color>
+    <color name="text_color_35">#353535</color>
+    <color name="human_resource_color">#5AEC81</color>
+    <color name="supply_chain_color">#BADC58</color>
+    <color name="production_management_color">#55A7B1</color>
+    <color name="merchandising_arketing_color">#81ECEC</color>
+    <color name="asset_tracking_color">#74B9FF</color>
+    <color name="automobile_management_color">#A29BFE</color>
+    <color name="search_engine_color">#FFEAA7</color>
+    <color name="dispatch_slip_color">#FAB1A0</color>
+    <color name="idea_laboratory_color">#FF7675</color>
+    <color name="documentation_management_color">#FD79A8</color>
+    <color name="dyeing_production_color">#FF6600</color>
+    <color name="knitting_production_color">#F69C35</color>
+    <color name="germents_production_color">#C14FC5</color>
+    <color name="germents_printing_color">#B9A20B</color>
+    <color name="germents_embroidery_color">#058A3E</color>
+    <color name="text_color">#353535</color>
+</resources>

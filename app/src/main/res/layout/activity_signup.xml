@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bd.mascogroup.automation.ui.signup.SignupActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.signup.SignupViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_signup_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_signup_top_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_324sdp"
+            app:layout_constraintBottom_toTopOf="@+id/activity_signup_down_cl"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_signup_full_user_info_cl"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_145sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_signup_logo_im"
+                    android:layout_width="@dimen/_98sdp"
+                    android:layout_height="@dimen/_98sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/logo_login"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_signup_user_cl"
+                    android:layout_width="@dimen/_98sdp"
+                    android:layout_height="@dimen/_98sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/user_bg"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/activity_signup_user_im"
+                        android:layout_width="@dimen/_61sdp"
+                        android:layout_height="@dimen/_69sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/user"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_signup_user_name_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="User Name Goes Here"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_signup_user_cl"
+                    tools:text="User Name Goes Here" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_signup_unit_name_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Unit Name"
+                    android:textColor="@color/text_color_user_id"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_signup_user_name_tv"
+                    tools:text="Unit Name" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activity_signup_user_id_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="User ID"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_signup_full_user_info_cl" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/activity_signup_user_id_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_71sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_71sdp"
+                android:background="@drawable/input_filed_bg"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:hint="Your employee ID"
+                android:inputType="phone"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_color_user_id"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_signup_user_id_tv" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/signInBtnmaterialCardViewHide"
+                android:layout_width="@dimen/_125sdp"
+                android:layout_height="@dimen/_31sdp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:layout_marginEnd="32dp"
+                android:outlineSpotShadowColor="#000066"
+                app:cardBackgroundColor="@color/text_color_user_id"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="24dp"
+                app:cardMaxElevation="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_signup_user_id_et">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/signInBtnHide"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="Send OTP"
+                    android:textColor="@color/text_color_35"
+                    android:textSize="@dimen/_12sdp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/signInBtnmaterialCardView"
+                android:layout_width="@dimen/_125sdp"
+                android:layout_height="@dimen/_31sdp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:layout_marginEnd="32dp"
+                android:outlineSpotShadowColor="#000066"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="24dp"
+                app:cardMaxElevation="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_signup_user_id_et"
+                android:visibility="gone">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/signInBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="Send OTP"
+                    android:textColor="@color/text_color_35"
+                    android:textSize="@dimen/_12sdp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activity_signup_account_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_64sdp"
+                android:layout_marginTop="@dimen/_66sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Already have an account?"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_signup_user_id_et" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activity_signin_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_66sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="SIGN IN"
+                android:textColor="@color/text_color_user_id"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintStart_toEndOf="@+id/activity_signup_account_tv"
+                app:layout_constraintTop_toBottomOf="@+id/activity_signup_user_id_et" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_signup_down_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_240sdp"
+            android:background="@drawable/screen_down"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

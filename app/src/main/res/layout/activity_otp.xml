@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bd.mascogroup.automation.ui.otp.OTPActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.otp.OTPViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_otp_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_otp_top_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_324sdp"
+            app:layout_constraintBottom_toTopOf="@+id/activity_login_down_cl"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/activity_otp_signin_btn2"
+                style="@style/CustomCardViewStyle"
+                android:layout_width="@dimen/_185sdp"
+                android:layout_height="@dimen/_147sdp"
+                android:outlineSpotShadowColor="#112D49"
+                app:cardBackgroundColor="#002A7B"
+                app:cardElevation="24dp"
+                app:cardMaxElevation="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_otp_full_user_info_cl"
+                    android:layout_width="@dimen/_185sdp"
+                    android:layout_height="@dimen/_147sdp"
+                    android:background="#002A7B"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/activity_otp_defalut_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_31sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="4 Digit OTP has sent in the following registered numbers"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/activity_otp_n1_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="N-1 : "
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_otp_defalut_text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/activity_otp_n1_value_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="01130 12345678"
+                        android:textColor="@color/text_color_user_id"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toEndOf="@+id/activity_otp_n1_text"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_otp_defalut_text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/activity_otp_n2_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="N-1 : "
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_otp_n1_value_text" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/activity_otp_n2_value_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="01130 12345678"
+                        android:textColor="@color/text_color_user_id"
+                        android:textSize="@dimen/_12sdp"
+                        app:layout_constraintStart_toEndOf="@+id/activity_otp_n2_text"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_otp_n1_value_text" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activity_otp_password_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Verify Your OTP"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_otp_signin_btn2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_otp_password_et1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_71sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_71sdp"
+                android:background="@drawable/input_field_otp_bg"
+                android:fontFamily="@font/montserrat_medium"
+                android:inputType="numberPassword"
+                android:textColor="@color/text_color_user_id"
+                android:textColorHint="@color/text_color_user_id"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_otp_password_tv1">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/otp_one_ed"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:background="@drawable/otp_bg"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:hint="4"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/otp_two_ed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/otp_two_ed"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:background="@drawable/otp_bg"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:hint="3"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/otp_three_ed"
+                    app:layout_constraintStart_toEndOf="@+id/otp_one_ed"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/otp_three_ed"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:background="@drawable/otp_bg"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:hint="1"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/otp_four_ed"
+                    app:layout_constraintStart_toEndOf="@+id/otp_two_ed"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/otp_four_ed"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:background="@drawable/otp_bg"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:hint="6"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/otp_three_ed"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activity_otp_forgot_password_tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_71sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Resend OTP?"
+                android:textColor="@color/text_color_user_id"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_otp_password_et1" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/activity_otp_password_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_71sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_71sdp"
+                android:background="@drawable/input_filed_bg"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:hint="Enter your password"
+                android:inputType="numberPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_color_user_id"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_otp_forgot_password_tv1" />
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/activity_otp_re_password_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_71sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_71sdp"
+                android:background="@drawable/input_filed_bg"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:hint="Re-Enter your password"
+                android:inputType="numberPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@color/text_color_user_id"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_otp_password_et" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_otp_down_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_240sdp"
+            android:background="@drawable/screen_down"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/activity_otp_signup_btn_hide"
+                android:layout_width="@dimen/_125sdp"
+                android:layout_height="@dimen/_31sdp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="32dp"
+                android:outlineSpotShadowColor="#000066"
+                app:cardBackgroundColor="@color/text_color_user_id"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="24dp"
+                app:cardMaxElevation="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/signUpBtnHide"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="SIGN UP"
+                    android:textColor="@color/text_color_35"
+                    android:textSize="@dimen/_12sdp" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/activity_otp_signup_btn"
+                android:layout_width="@dimen/_125sdp"
+                android:layout_height="@dimen/_31sdp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="32dp"
+                android:outlineSpotShadowColor="#000066"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="24dp"
+                app:cardMaxElevation="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/signUpBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="SIGN UP"
+                    android:textColor="@color/text_color_35"
+                    android:textSize="@dimen/_12sdp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activity_otp_account_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_64sdp"
+                android:layout_marginTop="@dimen/_63sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Already have an account?"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activity_otp_signup_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_63sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="SIGN IN"
+                android:textColor="@color/text_color_user_id"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintStart_toEndOf="@+id/activity_otp_account_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
