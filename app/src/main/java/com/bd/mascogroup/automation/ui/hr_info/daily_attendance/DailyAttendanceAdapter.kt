@@ -69,14 +69,8 @@ class DailyAttendanceAdapter @Inject constructor(private val context: Context, v
 
             val sdf = SimpleDateFormat("dd")
             val currentDate = sdf.format(Date())
-
-            Log.e("---------------","---PunchDate-----Hello BD-------"+dailyAttendanceCardData.PunchDate)
-
-            Log.e("---------------","--currentDate------Hello BD-------"+currentDate)
             if (dailyAttendanceCardData.PunchDate.equals(currentDate)){
-                Log.e("---------------","--------Hello BD-------")
                 dailyAttendanceCardView.setBackgroundResource(R.drawable.layout_daily_attendance_row_bg)
-//                set(com.mis.mascobazar.R.drawable.edittext_round_red)
             }
         }
     }

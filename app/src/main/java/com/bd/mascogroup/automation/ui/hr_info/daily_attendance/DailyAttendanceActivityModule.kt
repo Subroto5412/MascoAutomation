@@ -29,4 +29,9 @@ class DailyAttendanceAdapterModule {
     fun provideDailyAttendanceAdapter(activity: DailyAttendanceActivity, dataManager: IDataManager): DailyAttendanceAdapter {
         return DailyAttendanceAdapter(activity, ArrayList(),dataManager)
     }
+
+    @Provides
+    fun provideDailyAttendanceStatusAdapter(activity: DailyAttendanceActivity, dataManager: IDataManager): DailyAttendanceStatusAdapter {
+        return DailyAttendanceStatusAdapter(activity, ArrayList(),dataManager)
+    }
 }

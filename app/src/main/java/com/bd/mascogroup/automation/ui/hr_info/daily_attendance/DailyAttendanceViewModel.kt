@@ -9,8 +9,10 @@ import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceCardData
+import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatusCardData
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
 import com.bd.mascogroup.automation.data.remote.domainModel.DailyAttendanceResponse
+import com.bd.mascogroup.automation.data.remote.domainModel.DailyAttendanceStatusResponse
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.UtilMethods
 import com.bd.mascogroup.automation.utils.rx.ISchedulerProvider
@@ -28,6 +30,10 @@ class DailyAttendanceViewModel @Inject constructor(
     var dailyAttendanceObserverArrayList: ObservableList<DailyAttendanceCardData> = ObservableArrayList()
     var dailyAttendanceListLiveData: MutableLiveData<List<DailyAttendanceCardData>> = MutableLiveData()
     private var dailyAttendanceListItems = ArrayList<DailyAttendanceCardData>()
+
+    var dailyAttendanceStatusObserverArrayList: ObservableList<DailyAttendanceStatusCardData> = ObservableArrayList()
+    var dailyAttendanceStatusListLiveData: MutableLiveData<List<DailyAttendanceStatusCardData>> = MutableLiveData()
+    private var dailyAttendanceStatusListItems = ArrayList<DailyAttendanceStatusCardData>()
 
 
     fun dailyAttendance(context:Context){
@@ -70,57 +76,30 @@ class DailyAttendanceViewModel @Inject constructor(
         dailyAttendanceListItems.add(DailyAttendanceCardData(dailyAttendance3))
         dailyAttendanceListItems.add(DailyAttendanceCardData(dailyAttendance))
 
-    dailyAttendanceListLiveData.value = dailyAttendanceListItems
+        dailyAttendanceListLiveData.value = dailyAttendanceListItems
 
-        /*if (UtilMethods.isConnectedToInternet(context)) {
-            UtilMethods.showLoading(context)
-            val observable = ApiServiceCalling.generalWebApiCall().getDeiveryTimeSlot()
+        dailyAttendanceStatus(context)
+    }
 
-            observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ slotResponse ->
-
-                    slotResponse.data.forEach {
-                        Log.e("---------","----date-----"+it.date)
-                        var date1 = it.date
-                        var date2 = it.date
-                        it.slot.forEach {
-                            val dateSlot = DeliveryTimeSlot()
-
-                            dateSlot.id = 1
-                            dateSlot.from_time = date1
-                            dateSlot.to_time = date2
-
-                           *//* Log.e("---------","----id-----"+dateSlot.id)
-                            Log.e("---------","----from_time-----"+dateSlot.from_time)
-                            Log.e("---------","----to_time-----"+dateSlot.to_time)*//*
-
-                            dailyAttendanceListItems.add(DailyAttendanceCardData(dateSlot))
-                        }
-                        dailyAttendanceListLiveData.value = dailyAttendanceListItems
-                    }
+    fun dailyAttendanceStatus(context:Context) {
+        val dailyAttendanceStatus = DailyAttendanceStatusResponse()
+        dailyAttendanceStatus.status = "Late"
+        dailyAttendanceStatus.statusValue = "1"
 
 
-                    for (i in 0 until dailyAttendanceListItems.size) {
-                         Log.e("----bbb-----","----id-----"+dailyAttendanceListItems.get(i).id)
-                        Log.e("-----bb----","----from_time-----"+dailyAttendanceListItems.get(i).FPunchIn)
-                        Log.e("----bb-----","----to_time-----"+dailyAttendanceListItems.get(i).FPunchOut)
-                    }
+        val dailyAttendanceStatus2 = DailyAttendanceStatusResponse()
+        dailyAttendanceStatus2.status = "Present"
+        dailyAttendanceStatus2.statusValue = "15"
 
+        val dailyAttendanceStatus3 = DailyAttendanceStatusResponse()
+        dailyAttendanceStatus3.status = "HL"
+        dailyAttendanceStatus3.statusValue = "2"
 
-                    UtilMethods.hideLoading()
-                }, { error ->
-                    UtilMethods.hideLoading()
-                    //  UtilMethods.showLongToast(context, error.message.toString())
-                }
-                )
-        } else {
-            UtilMethods.showLongToast(context, "No Internet Connection!")
-        }
-*/
+        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus))
+        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus3))
+        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus2))
 
-
-
+        dailyAttendanceStatusListLiveData.value = dailyAttendanceStatusListItems
     }
 
     fun getdailyAttendanceLiveData(): MutableLiveData<List<DailyAttendanceCardData>> {
@@ -130,5 +109,14 @@ class DailyAttendanceViewModel @Inject constructor(
     fun addDailyAttendanceItemToList(Service: List<DailyAttendanceCardData>) {
         dailyAttendanceObserverArrayList.clear()
         dailyAttendanceObserverArrayList.addAll(Service)
+    }
+
+    fun getdailyAttendanceStatusLiveData(): MutableLiveData<List<DailyAttendanceStatusCardData>> {
+        return dailyAttendanceStatusListLiveData
+    }
+
+    fun addDailyAttendanceStatusItemToList(Service: List<DailyAttendanceStatusCardData>) {
+        dailyAttendanceStatusObserverArrayList.clear()
+        dailyAttendanceStatusObserverArrayList.addAll(Service)
     }
 }

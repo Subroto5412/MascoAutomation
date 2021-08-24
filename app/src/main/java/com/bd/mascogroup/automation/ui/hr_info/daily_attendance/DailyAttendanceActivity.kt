@@ -8,12 +8,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceCardData
+import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatusCardData
 import com.bd.mascogroup.automation.databinding.ActivityDailyAttendanceBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_hr_info.*
 import javax.inject.Inject
 
-class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, DailyAttendanceViewModel>(), IDailyAttendanceNavigator,DailyAttendanceAdapter.DailyAttendanceAdapterListener {
+class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, DailyAttendanceViewModel>(), IDailyAttendanceNavigator,DailyAttendanceAdapter.DailyAttendanceAdapterListener,
+    DailyAttendanceStatusAdapter.DailyAttendanceStatusAdapterListener {
 
 
 
@@ -24,6 +26,9 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
 
     @Inject
     lateinit var mDailyAttendanceAdapter: DailyAttendanceAdapter
+
+    @Inject
+    lateinit var mDailyAttendanceStatusAdapter: DailyAttendanceStatusAdapter
 
 
 
@@ -44,10 +49,14 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         mActivityDailyAttendanceBinding = viewDataBinding
         viewModel.navigator = this
         mDailyAttendanceAdapter.setListener(this)
+        mDailyAttendanceStatusAdapter.setListener(this)
 
         viewModel.dailyAttendance(this)
         setUp()
         subscribeToLiveDataDailyAttendance()
+
+        setUpStatus()
+        subscribeToLiveDataDailyAttendanceStatus()
     }
 
     companion object {
@@ -74,4 +83,24 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
             updateDailyAttendanceList(t)
         })
     }
+
+    fun setUpStatus() {
+        mActivityDailyAttendanceBinding.dailyAttendanceStatusListParentRv.itemAnimator = DefaultItemAnimator()
+        mActivityDailyAttendanceBinding.dailyAttendanceStatusListParentRv.adapter = mDailyAttendanceStatusAdapter
+    }
+
+    fun updateDailyAttendanceStatusList(dailyAttendanceStatusCardData: List<DailyAttendanceStatusCardData>?) {
+        mDailyAttendanceStatusAdapter.clearItems()
+        if (!dailyAttendanceStatusCardData.isNullOrEmpty()) {
+            mDailyAttendanceStatusAdapter.addItem(dailyAttendanceStatusCardData)
+        }
+    }
+
+    fun subscribeToLiveDataDailyAttendanceStatus() {
+        mDailyAttendanceViewModel.getdailyAttendanceStatusLiveData().observe(this, Observer { t ->
+            mDailyAttendanceViewModel.addDailyAttendanceStatusItemToList(t)
+            updateDailyAttendanceStatusList(t)
+        })
+    }
+
 }

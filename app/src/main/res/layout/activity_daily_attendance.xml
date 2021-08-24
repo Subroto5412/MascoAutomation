@@ -48,13 +48,13 @@
                 android:id="@+id/activity_daily_attendance_body_cl"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_46sdp"
-                android:layout_marginTop="@dimen/_23sdp"
                 android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_23sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/daily_attendance_financial_year_corner_round"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/daily_attendance_financial_year_corner_round">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/activity_daily_attendance_financial_year_tv"
@@ -64,10 +64,10 @@
                     android:text="Financial Year"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/activity_daily_attendance_line_tv"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/activity_daily_attendance_line_tv"
@@ -75,21 +75,21 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_6sdp"
                     android:layout_marginBottom="@dimen/_6sdp"
+                    android:background="#5AEC81"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="#5AEC81"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/activity_daily_attendance_calender_im"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:src="@drawable/calendar"
-                    app:layout_constraintStart_toEndOf="@+id/activity_daily_attendance_line_tv"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginStart="@dimen/_10sdp"/>
+                    app:layout_constraintStart_toEndOf="@+id/activity_daily_attendance_line_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
                     android:id="@+id/office_area_spinner"
@@ -98,10 +98,10 @@
                     android:fontFamily="@font/montserrat_regular"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/activity_daily_attendance_calender_im"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -109,61 +109,61 @@
                 android:id="@+id/activity_daily_attendance_month_cl"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_46sdp"
-                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/daily_attendance_financial_year_corner_round"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_daily_attendance_body_cl"
-                android:background="@drawable/daily_attendance_financial_year_corner_round">
+                app:layout_constraintTop_toBottomOf="@+id/activity_daily_attendance_body_cl">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/activity_daily_attendance_back_month_im"
                     android:layout_width="@dimen/_23sdp"
                     android:layout_height="@dimen/_23sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:src="@drawable/back_arrow_circle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginStart="@dimen/_10sdp"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/activity_daily_attendance_back_month_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_medium"
                     android:text="Jul"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_11sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/activity_daily_attendance_back_month_im"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/activity_daily_attendance_month_name_cl"
                     android:layout_width="@dimen/_108sdp"
                     android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/daily_attendance_month_corner_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                   app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:background="@drawable/daily_attendance_month_corner_round">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/activity_daily_attendance_month_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:fontFamily="@font/montserrat_medium"
                         android:text="August"
                         android:textColor="#5AEC81"
                         android:textSize="@dimen/_11sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -171,24 +171,24 @@
                     android:id="@+id/activity_daily_attendance_next_month_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_medium"
                     android:text="Sep"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_11sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/activity_daily_attendance_next_month_im"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/activity_daily_attendance_next_month_im"
                     android:layout_width="@dimen/_23sdp"
                     android:layout_height="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:src="@drawable/next_arrow_circle"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginEnd="@dimen/_10sdp"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -197,12 +197,12 @@
                 android:id="@+id/activity_daily_attendance_main_body_cl"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_135sdp"
+                android:layout_marginBottom="@dimen/_50sdp"
                 app:layout_constraintBottom_toTopOf="@+id/activity_daily_attendance_bottom_cl"
-                app:layout_constraintTop_toBottomOf="@+id/activity_daily_attendance_month_cl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginBottom="@dimen/_50sdp"
-                android:layout_marginTop="@dimen/_135sdp">
+                app:layout_constraintTop_toBottomOf="@+id/activity_daily_attendance_month_cl">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/daily_attendance_list_parent_rv"
@@ -211,22 +211,74 @@
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:listitem="@layout/layout_daily_attendance_itemlist_row"
-                  />
+                    tools:listitem="@layout/layout_daily_attendance_itemlist_row" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-             <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_daily_attendance_bottom_cl"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/daily_attendance_month_corner_round">
-             </androidx.constraintlayout.widget.ConstraintLayout>
-             </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_daily_attendance_bottom_cl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_daily_attendance_bottom_next_cl"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_daily_attendance_next_status_im"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:src="@drawable/plan_next_show"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/daily_attendance_status_list_parent_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+               android:layout_marginStart="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_40sdp"
+                app:layout_constraintTop_toTopOf="@+id/activity_daily_attendance_bottom_cl"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_daily_attendance_bottom_cl"
+                android:orientation="horizontal"
+                tools:listitem="@layout/layout_status_itemlist_row" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_daily_attendance_bottom_back_cl"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_50sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_daily_attendance_back_status_im"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:src="@drawable/plan_back_show"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
