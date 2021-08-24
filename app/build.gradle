@@ -25,6 +25,7 @@ android {
         debug {
             buildConfigField("String", "API_BASE", "\"https://mis-search.mascoknit.com/\"")
             buildConfigField("String", "WEB_API_BASE", "\"https://api-web.mascobazar.com/api/\"")
+
         }
         release {
             minifyEnabled false

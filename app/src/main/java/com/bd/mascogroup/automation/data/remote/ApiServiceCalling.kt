@@ -43,4 +43,12 @@ object ApiServiceCalling {
             .build()
             .create(ApiService::class.java)!!
 
+    fun generalWebApiCall() = Retrofit.Builder()
+            .baseUrl(BuildConfig.WEB_API_BASE)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(ApiWorker.gsonConverter)
+            .client(ApiWorker.client)
+            .build()
+            .create(ApiService::class.java)!!
+
 }

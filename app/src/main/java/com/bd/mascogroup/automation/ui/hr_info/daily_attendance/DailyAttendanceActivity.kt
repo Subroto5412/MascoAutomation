@@ -4,22 +4,26 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DefaultItemAnimator
 import com.bd.mascogroup.automation.R
+import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceCardData
 import com.bd.mascogroup.automation.databinding.ActivityDailyAttendanceBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_hr_info.*
 import javax.inject.Inject
 
-class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, DailyAttendanceViewModel>(), IDailyAttendanceNavigator {
+class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, DailyAttendanceViewModel>(), IDailyAttendanceNavigator,DailyAttendanceAdapter.DailyAttendanceAdapterListener {
 
 
-    @Inject
-    override lateinit var viewModel: DailyAttendanceViewModel
 
-    private var mActivityDailyAttendanceBinding: ActivityDailyAttendanceBinding? = null
+    lateinit var mActivityDailyAttendanceBinding: ActivityDailyAttendanceBinding
 
     @Inject
     lateinit var mDailyAttendanceViewModel: DailyAttendanceViewModel
+
+    @Inject
+    lateinit var mDailyAttendanceAdapter: DailyAttendanceAdapter
 
 
 
@@ -30,22 +34,44 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
 
         get() = R.layout.activity_daily_attendance
 
-
+    override val viewModel: DailyAttendanceViewModel
+        get() {
+            return mDailyAttendanceViewModel
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityDailyAttendanceBinding = viewDataBinding
         viewModel.navigator = this
+        mDailyAttendanceAdapter.setListener(this)
 
-       /* activity_hr_daily_attendance_cl.setOnClickListener {
-            val intent = ProductionManagementActivity.newIntent(this@DailyAttendanceActivity)
-            startActivity(intent)
-        }*/
+        viewModel.dailyAttendance(this)
+        setUp()
+        subscribeToLiveDataDailyAttendance()
     }
 
     companion object {
         fun newIntent(context: Context): Intent {
             return Intent(context, DailyAttendanceActivity::class.java)
         }
+    }
+
+    fun setUp() {
+        mActivityDailyAttendanceBinding.dailyAttendanceListParentRv.itemAnimator = DefaultItemAnimator()
+        mActivityDailyAttendanceBinding.dailyAttendanceListParentRv.adapter = mDailyAttendanceAdapter
+    }
+
+    fun updateDailyAttendanceList(dailyAttendanceCardData: List<DailyAttendanceCardData>?) {
+        mDailyAttendanceAdapter.clearItems()
+        if (!dailyAttendanceCardData.isNullOrEmpty()) {
+            mDailyAttendanceAdapter.addItem(dailyAttendanceCardData)
+        }
+    }
+
+    fun subscribeToLiveDataDailyAttendance() {
+        mDailyAttendanceViewModel.getdailyAttendanceLiveData().observe(this, Observer { t ->
+            mDailyAttendanceViewModel.addDailyAttendanceItemToList(t)
+            updateDailyAttendanceList(t)
+        })
     }
 }

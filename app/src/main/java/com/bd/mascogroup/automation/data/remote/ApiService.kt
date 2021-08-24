@@ -28,4 +28,8 @@ interface ApiService {
     fun doLogin(
         @Body loginRequest: LoginRequest
     ): Observable<LoginResponse>
+
+    /*@Headers("Content-Type: application/json")
+    @GET("v3/checkout/getDeiverySlot-web")
+    fun getDeiveryTimeSlot(): Observable<DeliveryTimeSlotResponse> // body data*/
 }
