@@ -64,6 +64,7 @@ class DailyAttendanceAdapter @Inject constructor(private val context: Context, v
             val dailyAttendanceCardData: DailyAttendanceCardData = mDailyAttendanceCardData[position]
 
             val dailyAttendanceCardView = itemView.daily_attendance_card_view
+            val dailyAttendanceItemMonthCl = itemView.daily_attendance_item_month_cl
             mDailyAttendanceListItemViewModel = DailyAttendanceListItemViewModel(dailyAttendanceCardData, position, this,dataManager)
             mBinding.viewModel = mDailyAttendanceListItemViewModel
 
@@ -71,6 +72,7 @@ class DailyAttendanceAdapter @Inject constructor(private val context: Context, v
             val currentDate = sdf.format(Date())
             if (dailyAttendanceCardData.PunchDate.equals(currentDate)){
                 dailyAttendanceCardView.setBackgroundResource(R.drawable.layout_daily_attendance_row_bg)
+                dailyAttendanceItemMonthCl.setBackgroundResource(R.drawable.layout_daily_attendance_row_month_bg_hover)
             }
         }
     }
