@@ -15,26 +15,26 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activity_production_management_parent_cl"
+        android:id="@+id/activity_leave_details_parent_cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_bg">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_production_management_full_boby_cl"
+            android:id="@+id/activity_leave_details_full_boby_cl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_38sdp"
             android:layout_marginTop="@dimen/_30sdp"
             app:layout_constraintTop_toTopOf="parent">
 
             <include
-                android:id="@+id/activity_production_management_search"
+                android:id="@+id/activity_leave_details"
                 layout="@layout/layout_common_header" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_production_management_top_cl"
+            android:id="@+id/activity_leave_details_top_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_90sdp"
@@ -42,17 +42,232 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_production_management_full_boby_cl">
+            app:layout_constraintTop_toBottomOf="@+id/activity_leave_details_full_boby_cl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_leave_details_body_cl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_46sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/daily_attendance_financial_year_corner_round"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_details_financial_year_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Financial Year"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_leave_details_line_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_leave_details_line_tv"
+                    android:layout_width="0.8dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:background="#5AEC81"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_leave_details_calender_im"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:src="@drawable/calendar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_leave_details_line_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/leave_details_spinner"
+                    android:layout_width="@dimen/_75sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_leave_details_calender_im"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_leave_details_month_cl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_leave_details_body_cl">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_leave_details_month_name_cl"
+                    android:layout_width="@dimen/_146sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/daily_attendance_month_corner_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/activity_leave_details_month_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:text="Leave Summary"
+                        android:textColor="#5AEC81"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_leave_details_next_month_im"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:src="@drawable/plan_next_show"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_leave_details_back_month_im"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:src="@drawable/plan_back_show"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/leave_details_leave_summary_list_parent_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@+id/activity_leave_details_month_cl"
+                android:orientation="horizontal"
+                tools:listitem="@layout/layout_leave_detail_leave_summary_itemlist_row" />
+
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_leave_details_avail_summary_parent_cl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/leave_details_leave_summary_list_parent_rv">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_leave_details_avail_summary_cl"
+                    android:layout_width="@dimen/_146sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@drawable/daily_attendance_month_corner_round"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/activity_leave_details_avail_summary_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:text="Avail Summary"
+                        android:textColor="#5AEC81"
+                        android:textSize="@dimen/_11sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_leave_details_avail_summary_next_im"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:src="@drawable/plan_next_show"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_leave_details_avail_summary_back_im"
+                    android:layout_width="@dimen/_23sdp"
+                    android:layout_height="@dimen/_23sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:src="@drawable/plan_back_show"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--<androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/daily_attendance_status_list_parent_rv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintTop_toBottomOf="@+id/activity_leave_detail_avail_summary_parent_cl"
+                android:orientation="horizontal"
+                tools:listitem="@layout/layout_leave_detail_leave_summary_itemlist_row" />-->
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_production_management_footer_cl"
+            android:id="@+id/activity_leave_details_footer_cl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_78sdp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <include
-                android:id="@+id/activity_production_management_footer"
+                android:id="@+id/activity_leave_details_footer"
                 layout="@layout/layout_footer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceA
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceAdapterModule
 import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivity
 import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivityModule
+import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsLeaveSummaryAdapterModule
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivityModule
 import com.bd.mascogroup.automation.ui.otp.OTPActivity
@@ -72,7 +73,7 @@ abstract class ActivityBuilder {
 
 
     @ContributesAndroidInjector(
-            modules = [LeaveDetailsActivityModule::class]
+            modules = [LeaveDetailsActivityModule::class, LeaveDetailsLeaveSummaryAdapterModule::class]
     )
     internal abstract fun bindLeaveDetailsActivity(): LeaveDetailsActivity
 }

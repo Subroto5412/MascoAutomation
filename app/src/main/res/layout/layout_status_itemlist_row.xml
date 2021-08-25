@@ -38,7 +38,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/daily_attendance_item_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_85sdp"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
