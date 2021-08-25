@@ -95,9 +95,20 @@ class DailyAttendanceViewModel @Inject constructor(
         dailyAttendanceStatus3.status = "HL"
         dailyAttendanceStatus3.statusValue = "2"
 
+        val dailyAttendanceStatus4 = DailyAttendanceStatusResponse()
+        dailyAttendanceStatus4.status = "Absent"
+        dailyAttendanceStatus4.statusValue = "3"
+
+
+        val dailyAttendanceStatus5 = DailyAttendanceStatusResponse()
+        dailyAttendanceStatus5.status = "Quick Out"
+        dailyAttendanceStatus5.statusValue = "5"
+
         dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus))
         dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus3))
         dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus2))
+        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus4))
+        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus5))
 
         dailyAttendanceStatusListLiveData.value = dailyAttendanceStatusListItems
     }

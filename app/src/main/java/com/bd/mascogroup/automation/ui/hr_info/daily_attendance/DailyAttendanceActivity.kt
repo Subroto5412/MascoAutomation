@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceCardData
 import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatusCardData
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 import kotlin.collections.ArrayList
+
 
 class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, DailyAttendanceViewModel>(), IDailyAttendanceNavigator,DailyAttendanceAdapter.DailyAttendanceAdapterListener,
     DailyAttendanceStatusAdapter.DailyAttendanceStatusAdapterListener {
@@ -77,16 +79,13 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         var currentDate:Int = 0
         currentDate = currentDate_.toInt()-1
 
-
-        Log.e("--------------","-------------"+currentDate)
-
         var month = monthList.get(currentDate)
-        var nextMonth = monthList.get(currentDate+1)
-        var backMonth = monthList.get(currentDate-1)
+        var nextMonth = monthList.get(currentDate + 1)
+        var backMonth = monthList.get(currentDate - 1)
 
-        activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0,3)
+        activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0, 3)
         activity_daily_attendance_month_tv.text = month
-        activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0,3)
+        activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0, 3)
 
         viewModel.dailyAttendance(this)
         setUp()
@@ -94,113 +93,101 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
 
         setUpStatus()
         subscribeToLiveDataDailyAttendanceStatus()
+
+        val CurrenePosition = (mActivityDailyAttendanceBinding.dailyAttendanceStatusListParentRv.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+
+        activity_daily_attendance_bottom_next_cl.setOnClickListener {
+                daily_attendance_status_list_parent_rv.scrollToPosition(CurrenePosition+5)
+        }
+
+        activity_daily_attendance_bottom_back_cl.setOnClickListener {
+            daily_attendance_status_list_parent_rv.scrollToPosition(CurrenePosition + 1)
+        }
+
         var index:Int=0
         var totalMonth:Int = 0
         activity_daily_attendance_back_month_im.setOnClickListener {
 
             index--
             totalMonth = currentDate+index
-            Log.e("---------","----currentDate----"+totalMonth)
 
             if (totalMonth>-2){
 
                 if (totalMonth==-1){
 
-                    Log.e("---------","----currentDate-hhh---::"+totalMonth)
                     var month = monthList.get(0)
                     var nextMonth = monthList.get(1)
 //                    var backMonth = monthList.get(totalMonth-1)
 
                     activity_daily_attendance_back_month_tv.text = ""
                     activity_daily_attendance_month_tv.text = month
-                    activity_daily_attendance_next_month_tv.text =nextMonth.subSequence(0,3)
+                    activity_daily_attendance_next_month_tv.text =nextMonth.subSequence(0, 3)
 
                     activity_daily_attendance_back_month_im.isInvisible = true
                     activity_daily_attendance_next_month_im.isVisible = true
                 }else{
-                    Log.e("---------","----currentDate-bb---:"+totalMonth)
-
-                    Log.e("----------","------totalMonthtotalMonth--------)"+totalMonth)
                     var nextMonth:String=""
                     var month:String=""
                     var backMonth:String = ""
                     if (totalMonth==10){
                          month = monthList.get(totalMonth)
-                        nextMonth  = monthList.get(totalMonth+1)
-                        backMonth = monthList.get(totalMonth-1)
+                        nextMonth  = monthList.get(totalMonth + 1)
+                        backMonth = monthList.get(totalMonth - 1)
 
                     }else{
                          month = monthList.get(totalMonth)
-                         nextMonth = monthList.get(totalMonth+1)
+                         nextMonth = monthList.get(totalMonth + 1)
 
                         if (totalMonth==0){
                             activity_daily_attendance_back_month_im.isInvisible = true
                             activity_daily_attendance_next_month_im.isVisible = true
                         }else{
-                            backMonth = monthList.get(totalMonth-1)
+                            backMonth = monthList.get(totalMonth - 1)
                         }
                         activity_daily_attendance_next_month_im.isVisible = true
                     }
 
-                   //  = monthList.get(totalMonth)
                     if (totalMonth==0)
                     activity_daily_attendance_back_month_tv.text = ""
                     else
-                        activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0,3)
+                        activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0, 3)
 
                     activity_daily_attendance_month_tv.text = month
-                    activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0,3)
+                    activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0, 3)
                 }
-
             }
-
         }
-
 
         activity_daily_attendance_next_month_im.setOnClickListener {
             index++
             totalMonth = currentDate+index
-            Log.e("---------","----currentDate----"+totalMonth)
 
             if (totalMonth<12){
 
                 if (totalMonth==11){
 
-                    Log.e("---------","----currentDate-sss---::"+totalMonth)
                     var month = monthList.get(totalMonth)
 //                    var nextMonth = monthList.get(totalMonth+1)
-                    var backMonth = monthList.get(totalMonth-1)
+                    var backMonth = monthList.get(totalMonth - 1)
 
-                    activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0,3)
+                    activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0, 3)
                     activity_daily_attendance_month_tv.text = month
                     activity_daily_attendance_next_month_tv.text =""
 
                     totalMonth = totalMonth-1
                     activity_daily_attendance_next_month_im.isInvisible = true
-                    Log.e("---------","----currentDate-sss-- totalMonth-::"+totalMonth)
                 }else{
-                    Log.e("---------","----currentDate-tttt---::"+totalMonth)
                     var month = monthList.get(totalMonth)
-                    var nextMonth = monthList.get(totalMonth+1)
-                    var backMonth = monthList.get(totalMonth-1)
+                    var nextMonth = monthList.get(totalMonth + 1)
+                    var backMonth = monthList.get(totalMonth - 1)
 
-                    activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0,3)
+                    activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0, 3)
                     activity_daily_attendance_month_tv.text = month
-                    activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0,3)
+                    activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0, 3)
                     activity_daily_attendance_back_month_im.isVisible = true
-                   /* if (totalMonth==12){
-                        totalMonth = totalMonth-1
-                        activity_daily_attendance_next_month_im.isInvisible = true
-                    }*/
 
                 }
-
             }
-
-            /*if (totalMonth<13){
-                activity_daily_attendance_next_month_im.isInvisible = true
-            }*/
-
         }
     }
 
