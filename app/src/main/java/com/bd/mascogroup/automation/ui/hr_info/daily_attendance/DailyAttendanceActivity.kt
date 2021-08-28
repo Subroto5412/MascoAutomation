@@ -97,13 +97,18 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         subscribeToLiveDataDailyAttendanceStatus()
 
         val CurrenePosition = (mActivityDailyAttendanceBinding.dailyAttendanceStatusListParentRv.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-
+        activity_daily_attendance_next_status_im.setBackgroundResource(R.drawable.plan_next_show)
+        activity_daily_attendance_back_status_im.setBackgroundResource(R.drawable.plan_back_show)
         activity_daily_attendance_bottom_next_cl.setOnClickListener {
                 daily_attendance_status_list_parent_rv.scrollToPosition(CurrenePosition+5)
+            activity_daily_attendance_next_status_im.setBackgroundResource(R.drawable.plan_next)
+            activity_daily_attendance_back_status_im.setBackgroundResource(R.drawable.plan_back_show)
         }
 
         activity_daily_attendance_bottom_back_cl.setOnClickListener {
             daily_attendance_status_list_parent_rv.scrollToPosition(CurrenePosition + 1)
+            activity_daily_attendance_back_status_im.setBackgroundResource(R.drawable.plan_back)
+            activity_daily_attendance_next_status_im.setBackgroundResource(R.drawable.plan_next_show)
         }
 
         var index:Int=0
