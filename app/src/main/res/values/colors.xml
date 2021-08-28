@@ -27,4 +27,7 @@
     <color name="germents_printing_color">#B9A20B</color>
     <color name="germents_embroidery_color">#058A3E</color>
     <color name="text_color">#353535</color>
+    <color name="sl_text_color">#E17055</color>
+    <color name="el_text_color">#6AB04C</color>
+    <color name="cl_text_color">#FDCB6E</color>
 </resources>

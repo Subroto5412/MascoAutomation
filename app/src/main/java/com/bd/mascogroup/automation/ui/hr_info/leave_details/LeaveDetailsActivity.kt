@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bd.mascogroup.automation.R
+import com.bd.mascogroup.automation.data.model.domainModel.AvailSummaryCardData
 import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatusCardData
 import com.bd.mascogroup.automation.data.model.domainModel.LeaveSummaryCardData
 import com.bd.mascogroup.automation.databinding.ActivityLeaveDetailsBinding
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_leave_details.*
 import kotlinx.android.synthetic.main.layout_common_header.*
 import javax.inject.Inject
 
-class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDetailsViewModel>(), ILeaveDetailsNavigator, LeaveDetailsLeaveSummaryAdapter.LeaveSummaryAdapterListener {
+class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDetailsViewModel>(), ILeaveDetailsNavigator, LeaveDetailsLeaveSummaryAdapter.LeaveSummaryAdapterListener, LeaveDetailsAvailSummaryAdapter.AvailSummaryAdapterListener {
 
 
 
@@ -33,6 +34,9 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
 
     @Inject
     lateinit var mLeaveDetailsLeaveSummaryAdapter: LeaveDetailsLeaveSummaryAdapter
+
+    @Inject
+    lateinit var mLeaveDetailsAvailSummaryAdapter: LeaveDetailsAvailSummaryAdapter
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -46,31 +50,32 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
             return mLeaveDetailsViewModel
         }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityLeaveDetailsBinding = viewDataBinding
         viewModel.navigator = this
         mLeaveDetailsLeaveSummaryAdapter.setListener(this)
+        mLeaveDetailsAvailSummaryAdapter.setListener(this)
         activity_title_tv.setText("Personal Leave Details")
-
 
         viewModel.leaveSummary(this)
         setUpLeaveSummary()
         subscribeToLiveDataLeaveSummary()
 
+        viewModel.availSummary(this)
+        setUpAvailSummary()
+        subscribeToLiveDataAvailSummary()
+
         val CurrenePosition = (mActivityLeaveDetailsBinding.leaveDetailsLeaveSummaryListParentRv.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
 
         activity_leave_details_next_month_im.setOnClickListener {
             leave_details_leave_summary_list_parent_rv.scrollToPosition(CurrenePosition+4)
-
             activity_leave_details_back_month_im.isVisible = true
             activity_leave_details_next_month_im.isGone = true
         }
 
         activity_leave_details_back_month_im.setOnClickListener {
             leave_details_leave_summary_list_parent_rv.scrollToPosition(CurrenePosition + 1)
-
             activity_leave_details_back_month_im.isGone = true
             activity_leave_details_next_month_im.isVisible = true
         }
@@ -79,6 +84,18 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
             val intent = HRInfoActivity.newIntent(this@LeaveDetailsActivity)
             startActivity(intent)
         }
+
+        activity_leave_details_avail_summary_next_im.setOnClickListener {
+
+            avail_summary_horizontal_scoll.scrollTo(700,0)
+            activity_leave_details_avail_summary_back_im.isVisible = true
+            activity_leave_details_avail_summary_next_im.isGone = true
+        }
+        activity_leave_details_avail_summary_back_im.setOnClickListener {
+            avail_summary_horizontal_scoll.scrollTo(-700,0)
+            activity_leave_details_avail_summary_back_im.isGone = true
+            activity_leave_details_avail_summary_next_im.isVisible = true
+        }
     }
 
     companion object {
@@ -86,7 +103,6 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
             return Intent(context, LeaveDetailsActivity::class.java)
         }
     }
-
 
     fun setUpLeaveSummary() {
         mActivityLeaveDetailsBinding.leaveDetailsLeaveSummaryListParentRv.itemAnimator = DefaultItemAnimator()
@@ -104,6 +120,25 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
         mLeaveDetailsViewModel.getleaveSummaryLiveData().observe(this, Observer { t ->
             mLeaveDetailsViewModel.addLeaveSummaryItemToList(t)
             updateLeaveSummaryList(t)
+        })
+    }
+
+   fun setUpAvailSummary() {
+        mActivityLeaveDetailsBinding.availSummaryListParentRv.itemAnimator = DefaultItemAnimator()
+        mActivityLeaveDetailsBinding.availSummaryListParentRv.adapter = mLeaveDetailsAvailSummaryAdapter
+    }
+
+    fun updateAvailSummaryList(availSummaryCardData: List<AvailSummaryCardData>?) {
+        mLeaveDetailsAvailSummaryAdapter.clearItems()
+        if (!availSummaryCardData.isNullOrEmpty()) {
+            mLeaveDetailsAvailSummaryAdapter.addItem(availSummaryCardData)
+        }
+    }
+
+    fun subscribeToLiveDataAvailSummary() {
+        mLeaveDetailsViewModel.getavailSummaryLiveData().observe(this, Observer { t ->
+            mLeaveDetailsViewModel.addAvailSummaryItemToList(t)
+            updateAvailSummaryList(t)
         })
     }
 }

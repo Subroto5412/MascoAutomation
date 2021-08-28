@@ -34,7 +34,6 @@ class LeaveDetailsLeaveSummaryAdapter @Inject constructor(private val context: C
         holder.onBind(position)
     }
 
-
     fun addItem(leaveSummaryCardData: List<LeaveSummaryCardData>?) {
         mLeaveSummaryCardData.addAll(leaveSummaryCardData!!)
         notifyDataSetChanged()

@@ -1,6 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsAvailSummaryItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/avail_summary_row_item_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:background="#081B63">
+
+        <!-- <androidx.cardview.widget.CardView
+             android:id="@+id/daily_attendance_card_view"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/_85sdp"
+             android:layout_marginStart="@dimen/_5sdp"
+             android:layout_marginTop="@dimen/_3sdp"
+             android:layout_marginEnd="@dimen/_5sdp"
+             android:layout_marginBottom="@dimen/_2sdp"
+             android:foreground="@drawable/layout_daily_attendance_row_bg_hover"
+             app:cardBackgroundColor="#081B63"
+             app:cardCornerRadius="20dp"
+             app:cardElevation="4dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintBottom_toBottomOf="parent">-->
+
+        <!--<ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal">-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/daily_attendance_item_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_sl_tv"
+                android:layout_width="@dimen/_46sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="#FDCB6E"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.sl}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="SL" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_sl_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_sl_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_sl_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_leave_type_tv"
+                android:layout_width="@dimen/_92sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="#FDCB6E"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.leaveType}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avail_summary_sl_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Leave Type" />
+
+            <View
+                android:layout_width="@dimen/_86sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_leave_type_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_leave_type_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_leave_type_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_avail_day_tv"
+                android:layout_width="@dimen/_92sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="#FDCB6E"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.availDay}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avail_summary_leave_type_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Avail Day" />
+
+            <View
+                android:layout_width="@dimen/_86sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_avail_day_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_avail_day_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_avail_day_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_from_date_tv"
+                android:layout_width="@dimen/_92sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="#FDCB6E"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.fromDay}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avail_summary_avail_day_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="From Date" />
+
+            <View
+                android:layout_width="@dimen/_86sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_from_date_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_from_date_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_from_date_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_to_date_tv"
+                android:layout_width="@dimen/_92sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="#FDCB6E"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.toDay}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avail_summary_from_date_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="To Date" />
+
+            <View
+                android:layout_width="@dimen/_86sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_to_date_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_to_date_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_to_date_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_application_date_tv"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="#FDCB6E"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.applicationDay}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avail_summary_to_date_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Application Date" />
+
+            <View
+                android:layout_width="@dimen/_86sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_application_date_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_application_date_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_application_date_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--</ScrollView>-->
+        <!-- </androidx.cardview.widget.CardView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

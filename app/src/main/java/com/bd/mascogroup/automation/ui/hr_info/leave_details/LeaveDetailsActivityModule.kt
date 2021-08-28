@@ -22,7 +22,6 @@ abstract class LeaveDetailsActivityModule {
     abstract fun bindLeaveDetailsViewModel(viewModel: LeaveDetailsViewModel): ViewModel
 }
 
-
 @Module
 class LeaveDetailsLeaveSummaryAdapterModule {
     @Provides
@@ -33,5 +32,10 @@ class LeaveDetailsLeaveSummaryAdapterModule {
     @Provides
     fun provideLeaveDetailsLeaveSummaryAdapter(activity: LeaveDetailsActivity, dataManager: IDataManager): LeaveDetailsLeaveSummaryAdapter {
         return LeaveDetailsLeaveSummaryAdapter(activity, ArrayList(),dataManager)
+    }
+
+    @Provides
+    fun provideLeaveDetailsAvailSummaryAdapter(activity: LeaveDetailsActivity, dataManager: IDataManager): LeaveDetailsAvailSummaryAdapter {
+        return LeaveDetailsAvailSummaryAdapter(activity, ArrayList(),dataManager)
     }
 }
