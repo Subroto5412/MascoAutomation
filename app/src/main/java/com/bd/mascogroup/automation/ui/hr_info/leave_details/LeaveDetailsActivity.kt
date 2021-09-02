@@ -15,12 +15,14 @@ import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatus
 import com.bd.mascogroup.automation.data.model.domainModel.LeaveSummaryCardData
 import com.bd.mascogroup.automation.databinding.ActivityLeaveDetailsBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
+import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceAdapter
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceViewModel
 import kotlinx.android.synthetic.main.activity_daily_attendance.*
 import kotlinx.android.synthetic.main.activity_leave_details.*
 import kotlinx.android.synthetic.main.layout_common_header.*
+import kotlinx.android.synthetic.main.layout_footer.*
 import javax.inject.Inject
 
 class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDetailsViewModel>(), ILeaveDetailsNavigator, LeaveDetailsLeaveSummaryAdapter.LeaveSummaryAdapterListener, LeaveDetailsAvailSummaryAdapter.AvailSummaryAdapterListener {
@@ -83,6 +85,12 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
         layout_header_back_im.setOnClickListener {
             val intent = HRInfoActivity.newIntent(this@LeaveDetailsActivity)
             startActivity(intent)
+        }
+
+        layout_footer_home_im.setOnClickListener {
+            val intent = HomeActivity.newIntent(this)
+            startActivity(intent)
+            finish()
         }
 
         activity_leave_details_avail_summary_next_im.setOnClickListener {

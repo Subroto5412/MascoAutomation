@@ -65,6 +65,11 @@
             android:name=".ui.hr_info.daily_attendance.DailyAttendanceActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hr_info.income_tax.IncomeTaxDeductionActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

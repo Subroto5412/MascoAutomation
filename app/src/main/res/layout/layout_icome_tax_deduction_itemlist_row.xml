@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/avail_summary_row_item_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:background="#081B63">
+
+        <!-- <androidx.cardview.widget.CardView
+             android:id="@+id/daily_attendance_card_view"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/_85sdp"
+             android:layout_marginStart="@dimen/_5sdp"
+             android:layout_marginTop="@dimen/_3sdp"
+             android:layout_marginEnd="@dimen/_5sdp"
+             android:layout_marginBottom="@dimen/_2sdp"
+             android:foreground="@drawable/layout_daily_attendance_row_bg_hover"
+             app:cardBackgroundColor="#081B63"
+             app:cardCornerRadius="20dp"
+             app:cardElevation="4dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintBottom_toBottomOf="parent">-->
+
+        <!--<ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal">-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/daily_attendance_item_layout"
+            android:layout_width="@dimen/_290sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="@dimen/_1sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_sl_tv"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.sl}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="SL" />
+
+            <View
+                android:layout_width="@dimen/_46sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_sl_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_sl_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_sl_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_leave_type_tv"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.month}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avail_summary_sl_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="month" />
+
+            <View
+                android:layout_width="@dimen/_104sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_leave_type_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_leave_type_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_leave_type_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/avail_summary_avail_day_tv"
+                android:layout_width="@dimen/_124sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.deductionAmount}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/avail_summary_leave_type_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Deduction Amount" />
+
+            <View
+                android:layout_width="@dimen/_121sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/avail_summary_avail_day_tv"
+                app:layout_constraintStart_toStartOf="@+id/avail_summary_avail_day_tv"
+                app:layout_constraintTop_toBottomOf="@+id/avail_summary_avail_day_tv" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--</ScrollView>-->
+        <!-- </androidx.cardview.widget.CardView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

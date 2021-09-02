@@ -9,9 +9,13 @@ import com.bd.mascogroup.automation.databinding.ActivityHrInfoBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceActivity
+import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionActivity
 import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivity
 import kotlinx.android.synthetic.main.activity_hr_info.*
+import kotlinx.android.synthetic.main.layout_common_header.*
+import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), IHRInfoNavigator {
@@ -40,6 +44,8 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
         super.onCreate(savedInstanceState)
         mActivityHrInfoBinding = viewDataBinding
         viewModel.navigator = this
+        activity_title_tv.setText("")
+
 
         activity_hr_daily_attendance_cl.setOnClickListener {
             val intent = DailyAttendanceActivity.newIntent(this@HRInfoActivity)
@@ -51,9 +57,19 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
             startActivity(intent)
         }
 
+        activity_hr_income_tax_cl.setOnClickListener {
+            val intent = IncomeTaxDeductionActivity.newIntent(this@HRInfoActivity)
+            startActivity(intent)
+        }
+
         layout_header_back_im.setOnClickListener {
             val intent = HomeActivity.newIntent(this@HRInfoActivity)
             startActivity(intent)
+        }
+        layout_footer_home_im.setOnClickListener {
+            val intent = HomeActivity.newIntent(this)
+            startActivity(intent)
+            finish()
         }
     }
 

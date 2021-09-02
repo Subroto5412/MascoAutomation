@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/layout_footer_im"
+            android:id="@+id/layout_footer_home_im"
             android:layout_width="@dimen/_46sdp"
             android:layout_height="@dimen/_46sdp"
             android:layout_marginStart="@dimen/_8sdp"

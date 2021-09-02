@@ -7,6 +7,9 @@ import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivityModule
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceActivity
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceActivityModule
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceAdapterModule
+import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionActivity
+import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionActivityModule
+import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionAdapterModule
 import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivity
 import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivityModule
 import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsLeaveSummaryAdapterModule
@@ -26,7 +29,7 @@ import dagger.android.ContributesAndroidInjector
 @Module(
         includes =
         [SplashActivityModule::class, LoginActivityModule::class, SignupActivityModule::class, OTPActivityModule::class, HomeActivityModule::class,ProductionManagementActivityModule::class,
-            HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class]
+            HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class]
 )
 
 abstract class ActivityBuilder {
@@ -76,4 +79,10 @@ abstract class ActivityBuilder {
             modules = [LeaveDetailsActivityModule::class, LeaveDetailsLeaveSummaryAdapterModule::class]
     )
     internal abstract fun bindLeaveDetailsActivity(): LeaveDetailsActivity
+
+
+    @ContributesAndroidInjector(
+            modules = [IncomeTaxDeductionActivityModule::class, IncomeTaxDeductionAdapterModule::class]
+    )
+    internal abstract fun bindIncomeTaxDeductionActivity(): IncomeTaxDeductionActivity
 }

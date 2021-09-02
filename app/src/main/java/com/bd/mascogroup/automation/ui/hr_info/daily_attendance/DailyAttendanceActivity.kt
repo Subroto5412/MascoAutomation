@@ -15,9 +15,11 @@ import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceCardDa
 import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatusCardData
 import com.bd.mascogroup.automation.databinding.ActivityDailyAttendanceBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
+import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
 import kotlinx.android.synthetic.main.activity_daily_attendance.*
 import kotlinx.android.synthetic.main.activity_hr_info.*
+import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -200,6 +202,12 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         layout_header_back_im.setOnClickListener {
             val intent = HRInfoActivity.newIntent(this@DailyAttendanceActivity)
             startActivity(intent)
+        }
+
+        layout_footer_home_im.setOnClickListener {
+            val intent = HomeActivity.newIntent(this)
+            startActivity(intent)
+            finish()
         }
     }
 
