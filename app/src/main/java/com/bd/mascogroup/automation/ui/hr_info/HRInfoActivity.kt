@@ -29,16 +29,12 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
     @Inject
     lateinit var mHRInfoViewModel: HRInfoViewModel
 
-
-
     override val bindingVariable: Int
         get() = BR.viewModel
 
     override val layoutId: Int
 
         get() = R.layout.activity_hr_info
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

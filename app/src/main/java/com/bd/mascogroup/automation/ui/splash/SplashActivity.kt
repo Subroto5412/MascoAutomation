@@ -81,7 +81,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), I
                 {
                     val animationZoom1 = AnimationUtils.loadAnimation(this, R.anim.zoom)
                     activity_spalsh_down_logo_im2.startAnimation(animationZoom1)
-                    Log.e("---------","------nnn-------")
                 }, 1000)
 
        /*  Handler().postDelayed(
@@ -93,14 +92,12 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), I
 
         Handler().postDelayed(
                   {
-                      Log.e("---------","------da-------")
                       val animationZoom2 = AnimationUtils.loadAnimation(this, R.anim.zoom2)
                       activity_spalsh_down_logo_im2.startAnimation(animationZoom2)
                   }, 2000)
 
         Handler().postDelayed(
                 {
-                    Log.e("---------","------da-------")
                     val animationZoom3 = AnimationUtils.loadAnimation(this, R.anim.zoom3)
                     activity_spalsh_down_logo_im2.startAnimation(animationZoom3)
                 }, 3000)
