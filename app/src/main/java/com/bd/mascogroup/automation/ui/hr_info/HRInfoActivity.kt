@@ -19,8 +19,7 @@ import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), IHRInfoNavigator {
-
-
+    
     @Inject
     override lateinit var viewModel: HRInfoViewModel
 
@@ -41,7 +40,6 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
         mActivityHrInfoBinding = viewDataBinding
         viewModel.navigator = this
         activity_title_tv.setText("")
-
 
         activity_hr_daily_attendance_cl.setOnClickListener {
             val intent = DailyAttendanceActivity.newIntent(this@HRInfoActivity)
