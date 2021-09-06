@@ -76,10 +76,8 @@ class LoginViewModel @Inject constructor(
                             observable.subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe({ loginByUserIdResponse ->
-                                        Log.e("-----","-------"+loginByUserIdResponse.copy())
                                         UtilMethods.hideLoading()
                                     }, { error ->
-                                        Log.e("-----","-----ggg--")
                                         UtilMethods.hideLoading()
                                         // UtilMethods.showLongToast(context, error.message.toString())
                                     }
@@ -125,7 +123,6 @@ class LoginViewModel @Inject constructor(
         activity_login_signin_btn.setOnClickListener {
             doLogin(context, activity_login_user_id_et.text.toString(),  activity_login_password_et.text.toString())
         }
-
     }
 
     fun doLogin(context:Context, userName: String, password:String){

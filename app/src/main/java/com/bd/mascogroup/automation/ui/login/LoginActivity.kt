@@ -42,8 +42,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
     @Inject
     lateinit var mLoginViewModel: LoginViewModel
 
-
-
     override val bindingVariable: Int
         get() = BR.viewModel
 
@@ -51,10 +49,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
 
         get() = R.layout.activity_login
 
-
-    override fun login() {
-    }
-
+    override fun login() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,8 +61,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
         }
 
         signInBtn.setOnClickListener {
-           /* val intent = ProductionManagementActivity.newIntent(this@LoginActivity)
-            startActivity(intent)*/
             openSignupActivity()
         }
         activity_login_forgot_password_tv.setOnClickListener {
