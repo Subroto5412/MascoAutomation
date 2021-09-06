@@ -12,12 +12,10 @@ import com.bd.mascogroup.automation.databinding.ActivityOtpBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.activity_login_user_id_et
 import kotlinx.android.synthetic.main.activity_otp.*
 import javax.inject.Inject
 
 class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNavigator {
-
 
     @Inject
     override lateinit var viewModel: OTPViewModel
@@ -27,16 +25,11 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
     @Inject
     lateinit var mOTPViewModel: OTPViewModel
 
-
-
     override val bindingVariable: Int
         get() = BR.viewModel
 
     override val layoutId: Int
-
         get() = R.layout.activity_otp
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,19 +42,20 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
         }
     }
 
-
     fun setup() {
 
         activity_otp_password_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!s.toString().equals("")){
+                if (!s.toString().equals("")) {
                     activity_otp_password_et.setBackgroundResource(R.drawable.input_field_white_bg)
-                }else{
+                } else {
                     activity_otp_password_et.setBackgroundResource(R.drawable.input_filed_bg)
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         })
@@ -69,22 +63,23 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
         activity_otp_re_password_et.addTextChangedListener(object :
                 TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (!s.toString().equals("")){
+                if (!s.toString().equals("")) {
                     activity_otp_re_password_et.setBackgroundResource(R.drawable.input_field_white_bg)
                     activity_otp_signup_btn.isGone = false
                     activity_otp_signup_btn_hide.isGone = true
-                }else{
+                } else {
                     activity_otp_re_password_et.setBackgroundResource(R.drawable.input_filed_bg)
                     activity_otp_signup_btn_hide.isGone = false
                     activity_otp_signup_btn.isGone = true
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
         })
-
     }
 
     companion object {
