@@ -51,4 +51,12 @@ object ApiServiceCalling {
             .build()
             .create(ApiService::class.java)!!
 
+    fun generalMisApiCall() = Retrofit.Builder()
+        .baseUrl(BuildConfig.MIS_API_BASE)
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .addConverterFactory(ApiWorker.gsonConverter)
+        .client(ApiWorker.client)
+        .build()
+        .create(ApiService::class.java)!!
+
 }

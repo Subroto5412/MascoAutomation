@@ -32,4 +32,8 @@ interface ApiService {
     /*@Headers("Content-Type: application/json")
     @GET("v3/checkout/getDeiverySlot-web")
     fun getDeiveryTimeSlot(): Observable<DeliveryTimeSlotResponse> // body data*/
+
+    @Headers("Content-Type: application/json")
+    @GET("v1/LoginAccess/getImageById")
+    fun getLoginImage(@Query("empCode") empCode: String): Observable<LoginImageResponse> // body data
 }

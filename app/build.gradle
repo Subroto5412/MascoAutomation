@@ -25,6 +25,7 @@ android {
         debug {
             buildConfigField("String", "API_BASE", "\"https://mis-search.mascoknit.com/\"")
             buildConfigField("String", "WEB_API_BASE", "\"https://api-web.mascobazar.com/api/\"")
+            buildConfigField("String", "MIS_API_BASE", "\"https://mis-api.mascoknit.com/api/\"")
 
         }
         release {
@@ -33,6 +34,7 @@ android {
 
             buildConfigField("String", "API_BASE", "\"https://mis-search.mascoknit.com/\"")
             buildConfigField("String", "WEB_API_BASE", "\"https://api-web.mascobazar.com/api/\"")
+            buildConfigField("String", "MIS_API_BASE", "\"https://mis-api.mascoknit.com/api/\"")
         }
     }
     compileOptions {
@@ -108,4 +110,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    kapt("com.github.bumptech.glide:compiler:$rootProject.glideVersion")
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }

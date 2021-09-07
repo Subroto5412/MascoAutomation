@@ -58,4 +58,7 @@ ext {
     sdpAndroidVersion = '1.0.6'
 
     rx2FastAndroidNetworking = '1.0.2'
+    //Glide
+    glideVersion = '4.11.0'
+
 }
