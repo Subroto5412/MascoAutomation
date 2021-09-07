@@ -27,6 +27,7 @@ class SignupViewModel @Inject constructor(
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe({ otpResponse ->
                                         Log.e("------", "----" + otpResponse.response)
+                                        Log.e("------", "----" + otpResponse.mobile)
                                         AppConstants.MOBILE_NO = otpResponse.mobile
                                         navigator?.openOtpActivity()
                                         UtilMethods.hideLoading()

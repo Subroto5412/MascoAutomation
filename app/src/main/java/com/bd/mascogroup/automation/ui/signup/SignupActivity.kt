@@ -47,6 +47,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>(), I
         viewModel.navigator = this
 
         signInBtnmaterialCardView.setOnClickListener {
+            AppConstants.EMP_CODE = activity_signup_user_id_et.text.toString()
             viewModel.doSendOTP(this, activity_signup_user_id_et.text.toString())
         }
         activity_signin_tv.setOnClickListener {

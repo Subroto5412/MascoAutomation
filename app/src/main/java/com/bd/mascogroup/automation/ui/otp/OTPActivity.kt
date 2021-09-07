@@ -11,15 +11,13 @@ import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityOtpBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
+import com.bd.mascogroup.automation.ui.signup.SignupViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_otp.*
 import javax.inject.Inject
 
 class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNavigator {
-
-    @Inject
-    override lateinit var viewModel: OTPViewModel
 
     private var mActivityOtpBinding: ActivityOtpBinding? = null
 
@@ -32,16 +30,23 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
     override val layoutId: Int
         get() = R.layout.activity_otp
 
+    override val viewModel: OTPViewModel
+        get() {
+            return mOTPViewModel
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityOtpBinding = viewDataBinding
         viewModel.navigator = this
         activity_otp_n1_value_text.setText(AppConstants.MOBILE_NO)
         setup()
-        activity_otp_signup_btn.setOnClickListener {
 
-            val intent = HomeActivity.newIntent(this@OTPActivity)
-            startActivity(intent)
+        viewModel.doVerifyOTP(this,otp_one_ed, otp_two_ed, otp_three_ed, otp_four_ed,activity_otp_verified_im)
+
+        activity_otp_signup_btn.setOnClickListener {
+           /* val intent = HomeActivity.newIntent(this@OTPActivity)
+            startActivity(intent)*/
         }
     }
 

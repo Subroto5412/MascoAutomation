@@ -128,6 +128,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_otp_signin_btn2" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/activity_otp_verified_im"
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/check_icon"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/activity_otp_password_tv1"
+                app:layout_constraintTop_toBottomOf="@+id/activity_otp_signin_btn2" />
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_otp_password_et1"
                 android:layout_width="match_parent"
@@ -156,7 +168,7 @@
                     android:hint="4"
                     android:imeOptions="actionNext"
                     android:inputType="number"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color"
                     android:textColorHint="@color/black"
                     android:textSize="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -176,7 +188,7 @@
                     android:hint="3"
                     android:imeOptions="actionNext"
                     android:inputType="number"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color"
                     android:textColorHint="@color/black"
                     android:textSize="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -195,7 +207,7 @@
                     android:hint="1"
                     android:imeOptions="actionNext"
                     android:inputType="number"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color"
                     android:textColorHint="@color/black"
                     android:textSize="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -215,7 +227,7 @@
                     android:hint="6"
                     android:imeOptions="actionNext"
                     android:inputType="number"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_color"
                     android:textColorHint="@color/black"
                     android:textSize="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"

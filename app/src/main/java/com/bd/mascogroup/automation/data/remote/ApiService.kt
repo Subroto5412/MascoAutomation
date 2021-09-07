@@ -42,4 +42,10 @@ interface ApiService {
     fun doSendOTP(
         @Body otpRequest: OtpRequest
     ): Observable<OtpResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/LoginAccess/verifyOTP")
+    fun doVerifyOTP(
+        @Body verifyOTPRequest: VerifyOTPRequest
+    ): Observable<VerifyOTPResponse>
 }
