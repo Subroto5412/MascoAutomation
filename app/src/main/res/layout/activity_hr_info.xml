@@ -37,7 +37,7 @@
             android:id="@+id/activity_production_management_top_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_73sdp"
+            android:layout_marginTop="@dimen/_80sdp"
             android:layout_marginBottom="@dimen/_68sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

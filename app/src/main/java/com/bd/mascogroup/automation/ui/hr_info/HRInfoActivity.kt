@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), IHRInfoNavigator {
-    
+
     @Inject
     override lateinit var viewModel: HRInfoViewModel
 

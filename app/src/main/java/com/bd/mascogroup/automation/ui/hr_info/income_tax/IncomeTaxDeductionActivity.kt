@@ -47,7 +47,7 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
         viewModel.navigator = this
 
         mIncomeTaxDeductionAdapter.setListener(this)
-        activity_title_tv.setText("Income Tax Deduction History")
+        activity_title_tv.setText("Income Tax Deduction \nHistory")
 
         viewModel.IncomeTaxDeduction(this)
         setUpIcomeTaxDeduction()
