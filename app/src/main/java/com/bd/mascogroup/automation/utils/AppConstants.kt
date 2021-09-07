@@ -62,4 +62,7 @@ object AppConstants {
     const val API_CACHE_SIZE_IN_MB = 10
     const val API_CACHE_EXPIRE_IN_MINUTE = 30
     const val API_CONNECT_TIMEOUT_IN_SECOND = 30
+
+
+     var MOBILE_NO = ""
 }

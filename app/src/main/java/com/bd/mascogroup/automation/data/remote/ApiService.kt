@@ -36,4 +36,10 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @GET("v1/LoginAccess/getImageById")
     fun getLoginImage(@Query("empCode") empCode: String): Observable<LoginImageResponse> // body data
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/LoginAccess/sendOTP")
+    fun doSendOTP(
+        @Body otpRequest: OtpRequest
+    ): Observable<OtpResponse>
 }

@@ -10,17 +10,17 @@ import androidx.databinding.library.baseAdapters.BR
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivitySignupBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
+import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionViewModel
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import com.bd.mascogroup.automation.ui.otp.OTPActivity
+import com.bd.mascogroup.automation.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_otp.*
 import kotlinx.android.synthetic.main.activity_signup.*
 import javax.inject.Inject
 
 class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>(), ISignupNavigator{
 
-
-    @Inject
-    override lateinit var viewModel: SignupViewModel
 
     private var mActivitySignupBinding: ActivitySignupBinding? = null
 
@@ -36,7 +36,10 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>(), I
 
         get() = R.layout.activity_signup
 
-
+    override val viewModel: SignupViewModel
+        get() {
+            return mSignupViewModel
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>(), I
         viewModel.navigator = this
 
         signInBtnmaterialCardView.setOnClickListener {
-            openOtpActivity()
+            viewModel.doSendOTP(this, activity_signup_user_id_et.text.toString())
         }
         activity_signin_tv.setOnClickListener {
             val intent = LoginActivity.newIntent(this@SignupActivity)
@@ -75,7 +78,7 @@ class SignupActivity : BaseActivity<ActivitySignupBinding, SignupViewModel>(), I
 
     }
 
-    fun openOtpActivity() {
+    override fun openOtpActivity() {
         val intent = OTPActivity.newIntent(this@SignupActivity)
         startActivity(intent)
 //        finish()

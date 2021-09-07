@@ -11,6 +11,7 @@ import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityOtpBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
+import com.bd.mascogroup.automation.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_otp.*
 import javax.inject.Inject
@@ -35,8 +36,10 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
         super.onCreate(savedInstanceState)
         mActivityOtpBinding = viewDataBinding
         viewModel.navigator = this
+        activity_otp_n1_value_text.setText(AppConstants.MOBILE_NO)
         setup()
         activity_otp_signup_btn.setOnClickListener {
+
             val intent = HomeActivity.newIntent(this@OTPActivity)
             startActivity(intent)
         }
