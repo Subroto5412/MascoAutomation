@@ -289,6 +289,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_otp_password_et" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/activity_password_verified_im"
+                android:layout_width="@dimen/_23sdp"
+                android:layout_height="@dimen/_23sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/check_icon"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/activity_otp_re_password_et"
+                app:layout_constraintTop_toBottomOf="@+id/activity_otp_password_et" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
