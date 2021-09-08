@@ -9,6 +9,7 @@ import androidx.databinding.library.baseAdapters.BR
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivitySplashBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
+import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -66,8 +67,15 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), I
 
     }
 
-    override fun openMainActivity() {
+    override fun openLoginActivity() {
         val intent = LoginActivity.newIntent(this@SplashActivity)
+        startActivity(intent)
+        finish()
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    override fun openHomeActivity() {
+        val intent = HomeActivity.newIntent(this@SplashActivity)
         startActivity(intent)
         finish()
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

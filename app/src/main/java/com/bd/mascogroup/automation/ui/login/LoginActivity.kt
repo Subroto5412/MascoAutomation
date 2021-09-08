@@ -61,9 +61,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
             startActivity(intent)
         }
 
-        signInBtn.setOnClickListener {
-            openSignupActivity()
-        }
         activity_login_forgot_password_tv.setOnClickListener {
             val intent = SignupActivity.newIntent(this@LoginActivity)
             startActivity(intent)
@@ -72,10 +69,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
                 activity_login_user_name_tv, activity_login_unit_name_tv, activity_login_signin_btn,activity_login_signin_btn_hide)
     }
 
-     fun openSignupActivity() {
+     override fun openHomeActivity() {
         val intent = HomeActivity.newIntent(this@LoginActivity)
         startActivity(intent)
-//        finish()
+        finish()
     }
 
     override fun androidInjector(): AndroidInjector<Any>? {

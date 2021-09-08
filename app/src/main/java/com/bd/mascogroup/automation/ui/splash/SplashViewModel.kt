@@ -11,6 +11,10 @@ class SplashViewModel @Inject constructor(
 ): BaseViewModel<ISplashNavigator>(dataManager, ISchedulerProvider){
 
     fun startSeeding() {
-        navigator!!.openMainActivity()
+        if (dataManager.empCode.equals("")){
+            navigator!!.openLoginActivity()
+        }else{
+            navigator!!.openHomeActivity()
+        }
     }
 }

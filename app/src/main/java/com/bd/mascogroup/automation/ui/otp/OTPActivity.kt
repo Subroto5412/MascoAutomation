@@ -41,9 +41,8 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
         super.onCreate(savedInstanceState)
         mActivityOtpBinding = viewDataBinding
         viewModel.navigator = this
-        activity_otp_n1_value_text.setText(AppConstants.MOBILE_NO)
 
-        viewModel.doVerifyOTP(this,otp_one_ed, otp_two_ed, otp_three_ed, otp_four_ed,activity_otp_verified_im)
+        viewModel.doVerifyOTP(this,activity_otp_n1_value_text,otp_one_ed, otp_two_ed, otp_three_ed, otp_four_ed,activity_otp_verified_im)
         viewModel.setup(this,activity_otp_password_et, activity_otp_re_password_et, activity_password_verified_im, activity_otp_signup_btn,activity_otp_signup_btn_hide)
     }
 
@@ -56,5 +55,6 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
     override fun openHomeScreen(){
         val intent = HomeActivity.newIntent(this@OTPActivity)
         startActivity(intent)
+        finish()
     }
 }

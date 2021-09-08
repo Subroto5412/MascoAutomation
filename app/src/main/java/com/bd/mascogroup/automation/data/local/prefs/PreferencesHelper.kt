@@ -30,17 +30,17 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         get() = mPrefs.getString(PREF_KEY_CUSTOMER_PHONE,"").toString()
         set(customerPhone) = mPrefs.edit().putString(PREF_KEY_CUSTOMER_PHONE, customerPhone).apply()
 
-    override var receiverPhone: String
-        get() = mPrefs.getString(PREF_KEY_RECEIVER_PHONE,"").toString()
-        set(receiverPhone) = mPrefs.edit().putString(PREF_KEY_RECEIVER_PHONE, receiverPhone).apply()
+    override var mobile: String
+        get() = mPrefs.getString(PREF_KEY_PHONE,"").toString()
+        set(mobile) = mPrefs.edit().putString(PREF_KEY_PHONE, mobile).apply()
 
-    override var toTime: String
-        get() = mPrefs.getString(PREF_KEY_TO_TIME,"").toString()
-        set(toTime) = mPrefs.edit().putString(PREF_KEY_TO_TIME, toTime).apply()
+    override var empId: String
+        get() = mPrefs.getString(PREF_KEY_EMPId,"").toString()
+        set(empId) = mPrefs.edit().putString(PREF_KEY_EMPId, empId).apply()
 
-    override var fromTime: String
-        get() = mPrefs.getString(PREF_KEY_FROM_TIME,"").toString()
-        set(fromTime) = mPrefs.edit().putString(PREF_KEY_FROM_TIME, fromTime).apply()
+    override var empCode: String
+        get() = mPrefs.getString(PREF_KEY_EMPCODE,"").toString()
+        set(empCode) = mPrefs.edit().putString(PREF_KEY_EMPCODE, empCode).apply()
 
 
 
@@ -50,8 +50,8 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         private val PREF_KEY_CUSTOMER_NAME = "PREF_KEY_CUSTOMER_NAME"
         private val PREF_KEY_CUSTOMER_ADDRESS = "PREF_KEY_CUSTOMER_ADDRESS"
         private val PREF_KEY_CUSTOMER_PHONE = "PREF_KEY_CUSTOMER_PHONE"
-        private val PREF_KEY_RECEIVER_PHONE = "PREF_KEY_RECEIVER_PHONE"
-        private val PREF_KEY_TO_TIME = "PREF_KEY_TO_TIME"
-        private val PREF_KEY_FROM_TIME = "PREF_KEY_FROM_TIME"
+        private val PREF_KEY_PHONE = "PREF_KEY_PHONE"
+        private val PREF_KEY_EMPId = "PREF_KEY_EMPId"
+        private val PREF_KEY_EMPCODE = "PREF_KEY_EMPCODE"
     }
 }

@@ -31,31 +31,6 @@ class LoginViewModel @Inject constructor(
         ISchedulerProvider: ISchedulerProvider
 ): BaseViewModel<ILoginNavigator>(dataManager, ISchedulerProvider) {
 
-    /*fun login(loginId: String, password: String, context: Context) {
-
-        if(UtilMethods.isConnectedToInternet(context)){
-            UtilMethods.showLoading(context)
-            val observable = ApiServiceCalling.loginApiCall().doLogin(LoginPostData(loginId, password))
-
-            observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ loginResponse ->
-                    if(loginResponse.response=="true")
-                    {
-                        dataManager.deliveryManId  = loginResponse.data.delivery_man_data_id
-                        navigator?.openOrderListActivity()
-                    }
-                    UtilMethods.hideLoading()
-                }, { error ->
-                    UtilMethods.hideLoading()
-                    UtilMethods.showLongToast(context, error.message.toString())
-                }
-                )
-        }else{
-            UtilMethods.showLongToast(context, "No Internet Connection!")
-        }
-    }*/
-
     fun setup(context: Context, activity_login_user_id_et: EditText, activity_login_password_et: EditText, activity_login_logo_im: ImageView, activity_login_user_im: ImageView, activity_login_user_cl: ConstraintLayout,
               activity_login_user_name_tv: TextView, activity_login_unit_name_tv: TextView, activity_login_signin_btn: MaterialCardView, activity_login_signin_btn_hide: MaterialCardView) {
 
@@ -113,21 +88,27 @@ class LoginViewModel @Inject constructor(
         })
 
         activity_login_signin_btn.setOnClickListener {
+
+            doLogin(context, activity_login_user_id_et.text.toString(), activity_login_password_et.text.toString())
         }
     }
 
-    fun doLogin(context: Context, userName: String, password: String){
+    fun doLogin(context: Context, empId: String, password: String){
         if(UtilMethods.isConnectedToInternet(context)){
             UtilMethods.showLoading(context)
-            val observable = ApiServiceCalling.generalAPPSApiCall().doLogin(LoginRequest(userName, password))
+            val observable = ApiServiceCalling.generalMisApiCall().doLogin(LoginRequest(empId, password))
 
             observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ loginByUserIdResponse ->
-                    Log.e("-----", "-------" + loginByUserIdResponse.copy())
+                .subscribe({ loginResponse ->
+                    if (loginResponse.empId!=0){
+                        dataManager.mobile = loginResponse.mobile
+                        dataManager.empId = loginResponse.empId.toString()
+                        dataManager.empCode = loginResponse.empCode.toString()
+                        navigator?.openHomeActivity()
+                    }
                     UtilMethods.hideLoading()
                 }, { error ->
-                    Log.e("-----", "-----ggg--")
                     UtilMethods.hideLoading()
                     // UtilMethods.showLongToast(context, error.message.toString())
                 }

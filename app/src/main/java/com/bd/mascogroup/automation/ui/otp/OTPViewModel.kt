@@ -12,6 +12,7 @@ import androidx.core.view.isGone
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
+import com.bd.mascogroup.automation.data.remote.domainModel.LoginRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.OtpRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.RegisterRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.VerifyOTPRequest
@@ -30,7 +31,9 @@ class OTPViewModel @Inject constructor(
         ISchedulerProvider: ISchedulerProvider
 ): BaseViewModel<IOTPNavigator>(dataManager, ISchedulerProvider) {
         var otp:String = ""
-        fun doVerifyOTP(context: Context, otp_one_ed:EditText, otp_two_ed:EditText, otp_three_ed:EditText, otp_four_ed:EditText,activity_otp_verified_im:ImageView) {
+        fun doVerifyOTP(context: Context, activity_otp_n1_value_text:TextView, otp_one_ed:EditText, otp_two_ed:EditText, otp_three_ed:EditText, otp_four_ed:EditText,activity_otp_verified_im:ImageView) {
+
+                activity_otp_n1_value_text.setText(dataManager.mobile)
 
                 otp_one_ed.addTextChangedListener(object : TextWatcher {
                         override fun afterTextChanged(s: Editable?) {
@@ -127,7 +130,7 @@ class OTPViewModel @Inject constructor(
                                 if (!s.toString().equals("")) {
                                         activity_otp_password_et.setBackgroundResource(R.drawable.input_field_white_bg)
 
-                                        if(activity_otp_re_password_et.text.toString().length==s.toString().length){
+                                        if(activity_otp_re_password_et.text.toString().equals(s.toString())){
                                                 activity_password_verified_im.isGone = false
                                         }else{
                                                 activity_password_verified_im.isGone = true
@@ -153,9 +156,7 @@ class OTPViewModel @Inject constructor(
                                         activity_otp_signup_btn.isGone = false
                                         activity_otp_signup_btn_hide.isGone = true
 
-                                        if (activity_otp_password_et.text.toString().length!=4){
-                                                Toast.makeText(context, "Enter Four digits Password!",Toast.LENGTH_LONG).show()
-                                        } else if(activity_otp_password_et.text.toString().length==s.toString().length){
+                                        if(activity_otp_password_et.text.toString().equals(s.toString())){
                                                 activity_password_verified_im.isGone = false
                                         }else{
                                                 activity_password_verified_im.isGone = true
@@ -176,7 +177,12 @@ class OTPViewModel @Inject constructor(
                 })
 
                 activity_otp_signup_btn.setOnClickListener {
-                        register(context,activity_otp_re_password_et.text.toString())
+                        if (activity_otp_password_et.text.toString().length!=4){
+                                Toast.makeText(context, "Enter Four digits Password!",Toast.LENGTH_LONG).show()
+                        }else{
+                                register(context,activity_otp_re_password_et.text.toString())
+                        }
+
                 }
         }
 
@@ -189,7 +195,32 @@ class OTPViewModel @Inject constructor(
                         observable.subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe({ registerResponse ->
-                                        if (registerResponse.response.equals("true")){
+                                        UtilMethods.hideLoading()
+                                        if (registerResponse.response == true){
+                                                doLogin(context, AppConstants.EMP_CODE, password)
+                                        }
+                                }, { error ->
+                                        UtilMethods.hideLoading()
+                                        // UtilMethods.showLongToast(context, error.message.toString())
+                                }
+                                )
+                } else {
+                        UtilMethods.showLongToast(context, "No Internet Connection!")
+                }
+        }
+
+        fun doLogin(context: Context, empId: String, password: String){
+                if(UtilMethods.isConnectedToInternet(context)){
+                        UtilMethods.showLoading(context)
+                        val observable = ApiServiceCalling.generalMisApiCall().doLogin(LoginRequest(empId, password))
+
+                        observable.subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe({ loginResponse ->
+                                        if (loginResponse.empId!=0){
+                                                dataManager.mobile = loginResponse.mobile
+                                                dataManager.empId = loginResponse.empId.toString()
+                                                dataManager.empCode = loginResponse.empCode.toString()
                                                 navigator?.openHomeScreen()
                                         }
                                         UtilMethods.hideLoading()
@@ -198,7 +229,7 @@ class OTPViewModel @Inject constructor(
                                         // UtilMethods.showLongToast(context, error.message.toString())
                                 }
                                 )
-                } else {
+                }else{
                         UtilMethods.showLongToast(context, "No Internet Connection!")
                 }
         }

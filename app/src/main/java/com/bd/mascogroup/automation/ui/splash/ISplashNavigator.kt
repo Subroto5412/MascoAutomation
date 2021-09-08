@@ -1,5 +1,6 @@
 package com.bd.mascogroup.automation.ui.splash
 
 interface ISplashNavigator {
-    fun openMainActivity()
+    fun openLoginActivity()
+    fun openHomeActivity()
 }

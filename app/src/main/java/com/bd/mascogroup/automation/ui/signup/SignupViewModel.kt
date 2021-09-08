@@ -26,12 +26,12 @@ class SignupViewModel @Inject constructor(
                         observable.subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe({ otpResponse ->
-                                        Log.e("------", "----" + otpResponse.response)
-                                        Log.e("------", "----" + otpResponse.mobile)
                                         AppConstants.MOBILE_NO = otpResponse.mobile
+                                        dataManager.mobile = otpResponse.mobile
                                         navigator?.openOtpActivity()
                                         UtilMethods.hideLoading()
                                 }, { error ->
+                                    navigator?.openOtpActivity()
                                         UtilMethods.hideLoading()
                                         // UtilMethods.showLongToast(context, error.message.toString())
                                 }

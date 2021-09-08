@@ -38,21 +38,21 @@ class AppDataManager @Inject constructor(
             mPreferencesHelper.customerPhone = customerPhone
         }
 
-    override var receiverPhone: String
-        get() = mPreferencesHelper.receiverPhone
-        set(receiverPhone) {
-            mPreferencesHelper.receiverPhone = receiverPhone
+    override var mobile: String
+        get() = mPreferencesHelper.mobile
+        set(mobile) {
+            mPreferencesHelper.mobile = mobile
         }
-    override var fromTime: String
-        get() = mPreferencesHelper.fromTime
-        set(fromTime) {
-            mPreferencesHelper.fromTime = fromTime
+    override var empId: String
+        get() = mPreferencesHelper.empId
+        set(empId) {
+            mPreferencesHelper.empId = empId
         }
 
-    override var toTime: String
-        get() = mPreferencesHelper.toTime
-        set(toTime) {
-            mPreferencesHelper.toTime = toTime
+    override var empCode: String
+        get() = mPreferencesHelper.empCode
+        set(empCode) {
+            mPreferencesHelper.empCode = empCode
         }
 
     override var invoice: String

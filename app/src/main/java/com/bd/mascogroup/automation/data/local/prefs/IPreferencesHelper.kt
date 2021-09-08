@@ -6,7 +6,7 @@ interface IPreferencesHelper {
     var customerName: String
     var customerAddress: String
     var customerPhone: String
-    var receiverPhone: String
-    var fromTime: String
-    var toTime: String
+    var mobile: String
+    var empId: String
+    var empCode: String
 }

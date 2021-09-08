@@ -4,12 +4,11 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class LoginResponse(
-        @SerializedName("response") val response: String = "",
-        @SerializedName("error") val error: String = "",
-        @SerializedName("token") val errorType: String = "",
-        @SerializedName("data") val data: LoginDataResponse,
-
-        //	@Expose(deserialize = false) // deserialize is this filed is not required
-        @SerializedName("message") val message: String = ""
+        @SerializedName("empCode") val empCode: String = "",
+        @SerializedName("mobile") val mobile: String = "",
+        @SerializedName("empId") val empId: Int = 0,
+        @SerializedName("_permissionList") val _permissionList: String = "",
+        @SerializedName("token") val token: String = "",
+        @SerializedName("error") val error: String = ""
 )
 

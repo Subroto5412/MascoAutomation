@@ -24,7 +24,7 @@ interface ApiService {
     ): Observable<LoginByUserIdResponse>
 
     @Headers("Content-Type: application/json")
-    @POST("LogIn/GetLoginAccess")
+    @POST("v1/LoginAccess/login")
     fun doLogin(
         @Body loginRequest: LoginRequest
     ): Observable<LoginResponse>
