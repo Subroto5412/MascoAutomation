@@ -40,6 +40,9 @@ class OTPViewModel @Inject constructor(
                                 if (!s.toString().equals("")) {
                                         otp = otp_one_ed.text.toString()+otp_two_ed.text.toString()+otp_three_ed.text.toString()+otp_four_ed.text.toString()
                                         verfiedOTP(context, otp,activity_otp_verified_im)
+
+                                        if (s.toString().length==1)
+                                        otp_two_ed.requestFocus()
                                 }
                         }
 
@@ -56,6 +59,9 @@ class OTPViewModel @Inject constructor(
                                 if (!s.toString().equals("")) {
                                         otp = otp_one_ed.text.toString()+otp_two_ed.text.toString()+otp_three_ed.text.toString()+otp_four_ed.text.toString()
                                         verfiedOTP(context, otp,activity_otp_verified_im)
+
+                                        if (s.toString().length==1)
+                                        otp_three_ed.requestFocus()
                                 }
                         }
 
@@ -71,6 +77,9 @@ class OTPViewModel @Inject constructor(
                                 if (!s.toString().equals("")) {
                                         otp = otp_one_ed.text.toString()+otp_two_ed.text.toString()+otp_three_ed.text.toString()+otp_four_ed.text.toString()
                                         verfiedOTP(context, otp,activity_otp_verified_im)
+
+                                        if (s.toString().length==1)
+                                        otp_four_ed.requestFocus()
                                 }
                         }
 

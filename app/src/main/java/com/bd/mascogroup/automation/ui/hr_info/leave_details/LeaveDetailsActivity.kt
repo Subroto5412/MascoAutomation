@@ -3,6 +3,7 @@ package com.bd.mascogroup.automation.ui.hr_info.leave_details
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
@@ -85,6 +86,7 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
         layout_header_back_im.setOnClickListener {
             val intent = HRInfoActivity.newIntent(this@LeaveDetailsActivity)
             startActivity(intent)
+            finish()
         }
 
         layout_footer_home_im.setOnClickListener {
@@ -148,5 +150,14 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
             mLeaveDetailsViewModel.addAvailSummaryItemToList(t)
             updateAvailSummaryList(t)
         })
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = HRInfoActivity.newIntent(this)
+            startActivity(intent)
+            finish()
+        }
+        return super.onKeyDown(keyCode, event)
     }
 }

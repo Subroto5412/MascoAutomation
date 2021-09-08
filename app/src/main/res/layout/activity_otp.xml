@@ -225,7 +225,7 @@
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
                     android:hint="6"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionDone"
                     android:inputType="number"
                     android:textColor="@color/text_color"
                     android:textColorHint="@color/black"
@@ -315,7 +315,7 @@
                 android:layout_width="@dimen/_125sdp"
                 android:layout_height="@dimen/_31sdp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="32dp"
                 android:outlineSpotShadowColor="#000066"
                 app:cardBackgroundColor="@color/text_color_user_id"
@@ -343,7 +343,7 @@
                 android:layout_width="@dimen/_125sdp"
                 android:layout_height="@dimen/_31sdp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="32dp"
                 android:outlineSpotShadowColor="#000066"
                 app:cardBackgroundColor="@color/white"
@@ -380,7 +380,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/activity_otp_signup_tv"
+                android:id="@+id/activity_otp_signIn_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_2sdp"

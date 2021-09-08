@@ -3,6 +3,7 @@ package com.bd.mascogroup.automation.ui.hr_info.income_tax
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -56,6 +57,7 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
         layout_header_back_im.setOnClickListener {
             val intent = HRInfoActivity.newIntent(this@IncomeTaxDeductionActivity)
             startActivity(intent)
+            finish()
         }
 
         layout_footer_home_im.setOnClickListener {
@@ -91,4 +93,12 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
         })
     }
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = HRInfoActivity.newIntent(this)
+            startActivity(intent)
+            finish()
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 }

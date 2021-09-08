@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.core.view.isGone
@@ -13,6 +14,8 @@ import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityOtpBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
+import com.bd.mascogroup.automation.ui.login.LoginActivity
+import com.bd.mascogroup.automation.ui.signup.SignupActivity
 import com.bd.mascogroup.automation.ui.signup.SignupViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_login.*
@@ -44,6 +47,12 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
 
         viewModel.doVerifyOTP(this,activity_otp_n1_value_text,otp_one_ed, otp_two_ed, otp_three_ed, otp_four_ed,activity_otp_verified_im)
         viewModel.setup(this,activity_otp_password_et, activity_otp_re_password_et, activity_password_verified_im, activity_otp_signup_btn,activity_otp_signup_btn_hide)
+
+        activity_otp_signIn_tv.setOnClickListener {
+            val intent = LoginActivity.newIntent(this@OTPActivity)
+            startActivity(intent)
+            finish()
+        }
     }
 
     companion object {
@@ -57,4 +66,16 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
         startActivity(intent)
         finish()
     }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            val intent = SignupActivity.newIntent(this@OTPActivity)
+            startActivity(intent)
+            finish()
+
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
 }

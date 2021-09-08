@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
@@ -202,6 +203,7 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         layout_header_back_im.setOnClickListener {
             val intent = HRInfoActivity.newIntent(this@DailyAttendanceActivity)
             startActivity(intent)
+            finish()
         }
 
         layout_footer_home_im.setOnClickListener {
@@ -254,5 +256,12 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
             updateDailyAttendanceStatusList(t)
         })
     }
-
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            val intent = HRInfoActivity.newIntent(this)
+            startActivity(intent)
+            finish()
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 }
