@@ -66,4 +66,6 @@ object AppConstants {
 
      var MOBILE_NO = ""
      var EMP_CODE = ""
+    var HasYearList = ArrayList<HashMap<String, String>>()
+
 }

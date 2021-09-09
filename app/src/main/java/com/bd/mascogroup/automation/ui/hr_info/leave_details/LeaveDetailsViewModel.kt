@@ -1,19 +1,24 @@
 package com.bd.mascogroup.automation.ui.hr_info.leave_details
 
+import android.R
 import android.content.Context
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
 import com.bd.mascogroup.automation.data.IDataManager
-import com.bd.mascogroup.automation.data.model.domainModel.AvailSummaryCardData
-import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceCardData
-import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatusCardData
-import com.bd.mascogroup.automation.data.model.domainModel.LeaveSummaryCardData
+import com.bd.mascogroup.automation.data.model.domainModel.*
+import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
 import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryResponse
 import com.bd.mascogroup.automation.data.remote.domainModel.DailyAttendanceStatusResponse
 import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryResponse
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
+import com.bd.mascogroup.automation.utils.AppConstants
+import com.bd.mascogroup.automation.utils.UtilMethods
 import com.bd.mascogroup.automation.utils.rx.ISchedulerProvider
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import java.util.ArrayList
 import javax.inject.Inject
 
@@ -21,6 +26,9 @@ class LeaveDetailsViewModel @Inject constructor(
         dataManager: IDataManager,
         ISchedulerProvider: ISchedulerProvider
 ): BaseViewModel<ILeaveDetailsNavigator>(dataManager, ISchedulerProvider) {
+
+    private var financialYearCardData = ArrayList<FinancialYearCardData>()
+    private var FinancialYearNames = ArrayList<String>()
 
     var leaveSummaryObserverArrayList: ObservableList<LeaveSummaryCardData> = ObservableArrayList()
     var leaveSummaryListLiveData: MutableLiveData<List<LeaveSummaryCardData>> = MutableLiveData()
@@ -143,4 +151,51 @@ class LeaveDetailsViewModel @Inject constructor(
         availSummaryObserverArrayList.addAll(Service)
     }
 
+
+    fun getFinancialYear(
+            context: Context,
+            fYearSpinner: Spinner
+    ) {
+        financialYearCardData.clear()
+        if (UtilMethods.isConnectedToInternet(context)) {
+            UtilMethods.showLoading(context)
+            val observable = ApiServiceCalling.generalMisApiCall().getFinancialYear()
+
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ yearResponse ->
+
+                        yearResponse._listFinalYear.forEach {
+                            financialYearCardData.add(FinancialYearCardData(it))
+                        }
+                        FinancialYearNames.clear()
+                        for (i in 0 until financialYearCardData.size) {
+                            val fYear = HashMap<String, String>()
+                            fYear.put("finalYearNo", financialYearCardData.get(i).finalYearNo.toString())
+                            fYear.put("finalYearName", "" + financialYearCardData.get(i).finalYearName)
+                            fYear.put("yearName", financialYearCardData.get(i).yearName)
+
+                            AppConstants.HasYearList.add(fYear)
+                            FinancialYearNames.add(financialYearCardData.get(i).finalYearName)
+                        }
+                        val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
+                                context,
+                                R.layout.simple_spinner_item,
+                                FinancialYearNames
+                        )
+                        spinnerArrayAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item) // The drop down view
+
+                        fYearSpinner.setAdapter(spinnerArrayAdapter)
+
+
+                        UtilMethods.hideLoading()
+                    }, { error ->
+                        UtilMethods.hideLoading()
+                        //  UtilMethods.showLongToast(context, error.message.toString())
+                    }
+                    )
+        } else {
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
+    }
 }

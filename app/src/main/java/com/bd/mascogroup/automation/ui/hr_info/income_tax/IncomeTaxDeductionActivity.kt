@@ -3,7 +3,10 @@ package com.bd.mascogroup.automation.ui.hr_info.income_tax
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
+import android.view.View
+import android.widget.AdapterView
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -13,8 +16,13 @@ import com.bd.mascogroup.automation.databinding.ActivityIcomeTaxDeductionBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
+import com.bd.mascogroup.automation.utils.AppConstants
+import kotlinx.android.synthetic.main.activity_icome_tax_deduction.*
+import kotlinx.android.synthetic.main.activity_leave_details.*
+import kotlinx.android.synthetic.main.activity_leave_details.leave_details_fyear_spinner
 import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
+import java.util.HashMap
 import javax.inject.Inject
 
 class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding, IncomeTaxDeductionViewModel>(), IIncomeTaxDeductionNavigator, IncomeTaxDeductionAdapter.IncomeTaxDeductionAdapterListener {
@@ -42,6 +50,9 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
             return mIncomeTaxDeductionViewModel
         }
 
+    var fYEarSpId:Int = 0
+    var fYEarSpName:String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityIcomeTaxDeductionBinding = viewDataBinding
@@ -64,6 +75,23 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
             val intent = HomeActivity.newIntent(this)
             startActivity(intent)
             finish()
+        }
+
+        income_tax_year_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+            ) {
+
+                Log.e("-------", "------" + parent?.getItemAtPosition(position))
+                val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
+                fYEarSpId = map.get("id")!!.toInt()
+                fYEarSpName = map.get("yearName")!!
+            }
         }
 
     }

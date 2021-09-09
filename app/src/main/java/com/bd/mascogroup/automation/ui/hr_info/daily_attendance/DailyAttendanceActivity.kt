@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
+import android.widget.AdapterView
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
@@ -18,6 +20,7 @@ import com.bd.mascogroup.automation.databinding.ActivityDailyAttendanceBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
+import com.bd.mascogroup.automation.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_daily_attendance.*
 import kotlinx.android.synthetic.main.activity_hr_info.*
 import kotlinx.android.synthetic.main.layout_footer.*
@@ -59,6 +62,9 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         }
 
     var monthList=ArrayList<String>()
+    var fYEarSpId:Int = 0
+    var fYEarSpName:String=""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityDailyAttendanceBinding = viewDataBinding
@@ -98,6 +104,8 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
 
         setUpStatus()
         subscribeToLiveDataDailyAttendanceStatus()
+
+        viewModel.getFinancialYear(this,financial_year_spinner)
 
         val CurrenePosition = (mActivityDailyAttendanceBinding.dailyAttendanceStatusListParentRv.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
         activity_daily_attendance_next_status_im.setBackgroundResource(R.drawable.plan_next_show)
@@ -210,6 +218,24 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
             val intent = HomeActivity.newIntent(this)
             startActivity(intent)
             finish()
+        }
+
+
+        financial_year_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+            ) {
+
+                Log.e("-------", "------" + parent?.getItemAtPosition(position))
+                val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
+                fYEarSpId = map.get("id")!!.toInt()
+                fYEarSpName = map.get("yearName")!!
+            }
         }
     }
 

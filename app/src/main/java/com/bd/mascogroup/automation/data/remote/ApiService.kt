@@ -50,4 +50,8 @@ interface ApiService {
     fun doRegister(
             @Body registerRequest: RegisterRequest
     ): Observable<RegisterResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("v1/Attendance/getFinalYear")
+    fun getFinancialYear(): Observable<FinancialYearResponse> // body data
 }

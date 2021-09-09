@@ -3,7 +3,10 @@ package com.bd.mascogroup.automation.ui.hr_info.leave_details
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
+import android.view.View
+import android.widget.AdapterView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
@@ -20,10 +23,12 @@ import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceAdapter
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceViewModel
+import com.bd.mascogroup.automation.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_daily_attendance.*
 import kotlinx.android.synthetic.main.activity_leave_details.*
 import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
+import java.util.HashMap
 import javax.inject.Inject
 
 class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDetailsViewModel>(), ILeaveDetailsNavigator, LeaveDetailsLeaveSummaryAdapter.LeaveSummaryAdapterListener, LeaveDetailsAvailSummaryAdapter.AvailSummaryAdapterListener {
@@ -52,6 +57,9 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
         get() {
             return mLeaveDetailsViewModel
         }
+
+    var fYEarSpId:Int = 0
+    var fYEarSpName:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,6 +113,23 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
             avail_summary_horizontal_scoll.scrollTo(-700,0)
             activity_leave_details_avail_summary_back_im.isGone = true
             activity_leave_details_avail_summary_next_im.isVisible = true
+        }
+
+        leave_details_fyear_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+            ) {
+
+                Log.e("-------", "------" + parent?.getItemAtPosition(position))
+                val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
+                fYEarSpId = map.get("id")!!.toInt()
+                fYEarSpName = map.get("yearName")!!
+            }
         }
     }
 

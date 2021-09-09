@@ -92,7 +92,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
-                    android:id="@+id/income_tax_area_spinner"
+                    android:id="@+id/income_tax_year_spinner"
                     android:layout_width="@dimen/_75sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:fontFamily="@font/montserrat_regular"
