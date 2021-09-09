@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class AttendanceHistoryResponse(
         @SerializedName("error") var error: String = "",
         @SerializedName("_attHistoryListStr") var _attHistoryListStr: List<AttendanceHistoryResponseList>,
-        @SerializedName("allLeaveCount") var allLeaveCount: AttendanceHistoryResponseLeaveCount
+        @SerializedName("_allLeaveCountList") var allLeaveCount: List<DailyAttendanceStatusResponse>
 )

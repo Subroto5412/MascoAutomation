@@ -69,8 +69,14 @@ class DailyAttendanceAdapter @Inject constructor(private val context: Context, v
             mBinding.viewModel = mDailyAttendanceListItemViewModel
 
             val sdf = SimpleDateFormat("dd")
+
+            val string = "004-034556"
+            val parts = dailyAttendanceCardData.punchDate.split("-")
+            val punchDate = parts[0]
+
+
             val currentDate = sdf.format(Date())
-            if (dailyAttendanceCardData.PunchDate.equals(currentDate)){
+            if (punchDate.equals(currentDate)){
                 dailyAttendanceCardView.setBackgroundResource(R.drawable.layout_daily_attendance_row_bg)
                 dailyAttendanceItemMonthCl.setBackgroundResource(R.drawable.layout_daily_attendance_row_month_bg_hover)
             }

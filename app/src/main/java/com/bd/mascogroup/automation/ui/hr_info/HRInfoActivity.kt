@@ -10,6 +10,7 @@ import com.bd.mascogroup.automation.databinding.ActivityHrInfoBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceActivity
+import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceViewModel
 import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionActivity
 import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivity
 import com.bd.mascogroup.automation.ui.signup.SignupActivity
@@ -21,9 +22,6 @@ import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), IHRInfoNavigator {
-
-    @Inject
-    override lateinit var viewModel: HRInfoViewModel
 
     private var mActivityHrInfoBinding: ActivityHrInfoBinding? = null
 
@@ -37,11 +35,17 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
 
         get() = R.layout.activity_hr_info
 
+    override val viewModel: HRInfoViewModel
+        get() {
+            return mHRInfoViewModel
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityHrInfoBinding = viewDataBinding
         viewModel.navigator = this
         activity_title_tv.setText("")
+        viewModel.accessToken()
 
         activity_hr_daily_attendance_cl.setOnClickListener {
             val intent = DailyAttendanceActivity.newIntent(this@HRInfoActivity)

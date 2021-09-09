@@ -26,9 +26,9 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         get() = mPrefs.getString(PREF_KEY_CUSTOMER_ADDRESS,"").toString()
         set(customerAddress) = mPrefs.edit().putString(PREF_KEY_CUSTOMER_ADDRESS, customerAddress).apply()
 
-    override var customerPhone: String
-        get() = mPrefs.getString(PREF_KEY_CUSTOMER_PHONE,"").toString()
-        set(customerPhone) = mPrefs.edit().putString(PREF_KEY_CUSTOMER_PHONE, customerPhone).apply()
+    override var accessToken: String
+        get() = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,"").toString()
+        set(accessToken) = mPrefs.edit().putString(PREF_KEY_ACCESS_TOKEN, accessToken).apply()
 
     override var mobile: String
         get() = mPrefs.getString(PREF_KEY_PHONE,"").toString()
@@ -49,7 +49,7 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         private val PREF_KEY_INVOICE = "PREF_KEY_INVOICE"
         private val PREF_KEY_CUSTOMER_NAME = "PREF_KEY_CUSTOMER_NAME"
         private val PREF_KEY_CUSTOMER_ADDRESS = "PREF_KEY_CUSTOMER_ADDRESS"
-        private val PREF_KEY_CUSTOMER_PHONE = "PREF_KEY_CUSTOMER_PHONE"
+        private val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
         private val PREF_KEY_PHONE = "PREF_KEY_PHONE"
         private val PREF_KEY_EMPId = "PREF_KEY_EMPId"
         private val PREF_KEY_EMPCODE = "PREF_KEY_EMPCODE"

@@ -4,4 +4,4 @@ import com.google.gson.annotations.SerializedName
 
 data class DailyAttendanceStatusResponse(
     @SerializedName("status") var status: String = "",
-    @SerializedName("statusValue") var statusValue: String = "")
+    @SerializedName("statusValue") var statusValue: Int = 0)

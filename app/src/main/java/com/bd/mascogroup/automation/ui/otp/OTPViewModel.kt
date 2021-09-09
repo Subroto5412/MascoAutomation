@@ -229,7 +229,9 @@ class OTPViewModel @Inject constructor(
                                         if (loginResponse.empId!=0){
                                                 dataManager.mobile = loginResponse.mobile
                                                 dataManager.empId = loginResponse.empId.toString()
-                                                dataManager.empCode = loginResponse.empCode.toString()
+                                                dataManager.empCode = loginResponse.empCode
+                                                dataManager.accessToken = loginResponse.token
+                                                AppConstants.acceessToken = loginResponse.token
                                                 navigator?.openHomeScreen()
                                         }
                                         UtilMethods.hideLoading()

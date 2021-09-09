@@ -32,10 +32,10 @@ class AppDataManager @Inject constructor(
             mPreferencesHelper.customerAddress = customerAddress
         }
 
-    override var customerPhone: String
-        get() = mPreferencesHelper.customerPhone
-        set(customerPhone) {
-            mPreferencesHelper.customerPhone = customerPhone
+    override var accessToken: String
+        get() = mPreferencesHelper.accessToken
+        set(accessToken) {
+            mPreferencesHelper.accessToken = accessToken
         }
 
     override var mobile: String

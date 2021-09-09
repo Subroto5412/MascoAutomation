@@ -7,6 +7,6 @@ class DailyAttendanceStatusCardData constructor(val DAS : DailyAttendanceStatusR
     val status : String
         get() = DAS.status
 
-    val statusValue : String
+    val statusValue : Int
         get() =DAS.statusValue
 }

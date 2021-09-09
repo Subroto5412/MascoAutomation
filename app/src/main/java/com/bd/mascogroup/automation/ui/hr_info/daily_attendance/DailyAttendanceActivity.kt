@@ -66,6 +66,8 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
     var monthList=ArrayList<String>()
     var fYEarSpId:Int = 0
     var fYEarSpName:String=""
+    var fromDate = ""
+    var toDate = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,13 +101,6 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         activity_daily_attendance_back_month_tv.text = backMonth.subSequence(0, 3)
         activity_daily_attendance_month_tv.text = month
         activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0, 3)
-
-        viewModel.dailyAttendance(this)
-        setUp()
-        subscribeToLiveDataDailyAttendance()
-
-        setUpStatus()
-        subscribeToLiveDataDailyAttendanceStatus()
 
         viewModel.getFinancialYear(this, financial_year_spinner)
 
@@ -176,6 +171,14 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
                     activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0, 3)
                 }
             }
+            fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
+            toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"30"
+            viewModel.dailyAttendance(this,fromDate,toDate)
+            setUp()
+            subscribeToLiveDataDailyAttendance()
+
+            setUpStatus()
+            subscribeToLiveDataDailyAttendanceStatus()
         }
 
         activity_daily_attendance_next_month_im.setOnClickListener {
@@ -208,6 +211,15 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
 
                 }
             }
+
+            fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
+            toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"30"
+            viewModel.dailyAttendance(this,fromDate,toDate)
+            setUp()
+            subscribeToLiveDataDailyAttendance()
+
+            setUpStatus()
+            subscribeToLiveDataDailyAttendanceStatus()
         }
 
         layout_header_back_im.setOnClickListener {
@@ -239,7 +251,15 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
                 val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
                // fYEarSpId = map.get("id")!!.toInt()
                 fYEarSpName = map.get("yearName")!!
-                Log.e("-------", "---fYEarSpName---" + fYEarSpName)
+
+                fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
+                toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"30"
+                viewModel.dailyAttendance(this@DailyAttendanceActivity,fromDate,toDate)
+                setUp()
+                subscribeToLiveDataDailyAttendance()
+
+                setUpStatus()
+                subscribeToLiveDataDailyAttendanceStatus()
             }
         }
     }

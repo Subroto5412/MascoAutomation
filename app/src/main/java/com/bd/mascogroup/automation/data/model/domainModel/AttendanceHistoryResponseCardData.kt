@@ -2,7 +2,7 @@ package com.bd.mascogroup.automation.data.model.domainModel
 
 import com.bd.mascogroup.automation.data.remote.domainModel.AttendanceHistoryResponseList
 
-class DailyAttendanceCardData constructor(val dailyAttendance : AttendanceHistoryResponseList) {
+class AttendanceHistoryResponseCardData constructor(val dailyAttendance : AttendanceHistoryResponseList) {
 
     val punchDate: String
         get() = dailyAttendance.punchDate

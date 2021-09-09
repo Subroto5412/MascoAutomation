@@ -18,6 +18,7 @@ import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
 import com.bd.mascogroup.automation.data.remote.domainModel.LoginByUserIdRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.LoginRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
+import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
 import com.bd.mascogroup.automation.utils.rx.ISchedulerProvider
 import com.bumptech.glide.Glide
@@ -104,7 +105,9 @@ class LoginViewModel @Inject constructor(
                     if (loginResponse.empId!=0){
                         dataManager.mobile = loginResponse.mobile
                         dataManager.empId = loginResponse.empId.toString()
-                        dataManager.empCode = loginResponse.empCode.toString()
+                        dataManager.empCode = loginResponse.empCode
+                        dataManager.accessToken = loginResponse.token
+                        AppConstants.acceessToken = loginResponse.token
                         navigator?.openHomeActivity()
                     }
                     UtilMethods.hideLoading()

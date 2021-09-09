@@ -14,8 +14,10 @@ import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceCardDa
 import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatusCardData
 import com.bd.mascogroup.automation.data.model.domainModel.FinancialYearCardData
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
+import com.bd.mascogroup.automation.data.remote.domainModel.DailyAttendanceRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.DailyAttendanceResponse
 import com.bd.mascogroup.automation.data.remote.domainModel.DailyAttendanceStatusResponse
+import com.bd.mascogroup.automation.data.remote.domainModel.LoginRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
@@ -41,52 +43,42 @@ class DailyAttendanceViewModel @Inject constructor(
     private var dailyAttendanceStatusListItems = ArrayList<DailyAttendanceStatusCardData>()
 
 
-    fun dailyAttendance(context:Context){
-      val dailyAttendance2 = DailyAttendanceResponse()
-        dailyAttendance2.additionTime = "2.04"
-        dailyAttendance2.FPunchIn = "09:15:00"
-        dailyAttendance2.FPunchOut = "08:11:00"
-        dailyAttendance2.FSts = "A"
-        dailyAttendance2.PunchDate= "24"
-        dailyAttendance2.ShiftIn= "09:00:00"
-        dailyAttendance2.ShiftLate= ""
-        dailyAttendance2.ShiftName= "S"
-        dailyAttendance2.ShiftOut = "06:00:00"
+    fun dailyAttendance(context:Context,fromDate:String,toDate:String){
+        dailyAttendanceStatusListItems.clear()
+        dailyAttendanceListItems.clear()
 
+        if(UtilMethods.isConnectedToInternet(context)){
+            UtilMethods.showLoading(context)
+            val observable = ApiServiceCalling.generalMisApiCallToken().getAllAttendance(DailyAttendanceRequest(fromDate,toDate))
 
-        val dailyAttendance3 = DailyAttendanceResponse()
-        dailyAttendance3.additionTime = "1.10"
-        dailyAttendance3.FPunchIn = "09:20:00"
-        dailyAttendance3.FPunchOut = "07:10:00"
-        dailyAttendance3.FSts = "P"
-        dailyAttendance3.PunchDate= "23"
-        dailyAttendance3.ShiftIn= "09:10:00"
-        dailyAttendance3.ShiftLate= ""
-        dailyAttendance3.ShiftName= "S"
-        dailyAttendance3.ShiftOut = "06:05:00"
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ attendanceResponse ->
+//                       Log.e("-----","-----------"+attendanceResponse.allLeaveCount.el)
+                      attendanceResponse.allLeaveCount.forEach {
+                            dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(it))
+                        }
+                        dailyAttendanceStatusListLiveData.value = dailyAttendanceStatusListItems
 
+                       attendanceResponse._attHistoryListStr.forEach {
+                            dailyAttendanceListItems.add(DailyAttendanceCardData(it))
+                        }
+                        dailyAttendanceListLiveData.value = dailyAttendanceListItems
 
-        val dailyAttendance = DailyAttendanceResponse()
-        dailyAttendance.additionTime = ""
-        dailyAttendance.FPunchIn = "09:00:00"
-        dailyAttendance.FPunchOut = "06:05:00"
-        dailyAttendance.FSts = "P"
-        dailyAttendance.PunchDate= "22"
-        dailyAttendance.ShiftIn= "09:10:00"
-        dailyAttendance.ShiftLate= ""
-        dailyAttendance.ShiftName= "S"
-        dailyAttendance.ShiftOut = "06:05:00"
+                        UtilMethods.hideLoading()
+                    }, { error ->
+                        UtilMethods.hideLoading()
+                        // UtilMethods.showLongToast(context, error.message.toString())
+                    }
+                    )
+        }else{
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
 
-        dailyAttendanceListItems.add(DailyAttendanceCardData(dailyAttendance2))
-        dailyAttendanceListItems.add(DailyAttendanceCardData(dailyAttendance3))
-        dailyAttendanceListItems.add(DailyAttendanceCardData(dailyAttendance))
-
-        dailyAttendanceListLiveData.value = dailyAttendanceListItems
-
-        dailyAttendanceStatus(context)
+//        dailyAttendanceStatus(context)
     }
 
-    fun dailyAttendanceStatus(context:Context) {
+   /* fun dailyAttendanceStatus(context:Context) {
         val dailyAttendanceStatus = DailyAttendanceStatusResponse()
         dailyAttendanceStatus.status = "Late"
         dailyAttendanceStatus.statusValue = "1"
@@ -116,7 +108,7 @@ class DailyAttendanceViewModel @Inject constructor(
         dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus5))
 
         dailyAttendanceStatusListLiveData.value = dailyAttendanceStatusListItems
-    }
+    }*/
 
     fun getdailyAttendanceLiveData(): MutableLiveData<List<DailyAttendanceCardData>> {
         return dailyAttendanceListLiveData
@@ -182,5 +174,46 @@ class DailyAttendanceViewModel @Inject constructor(
         } else {
             UtilMethods.showLongToast(context, "No Internet Connection!")
         }
+    }
+
+    fun monthNameConvert(monthName:String):String{
+        var month:String = ""
+        if(monthName.equals("January")){
+            month = "01"
+        }else if(monthName.equals("February")){
+            month = "02"
+        }
+        else if(monthName.equals("March")){
+            month = "03"
+        }
+        else if(monthName.equals("April")){
+            month = "04"
+        }
+        else if(monthName.equals("May")){
+            month = "05"
+        }
+        else if(monthName.equals("June")){
+            month = "06"
+        }
+        else if(monthName.equals("July")){
+            month = "07"
+        }
+        else if(monthName.equals("August")){
+            month = "08"
+        }
+        else if(monthName.equals("September")){
+            month = "09"
+        }
+        else if(monthName.equals("October")){
+            month = "10"
+        }
+        else if(monthName.equals("November")){
+            month = "11"
+        }
+        else if(monthName.equals("December")){
+            month = "12"
+        }
+
+        return month
     }
 }

@@ -26,6 +26,6 @@ class DailyAttendanceStatusListItemViewModel(
         mPosition = ObservableField(position)
 
         status = ObservableField(mDailyAttendanceStatusCardData.status)
-        statusValue = ObservableField(mDailyAttendanceStatusCardData.statusValue)
+        statusValue = ObservableField(mDailyAttendanceStatusCardData.statusValue.toString())
     }
 }
