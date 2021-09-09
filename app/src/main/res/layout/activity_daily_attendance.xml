@@ -83,8 +83,8 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/activity_daily_attendance_calender_im"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_25sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:src="@drawable/calendar"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -93,11 +93,12 @@
 
                 <Spinner
                     android:id="@+id/financial_year_spinner"
-                    android:layout_width="@dimen/_75sdp"
+                    android:layout_width="@dimen/_107sdp"
                     android:layout_height="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
                     android:fontFamily="@font/montserrat_regular"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_8sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/activity_daily_attendance_calender_im"
@@ -112,7 +113,6 @@
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
-                android:background="@drawable/daily_attendance_financial_year_corner_round"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_daily_attendance_body_cl">

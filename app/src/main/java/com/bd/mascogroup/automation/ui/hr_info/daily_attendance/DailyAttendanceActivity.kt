@@ -2,11 +2,13 @@ package com.bd.mascogroup.automation.ui.hr_info.daily_attendance
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
+import android.widget.TextView
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
@@ -105,13 +107,13 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         setUpStatus()
         subscribeToLiveDataDailyAttendanceStatus()
 
-        viewModel.getFinancialYear(this,financial_year_spinner)
+        viewModel.getFinancialYear(this, financial_year_spinner)
 
         val CurrenePosition = (mActivityDailyAttendanceBinding.dailyAttendanceStatusListParentRv.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
         activity_daily_attendance_next_status_im.setBackgroundResource(R.drawable.plan_next_show)
         activity_daily_attendance_back_status_im.setBackgroundResource(R.drawable.plan_back_show)
         activity_daily_attendance_bottom_next_cl.setOnClickListener {
-                daily_attendance_status_list_parent_rv.scrollToPosition(CurrenePosition+5)
+                daily_attendance_status_list_parent_rv.scrollToPosition(CurrenePosition + 5)
             activity_daily_attendance_next_status_im.setBackgroundResource(R.drawable.plan_next)
             activity_daily_attendance_back_status_im.setBackgroundResource(R.drawable.plan_back_show)
         }
@@ -231,10 +233,13 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
                     id: Long
             ) {
 
+                (parent!!.getChildAt(0) as TextView).setTextColor(Color.WHITE)
+                (parent!!.getChildAt(0) as TextView).setTextSize(13F)
                 Log.e("-------", "------" + parent?.getItemAtPosition(position))
                 val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
-                fYEarSpId = map.get("id")!!.toInt()
+               // fYEarSpId = map.get("id")!!.toInt()
                 fYEarSpName = map.get("yearName")!!
+                Log.e("-------", "---fYEarSpName---" + fYEarSpName)
             }
         }
     }

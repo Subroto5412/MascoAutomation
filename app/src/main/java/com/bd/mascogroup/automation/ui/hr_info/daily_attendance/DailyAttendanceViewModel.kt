@@ -156,7 +156,7 @@ class DailyAttendanceViewModel @Inject constructor(
                         FinancialYearNames.clear()
                         for (i in 0 until financialYearCardData.size) {
                             val fYear = HashMap<String, String>()
-                            fYear.put("finalYearNo", financialYearCardData.get(i).finalYearNo.toString())
+                           // fYear.put("finalYearNo", financialYearCardData.get(i).finalYearNo.toString())
                             fYear.put("finalYearName", "" + financialYearCardData.get(i).finalYearName)
                             fYear.put("yearName", financialYearCardData.get(i).yearName)
 
