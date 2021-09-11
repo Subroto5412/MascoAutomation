@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 data class IncomeTaxDeductionResponse (
         @SerializedName("sl") var sl: String = "",
-        @SerializedName("month") var month: String = "",
-        @SerializedName("deductionAmount") var deductionAmount: String = ""
+        @SerializedName("monthYear") var month: String = "",
+        @SerializedName("taxDeductionAmount") var deductionAmount: String = ""
         )

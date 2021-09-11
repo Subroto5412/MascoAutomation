@@ -12,6 +12,7 @@ import com.bd.mascogroup.automation.data.model.domainModel.AvailSummaryCardData
 import com.bd.mascogroup.automation.data.model.domainModel.FinancialYearCardData
 import com.bd.mascogroup.automation.data.model.domainModel.LeaveSummaryCardData
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
+import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryDataResponse
 import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
@@ -72,6 +73,8 @@ class LeaveDetailsViewModel @Inject constructor(
 
     fun availSummary(context: Context, fYEarSpId: Int) {
         availSummaryListItems.clear()
+
+        var sl:Int = 0
         if (UtilMethods.isConnectedToInternet(context)) {
             UtilMethods.showLoading(context)
             val observable = ApiServiceCalling.generalMisApiCallToken().getAvailHistory(AvailSummaryRequest(fYEarSpId))
@@ -80,6 +83,9 @@ class LeaveDetailsViewModel @Inject constructor(
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ availSummaryResponse ->
                         availSummaryResponse._availHistoryList.forEach {
+                          var  availSummaryDataResponse = AvailSummaryDataResponse()
+                            sl = sl+1
+                            it.sl = sl.toString()
                             availSummaryListItems.add(AvailSummaryCardData(it))
                         }
                         availSummaryListLiveData.value = availSummaryListItems

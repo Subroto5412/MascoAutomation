@@ -72,4 +72,14 @@ interface ApiService {
     fun getAvailHistory(
             @Body leaveSummaryRequest: AvailSummaryRequest
     ): Observable<AvailSummaryResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/tax/tax-deduct")
+    fun getTaxDeduct(
+            @Body taxDeductionRequest: TaxDeductionRequest
+    ): Observable<TaxDeductionResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("v1/tax/tax-year")
+    fun getTaxYear(): Observable<TaxYearResponse> // body data
 }

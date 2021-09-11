@@ -52,8 +52,8 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
             return mIncomeTaxDeductionViewModel
         }
 
-    var fYEarSpId:Int = 0
-    var fYEarSpName:String=""
+    var taxYearNo:Int = 0
+    var yearName:String=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,11 +89,11 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
                 (parent!!.getChildAt(0) as TextView).setTextColor(Color.WHITE)
                 (parent!!.getChildAt(0) as TextView).setTextSize(13F)
 
-                val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
-                fYEarSpId = map.get("finalYearNo")!!.toInt()
-                fYEarSpName = map.get("yearName")!!
+                val map: HashMap<String, String> = AppConstants.HasYearTaxList.get(position)
+                taxYearNo = map.get("taxYearNo")!!.toInt()
+                yearName = map.get("yearName")!!
 
-                viewModel.IncomeTaxDeduction(this@IncomeTaxDeductionActivity, fYEarSpId)
+                viewModel.IncomeTaxDeduction(this@IncomeTaxDeductionActivity, taxYearNo)
                 setUpIcomeTaxDeduction()
                 subscribeToLiveDataIncomeTaxDeduction()
             }

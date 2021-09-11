@@ -10,8 +10,12 @@ import androidx.lifecycle.MutableLiveData
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.model.domainModel.FinancialYearCardData
 import com.bd.mascogroup.automation.data.model.domainModel.IncomeTaxDeductionCardData
+import com.bd.mascogroup.automation.data.model.domainModel.LeaveSummaryCardData
+import com.bd.mascogroup.automation.data.model.domainModel.TaxYearDataCardData
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
 import com.bd.mascogroup.automation.data.remote.domainModel.IncomeTaxDeductionResponse
+import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryRequest
+import com.bd.mascogroup.automation.data.remote.domainModel.TaxDeductionRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
@@ -30,25 +34,39 @@ import javax.inject.Inject
       var incomeTaxDeductionListLiveData: MutableLiveData<List<IncomeTaxDeductionCardData>> = MutableLiveData()
       private var incomeTaxDeductionListItems = ArrayList<IncomeTaxDeductionCardData>()
 
-      private var financialYearCardData = ArrayList<FinancialYearCardData>()
+      private var financialYearCardData = ArrayList<TaxYearDataCardData>()
       private var FinancialYearNames = ArrayList<String>()
 
-      fun IncomeTaxDeduction(context: Context, fYEarSpId:Int) {
+      fun IncomeTaxDeduction(context: Context, taxYearNo:Int) {
 
-          val IncomeTaxDeductionResponse2 = IncomeTaxDeductionResponse()
-          IncomeTaxDeductionResponse2.sl = "1"
-          IncomeTaxDeductionResponse2.month = "August-20"
-          IncomeTaxDeductionResponse2.deductionAmount = "400"
+          var sl:Int = 0
+              if (UtilMethods.isConnectedToInternet(context)) {
+                  UtilMethods.showLoading(context)
+                  val observable = ApiServiceCalling.generalMisApiCallToken().getTaxDeduct(TaxDeductionRequest(taxYearNo))
 
-          val IncomeTaxDeductionResponse = IncomeTaxDeductionResponse()
-          IncomeTaxDeductionResponse.sl = "1"
-          IncomeTaxDeductionResponse.month = "July-20"
-          IncomeTaxDeductionResponse.deductionAmount = "400"
+                  observable.subscribeOn(Schedulers.io())
+                          .observeOn(AndroidSchedulers.mainThread())
+                          .subscribe({ taxResponse ->
+                              taxResponse._taxDeductionsList.forEach {
 
-          incomeTaxDeductionListItems.add(IncomeTaxDeductionCardData(IncomeTaxDeductionResponse))
-          incomeTaxDeductionListItems.add(IncomeTaxDeductionCardData(IncomeTaxDeductionResponse2))
-          incomeTaxDeductionListLiveData.value = incomeTaxDeductionListItems
+                                  var incomeTaxDeductionResponse = IncomeTaxDeductionResponse()
+                                  sl = sl+1
+                                  incomeTaxDeductionResponse.sl = sl.toString()
+                                  incomeTaxDeductionResponse.month = it.month
+                                  incomeTaxDeductionResponse.deductionAmount = it.deductionAmount
 
+                                  incomeTaxDeductionListItems.add(IncomeTaxDeductionCardData(incomeTaxDeductionResponse))
+                              }
+                              incomeTaxDeductionListLiveData.value = incomeTaxDeductionListItems
+
+                              UtilMethods.hideLoading()
+                          }, { error ->
+                              UtilMethods.hideLoading()
+                          }
+                          )
+              } else {
+                  UtilMethods.showLongToast(context, "No Internet Connection!")
+              }
       }
 
       fun getincomeTaxDeductionLiveData(): MutableLiveData<List<IncomeTaxDeductionCardData>> {
@@ -67,24 +85,24 @@ import javax.inject.Inject
           financialYearCardData.clear()
           if (UtilMethods.isConnectedToInternet(context)) {
               UtilMethods.showLoading(context)
-              val observable = ApiServiceCalling.generalMisApiCall().getFinancialYear()
+              val observable = ApiServiceCalling.generalMisApiCall().getTaxYear()
 
               observable.subscribeOn(Schedulers.io())
                       .observeOn(AndroidSchedulers.mainThread())
                       .subscribe({ yearResponse ->
 
-                          yearResponse._listFinalYear.forEach {
-                              financialYearCardData.add(FinancialYearCardData(it))
+                          yearResponse._taxYearList.forEach {
+                              financialYearCardData.add(TaxYearDataCardData(it))
                           }
                           FinancialYearNames.clear()
                           for (i in 0 until financialYearCardData.size) {
                               val fYear = HashMap<String, String>()
-                              fYear.put("finalYearNo", financialYearCardData.get(i).finalYearNo.toString())
-                              fYear.put("finalYearName", "" + financialYearCardData.get(i).finalYearName)
+
+                              fYear.put("taxYearNo", "" + financialYearCardData.get(i).taxYearNo)
                               fYear.put("yearName", financialYearCardData.get(i).yearName)
 
-                              AppConstants.HasYearList.add(fYear)
-                              FinancialYearNames.add(financialYearCardData.get(i).finalYearName)
+                              AppConstants.HasYearTaxList.add(fYear)
+                              FinancialYearNames.add(financialYearCardData.get(i).yearName)
                           }
                           val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
                                   context,
