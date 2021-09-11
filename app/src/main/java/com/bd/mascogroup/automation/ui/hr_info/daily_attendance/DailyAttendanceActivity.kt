@@ -247,7 +247,7 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
 
                 (parent!!.getChildAt(0) as TextView).setTextColor(Color.WHITE)
                 (parent!!.getChildAt(0) as TextView).setTextSize(13F)
-                Log.e("-------", "------" + parent?.getItemAtPosition(position))
+
                 val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
                // fYEarSpId = map.get("id")!!.toInt()
                 fYEarSpName = map.get("yearName")!!

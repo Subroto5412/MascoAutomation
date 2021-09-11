@@ -33,7 +33,7 @@ import javax.inject.Inject
       private var financialYearCardData = ArrayList<FinancialYearCardData>()
       private var FinancialYearNames = ArrayList<String>()
 
-      fun IncomeTaxDeduction(context: Context) {
+      fun IncomeTaxDeduction(context: Context, fYEarSpId:Int) {
 
           val IncomeTaxDeductionResponse2 = IncomeTaxDeductionResponse()
           IncomeTaxDeductionResponse2.sl = "1"

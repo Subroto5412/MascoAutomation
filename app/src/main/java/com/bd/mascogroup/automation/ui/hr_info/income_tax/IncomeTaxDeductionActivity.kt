@@ -2,11 +2,13 @@ package com.bd.mascogroup.automation.ui.hr_info.income_tax
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
+import android.widget.TextView
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -61,10 +63,7 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
         mIncomeTaxDeductionAdapter.setListener(this)
         activity_title_tv.setText("Income Tax Deduction \nHistory")
 
-        viewModel.IncomeTaxDeduction(this)
-        setUpIcomeTaxDeduction()
-        subscribeToLiveDataIncomeTaxDeduction()
-
+        viewModel.getFinancialYear(this, income_tax_year_spinner)
         layout_header_back_im.setOnClickListener {
             val intent = HRInfoActivity.newIntent(this@IncomeTaxDeductionActivity)
             startActivity(intent)
@@ -87,10 +86,16 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
                     id: Long
             ) {
 
-                Log.e("-------", "------" + parent?.getItemAtPosition(position))
+                (parent!!.getChildAt(0) as TextView).setTextColor(Color.WHITE)
+                (parent!!.getChildAt(0) as TextView).setTextSize(13F)
+
                 val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
-                fYEarSpId = map.get("id")!!.toInt()
+                fYEarSpId = map.get("finalYearNo")!!.toInt()
                 fYEarSpName = map.get("yearName")!!
+
+                viewModel.IncomeTaxDeduction(this@IncomeTaxDeductionActivity, fYEarSpId)
+                setUpIcomeTaxDeduction()
+                subscribeToLiveDataIncomeTaxDeduction()
             }
         }
 

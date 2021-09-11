@@ -38,7 +38,7 @@ class LeaveDetailsViewModel @Inject constructor(
     var availSummaryListLiveData: MutableLiveData<List<AvailSummaryCardData>> = MutableLiveData()
     private var availSummaryListItems = ArrayList<AvailSummaryCardData>()
 
-    fun leaveSummary(context: Context) {
+    fun leaveSummary(context: Context, fYEarSpId:Int) {
         val leaveSummaryResponse1 = LeaveSummaryResponse()
         leaveSummaryResponse1.type_name = "Total Balance"
         leaveSummaryResponse1.cl = "10"
@@ -69,6 +69,7 @@ class LeaveDetailsViewModel @Inject constructor(
         leaveSummaryListItems.add(LeaveSummaryCardData(leaveSummaryResponse3))
 
         leaveSummaryListLiveData.value = leaveSummaryListItems
+        availSummary(context)
     }
 
     fun availSummary(context: Context){

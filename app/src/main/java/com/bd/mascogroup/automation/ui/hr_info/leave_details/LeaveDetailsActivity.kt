@@ -2,11 +2,13 @@ package com.bd.mascogroup.automation.ui.hr_info.leave_details
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
+import android.widget.TextView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.databinding.library.baseAdapters.BR
@@ -69,13 +71,7 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
         mLeaveDetailsAvailSummaryAdapter.setListener(this)
         activity_title_tv.setText("Personal Leave Details")
 
-        viewModel.leaveSummary(this)
-        setUpLeaveSummary()
-        subscribeToLiveDataLeaveSummary()
-
-        viewModel.availSummary(this)
-        setUpAvailSummary()
-        subscribeToLiveDataAvailSummary()
+        viewModel.getFinancialYear(this,leave_details_fyear_spinner)
 
         val CurrenePosition = (mActivityLeaveDetailsBinding.leaveDetailsLeaveSummaryListParentRv.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
 
@@ -125,10 +121,17 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
                     id: Long
             ) {
 
-                Log.e("-------", "------" + parent?.getItemAtPosition(position))
+                (parent!!.getChildAt(0) as TextView).setTextColor(Color.WHITE)
+                (parent!!.getChildAt(0) as TextView).setTextSize(13F)
                 val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
-                fYEarSpId = map.get("id")!!.toInt()
-                fYEarSpName = map.get("yearName")!!
+                fYEarSpId= map.get("finalYearNo")!!.toInt()
+
+                viewModel.leaveSummary(this@LeaveDetailsActivity,fYEarSpId)
+                setUpLeaveSummary()
+                subscribeToLiveDataLeaveSummary()
+
+                setUpAvailSummary()
+                subscribeToLiveDataAvailSummary()
             }
         }
     }
