@@ -29,10 +29,9 @@ class LeaveDetailsAvailSummaryItemViewModel(
 
         sl = ObservableField(mAvailSummaryCardData.sl)
         leaveType = ObservableField(mAvailSummaryCardData.leaveType)
-        availDay = ObservableField(mAvailSummaryCardData.availDay)
+        availDay = ObservableField(mAvailSummaryCardData.availDay.toString())
         fromDay = ObservableField(mAvailSummaryCardData.fromDate)
         toDay = ObservableField(mAvailSummaryCardData.toDate)
         applicationDay = ObservableField(mAvailSummaryCardData.applicationDate)
-
     }
 }

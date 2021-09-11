@@ -1,8 +1,8 @@
 package com.bd.mascogroup.automation.data.model.domainModel
 
-import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryResponse
+import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryDataResponse
 
-class LeaveSummaryCardData constructor(val LSR : LeaveSummaryResponse) {
+class LeaveSummaryCardData constructor(val LSR : LeaveSummaryDataResponse) {
 
     val type_name : String
         get() = LSR.type_name

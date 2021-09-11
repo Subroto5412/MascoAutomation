@@ -60,4 +60,16 @@ interface ApiService {
     fun getAllAttendance(
             @Body dailyAttendanceRequest: DailyAttendanceRequest
     ): Observable<AttendanceHistoryResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/leave/leave-history")
+    fun getLeaveHistory(
+            @Body leaveSummaryRequest: LeaveSummaryRequest
+    ): Observable<LeaveSummaryResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/leave/avail-history")
+    fun getAvailHistory(
+            @Body leaveSummaryRequest: AvailSummaryRequest
+    ): Observable<AvailSummaryResponse>
 }

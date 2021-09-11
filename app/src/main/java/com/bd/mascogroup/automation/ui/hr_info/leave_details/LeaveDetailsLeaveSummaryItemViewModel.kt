@@ -18,8 +18,7 @@ class LeaveDetailsLeaveSummaryItemViewModel(
     val sl: ObservableField<String>
     val el: ObservableField<String>
 
-    interface leaveSummaryListItemViewModelListener {
-    }
+    interface leaveSummaryListItemViewModelListener {}
 
     init {
         mLeaveSummaryCardData = leaveSummaryCardData

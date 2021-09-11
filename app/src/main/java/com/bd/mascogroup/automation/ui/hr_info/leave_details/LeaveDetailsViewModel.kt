@@ -8,24 +8,28 @@ import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
 import com.bd.mascogroup.automation.data.IDataManager
-import com.bd.mascogroup.automation.data.model.domainModel.*
+import com.bd.mascogroup.automation.data.model.domainModel.AvailSummaryCardData
+import com.bd.mascogroup.automation.data.model.domainModel.FinancialYearCardData
+import com.bd.mascogroup.automation.data.model.domainModel.LeaveSummaryCardData
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
-import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryResponse
-import com.bd.mascogroup.automation.data.remote.domainModel.DailyAttendanceStatusResponse
-import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryResponse
+import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryRequest
+import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
 import com.bd.mascogroup.automation.utils.rx.ISchedulerProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.util.ArrayList
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.HashMap
+import kotlin.collections.List
+import kotlin.collections.forEach
 
 class LeaveDetailsViewModel @Inject constructor(
         dataManager: IDataManager,
         ISchedulerProvider: ISchedulerProvider
-): BaseViewModel<ILeaveDetailsNavigator>(dataManager, ISchedulerProvider) {
+) : BaseViewModel<ILeaveDetailsNavigator>(dataManager, ISchedulerProvider) {
 
     private var financialYearCardData = ArrayList<FinancialYearCardData>()
     private var FinancialYearNames = ArrayList<String>()
@@ -38,100 +42,57 @@ class LeaveDetailsViewModel @Inject constructor(
     var availSummaryListLiveData: MutableLiveData<List<AvailSummaryCardData>> = MutableLiveData()
     private var availSummaryListItems = ArrayList<AvailSummaryCardData>()
 
-    fun leaveSummary(context: Context, fYEarSpId:Int) {
-        val leaveSummaryResponse1 = LeaveSummaryResponse()
-        leaveSummaryResponse1.type_name = "Total Balance"
-        leaveSummaryResponse1.cl = "10"
-        leaveSummaryResponse1.sl = "14"
-        leaveSummaryResponse1.el = "17"
+    fun leaveSummary(context: Context, fYEarSpId: Int) {
 
-        val leaveSummaryResponse2 = LeaveSummaryResponse()
-        leaveSummaryResponse2.type_name = "Avail Day"
-        leaveSummaryResponse2.cl = "1"
-        leaveSummaryResponse2.sl = "0"
-        leaveSummaryResponse2.el = "0"
+        leaveSummaryListItems.clear()
+        availSummaryListItems.clear()
+        if (UtilMethods.isConnectedToInternet(context)) {
+            UtilMethods.showLoading(context)
+            val observable = ApiServiceCalling.generalMisApiCallToken().getLeaveHistory(LeaveSummaryRequest(fYEarSpId))
 
-        val leaveSummaryResponse3 = LeaveSummaryResponse()
-        leaveSummaryResponse3.type_name = "Rest Balance"
-        leaveSummaryResponse3.cl = "9"
-        leaveSummaryResponse3.sl = "14"
-        leaveSummaryResponse3.el = "17"
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ leaveSummaryResponse ->
+                        leaveSummaryResponse._LeaveHistoryformatList.forEach {
+                            leaveSummaryListItems.add(LeaveSummaryCardData(it))
+                        }
+                        leaveSummaryListLiveData.value = leaveSummaryListItems
 
-        val leaveSummaryResponse = LeaveSummaryResponse()
-        leaveSummaryResponse.type_name = "Leave Type"
-        leaveSummaryResponse.cl = "CL"
-        leaveSummaryResponse.sl = "SL"
-        leaveSummaryResponse.el = "EL"
-
-        leaveSummaryListItems.add(LeaveSummaryCardData(leaveSummaryResponse))
-        leaveSummaryListItems.add(LeaveSummaryCardData(leaveSummaryResponse1))
-        leaveSummaryListItems.add(LeaveSummaryCardData(leaveSummaryResponse2))
-        leaveSummaryListItems.add(LeaveSummaryCardData(leaveSummaryResponse3))
-
-        leaveSummaryListLiveData.value = leaveSummaryListItems
-        availSummary(context)
+                        UtilMethods.hideLoading()
+                        availSummary(context, fYEarSpId)
+                    }, { error ->
+                        UtilMethods.hideLoading()
+                        availSummary(context, fYEarSpId)
+                    }
+                    )
+        } else {
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
     }
 
-    fun availSummary(context: Context){
+    fun availSummary(context: Context, fYEarSpId: Int) {
+        availSummaryListItems.clear()
+        if (UtilMethods.isConnectedToInternet(context)) {
+            UtilMethods.showLoading(context)
+            val observable = ApiServiceCalling.generalMisApiCallToken().getAvailHistory(AvailSummaryRequest(fYEarSpId))
 
-        val availSummaryResponse5 = AvailSummaryResponse()
-        availSummaryResponse5.sl = "1"
-        availSummaryResponse5.leaveType = "CL"
-        availSummaryResponse5.availDay = "1"
-        availSummaryResponse5.fromDate = "12-06-2021"
-        availSummaryResponse5.toDate = "12-06-2021"
-        availSummaryResponse5.applicationDate = "15-06-2021"
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ availSummaryResponse ->
+                        availSummaryResponse._availHistoryList.forEach {
+                            availSummaryListItems.add(AvailSummaryCardData(it))
+                        }
+                        availSummaryListLiveData.value = availSummaryListItems
 
-        val availSummaryResponse4 = AvailSummaryResponse()
-        availSummaryResponse4.sl = "1"
-        availSummaryResponse4.leaveType = "CL"
-        availSummaryResponse4.availDay = "1"
-        availSummaryResponse4.fromDate = "12-06-2021"
-        availSummaryResponse4.toDate = "12-06-2021"
-        availSummaryResponse4.applicationDate = "15-06-2021"
-
-        val availSummaryResponse3 = AvailSummaryResponse()
-        availSummaryResponse3.sl = "1"
-        availSummaryResponse3.leaveType = "SL"
-        availSummaryResponse3.availDay = "1"
-        availSummaryResponse3.fromDate = "12-06-2021"
-        availSummaryResponse3.toDate = "12-06-2021"
-        availSummaryResponse3.applicationDate = "15-06-2021"
-
-
-        val availSummaryResponse2 = AvailSummaryResponse()
-        availSummaryResponse2.sl = "1"
-        availSummaryResponse2.leaveType = "CL"
-        availSummaryResponse2.availDay = "1"
-        availSummaryResponse2.fromDate = "12-06-2021"
-        availSummaryResponse2.toDate = "12-06-2021"
-        availSummaryResponse2.applicationDate = "15-06-2021"
-
-
-        val availSummaryResponse1 = AvailSummaryResponse()
-        availSummaryResponse1.sl = "1"
-        availSummaryResponse1.leaveType = "EL"
-        availSummaryResponse1.availDay = "1"
-        availSummaryResponse1.fromDate = "12-06-2021"
-        availSummaryResponse1.toDate = "12-06-2021"
-        availSummaryResponse1.applicationDate = "15-06-2021"
-
-
-        val availSummaryResponse = AvailSummaryResponse()
-        availSummaryResponse.sl = "1"
-        availSummaryResponse.leaveType = "EL"
-        availSummaryResponse.availDay = "1"
-        availSummaryResponse.fromDate = "12-06-2021"
-        availSummaryResponse.toDate = "12-06-2021"
-        availSummaryResponse.applicationDate = "15-06-2021"
-
-        availSummaryListItems.add(AvailSummaryCardData(availSummaryResponse))
-        availSummaryListItems.add(AvailSummaryCardData(availSummaryResponse1))
-        availSummaryListItems.add(AvailSummaryCardData(availSummaryResponse2))
-        availSummaryListItems.add(AvailSummaryCardData(availSummaryResponse3))
-        availSummaryListItems.add(AvailSummaryCardData(availSummaryResponse4))
-        availSummaryListItems.add(AvailSummaryCardData(availSummaryResponse5))
-        availSummaryListLiveData.value = availSummaryListItems
+                        UtilMethods.hideLoading()
+                    }, { error ->
+                        UtilMethods.hideLoading()
+                        // UtilMethods.showLongToast(context, error.message.toString())
+                    }
+                    )
+        } else {
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
     }
 
     fun getleaveSummaryLiveData(): MutableLiveData<List<LeaveSummaryCardData>> {
@@ -151,7 +112,6 @@ class LeaveDetailsViewModel @Inject constructor(
         availSummaryObserverArrayList.clear()
         availSummaryObserverArrayList.addAll(Service)
     }
-
 
     fun getFinancialYear(
             context: Context,

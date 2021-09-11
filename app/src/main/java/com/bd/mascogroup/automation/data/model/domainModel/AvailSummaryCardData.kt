@@ -1,9 +1,8 @@
 package com.bd.mascogroup.automation.data.model.domainModel
 
-import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryResponse
-import com.bd.mascogroup.automation.data.remote.domainModel.DailyAttendanceResponse
+import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryDataResponse
 
-class AvailSummaryCardData constructor(val ASR : AvailSummaryResponse){
+class AvailSummaryCardData constructor(val ASR : AvailSummaryDataResponse){
 
     val sl : String
         get() = ASR.sl
@@ -11,7 +10,7 @@ class AvailSummaryCardData constructor(val ASR : AvailSummaryResponse){
     val leaveType : String
         get() = ASR.leaveType
 
-    val availDay : String
+    val availDay : Int
         get() = ASR.availDay
 
     val fromDate : String
