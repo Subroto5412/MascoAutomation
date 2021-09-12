@@ -27,6 +27,6 @@ class IncomeTaxDeductionItemViewModel(
 
         sl = ObservableField(mIncomeTaxDeductionCardData.sl)
         month = ObservableField(mIncomeTaxDeductionCardData.month)
-        deductionAmount = ObservableField(mIncomeTaxDeductionCardData.deductionAmount)
+        deductionAmount = ObservableField(mIncomeTaxDeductionCardData.deductionAmount.toString())
     }
 }

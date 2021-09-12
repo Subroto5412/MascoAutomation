@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class IncomeTaxDeductionResponse (
         @SerializedName("sl") var sl: String = "",
         @SerializedName("monthYear") var month: String = "",
-        @SerializedName("taxDeductionAmount") var deductionAmount: String = ""
+        @SerializedName("taxDeductionAmount") var deductionAmount: Double = 0.0
         )

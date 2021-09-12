@@ -10,6 +10,6 @@ class IncomeTaxDeductionCardData constructor(var incomeTaxDeduction: IncomeTaxDe
     val month : String
         get() = incomeTaxDeduction.month
 
-    val deductionAmount : String
+    val deductionAmount : Double
         get() = incomeTaxDeduction.deductionAmount
 }

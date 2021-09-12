@@ -2,8 +2,10 @@ package com.bd.mascogroup.automation.ui.hr_info.income_tax
 
 import android.R
 import android.content.Context
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
@@ -37,9 +39,11 @@ import javax.inject.Inject
       private var financialYearCardData = ArrayList<TaxYearDataCardData>()
       private var FinancialYearNames = ArrayList<String>()
 
-      fun IncomeTaxDeduction(context: Context, taxYearNo:Int) {
+      fun IncomeTaxDeduction(context: Context, taxYearNo:Int, activity_income_tax_total_tv:TextView, activity_income_tax_total_value_tv:TextView) {
           incomeTaxDeductionListItems.clear()
           var sl:Int = 0
+          var deductionAmount:Double = 0.0
+          var deductionAmount2:Double = 0.0
               if (UtilMethods.isConnectedToInternet(context)) {
                   UtilMethods.showLoading(context)
                   val observable = ApiServiceCalling.generalMisApiCallToken().getTaxDeduct(TaxDeductionRequest(taxYearNo))
@@ -55,12 +59,17 @@ import javax.inject.Inject
                                   incomeTaxDeductionResponse.month = it.month
                                   incomeTaxDeductionResponse.deductionAmount = it.deductionAmount
 
+                                  deductionAmount = deductionAmount+it.deductionAmount
                                   incomeTaxDeductionListItems.add(IncomeTaxDeductionCardData(incomeTaxDeductionResponse))
                               }
+                              activity_income_tax_total_tv.setText("Total =")
+                              activity_income_tax_total_value_tv.setText(deductionAmount.toString()+" BDT")
                               incomeTaxDeductionListLiveData.value = incomeTaxDeductionListItems
 
                               UtilMethods.hideLoading()
                           }, { error ->
+                              activity_income_tax_total_value_tv.setText("")
+                              activity_income_tax_total_tv.setText("")
                               UtilMethods.hideLoading()
                           }
                           )

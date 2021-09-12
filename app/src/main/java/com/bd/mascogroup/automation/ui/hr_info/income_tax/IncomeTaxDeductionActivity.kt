@@ -93,7 +93,7 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
                 taxYearNo = map.get("taxYearNo")!!.toInt()
                 yearName = map.get("yearName")!!
 
-                viewModel.IncomeTaxDeduction(this@IncomeTaxDeductionActivity, taxYearNo)
+                viewModel.IncomeTaxDeduction(this@IncomeTaxDeductionActivity, taxYearNo,activity_income_tax_total_tv,activity_income_tax_total_value_tv)
                 setUpIcomeTaxDeduction()
                 subscribeToLiveDataIncomeTaxDeduction()
             }
