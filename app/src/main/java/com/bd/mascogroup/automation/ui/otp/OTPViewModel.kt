@@ -186,9 +186,16 @@ class OTPViewModel @Inject constructor(
                 })
 
                 activity_otp_signup_btn.setOnClickListener {
-                        if (activity_otp_password_et.text.toString().length!=4){
+                        if (activity_otp_password_et.text.toString().length!=4)
+                        {
                                 Toast.makeText(context, "Enter Four digits Password!",Toast.LENGTH_LONG).show()
-                        }else{
+                        }else if (activity_otp_re_password_et.text.toString().length!=4)
+                        {
+                                Toast.makeText(context, "Enter Four digits Password!",Toast.LENGTH_LONG).show() }
+                        else if (!activity_otp_re_password_et.text.toString().equals(activity_otp_password_et.text.toString()))
+                        {
+                                Toast.makeText(context, "Password isn't matching!",Toast.LENGTH_LONG).show()
+                        } else{
                                 register(context,activity_otp_re_password_et.text.toString())
                         }
 

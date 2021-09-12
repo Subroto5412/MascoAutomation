@@ -54,7 +54,6 @@ class DailyAttendanceViewModel @Inject constructor(
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ attendanceResponse ->
-//                       Log.e("-----","-----------"+attendanceResponse.allLeaveCount.el)
                       attendanceResponse.allLeaveCount.forEach {
                             dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(it))
                         }
@@ -68,47 +67,12 @@ class DailyAttendanceViewModel @Inject constructor(
                         UtilMethods.hideLoading()
                     }, { error ->
                         UtilMethods.hideLoading()
-                        // UtilMethods.showLongToast(context, error.message.toString())
                     }
                     )
         }else{
             UtilMethods.showLongToast(context, "No Internet Connection!")
         }
-
-//        dailyAttendanceStatus(context)
     }
-
-   /* fun dailyAttendanceStatus(context:Context) {
-        val dailyAttendanceStatus = DailyAttendanceStatusResponse()
-        dailyAttendanceStatus.status = "Late"
-        dailyAttendanceStatus.statusValue = "1"
-
-
-        val dailyAttendanceStatus2 = DailyAttendanceStatusResponse()
-        dailyAttendanceStatus2.status = "Present"
-        dailyAttendanceStatus2.statusValue = "15"
-
-        val dailyAttendanceStatus3 = DailyAttendanceStatusResponse()
-        dailyAttendanceStatus3.status = "HL"
-        dailyAttendanceStatus3.statusValue = "2"
-
-        val dailyAttendanceStatus4 = DailyAttendanceStatusResponse()
-        dailyAttendanceStatus4.status = "Absent"
-        dailyAttendanceStatus4.statusValue = "3"
-
-
-        val dailyAttendanceStatus5 = DailyAttendanceStatusResponse()
-        dailyAttendanceStatus5.status = "Quick Out"
-        dailyAttendanceStatus5.statusValue = "5"
-
-        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus))
-        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus3))
-        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus2))
-        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus4))
-        dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(dailyAttendanceStatus5))
-
-        dailyAttendanceStatusListLiveData.value = dailyAttendanceStatusListItems
-    }*/
 
     fun getdailyAttendanceLiveData(): MutableLiveData<List<DailyAttendanceCardData>> {
         return dailyAttendanceListLiveData
@@ -127,7 +91,6 @@ class DailyAttendanceViewModel @Inject constructor(
         dailyAttendanceStatusObserverArrayList.clear()
         dailyAttendanceStatusObserverArrayList.addAll(Service)
     }
-
 
     fun getFinancialYear(
             context: Context,
@@ -148,7 +111,6 @@ class DailyAttendanceViewModel @Inject constructor(
                         FinancialYearNames.clear()
                         for (i in 0 until financialYearCardData.size) {
                             val fYear = HashMap<String, String>()
-                           // fYear.put("finalYearNo", financialYearCardData.get(i).finalYearNo.toString())
                             fYear.put("finalYearName", "" + financialYearCardData.get(i).finalYearName)
                             fYear.put("yearName", financialYearCardData.get(i).yearName)
 

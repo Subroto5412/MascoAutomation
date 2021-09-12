@@ -38,7 +38,7 @@ import javax.inject.Inject
       private var FinancialYearNames = ArrayList<String>()
 
       fun IncomeTaxDeduction(context: Context, taxYearNo:Int) {
-
+          incomeTaxDeductionListItems.clear()
           var sl:Int = 0
               if (UtilMethods.isConnectedToInternet(context)) {
                   UtilMethods.showLoading(context)
@@ -117,7 +117,6 @@ import javax.inject.Inject
                           UtilMethods.hideLoading()
                       }, { error ->
                           UtilMethods.hideLoading()
-                          //  UtilMethods.showLongToast(context, error.message.toString())
                       }
                       )
           } else {

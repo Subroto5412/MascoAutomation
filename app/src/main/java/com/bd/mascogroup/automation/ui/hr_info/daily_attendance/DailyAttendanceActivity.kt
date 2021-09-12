@@ -249,7 +249,6 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
                 (parent!!.getChildAt(0) as TextView).setTextSize(13F)
 
                 val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
-               // fYEarSpId = map.get("id")!!.toInt()
                 fYEarSpName = map.get("yearName")!!
 
                 fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
