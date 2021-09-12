@@ -125,14 +125,16 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
                 (parent!!.getChildAt(0) as TextView).setTextSize(13F)
 
                 val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
-                fYEarSpId= map.get("finalYearNo")!!.toInt()
+                if (!map.get("finalYearNo").isNullOrEmpty()){
+                    fYEarSpId= map.get("finalYearNo")!!.toInt()
 
-                viewModel.leaveSummary(this@LeaveDetailsActivity,fYEarSpId)
-                setUpLeaveSummary()
-                subscribeToLiveDataLeaveSummary()
+                    viewModel.leaveSummary(this@LeaveDetailsActivity,fYEarSpId)
+                    setUpLeaveSummary()
+                    subscribeToLiveDataLeaveSummary()
 
-                setUpAvailSummary()
-                subscribeToLiveDataAvailSummary()
+                    setUpAvailSummary()
+                    subscribeToLiveDataAvailSummary()
+                }
             }
         }
     }

@@ -178,4 +178,47 @@ class DailyAttendanceViewModel @Inject constructor(
 
         return month
     }
+
+
+    fun monthNameConvertDays(monthName:String):String{
+        var month:String = ""
+        if(monthName.equals("January")){
+            month = "31"
+        }else if(monthName.equals("February")){
+            month = "28"
+        }
+        else if(monthName.equals("March")){
+            month = "31"
+        }
+        else if(monthName.equals("April")){
+            month = "30"
+        }
+        else if(monthName.equals("May")){
+            month = "31"
+        }
+        else if(monthName.equals("June")){
+            month = "30"
+        }
+        else if(monthName.equals("July")){
+            month = "31"
+        }
+        else if(monthName.equals("August")){
+            month = "31"
+        }
+        else if(monthName.equals("September")){
+            month = "30"
+        }
+        else if(monthName.equals("October")){
+            month = "31"
+        }
+        else if(monthName.equals("November")){
+            month = "30"
+        }
+        else if(monthName.equals("December")){
+            month = "31"
+        }
+
+        return month
+    }
+
 }

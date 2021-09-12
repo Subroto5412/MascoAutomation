@@ -1,6 +1,8 @@
 package com.bd.mascogroup.automation.ui.hr_info.daily_attendance
 
+import android.util.Log
 import androidx.databinding.ObservableField
+import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceCardData
 import java.text.DateFormat
@@ -23,6 +25,8 @@ class DailyAttendanceListItemViewModel(
     val additionTime: ObservableField<String>
     val date: ObservableField<String>
     val month: ObservableField<String>
+    val backgroundColor: ObservableField<Int>
+    val backgroundColorHover: ObservableField<Int>
 
     interface DailyAttendanceListItemViewModelListener {
     }
@@ -42,5 +46,20 @@ class DailyAttendanceListItemViewModel(
         additionTime = ObservableField(mDailyAttendanceCardData.additionTime)
         date = ObservableField(punchDate)
         month = ObservableField(punchMonth)
+
+        val sdf = SimpleDateFormat("dd-MMM")
+        val currentDate = sdf.format(Date())
+        
+        backgroundColor =  if ((punchDate+"-"+punchMonth).equals(currentDate)) {
+            ObservableField(R.drawable.layout_daily_attendance_row_bg)
+        } else {
+            ObservableField(R.drawable.layout_daily_attendance_row_no_bg_color)
+        }
+
+        backgroundColorHover =  if ((punchDate+"-"+punchMonth).equals(currentDate)) {
+            ObservableField(R.drawable.layout_daily_attendance_row_month_bg_hover)
+        } else {
+            ObservableField(R.drawable.layout_daily_attendance_row_month_bg)
+        }
     }
 }

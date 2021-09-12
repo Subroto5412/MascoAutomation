@@ -89,6 +89,9 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         monthList.add("November")
         monthList.add("December")
 
+        val sdfCurrentYearMonth = SimpleDateFormat("YYYY-MM")
+        val currentYearMonth = sdfCurrentYearMonth.format(Date())
+
         val sdf = SimpleDateFormat("MM")
         val currentDate_ = sdf.format(Date())
         var currentDate:Int = 0
@@ -171,8 +174,21 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
                     activity_daily_attendance_next_month_tv.text = nextMonth.subSequence(0, 3)
                 }
             }
-            fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
-            toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"30"
+
+            val sdf1 = SimpleDateFormat("dd")
+            val currentDay = sdf1.format(Date())
+
+            if (currentYearMonth.equals(fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString()))){
+                fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
+                toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+currentDay
+            }else{
+
+                fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
+                toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+viewModel.monthNameConvertDays(activity_daily_attendance_month_tv.text.toString())
+
+            }
+            Log.e("------------","-------fromDate--back---"+fromDate)
+            Log.e("------------","-------toDate---back--"+toDate)
             viewModel.dailyAttendance(this,fromDate,toDate)
             setUp()
             subscribeToLiveDataDailyAttendance()
@@ -212,8 +228,20 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
                 }
             }
 
-            fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
-            toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"30"
+            val sdf1 = SimpleDateFormat("dd")
+            val currentDay = sdf1.format(Date())
+
+            if (currentYearMonth.equals(fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString()))){
+                fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
+                toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+currentDay
+            }else{
+                fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
+                toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+viewModel.monthNameConvertDays(activity_daily_attendance_month_tv.text.toString())
+            }
+
+            Log.e("------------","-------fromDate---next--"+fromDate)
+            Log.e("------------","-------toDate--next---"+toDate)
+
             viewModel.dailyAttendance(this,fromDate,toDate)
             setUp()
             subscribeToLiveDataDailyAttendance()
@@ -251,8 +279,11 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
                 val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
                 fYEarSpName = map.get("yearName")!!
 
+                val sdf1 = SimpleDateFormat("dd")
+                val currentDay = sdf1.format(Date())
+
                 fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
-                toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"30"
+                toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+currentDay
                 viewModel.dailyAttendance(this@DailyAttendanceActivity,fromDate,toDate)
                 setUp()
                 subscribeToLiveDataDailyAttendance()
