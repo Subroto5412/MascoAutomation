@@ -2,6 +2,7 @@ package com.bd.mascogroup.automation.ui.hr_info.leave_details
 
 import android.R
 import android.content.Context
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.ObservableArrayList
@@ -55,6 +56,9 @@ class LeaveDetailsViewModel @Inject constructor(
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ leaveSummaryResponse ->
                         leaveSummaryResponse._LeaveHistoryformatList.forEach {
+                            Log.e("------","-----type_name-----"+it.type_name)
+                            Log.e("------","-----sl-----"+it.sl)
+                            Log.e("------","-----cl-----"+it.cl)
                             leaveSummaryListItems.add(LeaveSummaryCardData(it))
                         }
                         leaveSummaryListLiveData.value = leaveSummaryListItems

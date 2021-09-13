@@ -3,6 +3,7 @@ package com.bd.mascogroup.automation.ui.home
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.library.baseAdapters.BR
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityHomeBinding
@@ -43,8 +44,38 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
         viewModel.navigator = this
 
         layout_production_management_cl.setOnClickListener {
-            val intent = ProductionManagementActivity.newIntent(this@HomeActivity)
-            startActivity(intent)
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
+        }
+
+        layout_supply_chain_down_cl.setOnClickListener {
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
+        }
+
+        layout_merchandising_marketing_down_cl.setOnClickListener {
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
+        }
+
+        layout_asset_tracking_cl.setOnClickListener {
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
+        }
+
+        layout_automobile_management_cl.setOnClickListener {
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
+        }
+
+        layout_search_engine_cl.setOnClickListener {
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
+        }
+
+        layout_dispatch_slip_cl.setOnClickListener {
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
+        }
+
+        layout_idea_laboratory_cl.setOnClickListener {
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
+        }
+        layout_documentation_management_cl.setOnClickListener {
+            Toast.makeText(this,"Data can't found!",Toast.LENGTH_LONG).show()
         }
 
         layout_human_resource_cl.setOnClickListener {

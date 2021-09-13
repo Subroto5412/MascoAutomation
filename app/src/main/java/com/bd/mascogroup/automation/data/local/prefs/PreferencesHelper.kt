@@ -42,6 +42,21 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         get() = mPrefs.getString(PREF_KEY_EMPCODE,"").toString()
         set(empCode) = mPrefs.edit().putString(PREF_KEY_EMPCODE, empCode).apply()
 
+    override var HRModule: String
+        get() = mPrefs.getString(PREF_KEY_HR_MODULE,"").toString()
+        set(HRModule) = mPrefs.edit().putString(PREF_KEY_HR_MODULE, HRModule).apply()
+
+    override var dailyAttendance: String
+        get() = mPrefs.getString(PREF_KEY_DAILY_ATTENDANCE,"").toString()
+        set(dailyAttendance) = mPrefs.edit().putString(PREF_KEY_DAILY_ATTENDANCE, dailyAttendance).apply()
+
+    override var leaveHistory: String
+        get() = mPrefs.getString(PREF_KEY_LEAVE_HISTORY,"").toString()
+        set(leaveHistory) = mPrefs.edit().putString(PREF_KEY_LEAVE_HISTORY, leaveHistory).apply()
+
+    override var taxHistory: String
+        get() = mPrefs.getString(PREF_KEY_TAX_HISTORY,"").toString()
+        set(taxHistory) = mPrefs.edit().putString(PREF_KEY_TAX_HISTORY, taxHistory).apply()
 
 
     companion object {
@@ -53,5 +68,9 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         private val PREF_KEY_PHONE = "PREF_KEY_PHONE"
         private val PREF_KEY_EMPId = "PREF_KEY_EMPId"
         private val PREF_KEY_EMPCODE = "PREF_KEY_EMPCODE"
+        private val PREF_KEY_HR_MODULE = "PREF_KEY_HR_MODULE"
+        private val PREF_KEY_DAILY_ATTENDANCE = "PREF_KEY_DAILY_ATTENDANCE"
+        private val PREF_KEY_LEAVE_HISTORY = "PREF_KEY_LEAVE_HISTORY"
+        private val PREF_KEY_TAX_HISTORY = "PREF_KEY_TAX_HISTORY"
     }
 }

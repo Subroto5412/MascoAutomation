@@ -9,4 +9,8 @@ interface IPreferencesHelper {
     var mobile: String
     var empId: String
     var empCode: String
+    var HRModule: String
+    var dailyAttendance: String
+    var leaveHistory: String
+    var taxHistory: String
 }

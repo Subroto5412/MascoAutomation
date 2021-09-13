@@ -46,6 +46,7 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
         viewModel.navigator = this
         activity_title_tv.setText("")
         viewModel.accessToken()
+        viewModel.buttonPermission(activity_hr_main_daily_attendance_cl, activity_hr_main_leave_details_cl, activity_hr_main_income_tax_cl)
 
         activity_hr_daily_attendance_cl.setOnClickListener {
             val intent = DailyAttendanceActivity.newIntent(this@HRInfoActivity)

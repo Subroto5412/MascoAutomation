@@ -55,6 +55,30 @@ class AppDataManager @Inject constructor(
             mPreferencesHelper.empCode = empCode
         }
 
+    override var HRModule: String
+        get() = mPreferencesHelper.HRModule
+        set(HRModule) {
+            mPreferencesHelper.HRModule = HRModule
+        }
+
+    override var dailyAttendance: String
+        get() = mPreferencesHelper.dailyAttendance
+        set(dailyAttendance) {
+            mPreferencesHelper.dailyAttendance = dailyAttendance
+        }
+
+    override var leaveHistory: String
+        get() = mPreferencesHelper.leaveHistory
+        set(leaveHistory) {
+            mPreferencesHelper.leaveHistory = leaveHistory
+        }
+
+    override var taxHistory: String
+        get() = mPreferencesHelper.taxHistory
+        set(taxHistory) {
+            mPreferencesHelper.taxHistory = taxHistory
+        }
+
     override var invoice: String
         get() = mPreferencesHelper.invoice
         set(invoice) {
