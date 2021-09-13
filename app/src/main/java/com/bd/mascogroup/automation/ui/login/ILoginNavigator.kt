@@ -5,4 +5,5 @@ import com.bd.mascogroup.automation.ui.base.IBaseNavigator
 interface ILoginNavigator : IBaseNavigator {
     fun login()
     fun openHomeActivity()
+    fun ToastMSG()
 }

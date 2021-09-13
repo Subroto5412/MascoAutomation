@@ -126,6 +126,8 @@ class LoginViewModel @Inject constructor(
                             }
                         }
                         navigator?.openHomeActivity()
+                    }else{
+                        navigator?.ToastMSG()
                     }
                     UtilMethods.hideLoading()
                 }, { error ->

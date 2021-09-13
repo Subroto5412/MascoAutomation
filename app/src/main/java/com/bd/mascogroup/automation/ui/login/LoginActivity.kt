@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -78,6 +79,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
         finish()
     }
 
+    override fun ToastMSG() {
+       Toast.makeText(this, "UserId and Password isn't matching!", Toast.LENGTH_LONG).show()
+    }
+
     override fun androidInjector(): AndroidInjector<Any>? {
         return fragmentDispatchingAndroidInjector
     }
@@ -87,4 +92,5 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
             return Intent(context, LoginActivity::class.java)
         }
     }
+
 }
