@@ -45,7 +45,8 @@ class LeaveDetailsViewModel @Inject constructor(
     private var availSummaryListItems = ArrayList<AvailSummaryCardData>()
 
     fun leaveSummary(context: Context, fYEarSpId: Int) {
-
+        Log.e("---------","-----fYEarSpId =----------"+fYEarSpId)
+        Log.e("---------","-----acceessToken =----------"+AppConstants.acceessToken)
         leaveSummaryListItems.clear()
         availSummaryListItems.clear()
         if (UtilMethods.isConnectedToInternet(context)) {
@@ -146,7 +147,7 @@ class LeaveDetailsViewModel @Inject constructor(
                             fYear.put("finalYearName", "" + financialYearCardData.get(i).finalYearName)
                             fYear.put("yearName", financialYearCardData.get(i).yearName)
 
-                            AppConstants.HasYearList.add(fYear)
+                            AppConstants.HasYearForLeaveList.add(fYear)
                             FinancialYearNames.add(financialYearCardData.get(i).finalYearName)
                         }
                         val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(

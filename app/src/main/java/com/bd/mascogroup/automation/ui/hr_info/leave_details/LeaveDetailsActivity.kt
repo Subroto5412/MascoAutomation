@@ -124,9 +124,10 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
                 (parent!!.getChildAt(0) as TextView).setTextColor(Color.WHITE)
                 (parent!!.getChildAt(0) as TextView).setTextSize(13F)
 
-                val map: HashMap<String, String> = AppConstants.HasYearList.get(position)
-                if (!map.get("finalYearNo").isNullOrEmpty()){
+                val map: HashMap<String, String> = AppConstants.HasYearForLeaveList.get(position)
+               // if (!map.get("finalYearNo").isNullOrEmpty()){
                     fYEarSpId= map.get("finalYearNo")!!.toInt()
+                    Log.e("----------","-----------"+fYEarSpId)
 
                     viewModel.leaveSummary(this@LeaveDetailsActivity,fYEarSpId)
                     setUpLeaveSummary()
@@ -134,7 +135,7 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
 
                     setUpAvailSummary()
                     subscribeToLiveDataAvailSummary()
-                }
+                //}
             }
         }
     }

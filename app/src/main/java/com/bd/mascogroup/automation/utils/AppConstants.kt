@@ -68,6 +68,7 @@ object AppConstants {
      var EMP_CODE = ""
      var acceessToken = ""
     var HasYearList = ArrayList<HashMap<String, String>>()
+    var HasYearForLeaveList = ArrayList<HashMap<String, String>>()
     var HasYearTaxList = ArrayList<HashMap<String, String>>()
 
 }
