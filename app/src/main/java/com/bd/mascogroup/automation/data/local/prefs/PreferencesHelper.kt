@@ -22,13 +22,17 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         get() = mPrefs.getString(PREF_KEY_CUSTOMER_NAME,"").toString()
         set(customerName) = mPrefs.edit().putString(PREF_KEY_CUSTOMER_NAME, customerName).apply()
 
-    override var customerAddress: String
-        get() = mPrefs.getString(PREF_KEY_CUSTOMER_ADDRESS,"").toString()
-        set(customerAddress) = mPrefs.edit().putString(PREF_KEY_CUSTOMER_ADDRESS, customerAddress).apply()
+    override var SaveTime: String
+        get() = mPrefs.getString(PREF_KEY_SAVETIME,"").toString()
+        set(SaveTime) = mPrefs.edit().putString(PREF_KEY_SAVETIME, SaveTime).apply()
 
     override var accessToken: String
         get() = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,"").toString()
         set(accessToken) = mPrefs.edit().putString(PREF_KEY_ACCESS_TOKEN, accessToken).apply()
+
+    override var refreshToken: String
+        get() = mPrefs.getString(PREF_KEY_REFRESH_TOKEN,"").toString()
+        set(refreshToken) = mPrefs.edit().putString(PREF_KEY_REFRESH_TOKEN, refreshToken).apply()
 
     override var mobile: String
         get() = mPrefs.getString(PREF_KEY_PHONE,"").toString()
@@ -63,8 +67,9 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         private val PREF_KEY_DRIVERID = "PREF_KEY_DRIVERID"
         private val PREF_KEY_INVOICE = "PREF_KEY_INVOICE"
         private val PREF_KEY_CUSTOMER_NAME = "PREF_KEY_CUSTOMER_NAME"
-        private val PREF_KEY_CUSTOMER_ADDRESS = "PREF_KEY_CUSTOMER_ADDRESS"
+        private val PREF_KEY_SAVETIME = "PREF_KEY_SAVETIME"
         private val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
+        private val PREF_KEY_REFRESH_TOKEN = "PREF_KEY_REFRESH_TOKEN"
         private val PREF_KEY_PHONE = "PREF_KEY_PHONE"
         private val PREF_KEY_EMPId = "PREF_KEY_EMPId"
         private val PREF_KEY_EMPCODE = "PREF_KEY_EMPCODE"

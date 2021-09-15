@@ -82,4 +82,10 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @GET("v1/tax/tax-year")
     fun getTaxYear(): Observable<TaxYearResponse> // body data
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/LoginAccess/refresh-token")
+    fun getRefreshToken(
+            @Body registerRequest: RefreshTokenRequest
+    ): Observable<RefreshTokenResponse>
 }

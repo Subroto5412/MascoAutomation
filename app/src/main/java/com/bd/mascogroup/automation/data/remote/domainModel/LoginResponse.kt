@@ -9,6 +9,7 @@ data class LoginResponse(
         @SerializedName("empId") val empId: Int = 0,
         @SerializedName("_permissionList") val _permissionList: List<_permissionList>,
         @SerializedName("token") val token: String = "",
+        @SerializedName("refresh_token") val refresh_token: String = "",
         @SerializedName("error") val error: String = ""
 )
 

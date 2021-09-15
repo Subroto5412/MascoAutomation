@@ -107,6 +107,12 @@ class IncomeTaxDeductionActivity : BaseActivity<ActivityIcomeTaxDeductionBinding
         }
     }
 
+    override fun openHRScreen(){
+        val intent = HRInfoActivity.newIntent(this@IncomeTaxDeductionActivity)
+        startActivity(intent)
+        finish()
+    }
+
     fun setUpIcomeTaxDeduction() {
         mActivityIcomeTaxDeductionBinding.activityIncomeTaxDeductionListRv.itemAnimator = DefaultItemAnimator()
         mActivityIcomeTaxDeductionBinding.activityIncomeTaxDeductionListRv.adapter = mIncomeTaxDeductionAdapter

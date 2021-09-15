@@ -4,8 +4,9 @@ interface IPreferencesHelper {
     var deliveryManId: String
     var invoice: String
     var customerName: String
-    var customerAddress: String
+    var SaveTime: String
     var accessToken: String
+    var refreshToken: String
     var mobile: String
     var empId: String
     var empCode: String

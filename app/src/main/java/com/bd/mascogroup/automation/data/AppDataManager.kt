@@ -26,16 +26,22 @@ class AppDataManager @Inject constructor(
         set(customerName) {
             mPreferencesHelper.customerName = customerName
         }
-    override var customerAddress: String
-        get() = mPreferencesHelper.customerAddress
-        set(customerAddress) {
-            mPreferencesHelper.customerAddress = customerAddress
+    override var SaveTime: String
+        get() = mPreferencesHelper.SaveTime
+        set(SaveTime) {
+            mPreferencesHelper.SaveTime = SaveTime
         }
 
     override var accessToken: String
         get() = mPreferencesHelper.accessToken
         set(accessToken) {
             mPreferencesHelper.accessToken = accessToken
+        }
+
+    override var refreshToken: String
+        get() = mPreferencesHelper.refreshToken
+        set(refreshToken) {
+            mPreferencesHelper.refreshToken = refreshToken
         }
 
     override var mobile: String

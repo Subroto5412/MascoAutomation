@@ -146,6 +146,12 @@ class LeaveDetailsActivity : BaseActivity<ActivityLeaveDetailsBinding, LeaveDeta
         }
     }
 
+    override fun openHRScreen(){
+        val intent = HRInfoActivity.newIntent(this@LeaveDetailsActivity)
+        startActivity(intent)
+        finish()
+    }
+
     fun setUpLeaveSummary() {
         mActivityLeaveDetailsBinding.leaveDetailsLeaveSummaryListParentRv.itemAnimator = DefaultItemAnimator()
         mActivityLeaveDetailsBinding.leaveDetailsLeaveSummaryListParentRv.adapter = mLeaveDetailsLeaveSummaryAdapter

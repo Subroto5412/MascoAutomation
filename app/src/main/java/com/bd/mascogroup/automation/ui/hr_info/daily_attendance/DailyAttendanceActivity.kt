@@ -251,9 +251,7 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
         }
 
         layout_header_back_im.setOnClickListener {
-            val intent = HRInfoActivity.newIntent(this@DailyAttendanceActivity)
-            startActivity(intent)
-            finish()
+            openHRScreen()
         }
 
         layout_footer_home_im.setOnClickListener {
@@ -336,6 +334,12 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
             mDailyAttendanceViewModel.addDailyAttendanceStatusItemToList(t)
             updateDailyAttendanceStatusList(t)
         })
+    }
+
+    override fun openHRScreen(){
+        val intent = HRInfoActivity.newIntent(this@DailyAttendanceActivity)
+        startActivity(intent)
+        finish()
     }
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {

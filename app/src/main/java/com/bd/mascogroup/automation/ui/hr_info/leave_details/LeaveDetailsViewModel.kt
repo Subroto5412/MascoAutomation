@@ -16,6 +16,7 @@ import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
 import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryDataResponse
 import com.bd.mascogroup.automation.data.remote.domainModel.AvailSummaryRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryRequest
+import com.bd.mascogroup.automation.data.remote.domainModel.RefreshTokenRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
@@ -68,7 +69,9 @@ class LeaveDetailsViewModel @Inject constructor(
                         availSummary(context, fYEarSpId)
                     }, { error ->
                         UtilMethods.hideLoading()
-                        availSummary(context, fYEarSpId)
+//                        UtilMethods.showLongToast(context, error.message.toString())
+//                        availSummary(context, fYEarSpId)
+                        getRefreshToken(context)
                     }
                     )
         } else {
@@ -98,7 +101,8 @@ class LeaveDetailsViewModel @Inject constructor(
                         UtilMethods.hideLoading()
                     }, { error ->
                         UtilMethods.hideLoading()
-                        // UtilMethods.showLongToast(context, error.message.toString())
+                        getRefreshToken(context)
+//                         UtilMethods.showLongToast(context, error.message.toString())
                     }
                     )
         } else {
@@ -167,6 +171,30 @@ class LeaveDetailsViewModel @Inject constructor(
                     }
                     )
         } else {
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
+    }
+
+    fun getRefreshToken(context:Context){
+
+        if(UtilMethods.isConnectedToInternet(context)){
+            UtilMethods.showLoading(context)
+            val observable = ApiServiceCalling.generalMisApiCall().getRefreshToken(RefreshTokenRequest(dataManager.accessToken,dataManager.refreshToken))
+
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ refreshTokenResponse ->
+                        if (refreshTokenResponse.error.isNullOrEmpty()){
+                            dataManager.accessToken = refreshTokenResponse.rftoken.jwtToken
+                            dataManager.refreshToken = refreshTokenResponse.rftoken.refresh_token
+                        }
+                        UtilMethods.hideLoading()
+                        navigator?.openHRScreen()
+                    }, { error ->
+                        UtilMethods.hideLoading()
+                    }
+                    )
+        }else{
             UtilMethods.showLongToast(context, "No Internet Connection!")
         }
     }

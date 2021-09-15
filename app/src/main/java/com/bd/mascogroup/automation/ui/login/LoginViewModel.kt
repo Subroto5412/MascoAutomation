@@ -107,6 +107,7 @@ class LoginViewModel @Inject constructor(
                         dataManager.empId = loginResponse.empId.toString()
                         dataManager.empCode = loginResponse.empCode
                         dataManager.accessToken = loginResponse.token
+                        dataManager.refreshToken = loginResponse.refresh_token
                         AppConstants.acceessToken = loginResponse.token
 
                         loginResponse._permissionList.forEach { permissionListResponse->

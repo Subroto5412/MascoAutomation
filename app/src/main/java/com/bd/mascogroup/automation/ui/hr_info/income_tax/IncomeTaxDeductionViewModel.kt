@@ -17,6 +17,7 @@ import com.bd.mascogroup.automation.data.model.domainModel.TaxYearDataCardData
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
 import com.bd.mascogroup.automation.data.remote.domainModel.IncomeTaxDeductionResponse
 import com.bd.mascogroup.automation.data.remote.domainModel.LeaveSummaryRequest
+import com.bd.mascogroup.automation.data.remote.domainModel.RefreshTokenRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.TaxDeductionRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
@@ -71,6 +72,7 @@ import javax.inject.Inject
                               activity_income_tax_total_value_tv.setText("")
                               activity_income_tax_total_tv.setText("")
                               UtilMethods.hideLoading()
+                              getRefreshToken(context)
                           }
                           )
               } else {
@@ -129,6 +131,30 @@ import javax.inject.Inject
                       }
                       )
           } else {
+              UtilMethods.showLongToast(context, "No Internet Connection!")
+          }
+      }
+
+      fun getRefreshToken(context:Context){
+
+          if(UtilMethods.isConnectedToInternet(context)){
+              UtilMethods.showLoading(context)
+              val observable = ApiServiceCalling.generalMisApiCall().getRefreshToken(RefreshTokenRequest(dataManager.accessToken,dataManager.refreshToken))
+
+              observable.subscribeOn(Schedulers.io())
+                      .observeOn(AndroidSchedulers.mainThread())
+                      .subscribe({ refreshTokenResponse ->
+                          if (refreshTokenResponse.error.isNullOrEmpty()){
+                              dataManager.accessToken = refreshTokenResponse.rftoken.jwtToken
+                              dataManager.refreshToken = refreshTokenResponse.rftoken.refresh_token
+                          }
+                          UtilMethods.hideLoading()
+                          navigator?.openHRScreen()
+                      }, { error ->
+                          UtilMethods.hideLoading()
+                      }
+                      )
+          }else{
               UtilMethods.showLongToast(context, "No Internet Connection!")
           }
       }
