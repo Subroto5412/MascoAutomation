@@ -159,10 +159,8 @@ class LeaveDetailsViewModel @Inject constructor(
                                 FinancialYearNames
                         )
                         spinnerArrayAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item) // The drop down view
-
                         fYearSpinner.setAdapter(spinnerArrayAdapter)
-
-
+                        
                         UtilMethods.hideLoading()
                     }, { error ->
                         UtilMethods.hideLoading()

@@ -41,7 +41,6 @@ class DailyAttendanceAdapter @Inject constructor(private val context: Context, v
         holder.onBind(position)
     }
 
-
     fun addItem(dailyAttendanceCardData: List<DailyAttendanceCardData>?) {
         mDailyAttendanceCardData.addAll(dailyAttendanceCardData!!)
         notifyDataSetChanged()
@@ -62,21 +61,8 @@ class DailyAttendanceAdapter @Inject constructor(private val context: Context, v
         private var mDailyAttendanceListItemViewModel: DailyAttendanceListItemViewModel? = null
         override fun onBind(position: Int) {
             val dailyAttendanceCardData: DailyAttendanceCardData = mDailyAttendanceCardData[position]
-
-            val dailyAttendanceCardView = itemView.daily_attendance_card_view
-            val dailyAttendanceItemMonthCl = itemView.daily_attendance_item_month_cl
             mDailyAttendanceListItemViewModel = DailyAttendanceListItemViewModel(dailyAttendanceCardData, position, this,dataManager)
             mBinding.viewModel = mDailyAttendanceListItemViewModel
-
-
-
-
-
-
-           /* if (punchDate.equals(currentDate)){
-                dailyAttendanceCardView.setBackgroundResource(R.drawable.layout_daily_attendance_row_bg)
-                dailyAttendanceItemMonthCl.setBackgroundResource(R.drawable.layout_daily_attendance_row_month_bg_hover)
-            }*/
         }
     }
 }
