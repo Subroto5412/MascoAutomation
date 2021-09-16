@@ -49,7 +49,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
 //    lateinit var drawerLayout: DrawerLayout
     private lateinit var adapter: NavigationRVAdapter
     var items = arrayListOf(
-            NavigationItemModel("Logout")
+            NavigationItemModel(R.drawable.masco,"Visit Our Website"),
+            NavigationItemModel(R.drawable.facebook,"Visit Our Facebook Page"),
+            NavigationItemModel(R.drawable.youtube,"Visit Our Youtube"),
+            NavigationItemModel(R.drawable.linkedin,"Visit Our Linkedin Page"),
+            NavigationItemModel(R.drawable.twitter,"Visit Our Twitter Page"),
+            NavigationItemModel(R.drawable.instagram,"Visit Our Instagram Page")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bd.mascogroup.automation.R
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.row_nav_drawer.view.*
 
 class NavigationRVAdapter(private var items: ArrayList<NavigationItemModel>) :
@@ -27,6 +28,10 @@ class NavigationRVAdapter(private var items: ArrayList<NavigationItemModel>) :
     }
 
     override fun onBindViewHolder(holder: NavigationItemViewHolder, position: Int) {
+
+        Glide.with( holder.itemView.navigation_image)
+                .load(items[position].image)
+                .into( holder.itemView.navigation_image)
         holder.itemView.navigation_title.text = items[position].title
     }
 
