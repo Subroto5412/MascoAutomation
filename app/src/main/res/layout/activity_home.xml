@@ -15,12 +15,124 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activity_home_parent_cl"
+        android:id="@+id/activity_home_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background = "@drawable/home_bg">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/home_bg">
 
-      <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/order_delivery_drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_home_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <!-- <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_home_full_top_search_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_70sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+           >-->
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/activity_order_delivery_appbarlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@null">
+
+                <include
+                    android:id="@+id/activity_main_parent_top_search"
+                    layout="@layout/layout_top_search_header"
+                    android:background="@null"/>
+<!--                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/activity_order_delivery_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    &lt;!&ndash;<androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/activity_order_delivery_toolbar_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_40sdp"
+                        android:gravity="center"
+                        android:text="Order Delivery Supervisor"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp" />&ndash;&gt;
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/activity_home_full_search_cl"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_38sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                       &lt;!&ndash; <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/activity_home_side_menu_im"
+                            android:layout_width="@dimen/_38sdp"
+                            android:layout_height="@dimen/_38sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:src="@drawable/side_menu"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />&ndash;&gt;
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/activity_home_search_parent_cl"
+                            android:layout_width="@dimen/_230sdp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/home_top"
+                            android:layout_marginEnd="@dimen/_8sdp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/activity_home_search_im"
+                                android:layout_width="@dimen/_28sdp"
+                                android:layout_height="@dimen/_28sdp"
+                                android:layout_marginEnd="@dimen/_8sdp"
+                                android:src="@drawable/search"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            <androidx.appcompat.widget.AppCompatEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8sdp"
+                                android:layout_marginEnd="@dimen/_40sdp"
+                                android:background="@null"
+                                android:textColor="@color/text_color"
+                                android:hint="Search Here"
+                                android:textColorHint="@color/text_color"
+                                app:layout_constraintEnd_toEndOf="@+id/activity_home_search_parent_cl"
+                                app:layout_constraintStart_toStartOf="@+id/activity_home_search_parent_cl"
+                                app:layout_constraintTop_toTopOf="@+id/activity_home_search_parent_cl"
+                                app:layout_constraintBottom_toBottomOf="@+id/activity_home_search_parent_cl"/>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.appcompat.widget.Toolbar>-->
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+      <!--  </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--      <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activity_home_full_search_cl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_38sdp"
@@ -70,14 +182,14 @@
                   app:layout_constraintBottom_toBottomOf="@+id/activity_home_search_parent_cl"/>
           </androidx.constraintlayout.widget.ConstraintLayout>
 
-      </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activity_home_top_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_90sdp"
             android:layout_marginBottom="@dimen/_68sdp"
-            app:layout_constraintTop_toBottomOf="@+id/activity_home_full_search_cl"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -97,5 +209,53 @@
             layout="@layout/layout_home_footer" />
 
      </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+            android:id="@+id/order_delivery_navigation_layout"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#DEDEDE"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/order_delivery_profile_im"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:src="@drawable/side_profile_pic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/order_delivery_profile_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Name"
+                android:textColor="#4D4D4D"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_im" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/order_delivery_navigation_rv"
+                android:layout_width="@dimen/_300sdp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="#4D4D4D"
+                android:scrollbarThumbHorizontal="@null"
+                android:scrollbarThumbVertical="@null">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
