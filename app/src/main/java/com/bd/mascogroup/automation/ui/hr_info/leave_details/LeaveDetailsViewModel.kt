@@ -46,8 +46,6 @@ class LeaveDetailsViewModel @Inject constructor(
     private var availSummaryListItems = ArrayList<AvailSummaryCardData>()
 
     fun leaveSummary(context: Context, fYEarSpId: Int) {
-        Log.e("---------","-----fYEarSpId =----------"+fYEarSpId)
-        Log.e("---------","-----acceessToken =----------"+AppConstants.acceessToken)
         leaveSummaryListItems.clear()
         availSummaryListItems.clear()
         if (UtilMethods.isConnectedToInternet(context)) {
@@ -58,9 +56,6 @@ class LeaveDetailsViewModel @Inject constructor(
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ leaveSummaryResponse ->
                         leaveSummaryResponse._LeaveHistoryformatList.forEach {
-                            Log.e("------","-----type_name-----"+it.type_name)
-                            Log.e("------","-----sl-----"+it.sl)
-                            Log.e("------","-----cl-----"+it.cl)
                             leaveSummaryListItems.add(LeaveSummaryCardData(it))
                         }
                         leaveSummaryListLiveData.value = leaveSummaryListItems
@@ -71,7 +66,9 @@ class LeaveDetailsViewModel @Inject constructor(
                         UtilMethods.hideLoading()
 //                        UtilMethods.showLongToast(context, error.message.toString())
 //                        availSummary(context, fYEarSpId)
-                        getRefreshToken(context)
+                        if (error.message.toString().contains("401")){
+                            getRefreshToken(context)
+                        }
                     }
                     )
         } else {
@@ -101,7 +98,9 @@ class LeaveDetailsViewModel @Inject constructor(
                         UtilMethods.hideLoading()
                     }, { error ->
                         UtilMethods.hideLoading()
-                        getRefreshToken(context)
+                        if (error.message.toString().contains("401")){
+                            getRefreshToken(context)
+                        }
 //                         UtilMethods.showLongToast(context, error.message.toString())
                     }
                     )

@@ -64,8 +64,11 @@ class DailyAttendanceViewModel @Inject constructor(
                         UtilMethods.hideLoading()
                     }, { error ->
                         UtilMethods.hideLoading()
+                        if (error.message.toString().contains("401")){
+                            getRefreshToken(context)
+                        }
 //                        UtilMethods.showLongToast(context, error.message.toString())
-                        getRefreshToken(context)
+
                     }
                     )
         }else{

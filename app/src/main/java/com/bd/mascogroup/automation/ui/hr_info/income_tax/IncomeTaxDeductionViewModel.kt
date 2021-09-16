@@ -72,7 +72,9 @@ import javax.inject.Inject
                               activity_income_tax_total_value_tv.setText("")
                               activity_income_tax_total_tv.setText("")
                               UtilMethods.hideLoading()
-                              getRefreshToken(context)
+                              if (error.message.toString().contains("401")){
+                                  getRefreshToken(context)
+                              }
                           }
                           )
               } else {
