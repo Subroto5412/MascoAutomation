@@ -16,8 +16,7 @@
         android:id="@+id/layout_home_footer_parent_cl7"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_275sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#041637">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activity_side_menu_user_cl"
