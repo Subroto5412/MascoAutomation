@@ -242,20 +242,22 @@ class OTPViewModel @Inject constructor(
                                                 dataManager.refreshToken = loginResponse.refresh_token
                                                 AppConstants.acceessToken = loginResponse.token
 
-                                                loginResponse._permissionList.forEach { permissionListResponse->
-                                                        if (permissionListResponse.moduleName.equals("HRModule"))
-                                                                dataManager.HRModule = permissionListResponse.moduleName
+                                                if (!loginResponse._permissionList.isNullOrEmpty()){
+                                                        loginResponse._permissionList.forEach { permissionListResponse->
+                                                                if (permissionListResponse.moduleName.equals("HRModule"))
+                                                                        dataManager.HRModule = permissionListResponse.moduleName
 
 
-                                                        permissionListResponse._subMenuList.forEach {
-                                                                if (it.activityName.equals("daily_attendance"))
-                                                                        dataManager.dailyAttendance = it.activityName
+                                                                permissionListResponse._subMenuList.forEach {
+                                                                        if (it.activityName.equals("daily_attendance"))
+                                                                                dataManager.dailyAttendance = it.activityName
 
-                                                                if (it.activityName.equals("leave_history"))
-                                                                        dataManager.leaveHistory = it.activityName
+                                                                        if (it.activityName.equals("leave_history"))
+                                                                                dataManager.leaveHistory = it.activityName
 
-                                                                if (it.activityName.equals("tax_history"))
-                                                                        dataManager.taxHistory = it.activityName
+                                                                        if (it.activityName.equals("tax_history"))
+                                                                                dataManager.taxHistory = it.activityName
+                                                                }
                                                         }
                                                 }
                                         }

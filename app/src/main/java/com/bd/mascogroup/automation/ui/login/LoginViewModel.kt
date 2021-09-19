@@ -135,24 +135,29 @@ class LoginViewModel @Inject constructor(
                         AppConstants.acceessToken = loginResponse.token
                         dataManager.password = password
                         dataManager.saveEmpCode = loginResponse.empCode
+                        Log.e("------------","----------"+loginResponse._permissionList)
+                        if (loginResponse._permissionList.isNullOrEmpty()){
+                            navigator?.openHomeActivity()
+                        }else{
+                            loginResponse._permissionList.forEach { permissionListResponse->
+                                if (permissionListResponse.moduleName.equals("HRModule"))
+                                    dataManager.HRModule = permissionListResponse.moduleName
 
-                        loginResponse._permissionList.forEach { permissionListResponse->
-                            if (permissionListResponse.moduleName.equals("HRModule"))
-                            dataManager.HRModule = permissionListResponse.moduleName
 
+                                permissionListResponse._subMenuList.forEach {
+                                    if (it.activityName.equals("daily_attendance"))
+                                        dataManager.dailyAttendance = it.activityName
 
-                            permissionListResponse._subMenuList.forEach {
-                                if (it.activityName.equals("daily_attendance"))
-                                    dataManager.dailyAttendance = it.activityName
+                                    if (it.activityName.equals("leave_history"))
+                                        dataManager.leaveHistory = it.activityName
 
-                                if (it.activityName.equals("leave_history"))
-                                    dataManager.leaveHistory = it.activityName
-
-                                if (it.activityName.equals("tax_history"))
-                                    dataManager.taxHistory = it.activityName
+                                    if (it.activityName.equals("tax_history"))
+                                        dataManager.taxHistory = it.activityName
+                                }
                             }
+                            navigator?.openHomeActivity()
                         }
-                        navigator?.openHomeActivity()
+
                     }else{
                         navigator?.ToastMSG()
                     }
