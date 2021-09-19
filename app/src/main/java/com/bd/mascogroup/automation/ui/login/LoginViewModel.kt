@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,6 +23,9 @@ import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
 import com.bd.mascogroup.automation.utils.rx.ISchedulerProvider
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.android.material.card.MaterialCardView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -33,7 +37,7 @@ class LoginViewModel @Inject constructor(
 ): BaseViewModel<ILoginNavigator>(dataManager, ISchedulerProvider) {
 
     fun setup(context: Context, activity_login_user_id_et: EditText, activity_login_password_et: EditText, activity_login_logo_im: ImageView, activity_login_user_im: ImageView, activity_login_user_cl: ConstraintLayout,
-              activity_login_user_name_tv: TextView, activity_login_unit_name_tv: TextView, activity_login_signin_btn: MaterialCardView, activity_login_signin_btn_hide: MaterialCardView) {
+              activity_login_user_name_tv: TextView, activity_login_unit_name_tv: TextView, activity_login_signin_btn: MaterialCardView, activity_login_signin_btn_hide: MaterialCardView, activity_login_remember_ck:CheckBox) {
 
         activity_login_user_id_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -92,6 +96,26 @@ class LoginViewModel @Inject constructor(
 
             doLogin(context, activity_login_user_id_et.text.toString(), activity_login_password_et.text.toString())
         }
+
+        activity_login_remember_ck.setOnClickListener {
+            if (dataManager.rememberMe.equals("true")){
+                activity_login_remember_ck.isChecked = false
+                dataManager.rememberMe = "false"
+            }else{
+                activity_login_remember_ck.isChecked = true
+                dataManager.rememberMe = "true"
+            }
+        }
+
+        if (dataManager.rememberMe.equals("true")){
+            activity_login_remember_ck.isChecked = true
+            activity_login_user_id_et.setText(dataManager.saveEmpCode)
+            activity_login_password_et.setText(dataManager.password)
+        }else{
+            activity_login_remember_ck.isChecked = false
+            dataManager.saveEmpCode = ""
+            dataManager.password = ""
+        }
     }
 
     fun doLogin(context: Context, empId: String, password: String){
@@ -109,6 +133,8 @@ class LoginViewModel @Inject constructor(
                         dataManager.accessToken = loginResponse.token
                         dataManager.refreshToken = loginResponse.refresh_token
                         AppConstants.acceessToken = loginResponse.token
+                        dataManager.password = password
+                        dataManager.saveEmpCode = loginResponse.empCode
 
                         loginResponse._permissionList.forEach { permissionListResponse->
                             if (permissionListResponse.moduleName.equals("HRModule"))
@@ -159,9 +185,14 @@ class LoginViewModel @Inject constructor(
                         val url = "https://mis-api.mascoknit.com/EmpImages/"+image
                         dataManager.customerPic = url
 
-                        Glide.with(activity_login_user_im)
+                        val photoCornerRadius = 35
+                        Glide.with(context)
                                 .load(url)
+                                .transform(MultiTransformation(CenterCrop(), RoundedCorners(photoCornerRadius)))
+                                .placeholder(R.drawable.user)
+                                .error(R.drawable.user)
                                 .into(activity_login_user_im)
+
                         activity_login_user_name_tv.setText(loginByUserIdResponse.emP_ENAME)
                         activity_login_unit_name_tv.setText(loginByUserIdResponse.unitEName)
 

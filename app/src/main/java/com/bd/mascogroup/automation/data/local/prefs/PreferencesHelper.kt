@@ -22,9 +22,13 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         get() = mPrefs.getString(PREF_KEY_CUSTOMER_NAME,"").toString()
         set(customerName) = mPrefs.edit().putString(PREF_KEY_CUSTOMER_NAME, customerName).apply()
 
-    override var SaveTime: String
-        get() = mPrefs.getString(PREF_KEY_SAVETIME,"").toString()
-        set(SaveTime) = mPrefs.edit().putString(PREF_KEY_SAVETIME, SaveTime).apply()
+    override var rememberMe: String
+        get() = mPrefs.getString(PREF_KEY_REMEMBER_ME,"").toString()
+        set(rememberMe) = mPrefs.edit().putString(PREF_KEY_REMEMBER_ME, rememberMe).apply()
+
+    override var password: String
+        get() = mPrefs.getString(PREF_KEY_PASSWORD,"").toString()
+        set(password) = mPrefs.edit().putString(PREF_KEY_PASSWORD, password).apply()
 
     override var accessToken: String
         get() = mPrefs.getString(PREF_KEY_ACCESS_TOKEN,"").toString()
@@ -45,6 +49,10 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
     override var empCode: String
         get() = mPrefs.getString(PREF_KEY_EMPCODE,"").toString()
         set(empCode) = mPrefs.edit().putString(PREF_KEY_EMPCODE, empCode).apply()
+
+    override var saveEmpCode: String
+        get() = mPrefs.getString(PREF_KEY_SAVE_EMPCODE,"").toString()
+        set(saveEmpCode) = mPrefs.edit().putString(PREF_KEY_SAVE_EMPCODE, saveEmpCode).apply()
 
     override var HRModule: String
         get() = mPrefs.getString(PREF_KEY_HR_MODULE,"").toString()
@@ -67,12 +75,14 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         private val PREF_KEY_CUSTOMER_PIC = "PREF_KEY_CUSTOMER_PIC"
         private val PREF_KEY_UNIT_NAME = "PREF_KEY_UNIT_NAME"
         private val PREF_KEY_CUSTOMER_NAME = "PREF_KEY_CUSTOMER_NAME"
-        private val PREF_KEY_SAVETIME = "PREF_KEY_SAVETIME"
+        private val PREF_KEY_REMEMBER_ME = "PREF_KEY_REMEMBER_ME"
+        private val PREF_KEY_PASSWORD = "PREF_KEY_PASSWORD"
         private val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
         private val PREF_KEY_REFRESH_TOKEN = "PREF_KEY_REFRESH_TOKEN"
         private val PREF_KEY_PHONE = "PREF_KEY_PHONE"
         private val PREF_KEY_EMPId = "PREF_KEY_EMPId"
         private val PREF_KEY_EMPCODE = "PREF_KEY_EMPCODE"
+        private val PREF_KEY_SAVE_EMPCODE = "PREF_KEY_SAVE_EMPCODE"
         private val PREF_KEY_HR_MODULE = "PREF_KEY_HR_MODULE"
         private val PREF_KEY_DAILY_ATTENDANCE = "PREF_KEY_DAILY_ATTENDANCE"
         private val PREF_KEY_LEAVE_HISTORY = "PREF_KEY_LEAVE_HISTORY"

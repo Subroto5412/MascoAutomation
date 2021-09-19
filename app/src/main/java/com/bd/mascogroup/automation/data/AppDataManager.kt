@@ -26,10 +26,16 @@ class AppDataManager @Inject constructor(
         set(customerName) {
             mPreferencesHelper.customerName = customerName
         }
-    override var SaveTime: String
-        get() = mPreferencesHelper.SaveTime
-        set(SaveTime) {
-            mPreferencesHelper.SaveTime = SaveTime
+    override var rememberMe: String
+        get() = mPreferencesHelper.rememberMe
+        set(rememberMe) {
+            mPreferencesHelper.rememberMe = rememberMe
+        }
+
+    override var password: String
+        get() = mPreferencesHelper.password
+        set(password) {
+            mPreferencesHelper.password = password
         }
 
     override var accessToken: String
@@ -59,6 +65,12 @@ class AppDataManager @Inject constructor(
         get() = mPreferencesHelper.empCode
         set(empCode) {
             mPreferencesHelper.empCode = empCode
+        }
+
+    override var saveEmpCode: String
+        get() = mPreferencesHelper.saveEmpCode
+        set(saveEmpCode) {
+            mPreferencesHelper.saveEmpCode = saveEmpCode
         }
 
     override var HRModule: String

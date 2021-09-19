@@ -58,7 +58,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
         viewModel.navigator = this
 
         viewModel.setup(this,activity_login_user_id_et,activity_login_password_et, activity_login_logo_im,activity_login_user_im,activity_login_user_cl,
-                activity_login_user_name_tv, activity_login_unit_name_tv, activity_login_signin_btn,activity_login_signin_btn_hide)
+                activity_login_user_name_tv, activity_login_unit_name_tv, activity_login_signin_btn,activity_login_signin_btn_hide,activity_login_remember_ck)
 
         activity_login_signup_tv.setOnClickListener {
             val intent = SignupActivity.newIntent(this@LoginActivity)

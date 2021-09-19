@@ -7,11 +7,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import com.bd.mascogroup.automation.utils.rx.ISchedulerProvider
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
@@ -26,8 +30,15 @@ class HomeViewModel @Inject constructor(
         unitTv.setText(dataManager.unitName)
         phoneTv.setText(dataManager.mobile)
 
-        Glide.with(photo)
+        /*Glide.with(photo)
                 .load(dataManager.customerPic)
+                .into(photo)*/
+        val photoCornerRadius = 35
+        Glide.with(context)
+                .load(dataManager.customerPic)
+                .transform(MultiTransformation(CenterCrop(), RoundedCorners(photoCornerRadius)))
+                .placeholder(R.drawable.user)
+                .error(R.drawable.user)
                 .into(photo)
 
         activity_home_side_menu_logout_layout.setOnClickListener {

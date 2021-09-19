@@ -4,12 +4,14 @@ interface IPreferencesHelper {
     var customerPic: String
     var unitName: String
     var customerName: String
-    var SaveTime: String
+    var rememberMe: String
+    var password: String
     var accessToken: String
     var refreshToken: String
     var mobile: String
     var empId: String
     var empCode: String
+    var saveEmpCode: String
     var HRModule: String
     var dailyAttendance: String
     var leaveHistory: String
