@@ -150,11 +150,15 @@ class LoginViewModel @Inject constructor(
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ loginByUserIdResponse ->
-
+                        dataManager.unitName = loginByUserIdResponse.unitEName
+                        dataManager.customerName = loginByUserIdResponse.emP_ENAME
+                        
                         val parts = loginByUserIdResponse.serverFileName.split("\\")
                         val image = parts[1]
 
                         val url = "https://mis-api.mascoknit.com/EmpImages/"+image
+                        dataManager.customerPic = url
+
                         Glide.with(activity_login_user_im)
                                 .load(url)
                                 .into(activity_login_user_im)

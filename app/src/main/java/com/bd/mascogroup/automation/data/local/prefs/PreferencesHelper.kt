@@ -10,13 +10,13 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
     private val mPrefs: SharedPreferences =
             context.getSharedPreferences(prefInfo, Context.MODE_PRIVATE)
 
-    override var deliveryManId: String
-        get() = mPrefs.getString(PREF_KEY_DRIVERID,"").toString()
-        set(deliveryManId) = mPrefs.edit().putString(PREF_KEY_DRIVERID, deliveryManId).apply()
+    override var customerPic: String
+        get() = mPrefs.getString(PREF_KEY_CUSTOMER_PIC,"").toString()
+        set(customerPic) = mPrefs.edit().putString(PREF_KEY_CUSTOMER_PIC, customerPic).apply()
 
-    override var invoice: String
-        get() = mPrefs.getString(PREF_KEY_INVOICE,"").toString()
-        set(invoice) = mPrefs.edit().putString(PREF_KEY_INVOICE, invoice).apply()
+    override var unitName: String
+        get() = mPrefs.getString(PREF_KEY_UNIT_NAME,"").toString()
+        set(unitName) = mPrefs.edit().putString(PREF_KEY_UNIT_NAME, unitName).apply()
 
     override var customerName: String
         get() = mPrefs.getString(PREF_KEY_CUSTOMER_NAME,"").toString()
@@ -64,8 +64,8 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
 
 
     companion object {
-        private val PREF_KEY_DRIVERID = "PREF_KEY_DRIVERID"
-        private val PREF_KEY_INVOICE = "PREF_KEY_INVOICE"
+        private val PREF_KEY_CUSTOMER_PIC = "PREF_KEY_CUSTOMER_PIC"
+        private val PREF_KEY_UNIT_NAME = "PREF_KEY_UNIT_NAME"
         private val PREF_KEY_CUSTOMER_NAME = "PREF_KEY_CUSTOMER_NAME"
         private val PREF_KEY_SAVETIME = "PREF_KEY_SAVETIME"
         private val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"

@@ -1,8 +1,8 @@
 package com.bd.mascogroup.automation.ui.home
 
-import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -11,18 +11,17 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.databinding.library.baseAdapters.BR
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityHomeBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
-import com.bd.mascogroup.automation.ui.production_management.ProductionManagementActivity
-import com.bd.mascogroup.automation.ui.signup.SignupActivity
+import com.bd.mascogroup.automation.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_home_side_menu.*
+import kotlinx.android.synthetic.main.activity_home_side_menu_footer.*
 import kotlinx.android.synthetic.main.activity_hr_info.*
 import kotlinx.android.synthetic.main.layout_home_body.*
-import kotlinx.android.synthetic.main.layout_home_body.layout_human_resource_cl
 import kotlinx.android.synthetic.main.layout_top_search_header.*
 import javax.inject.Inject
 
@@ -49,12 +48,10 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
 //    lateinit var drawerLayout: DrawerLayout
     private lateinit var adapter: NavigationRVAdapter
     var items = arrayListOf(
-            NavigationItemModel(R.drawable.masco,"Visit Our Website"),
-            NavigationItemModel(R.drawable.facebook,"Visit Our Facebook Page"),
-            NavigationItemModel(R.drawable.youtube,"Visit Our Youtube"),
-            NavigationItemModel(R.drawable.linkedin,"Visit Our Linkedin Page"),
-            NavigationItemModel(R.drawable.twitter,"Visit Our Twitter Page"),
-            NavigationItemModel(R.drawable.instagram,"Visit Our Instagram Page")
+            NavigationItemModel(R.drawable.masco, "Visit Our Website"),
+            NavigationItemModel(R.drawable.facebook, "Visit Our Facebook Page"),
+            NavigationItemModel(R.drawable.youtube, "Visit Our Youtube"),
+            NavigationItemModel(R.drawable.linkedin, "Visit Our Linkedin Page")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,82 +60,80 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
         viewModel.navigator = this
 
         layout_production_management_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
 
         layout_supply_chain_down_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
 
         layout_merchandising_marketing_down_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
 
         layout_asset_tracking_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
 
         layout_automobile_management_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
 
         layout_search_engine_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
 
         layout_dispatch_slip_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
 
         layout_idea_laboratory_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
         layout_documentation_management_cl.setOnClickListener {
-            Toast.makeText(this,"under construction!",Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
         }
 
         layout_human_resource_cl.setOnClickListener {
             val intent = HRInfoActivity.newIntent(this@HomeActivity)
             startActivity(intent)
         }
+        viewModel.sideMenuDisplayInfo(this, activity_side_menu_name_tv, activity_side_menu_empcode_tv, activity_side_menu_unit_tv, activity_side_menu_phone_tv, activity_side_menu_user_im, activity_home_side_menu_logout_layout)
 
-//        drawerLayout = findViewById(R.id.order_delivery_drawer_layout)
         setSupportActionBar(activity_main_toolbar)
 
         // Setup Recyclerview's Layout
-        order_delivery_navigation_rv.layoutManager = LinearLayoutManager(this)
-        order_delivery_navigation_rv.setHasFixedSize(true)
+        navigation_item_rv.layoutManager = LinearLayoutManager(this)
+        navigation_item_rv.setHasFixedSize(true)
         updateAdapter()
 
         // Add Item Touch Listener
-        /*order_delivery_navigation_rv.addOnItemTouchListener(RecyclerTouchListener(this, object : ClickListener {
+        navigation_item_rv.addOnItemTouchListener(RecyclerTouchListener(this, object : ClickListener {
             override fun onClick(view: View, position: Int) {
                 when (position) {
                     0 -> {
-                        val builder = AlertDialog.Builder(this@HomeActivity)
-                        builder.setTitle("Do You Want to Logout from App?")
-                        //  builder.setMessage("Are you want to set the app background color to RED?")
-                        builder.setPositiveButton("YES"){dialog, which ->
-                           // viewModel.dataManager.deliveryManwiseId = ""
-                            //viewModel.dataManager.deliveryAppCategory = ""
-                           // val intent = Intent(this@OrderDeliverySuperviserActivity, LoginActivity::class.java)
-                          //  startActivity(intent)
-                          //  finish()
-                        }
-                        builder.setNegativeButton("No"){dialog,which ->
-                        }
-                        val dialog: AlertDialog = builder.create()
-                        dialog.show()
-
+                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.mascoknit.com/"))
+                        startActivity(browserIntent)
                     }
-
+                    1 -> {
+                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/mascofamily/"))
+                        startActivity(browserIntent)
+                    }
+                    2 -> {
+                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/hashtag/mascogroup"))
+                        startActivity(browserIntent)
+                    }
+                    3 -> {
+                        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/company/masco-group-bangladesh/?originalSubdomain=bd"))
+                        startActivity(browserIntent)
+                    }
                 }
 
                 Handler().postDelayed({
-                    drawerLayout.closeDrawer(GravityCompat.START)
+                    order_delivery_drawer_layout.closeDrawer(GravityCompat.START)
                 }, 200)
             }
-        }))*/
+        }))
 
         // Close the soft keyboard when you open or close the Drawer
         val toggle: ActionBarDrawerToggle = object : ActionBarDrawerToggle(this, order_delivery_drawer_layout, activity_main_toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
@@ -178,10 +173,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
 
     private fun updateAdapter() {
         adapter = NavigationRVAdapter(items)
-        order_delivery_navigation_rv.adapter = adapter
+        navigation_item_rv.adapter = adapter
         adapter.notifyDataSetChanged()
     }
 
+    override fun openLoginScreen(){
+        val intent = LoginActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
 
     companion object {
         fun newIntent(context: Context): Intent {

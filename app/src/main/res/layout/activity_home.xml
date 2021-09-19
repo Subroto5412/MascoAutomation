@@ -216,7 +216,7 @@
             android:layout_width="@dimen/_250sdp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="#041637"
+            android:background="#F2041637"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
@@ -243,16 +243,25 @@
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_im" />-->
+        <include
+                 android:id="@+id/activity_production_management_footer2"
+                 layout="@layout/activity_home_side_menu" />
+
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/order_delivery_navigation_rv"
+                android:id="@+id/navigation_item_rv"
                 android:layout_width="@dimen/_300sdp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:scrollbarThumbHorizontal="@null"
-                android:scrollbarThumbVertical="@null">
+                android:scrollbarThumbVertical="@null"
+                app:layout_constraintTop_toBottomOf="@+id/activity_production_management_footer2">
 
             </androidx.recyclerview.widget.RecyclerView>
+
+        <include
+            android:id="@+id/activity_home_side_menu_logout_layout"
+            layout="@layout/activity_home_side_menu_footer" />
         </LinearLayout>
 
     </androidx.drawerlayout.widget.DrawerLayout>

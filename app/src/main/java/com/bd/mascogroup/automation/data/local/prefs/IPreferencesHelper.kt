@@ -1,8 +1,8 @@
 package com.bd.mascogroup.automation.data.local.prefs
 
 interface IPreferencesHelper {
-    var deliveryManId: String
-    var invoice: String
+    var customerPic: String
+    var unitName: String
     var customerName: String
     var SaveTime: String
     var accessToken: String

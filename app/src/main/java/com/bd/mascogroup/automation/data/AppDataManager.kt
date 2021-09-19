@@ -16,10 +16,10 @@ class AppDataManager @Inject constructor(
     private val mPreferencesHelper: IPreferencesHelper,
     private val mGson: Gson,
 ) : IDataManager {
-    override var deliveryManId: String
-        get() = mPreferencesHelper.deliveryManId
-        set(deliveryManId) {
-            mPreferencesHelper.deliveryManId = deliveryManId
+    override var customerPic: String
+        get() = mPreferencesHelper.customerPic
+        set(customerPic) {
+            mPreferencesHelper.customerPic = customerPic
         }
     override var customerName: String
         get() = mPreferencesHelper.customerName
@@ -85,10 +85,10 @@ class AppDataManager @Inject constructor(
             mPreferencesHelper.taxHistory = taxHistory
         }
 
-    override var invoice: String
-        get() = mPreferencesHelper.invoice
-        set(invoice) {
-            mPreferencesHelper.invoice = invoice
+    override var unitName: String
+        get() = mPreferencesHelper.unitName
+        set(unitName) {
+            mPreferencesHelper.unitName = unitName
         }
 
     override fun insertUser(user: User): Observable<Boolean> {

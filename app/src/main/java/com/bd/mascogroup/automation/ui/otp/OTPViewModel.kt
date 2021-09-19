@@ -20,6 +20,7 @@ import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
 import com.bd.mascogroup.automation.utils.rx.ISchedulerProvider
+import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -225,10 +226,10 @@ class OTPViewModel @Inject constructor(
                 }
         }
 
-        fun doLogin(context: Context, empId: String, password: String){
+        fun doLogin(context: Context, empCode: String, password: String){
                 if(UtilMethods.isConnectedToInternet(context)){
                         UtilMethods.showLoading(context)
-                        val observable = ApiServiceCalling.generalMisApiCall().doLogin(LoginRequest(empId, password))
+                        val observable = ApiServiceCalling.generalMisApiCall().doLogin(LoginRequest(empCode, password))
 
                         observable.subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
@@ -257,16 +258,43 @@ class OTPViewModel @Inject constructor(
                                                                         dataManager.taxHistory = it.activityName
                                                         }
                                                 }
-
-                                                navigator?.openHomeScreen()
                                         }
                                         UtilMethods.hideLoading()
+                                        doSetImage(context, empCode)
                                 }, { error ->
                                         UtilMethods.hideLoading()
                                         // UtilMethods.showLongToast(context, error.message.toString())
                                 }
                                 )
                 }else{
+                        UtilMethods.showLongToast(context, "No Internet Connection!")
+                }
+        }
+
+        fun doSetImage(context: Context, empCode: String) {
+                if (UtilMethods.isConnectedToInternet(context)) {
+                        UtilMethods.showLoading(context)
+                        val observable = ApiServiceCalling.generalMisApiCall().getLoginImage(empCode)
+
+                        observable.subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe({ loginByUserIdResponse ->
+                                        dataManager.unitName = loginByUserIdResponse.unitEName
+                                        dataManager.customerName = loginByUserIdResponse.emP_ENAME
+
+                                        val parts = loginByUserIdResponse.serverFileName.split("\\")
+                                        val image = parts[1]
+                                        dataManager.customerPic = "https://mis-api.mascoknit.com/EmpImages/" + image
+
+                                        navigator?.openHomeScreen()
+
+                                        UtilMethods.hideLoading()
+                                }, { error ->
+                                        UtilMethods.hideLoading()
+                                        // UtilMethods.showLongToast(context, error.message.toString())
+                                }
+                                )
+                } else {
                         UtilMethods.showLongToast(context, "No Internet Connection!")
                 }
         }
