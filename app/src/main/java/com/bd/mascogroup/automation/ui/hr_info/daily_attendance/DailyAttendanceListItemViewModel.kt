@@ -31,6 +31,7 @@ class DailyAttendanceListItemViewModel(
     val punchOutValue: ObservableField<String>
     val additionTimeValue: ObservableField<String>
     val textColor: ObservableField<Int>
+    val statusTextColor: ObservableField<Int>
 
     interface DailyAttendanceListItemViewModelListener {
     }
@@ -64,10 +65,10 @@ class DailyAttendanceListItemViewModel(
             ObservableField(R.drawable.layout_daily_attendance_row_month_bg_hover)
         } else {
 
-            if (mDailyAttendanceCardData.fSts.equals("P")){
-                ObservableField(R.drawable.layout_daily_attendance_row_month_bg)
-            }else{
+            if (mDailyAttendanceCardData.fSts.equals("WHD") || mDailyAttendanceCardData.fSts.equals("CHD") || mDailyAttendanceCardData.fSts.equals("GHD")){
                 ObservableField(R.drawable.layout_daily_attendance_row_month_reg_bg_hover)
+            }else{
+                ObservableField(R.drawable.layout_daily_attendance_row_month_bg)
             }
         }
 
@@ -75,10 +76,10 @@ class DailyAttendanceListItemViewModel(
             ObservableField(R.color.text_color)
         } else {
 
-            if (mDailyAttendanceCardData.fSts.equals("P")){
-                ObservableField(R.color.text_color)
-            }else{
+            if (mDailyAttendanceCardData.fSts.equals("WHD") || mDailyAttendanceCardData.fSts.equals("CHD") || mDailyAttendanceCardData.fSts.equals("GHD")){
                 ObservableField(R.color.white)
+            }else{
+                ObservableField(R.color.text_color)
             }
         }
 
@@ -98,6 +99,12 @@ class DailyAttendanceListItemViewModel(
             ObservableField("0")
         } else {
             ObservableField(mDailyAttendanceCardData.additionTime)
+        }
+
+        statusTextColor = if(mDailyAttendanceCardData.fSts.equals("QO") || mDailyAttendanceCardData.fSts.equals("SL") || mDailyAttendanceCardData.fSts.equals("CL") || mDailyAttendanceCardData.fSts.equals("EL") || mDailyAttendanceCardData.fSts.equals("LWP")){
+            ObservableField(R.color.radical_red)
+        }else{
+            ObservableField(R.color.white)
         }
     }
 }
