@@ -27,6 +27,9 @@ class DailyAttendanceListItemViewModel(
     val month: ObservableField<String>
     val backgroundColor: ObservableField<Int>
     val backgroundColorHover: ObservableField<Int>
+    val punchInValue: ObservableField<String>
+    val punchOutValue: ObservableField<String>
+    val additionTimeValue: ObservableField<String>
 
     interface DailyAttendanceListItemViewModelListener {
     }
@@ -53,13 +56,41 @@ class DailyAttendanceListItemViewModel(
         backgroundColor =  if ((punchDate+"-"+punchMonth).equals(currentDate)) {
             ObservableField(R.drawable.layout_daily_attendance_row_bg)
         } else {
-            ObservableField(R.drawable.layout_daily_attendance_row_no_bg_color)
+            if (mDailyAttendanceCardData.fSts.equals("P")){
+                ObservableField(R.drawable.layout_daily_attendance_row_no_bg_color)
+            }else{
+                ObservableField(R.drawable.layout_daily_attendance_row_red_bg)
+            }
+
         }
 
         backgroundColorHover =  if ((punchDate+"-"+punchMonth).equals(currentDate)) {
             ObservableField(R.drawable.layout_daily_attendance_row_month_bg_hover)
         } else {
-            ObservableField(R.drawable.layout_daily_attendance_row_month_bg)
+
+            if (mDailyAttendanceCardData.fSts.equals("P")){
+                ObservableField(R.drawable.layout_daily_attendance_row_month_bg)
+            }else{
+                ObservableField(R.drawable.layout_daily_attendance_row_month_reg_bg_hover)
+            }
+        }
+
+        punchInValue =  if (mDailyAttendanceCardData.fPunchIn.equals("12:00:00 AM")) {
+            ObservableField("0")
+        } else {
+            ObservableField(mDailyAttendanceCardData.fPunchIn)
+        }
+
+        punchOutValue =  if (mDailyAttendanceCardData.fPunchOut.equals("12:00:00 AM")) {
+            ObservableField("0")
+        } else {
+            ObservableField(mDailyAttendanceCardData.fPunchOut)
+        }
+
+        additionTimeValue =  if (mDailyAttendanceCardData.additionTime.equals("06:00:00")) {
+            ObservableField("0")
+        } else {
+            ObservableField(mDailyAttendanceCardData.additionTime)
         }
     }
 }
