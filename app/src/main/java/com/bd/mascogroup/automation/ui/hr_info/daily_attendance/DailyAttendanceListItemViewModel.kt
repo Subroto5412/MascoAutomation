@@ -30,6 +30,7 @@ class DailyAttendanceListItemViewModel(
     val punchInValue: ObservableField<String>
     val punchOutValue: ObservableField<String>
     val additionTimeValue: ObservableField<String>
+    val textColor: ObservableField<Int>
 
     interface DailyAttendanceListItemViewModelListener {
     }
@@ -56,12 +57,7 @@ class DailyAttendanceListItemViewModel(
         backgroundColor =  if ((punchDate+"-"+punchMonth).equals(currentDate)) {
             ObservableField(R.drawable.layout_daily_attendance_row_bg)
         } else {
-            if (mDailyAttendanceCardData.fSts.equals("P")){
-                ObservableField(R.drawable.layout_daily_attendance_row_no_bg_color)
-            }else{
-                ObservableField(R.drawable.layout_daily_attendance_row_red_bg)
-            }
-
+            ObservableField(R.drawable.layout_daily_attendance_row_no_bg_color)
         }
 
         backgroundColorHover =  if ((punchDate+"-"+punchMonth).equals(currentDate)) {
@@ -72,6 +68,17 @@ class DailyAttendanceListItemViewModel(
                 ObservableField(R.drawable.layout_daily_attendance_row_month_bg)
             }else{
                 ObservableField(R.drawable.layout_daily_attendance_row_month_reg_bg_hover)
+            }
+        }
+
+        textColor =  if ((punchDate+"-"+punchMonth).equals(currentDate)) {
+            ObservableField(R.color.text_color)
+        } else {
+
+            if (mDailyAttendanceCardData.fSts.equals("P")){
+                ObservableField(R.color.text_color)
+            }else{
+                ObservableField(R.color.white)
             }
         }
 

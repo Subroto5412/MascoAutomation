@@ -32,7 +32,7 @@ class DailyAttendanceStatusListItemViewModel(
 
         status_text_color = if(mDailyAttendanceStatusCardData.status.equals("Late")){
             if (mDailyAttendanceStatusCardData.statusValue>2){
-                ObservableField(R.color.red)
+                ObservableField(R.color.radical_red)
             }else{
                 ObservableField(R.color.white)
             }
