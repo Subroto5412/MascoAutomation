@@ -259,6 +259,11 @@ class OTPViewModel @Inject constructor(
                                                                                 dataManager.taxHistory = it.activityName
                                                                 }
                                                         }
+                                                }else{
+                                                        dataManager.HRModule = ""
+                                                        dataManager.dailyAttendance = ""
+                                                        dataManager.leaveHistory = ""
+                                                        dataManager.taxHistory = ""
                                                 }
                                         }
                                         UtilMethods.hideLoading()

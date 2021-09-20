@@ -137,6 +137,11 @@ class LoginViewModel @Inject constructor(
                         dataManager.saveEmpCode = loginResponse.empCode
                         Log.e("------------","----------"+loginResponse._permissionList)
                         if (loginResponse._permissionList.isNullOrEmpty()){
+                            dataManager.HRModule = ""
+                            dataManager.dailyAttendance = ""
+                            dataManager.leaveHistory = ""
+                            dataManager.taxHistory = ""
+
                             navigator?.openHomeActivity()
                         }else{
                             loginResponse._permissionList.forEach { permissionListResponse->
@@ -190,7 +195,7 @@ class LoginViewModel @Inject constructor(
                         val url = "https://mis-api.mascoknit.com/EmpImages/"+image
                         dataManager.customerPic = url
 
-                        val photoCornerRadius = 35
+                        val photoCornerRadius = 50
                         Glide.with(context)
                                 .load(url)
                                 .transform(MultiTransformation(CenterCrop(), RoundedCorners(photoCornerRadius)))
