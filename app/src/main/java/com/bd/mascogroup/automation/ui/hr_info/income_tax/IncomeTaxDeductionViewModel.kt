@@ -59,6 +59,7 @@ import javax.inject.Inject
                                   incomeTaxDeductionResponse.sl = sl.toString()
                                   incomeTaxDeductionResponse.month = it.month
                                   incomeTaxDeductionResponse.deductionAmount = it.deductionAmount
+                                  incomeTaxDeductionResponse.taxMonthNo = it.taxMonthNo
 
                                   deductionAmount = deductionAmount+it.deductionAmount
                                   incomeTaxDeductionListItems.add(IncomeTaxDeductionCardData(incomeTaxDeductionResponse))
