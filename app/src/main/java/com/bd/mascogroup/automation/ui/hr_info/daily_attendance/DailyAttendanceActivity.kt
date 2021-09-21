@@ -189,12 +189,16 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
             }
             Log.e("------------","-------fromDate--back---"+fromDate)
             Log.e("------------","-------toDate---back--"+toDate)
+            viewModel.dailyAttendanceSummary(this,fromDate,toDate)
+            setUpStatus()
+            subscribeToLiveDataDailyAttendanceStatus()
+
             viewModel.dailyAttendance(this,fromDate,toDate)
             setUp()
             subscribeToLiveDataDailyAttendance()
 
-            setUpStatus()
-            subscribeToLiveDataDailyAttendanceStatus()
+
+
         }
 
         activity_daily_attendance_next_month_im.setOnClickListener {
@@ -242,12 +246,15 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
             Log.e("------------","-------fromDate---next--"+fromDate)
             Log.e("------------","-------toDate--next---"+toDate)
 
+            viewModel.dailyAttendanceSummary(this,fromDate,toDate)
+            setUpStatus()
+            subscribeToLiveDataDailyAttendanceStatus()
+
             viewModel.dailyAttendance(this,fromDate,toDate)
             setUp()
             subscribeToLiveDataDailyAttendance()
 
-            setUpStatus()
-            subscribeToLiveDataDailyAttendanceStatus()
+
         }
 
         layout_header_back_im.setOnClickListener {
@@ -282,12 +289,14 @@ class DailyAttendanceActivity : BaseActivity<ActivityDailyAttendanceBinding, Dai
 
                 fromDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+"01"
                 toDate = fYEarSpName+"-"+viewModel.monthNameConvert(activity_daily_attendance_month_tv.text.toString())+"-"+currentDay
+
+                viewModel.dailyAttendanceSummary(this@DailyAttendanceActivity,fromDate,toDate)
+                setUpStatus()
+                subscribeToLiveDataDailyAttendanceStatus()
+
                 viewModel.dailyAttendance(this@DailyAttendanceActivity,fromDate,toDate)
                 setUp()
                 subscribeToLiveDataDailyAttendance()
-
-                setUpStatus()
-                subscribeToLiveDataDailyAttendanceStatus()
             }
         }
     }

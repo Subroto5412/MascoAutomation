@@ -56,10 +56,17 @@ interface ApiService {
     fun getFinancialYear(): Observable<FinancialYearResponse> // body data
 
     @Headers("Content-Type: application/json")
-    @POST("v1/Attendance/getAllAttendance")
+    @POST("v1/Attendance/details")
     fun getAllAttendance(
             @Body dailyAttendanceRequest: DailyAttendanceRequest
     ): Observable<AttendanceHistoryResponse>
+
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/Attendance/summary")
+    fun getAttendanceSummary(
+            @Body dailyAttendanceRequest: DailyAttendanceRequest
+    ): Observable<DailyAttendanceSummaryResponse>
 
     @Headers("Content-Type: application/json")
     @POST("v1/leave/leave-history")

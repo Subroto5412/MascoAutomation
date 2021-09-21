@@ -41,7 +41,7 @@ class DailyAttendanceViewModel @Inject constructor(
 
 
     fun dailyAttendance(context:Context,fromDate:String,toDate:String){
-        dailyAttendanceStatusListItems.clear()
+//        dailyAttendanceStatusListItems.clear()
         dailyAttendanceListItems.clear()
 
         if(UtilMethods.isConnectedToInternet(context)){
@@ -51,22 +51,52 @@ class DailyAttendanceViewModel @Inject constructor(
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ attendanceResponse ->
-                      attendanceResponse.allLeaveCount.forEach {
-                            dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(it))
-                        }
-                        dailyAttendanceStatusListLiveData.value = dailyAttendanceStatusListItems
 
-                       attendanceResponse._attHistoryListStr.forEach {
+                        attendanceResponse._attHistoryListStr.forEach {
                             dailyAttendanceListItems.add(DailyAttendanceCardData(it))
                         }
                         dailyAttendanceListLiveData.value = dailyAttendanceListItems
 
                         UtilMethods.hideLoading()
+//                        dailyAttendanceSummary(context, fromDate, toDate)
                     }, { error ->
                         UtilMethods.hideLoading()
                         if (error.message.toString().contains("401")){
                             getRefreshToken(context)
                         }
+//                        UtilMethods.showLongToast(context, error.message.toString())
+
+                    }
+                    )
+        }else{
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
+    }
+
+
+    fun dailyAttendanceSummary(context:Context,fromDate:String,toDate:String){
+        dailyAttendanceStatusListItems.clear()
+//        dailyAttendanceListItems.clear()
+
+        if(UtilMethods.isConnectedToInternet(context)){
+         //   UtilMethods.showLoading(context)
+            val observable = ApiServiceCalling.generalMisApiCallToken().getAttendanceSummary(DailyAttendanceRequest(fromDate,toDate))
+
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ attendanceResponse ->
+                        attendanceResponse.allLeaveCount.forEach {
+                            Log.e("---------","---------status-------"+it.status)
+                            Log.e("---------","---------statusValue-------"+it.statusValue)
+                            dailyAttendanceStatusListItems.add(DailyAttendanceStatusCardData(it))
+                        }
+                        dailyAttendanceStatusListLiveData.value = dailyAttendanceStatusListItems
+                      //  UtilMethods.hideLoading()
+                    }, { error ->
+                       /* UtilMethods.hideLoading()
+                        if (error.message.toString().contains("401")){
+                            getRefreshToken(context)
+                        }*/
 //                        UtilMethods.showLongToast(context, error.message.toString())
 
                     }

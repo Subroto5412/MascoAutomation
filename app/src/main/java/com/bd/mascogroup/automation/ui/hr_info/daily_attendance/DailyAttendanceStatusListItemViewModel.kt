@@ -31,7 +31,7 @@ class DailyAttendanceStatusListItemViewModel(
         statusValue = ObservableField(mDailyAttendanceStatusCardData.statusValue.toString())
 
         status_text_color = if(mDailyAttendanceStatusCardData.status.equals("Late")){
-            if (mDailyAttendanceStatusCardData.statusValue>2){
+            if (mDailyAttendanceStatusCardData.statusValue.toInt()>2){
                 ObservableField(R.color.radical_red)
             }else{
                 ObservableField(R.color.white)
