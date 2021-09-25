@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity">
 
-    <data>
+   <!-- <data>
 
         <import type="android.view.View" />
 
@@ -13,7 +13,7 @@
             name="viewModel"
             type="com.bd.mascogroup.automation.ui.hr_info.HRInfoViewModel" />
     </data>
-
+-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_production_management_parent_cl"
         android:layout_width="match_parent"
@@ -45,10 +45,7 @@
             app:layout_constraintTop_toBottomOf="@+id/activity_production_management_full_boby_cl">
 
 
-            <include
-                android:id="@+id/activity_main_parent_search1"
-                layout="@layout/layout_hr_body" />
-            <!--<androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_hr_main_daily_attendance_cl"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_52sdp"
@@ -90,10 +87,10 @@
                         app:layout_constraintBottom_toBottomOf="parent"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <!--<androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_hr_main_leave_details_cl"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_52sdp"
@@ -135,9 +132,9 @@
                         app:layout_constraintBottom_toBottomOf="parent"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!--<androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_hr_main_income_tax_cl"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_52sdp"
@@ -180,7 +177,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
--->
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

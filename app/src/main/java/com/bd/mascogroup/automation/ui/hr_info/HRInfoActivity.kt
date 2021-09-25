@@ -10,10 +10,9 @@ import com.bd.mascogroup.automation.databinding.ActivityHrInfoBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceActivity
-import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceViewModel
 import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionActivity
 import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivity
-import com.bd.mascogroup.automation.ui.signup.SignupActivity
+import kotlinx.android.synthetic.main.activity_attendance.*
 import kotlinx.android.synthetic.main.activity_hr_info.*
 import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
