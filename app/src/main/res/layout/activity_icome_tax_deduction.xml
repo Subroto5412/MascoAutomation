@@ -3,7 +3,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionActivity">
+    tools:context="com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionActivity">
 
     <data>
 
@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionViewModel" />
+            type="com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

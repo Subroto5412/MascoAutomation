@@ -4,15 +4,21 @@ import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivityModule
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivityModule
-import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceActivity
-import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceActivityModule
-import com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceAdapterModule
-import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionActivity
-import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionActivityModule
-import com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionAdapterModule
-import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivity
-import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivityModule
-import com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsLeaveSummaryAdapterModule
+import com.bd.mascogroup.automation.ui.hr_info.attendance.AttendanceActivity
+import com.bd.mascogroup.automation.ui.hr_info.attendance.AttendanceModule
+import com.bd.mascogroup.automation.ui.hr_info.attendance.daily_attendance.DailyAttendanceActivity
+import com.bd.mascogroup.automation.ui.hr_info.attendance.daily_attendance.DailyAttendanceActivityModule
+import com.bd.mascogroup.automation.ui.hr_info.attendance.daily_attendance.DailyAttendanceAdapterModule
+import com.bd.mascogroup.automation.ui.hr_info.leave.LeaveActivity
+import com.bd.mascogroup.automation.ui.hr_info.leave.LeaveModule
+import com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionActivity
+import com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionActivityModule
+import com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionAdapterModule
+import com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsActivity
+import com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsActivityModule
+import com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsLeaveSummaryAdapterModule
+import com.bd.mascogroup.automation.ui.hr_info.tax.TaxActivity
+import com.bd.mascogroup.automation.ui.hr_info.tax.TaxModule
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivityModule
 import com.bd.mascogroup.automation.ui.otp.OTPActivity
@@ -29,7 +35,7 @@ import dagger.android.ContributesAndroidInjector
 @Module(
         includes =
         [SplashActivityModule::class, LoginActivityModule::class, SignupActivityModule::class, OTPActivityModule::class, HomeActivityModule::class,ProductionManagementActivityModule::class,
-            HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class]
+            HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class, AttendanceModule::class, LeaveModule::class, TaxModule::class]
 )
 
 abstract class ActivityBuilder {
@@ -85,4 +91,19 @@ abstract class ActivityBuilder {
             modules = [IncomeTaxDeductionActivityModule::class, IncomeTaxDeductionAdapterModule::class]
     )
     internal abstract fun bindIncomeTaxDeductionActivity(): IncomeTaxDeductionActivity
+
+    @ContributesAndroidInjector(
+            modules = [AttendanceModule::class]
+    )
+    internal abstract fun bindAttendanceActivity(): AttendanceActivity
+
+    @ContributesAndroidInjector(
+            modules = [LeaveModule::class]
+    )
+    internal abstract fun bindLeaveActivity(): LeaveActivity
+
+    @ContributesAndroidInjector(
+            modules = [TaxModule::class]
+    )
+    internal abstract fun bindTaxActivity(): TaxActivity
 }

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.daily_attendance.DailyAttendanceListItemViewModel" />
+            type="com.bd.mascogroup.automation.ui.hr_info.attendance.daily_attendance.DailyAttendanceListItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

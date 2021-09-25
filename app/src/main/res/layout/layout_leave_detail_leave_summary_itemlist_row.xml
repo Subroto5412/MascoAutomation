@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsLeaveSummaryItemViewModel" />
+            type="com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsLeaveSummaryItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -3,7 +3,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsActivity">
+    tools:context="com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsActivity">
 
     <data>
 
@@ -11,7 +11,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsViewModel" />
+            type="com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

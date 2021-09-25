@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.leave_details.LeaveDetailsAvailSummaryHeaderItemViewModel" />
+            type="com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsAvailSummaryHeaderItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

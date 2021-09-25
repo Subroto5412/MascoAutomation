@@ -57,17 +57,32 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.hr_info.leave_details.LeaveDetailsActivity"
+            android:name=".ui.hr_info.leave.leave_details.LeaveDetailsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.hr_info.daily_attendance.DailyAttendanceActivity"
+            android:name=".ui.hr_info.attendance.daily_attendance.DailyAttendanceActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.hr_info.income_tax.IncomeTaxDeductionActivity"
+            android:name=".ui.hr_info.tax.income_tax.IncomeTaxDeductionActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hr_info.attendance.AttendanceActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hr_info.leave.LeaveActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hr_info.tax.TaxActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
     </application>

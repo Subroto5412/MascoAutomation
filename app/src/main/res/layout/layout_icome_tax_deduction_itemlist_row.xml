@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.income_tax.IncomeTaxDeductionItemViewModel" />
+            type="com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

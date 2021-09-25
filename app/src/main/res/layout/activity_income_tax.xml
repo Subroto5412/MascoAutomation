@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity">
 
-    <data>
+     <data>
 
-        <import type="android.view.View" />
+         <import type="android.view.View" />
 
-        <variable
-            name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.attendance.AttendanceViewModel" />
-    </data>
+         <variable
+             name="viewModel"
+             type="com.bd.mascogroup.automation.ui.hr_info.tax.TaxViewModel" />
+     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_production_management_parent_cl"
         android:layout_width="match_parent"
@@ -32,29 +32,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_production_management_top_cl"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_80sdp"
-            android:layout_marginBottom="@dimen/_68sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_production_management_full_boby_cl">
-
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/activity_hr_main_daily_attendance_cl"
+                android:id="@+id/activity_hr_main_income_tax_cl"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_52sdp"
                 android:layout_marginTop="@dimen/_40sdp"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/activity_production_management_full_boby_cl">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/activity_hr_daily_attendance_cl2"
+                    android:id="@+id/activity_hr_income_tax_cl3"
                     android:layout_width="@dimen/_245sdp"
                     android:layout_height="@dimen/_46sdp"
                     android:layout_marginTop="@dimen/_5sdp"
@@ -64,7 +53,7 @@
                     android:background="@drawable/hr_btn_bg_under"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/activity_hr_daily_attendance_cl"
+                    android:id="@+id/activity_hr_income_tax_cl"
                     android:layout_width="@dimen/_258sdp"
                     android:layout_height="@dimen/_46sdp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -73,11 +62,11 @@
                     android:background="@drawable/hr_btn_bg">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/activity_login_user_id_tv"
+                        android:id="@+id/activity_income_tax_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
-                        android:text="Daily Attendance"
+                        android:text="Income Tax Deduction History"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_13sdp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +75,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
