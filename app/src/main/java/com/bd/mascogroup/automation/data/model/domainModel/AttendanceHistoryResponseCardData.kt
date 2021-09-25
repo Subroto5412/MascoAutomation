@@ -25,6 +25,9 @@ class AttendanceHistoryResponseCardData constructor(val dailyAttendance : Attend
     val shiftName: String
         get() = dailyAttendance.shiftName
 
+    val lateTime: String
+        get() = dailyAttendance.lateTime
+
     val additionTime: String
         get() = dailyAttendance.additionTime
 

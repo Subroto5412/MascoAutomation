@@ -92,19 +92,36 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/layout_human_resource_top_tv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_8sdp"
                                     android:layout_marginBottom="@dimen/_8sdp"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:text="Human Resource Information Systems\n(HRIS)"
+                                    android:text="Human Resource Information Systems"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_10sdp"
                                     android:gravity="center_horizontal"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_human_resource_Bottom_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="(HRIS)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/layout_human_resource_top_tv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -149,19 +166,36 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/layout_supply_chain_top_tv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginEnd="@dimen/_8sdp"
                                     android:layout_marginBottom="@dimen/_8sdp"
                                     android:fontFamily="@font/montserrat_medium"
                                     android:gravity="center_horizontal"
-                                    android:text="Supply Chain Management\n(SCM)"
+                                    android:text="Supply Chain Management"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_10sdp"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_supply_chain_Bottom_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:gravity="center_horizontal"
+                                    android:text="(SCM)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12sdp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/layout_supply_chain_top_tv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -217,19 +251,36 @@
                                  <androidx.appcompat.widget.AppCompatTextView
                                      android:id="@+id/layout_production_management_top_tv"
                                      android:layout_width="match_parent"
-                                     android:layout_height="match_parent"
+                                     android:layout_height="wrap_content"
                                      android:layout_marginTop="@dimen/_10sdp"
                                      android:layout_marginStart="@dimen/_8sdp"
                                      android:layout_marginEnd="@dimen/_8sdp"
                                      android:layout_marginBottom="@dimen/_8sdp"
                                      android:fontFamily="@font/montserrat_medium"
-                                     android:text="Production Management System\n(PMS)"
+                                     android:text="Production Management System"
                                      android:textColor="@color/text_color"
                                      android:textSize="@dimen/_10sdp"
                                      android:gravity="center_horizontal"
                                      app:layout_constraintEnd_toEndOf="parent"
                                      app:layout_constraintStart_toStartOf="parent"
-                                     app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                     app:layout_constraintTop_toTopOf="parent" />
+
+                                 <androidx.appcompat.widget.AppCompatTextView
+                                     android:id="@+id/layout_production_management_bottom_tv"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="wrap_content"
+                                     android:layout_marginTop="@dimen/_2sdp"
+                                     android:layout_marginStart="@dimen/_8sdp"
+                                     android:layout_marginEnd="@dimen/_8sdp"
+                                     android:layout_marginBottom="@dimen/_8sdp"
+                                     android:fontFamily="@font/montserrat_bold"
+                                     android:text="(PMS)"
+                                     android:textColor="@color/text_color"
+                                     android:textSize="@dimen/_12sdp"
+                                     android:gravity="center_horizontal"
+                                     app:layout_constraintEnd_toEndOf="parent"
+                                     app:layout_constraintStart_toStartOf="parent"
+                                     app:layout_constraintTop_toBottomOf="@+id/layout_production_management_top_tv" />
 
 
                              </androidx.constraintlayout.widget.ConstraintLayout>
@@ -275,19 +326,36 @@
                                  <androidx.appcompat.widget.AppCompatTextView
                                      android:id="@+id/layout_merchandising_marketing_top_tv"
                                      android:layout_width="match_parent"
-                                     android:layout_height="match_parent"
+                                     android:layout_height="wrap_content"
                                      android:layout_marginTop="@dimen/_10sdp"
                                      android:layout_marginStart="@dimen/_8sdp"
                                      android:layout_marginEnd="@dimen/_8sdp"
                                      android:layout_marginBottom="@dimen/_8sdp"
                                      android:fontFamily="@font/montserrat_medium"
-                                     android:text="Merchandising &amp; Marketing\n(M&amp;M)"
+                                     android:text="Merchandising &amp; Marketing"
                                      android:textColor="@color/text_color"
                                      android:textSize="@dimen/_10sdp"
                                      android:gravity="center_horizontal"
                                      app:layout_constraintEnd_toEndOf="parent"
                                      app:layout_constraintStart_toStartOf="parent"
-                                     app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                     app:layout_constraintTop_toTopOf="parent" />
+
+                                 <androidx.appcompat.widget.AppCompatTextView
+                                     android:id="@+id/layout_merchandising_marketing_bottom_tv"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="wrap_content"
+                                     android:layout_marginTop="@dimen/_2sdp"
+                                     android:layout_marginStart="@dimen/_8sdp"
+                                     android:layout_marginEnd="@dimen/_8sdp"
+                                     android:layout_marginBottom="@dimen/_8sdp"
+                                     android:fontFamily="@font/montserrat_bold"
+                                     android:text="(M&amp;M)"
+                                     android:textColor="@color/text_color"
+                                     android:textSize="@dimen/_12sdp"
+                                     android:gravity="center_horizontal"
+                                     app:layout_constraintEnd_toEndOf="parent"
+                                     app:layout_constraintStart_toStartOf="parent"
+                                     app:layout_constraintTop_toBottomOf="@+id/layout_merchandising_marketing_top_tv" />
 
                              </androidx.constraintlayout.widget.ConstraintLayout>
                          </androidx.constraintlayout.widget.ConstraintLayout>
@@ -343,19 +411,36 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/layout_asset_tracking_top_tv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_8sdp"
                                     android:layout_marginBottom="@dimen/_8sdp"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:text="Asset Tracking Management\n(ATM)"
+                                    android:text="Asset Tracking Management"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_10sdp"
                                     android:gravity="center_horizontal"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_asset_tracking_bottom_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="(ATM)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/layout_asset_tracking_top_tv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -400,19 +485,36 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/layoutautomobile_management_top_tv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_8sdp"
                                     android:layout_marginBottom="@dimen/_8sdp"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:text="Automobile Management System\n(AMS)"
+                                    android:text="Automobile Management System"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_10sdp"
                                     android:gravity="center_horizontal"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layoutautomobile_management_bottom_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="(AMS)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/layoutautomobile_management_top_tv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -468,19 +570,36 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/layout_search_engine_top_tv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_8sdp"
                                     android:layout_marginBottom="@dimen/_8sdp"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:text="Search Engine Management\n(SEM)"
+                                    android:text="Search Engine Management"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_10sdp"
                                     android:gravity="center_horizontal"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_search_engine_bottom_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="(SEM)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/layout_search_engine_top_tv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -525,19 +644,36 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/layout_dispatch_slip_top_tv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_8sdp"
                                     android:layout_marginBottom="@dimen/_8sdp"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:text="Dispatch Slip Management\n(DSM)"
+                                    android:text="Dispatch Slip Management"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_10sdp"
                                     android:gravity="center_horizontal"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                    app:layout_constraintTop_toTopOf="parent"/>
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_dispatch_slip_bottom_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="(DSM)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/layout_dispatch_slip_top_tv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -593,19 +729,36 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/layout_idea_laboratory_top_tv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_8sdp"
                                     android:layout_marginBottom="@dimen/_8sdp"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:text="Idea Laboratory Management\n(ILM)"
+                                    android:text="Idea Laboratory Management"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_10sdp"
                                     android:gravity="center_horizontal"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_idea_laboratory_bottom_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="(ILM)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/layout_idea_laboratory_top_tv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -650,19 +803,36 @@
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/layout_documentation_management_top_tv"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_10sdp"
                                     android:layout_marginStart="@dimen/_8sdp"
                                     android:layout_marginEnd="@dimen/_8sdp"
                                     android:layout_marginBottom="@dimen/_8sdp"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:text="Documentation Management System\n(DMS)"
+                                    android:text="Documentation Management System"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_10sdp"
                                     android:gravity="center_horizontal"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/activity_login_full_user_info_cl" />
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/layout_documentation_management_bottom_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginStart="@dimen/_8sdp"
+                                    android:layout_marginEnd="@dimen/_8sdp"
+                                    android:layout_marginBottom="@dimen/_8sdp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="(DMS)"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:gravity="center_horizontal"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/layout_documentation_management_top_tv" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>

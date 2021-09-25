@@ -45,6 +45,8 @@ class DailyAttendanceListItemViewModel(
         val punchDate = parts[0]
         val punchMonth = parts[1]
 
+        Log.e("------","--------punchDate-----"+mDailyAttendanceCardData.punchDate)
+
         punchIn = ObservableField(mDailyAttendanceCardData.fPunchIn)
         punchOut = ObservableField(mDailyAttendanceCardData.fPunchOut)
         FSts = ObservableField(mDailyAttendanceCardData.fSts)
@@ -83,19 +85,19 @@ class DailyAttendanceListItemViewModel(
             }
         }
 
-        punchInValue =  if (mDailyAttendanceCardData.fPunchIn.equals("12:00:00 AM")) {
+        punchInValue =  if (mDailyAttendanceCardData.fPunchIn.isNullOrEmpty()) {
             ObservableField("0")
         } else {
             ObservableField(mDailyAttendanceCardData.fPunchIn)
         }
 
-        punchOutValue =  if (mDailyAttendanceCardData.fPunchOut.equals("12:00:00 AM")) {
+        punchOutValue =  if (mDailyAttendanceCardData.fPunchOut.isNullOrEmpty()) {
             ObservableField("0")
         } else {
             ObservableField(mDailyAttendanceCardData.fPunchOut)
         }
 
-        additionTimeValue =  if (mDailyAttendanceCardData.additionTime.equals("06:00:00")) {
+        additionTimeValue =  if (mDailyAttendanceCardData.additionTime.isNullOrEmpty()) {
             ObservableField("0")
         } else {
             ObservableField(mDailyAttendanceCardData.additionTime)
