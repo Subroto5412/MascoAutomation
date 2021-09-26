@@ -53,7 +53,7 @@ class LeaveApplyActivity : BaseActivity<ActivityLeaveApplyBinding, LeaveApplyVie
         super.onCreate(savedInstanceState)
         mActivityLeaveApplyBinding = viewDataBinding
         viewModel.navigator = this
-        
+
         activity_title_tv.setText("Leave Apply")
 
         viewModel.dataSetting(this, activity_leave_apply_id_value, activity_leave_apply_name_value, activity_leave_apply_designation_value,activity_leave_apply_from_value,
@@ -123,7 +123,7 @@ class LeaveApplyActivity : BaseActivity<ActivityLeaveApplyBinding, LeaveApplyVie
 
                 val map: HashMap<String, String> = AppConstants.HasLeaveList.get(position)
                 activity_leave_apply_rest_value.setText(map.get("avail")!!)
-                leaveTypeNo = map.get("avail")!!.toInt()
+                leaveTypeNo = map.get("leaveTypeNo")!!.toInt()
             }
         }
     }
