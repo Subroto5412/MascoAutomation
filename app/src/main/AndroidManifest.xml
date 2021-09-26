@@ -85,6 +85,11 @@
             android:name=".ui.hr_info.tax.TaxActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hr_info.leave.apply.LeaveApplyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -70,5 +70,6 @@ object AppConstants {
     var HasYearList = ArrayList<HashMap<String, String>>()
     var HasYearForLeaveList = ArrayList<HashMap<String, String>>()
     var HasYearTaxList = ArrayList<HashMap<String, String>>()
+    var HasLeaveList = ArrayList<HashMap<String, String>>()
 
 }

@@ -95,4 +95,8 @@ interface ApiService {
     fun getRefreshToken(
             @Body registerRequest: RefreshTokenRequest
     ): Observable<RefreshTokenResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("v1/leave/form-data")
+    fun getLeaveList(): Observable<LeavelListResponse> // body data
 }

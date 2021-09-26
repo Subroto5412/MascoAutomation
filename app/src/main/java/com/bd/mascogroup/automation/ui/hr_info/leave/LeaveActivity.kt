@@ -11,6 +11,7 @@ import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
 import com.bd.mascogroup.automation.ui.hr_info.attendance.daily_attendance.DailyAttendanceActivity
+import com.bd.mascogroup.automation.ui.hr_info.leave.apply.LeaveApplyActivity
 import com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsActivity
 import kotlinx.android.synthetic.main.activity_attendance.*
 import kotlinx.android.synthetic.main.activity_attendance.activity_hr_daily_attendance_cl
@@ -45,6 +46,12 @@ class LeaveActivity : BaseActivity<ActivityLeaveBinding, LeaveViewModel>(), ILea
 
         activity_hr_leave_details_cl.setOnClickListener {
             val intent = LeaveDetailsActivity.newIntent(this)
+            startActivity(intent)
+            finish()
+        }
+
+        activity_hr_leave_apply_cl.setOnClickListener {
+            val intent = LeaveApplyActivity.newIntent(this)
             startActivity(intent)
             finish()
         }
