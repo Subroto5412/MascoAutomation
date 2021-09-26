@@ -95,7 +95,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/activity_leave_apply_id_value"
-                    android:layout_width="@dimen/_127sdp"
+                    android:layout_width="@dimen/_133sdp"
                     android:layout_height="@dimen/_33sdp"
                     android:layout_marginStart="@dimen/_85sdp"
                     android:layout_marginTop="@dimen/_15sdp"
@@ -123,7 +123,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/activity_leave_apply_name_value"
-                    android:layout_width="@dimen/_127sdp"
+                    android:layout_width="@dimen/_133sdp"
                     android:layout_height="@dimen/_33sdp"
                     android:layout_marginStart="@dimen/_85sdp"
                     android:layout_marginTop="@dimen/_15sdp"
@@ -135,6 +135,26 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_id_value"
                     tools:text="Subroto  Mohonto" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/pic_bg"
+                    android:layout_width="@dimen/_64sdp"
+                    android:layout_height="@dimen/_64sdp"
+                    android:src="@drawable/picture_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/activity_leave_apply_id_value"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_leave_apply_pic_im"
+                    android:layout_width="@dimen/_61sdp"
+                    android:layout_height="@dimen/_62sdp"
+                    android:src="@drawable/side_profile_pic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/activity_leave_apply_id_value"
+                    android:layout_marginEnd="@dimen/_11sdp"
+                    android:layout_marginTop="@dimen/_11sdp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/activity_leave_apply_designation"
@@ -313,7 +333,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_to_value" />
 
-                <androidx.appcompat.widget.AppCompatEditText
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/activity_leave_apply_total_day_value"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_33sdp"
@@ -359,12 +379,12 @@
                     android:textSize="@dimen/_11sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_total_day_value"
-                    android:hint="5"
+                    android:hint="write here please"
                     android:textColorHint="@color/white"/>
 
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/activity_login_signin_btn_hide"
+                    android:id="@+id/activity_leave_apply_btn"
                     android:layout_width="@dimen/_125sdp"
                     android:layout_height="@dimen/_31sdp"
                     android:layout_marginStart="32dp"

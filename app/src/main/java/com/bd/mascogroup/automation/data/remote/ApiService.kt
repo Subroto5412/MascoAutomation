@@ -99,4 +99,11 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @GET("v1/leave/form-data")
     fun getLeaveList(): Observable<LeavelListResponse> // body data
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/leave/submit")
+    fun leaveApply(
+            @Body leaveApplyRequest: LeaveApplyRequest
+    ): Observable<LeaveApplyResponse>
+
 }
