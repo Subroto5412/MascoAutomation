@@ -109,12 +109,13 @@ class LeaveApplyViewModel @Inject constructor(
             leave_type:Int,
             leave_days:Int,
             apply_from:String,
-            apply_to:String
+            apply_to:String,
+            reason:String
 
     ) {
              if (UtilMethods.isConnectedToInternet(context)) {
             UtilMethods.showLoading(context)
-            val observable = ApiServiceCalling.generalMisApiCallToken().leaveApply(LeaveApplyRequest(leave_type,leave_days,apply_from,apply_to))
+            val observable = ApiServiceCalling.generalMisApiCallToken().leaveApply(LeaveApplyRequest(leave_type,leave_days,apply_from,apply_to,reason))
 
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

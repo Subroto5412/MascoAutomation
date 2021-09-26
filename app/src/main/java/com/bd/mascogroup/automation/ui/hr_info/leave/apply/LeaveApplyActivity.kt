@@ -71,9 +71,11 @@ class LeaveApplyActivity : BaseActivity<ActivityLeaveApplyBinding, LeaveApplyVie
         activity_leave_apply_btn.setOnClickListener {
             if (leaveTypeNo==0){
                 Toast.makeText(this, "Select Leave Type!", Toast.LENGTH_LONG).show()
+            }else if (activity_leave_apply_reason_value.text.toString().equals("")){
+                Toast.makeText(this, "Enter Reason Of Leave!", Toast.LENGTH_LONG).show()
             }else{
                 viewModel.getLeaveApply(this@LeaveApplyActivity, leaveTypeNo,(activity_leave_apply_total_day_value.text.toString()).toInt(),
-                        activity_leave_apply_from_value.text.toString(), activity_leave_apply_to_value.text.toString())
+                        activity_leave_apply_from_value.text.toString(), activity_leave_apply_to_value.text.toString(), activity_leave_apply_reason_value.text.toString())
             }
 
         }
