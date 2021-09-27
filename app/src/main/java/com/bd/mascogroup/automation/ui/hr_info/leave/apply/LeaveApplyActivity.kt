@@ -54,7 +54,7 @@ class LeaveApplyActivity : BaseActivity<ActivityLeaveApplyBinding, LeaveApplyVie
         mActivityLeaveApplyBinding = viewDataBinding
         viewModel.navigator = this
 
-        activity_title_tv.setText("Leave Apply")
+        activity_title_tv.setText("Leave Application Form")
 
         viewModel.dataSetting(this, activity_leave_apply_id_value, activity_leave_apply_name_value, activity_leave_apply_designation_value,activity_leave_apply_from_value,
             activity_leave_apply_to_value, activity_leave_apply_total_day_value, activity_leave_apply_pic_im)

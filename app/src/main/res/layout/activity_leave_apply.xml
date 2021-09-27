@@ -18,13 +18,13 @@
         android:id="@+id/activity_production_management_parent_cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/home_bg">
+        android:background="#081B63">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activity_production_management_full_boby_cl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_38sdp"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             app:layout_constraintTop_toTopOf="parent">
 
             <include
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_90sdp"
-            android:layout_marginBottom="@dimen/_68sdp"
+            android:layout_marginBottom="@dimen/_80sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,59 +53,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/activity_leave_apply_body_cl"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_46sdp"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:background="@drawable/daily_attendance_financial_year_corner_round"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/activity_daily_attendance_financial_year_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:text="Leave Application Form"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/activity_leave_apply_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_24sdp"
                     android:fontFamily="@font/montserrat_regular"
                     android:text="ID :"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_11sdp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_body_cl" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteY="130dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/activity_leave_apply_id_value"
                     android:layout_width="@dimen/_133sdp"
                     android:layout_height="@dimen/_33sdp"
                     android:layout_marginStart="@dimen/_85sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
                     android:background="@drawable/input_bg_round_corner"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_11sdp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_body_cl"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteY="118dp"
                     tools:text="109827" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -417,7 +390,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activity_production_management_footer_cl"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_78sdp"
+            android:layout_height="@dimen/_80sdp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <include
