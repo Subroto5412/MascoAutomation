@@ -3,6 +3,7 @@ package com.bd.mascogroup.automation.data.local.db
 
 import com.bd.mascogroup.automation.data.model.db.Orderlist
 import com.bd.mascogroup.automation.data.model.db.Productlist
+import com.bd.mascogroup.automation.data.model.db.Searchlist
 import com.bd.mascogroup.automation.data.model.db.User
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -71,6 +72,38 @@ class AppDbHelper @Inject constructor(private val mAppDatabase: AppDatabase) : I
     override fun getByProductlistInvoice(invoice: String): Observable<List<Productlist>> {
         return Observable.fromCallable{
             mAppDatabase.productlistDao().findByProductInvoice(invoice)
+        }
+    }
+
+    override fun insertSearchItem(searchlist: Searchlist): Observable<Boolean> {
+        return Observable.fromCallable {
+            mAppDatabase.searchlistDao().insert(searchlist)
+            true
+        }
+    }
+
+    override fun getSearchItemList(): Observable<List<Searchlist>> {
+        return Observable.fromCallable{
+            mAppDatabase.searchlistDao().loadAlSearchlist()
+        }
+    }
+
+    override fun deleteAllSearchlists(): Observable<Boolean> {
+        return Observable.fromCallable{
+            mAppDatabase.searchlistDao().deleteAllSearchlist()
+            true
+        }
+    }
+
+    override fun getSearchByActivityName(ActivityName: String): Observable<List<Searchlist>> {
+        return Observable.fromCallable{
+            mAppDatabase.searchlistDao().findByActivityName(ActivityName)
+        }
+    }
+
+    override fun getSearchByModuleAndActivityName(ActivityName: String, ModuleName: String): Observable<List<Searchlist>> {
+        return Observable.fromCallable {
+            mAppDatabase.searchlistDao().findByActivityNameModuleName(ActivityName, ModuleName)
         }
     }
 }

@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
 import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import kotlinx.android.synthetic.main.layout_hr_body.*
+import kotlinx.android.synthetic.main.layout_top_search_header.*
 import javax.inject.Inject
 
 class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), IHRInfoNavigator {
@@ -50,24 +51,20 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
         mActivityHrInfoBinding = viewDataBinding
         viewModel.navigator = this
         viewModel.accessToken()
-        viewModel.buttonPermission(activity_hr_main_daily_attendance_cl, activity_hr_main_leave_details_cl, activity_hr_main_income_tax_cl)
+        viewModel.buttonPermission(this, activity_hr_main_daily_attendance_cl, activity_hr_main_leave_details_cl, activity_hr_main_income_tax_cl)
+        viewModel.getSearchName(this, layout_header_search_actv)
+//        viewModel.getSearchName(this)
 
         activity_hr_daily_attendance_cl.setOnClickListener {
-            val intent = AttendanceActivity.newIntent(this@HRInfoActivity)
-            startActivity(intent)
-            finish()
+            openAttendanceActivity()
         }
 
         activity_hr_leave_details_cl.setOnClickListener {
-            val intent = LeaveActivity.newIntent(this@HRInfoActivity)
-            startActivity(intent)
-            finish()
+            openLeaveActivity()
         }
 
         activity_hr_income_tax_cl.setOnClickListener {
-            val intent = TaxActivity.newIntent(this@HRInfoActivity)
-            startActivity(intent)
-            finish()
+            openTaxActivity()
         }
 
         layout_header_back_im.setOnClickListener {
@@ -97,5 +94,23 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
 
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun openAttendanceActivity(){
+        val intent = AttendanceActivity.newIntent(this@HRInfoActivity)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openLeaveActivity(){
+        val intent = LeaveActivity.newIntent(this@HRInfoActivity)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openTaxActivity(){
+        val intent = TaxActivity.newIntent(this@HRInfoActivity)
+        startActivity(intent)
+        finish()
     }
 }

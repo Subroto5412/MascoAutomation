@@ -3,7 +3,7 @@ package com.bd.mascogroup.automation.utils
 object AppConstants {
 
     const val DB_VERSION = 1
-    val DB_NAME = String.format("mbpd.db", DB_VERSION)
+    val DB_NAME = String.format("masco_100.db", DB_VERSION)
 
     enum class APIStatus(val type: Int) {
         SUCCESS(0),

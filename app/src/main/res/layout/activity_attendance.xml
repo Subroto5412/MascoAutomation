@@ -27,8 +27,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <include
-                android:id="@+id/activity_production_management_search"
-                layout="@layout/layout_header" />
+                android:id="@+id/activity_leave_details"
+                layout="@layout/layout_common_header" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

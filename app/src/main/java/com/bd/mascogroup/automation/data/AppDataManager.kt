@@ -7,6 +7,7 @@ import com.bd.mascogroup.automation.data.local.db.IDbHelper
 import com.bd.mascogroup.automation.data.local.prefs.IPreferencesHelper
 import com.bd.mascogroup.automation.data.model.db.Orderlist
 import com.bd.mascogroup.automation.data.model.db.Productlist
+import com.bd.mascogroup.automation.data.model.db.Searchlist
 import com.bd.mascogroup.automation.data.model.db.User
 import javax.inject.Inject
 
@@ -139,8 +140,24 @@ class AppDataManager @Inject constructor(
         return mDbHelper.getByProductlistInvoice(invoice)
     }
 
-/*    override fun doServerLoginApiCall(request: LoginRequest): Single<LoginResponse> {
-       return apiService.doServerLoginApiCall(request)
-    }*/
+    override fun insertSearchItem(searchlist: Searchlist): Observable<Boolean> {
+        return  mDbHelper.insertSearchItem(searchlist)
+    }
+
+    override fun getSearchItemList(): Observable<List<Searchlist>> {
+        return mDbHelper.getSearchItemList()
+    }
+
+    override fun deleteAllSearchlists(): Observable<Boolean> {
+        return  mDbHelper.deleteAllSearchlists()
+    }
+
+    override fun getSearchByActivityName(ActivityName: String): Observable<List<Searchlist>> {
+        return  mDbHelper.getSearchByActivityName(ActivityName)
+    }
+
+    override fun getSearchByModuleAndActivityName(ActivityName: String, ModuleName: String): Observable<List<Searchlist>> {
+        return  mDbHelper.getSearchByModuleAndActivityName(ActivityName, ModuleName)
+    }
 
 }

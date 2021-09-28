@@ -12,8 +12,10 @@ import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
 import com.bd.mascogroup.automation.ui.hr_info.attendance.daily_attendance.DailyAttendanceActivity
 import kotlinx.android.synthetic.main.activity_attendance.*
+import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class AttendanceActivity : BaseActivity<ActivityAttendanceBinding, AttendanceViewModel>(), IAttendanceNavigation {
@@ -39,7 +41,7 @@ class AttendanceActivity : BaseActivity<ActivityAttendanceBinding, AttendanceVie
         super.onCreate(savedInstanceState)
         mActivityAttendanceBinding = viewDataBinding
         viewModel.navigator = this
-
+        activity_title_tv.setText("Attendance History")
         activity_hr_daily_attendance_cl.setOnClickListener {
             val intent = DailyAttendanceActivity.newIntent(this)
             startActivity(intent)

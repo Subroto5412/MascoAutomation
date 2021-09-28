@@ -19,8 +19,10 @@ import com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeduction
 import kotlinx.android.synthetic.main.activity_attendance.*
 import kotlinx.android.synthetic.main.activity_attendance.activity_hr_daily_attendance_cl
 import kotlinx.android.synthetic.main.activity_income_tax.*
+import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class TaxActivity : BaseActivity<ActivityIncomeTaxBinding, TaxViewModel>(), ITaxNavigation {
@@ -46,7 +48,7 @@ class TaxActivity : BaseActivity<ActivityIncomeTaxBinding, TaxViewModel>(), ITax
         super.onCreate(savedInstanceState)
         mActivityIncomeTaxBinding = viewDataBinding
         viewModel.navigator = this
-
+        activity_title_tv.setText("Income Tax History")
         activity_hr_income_tax_cl.setOnClickListener {
             val intent = IncomeTaxDeductionActivity.newIntent(this)
             startActivity(intent)

@@ -16,11 +16,15 @@ import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityHomeBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
+import com.bd.mascogroup.automation.ui.hr_info.attendance.AttendanceActivity
+import com.bd.mascogroup.automation.ui.hr_info.leave.LeaveActivity
+import com.bd.mascogroup.automation.ui.hr_info.tax.TaxActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home_side_menu.*
 import kotlinx.android.synthetic.main.activity_home_side_menu_footer.*
 import kotlinx.android.synthetic.main.activity_hr_info.*
+import kotlinx.android.synthetic.main.layout_header.*
 import kotlinx.android.synthetic.main.layout_home_body.*
 import kotlinx.android.synthetic.main.layout_top_search_header.*
 import javax.inject.Inject
@@ -60,6 +64,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
         super.onCreate(savedInstanceState)
         mActivityHomeBinding = viewDataBinding
         viewModel.navigator = this
+
+        viewModel.getSearchName(this, search_name_actv)
 
         layout_production_management_cl.setOnClickListener {
             Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
@@ -197,5 +203,23 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
         fun newIntent(context: Context): Intent {
             return Intent(context, HomeActivity::class.java)
         }
+    }
+
+    override fun openAttendanceActivity(){
+        val intent = AttendanceActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openLeaveActivity(){
+        val intent = LeaveActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openTaxActivity(){
+        val intent = TaxActivity.newIntent(this)
+        startActivity(intent)
+        finish()
     }
 }

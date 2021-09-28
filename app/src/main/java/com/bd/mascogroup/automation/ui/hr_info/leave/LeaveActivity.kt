@@ -16,8 +16,10 @@ import com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsA
 import kotlinx.android.synthetic.main.activity_attendance.*
 import kotlinx.android.synthetic.main.activity_attendance.activity_hr_daily_attendance_cl
 import kotlinx.android.synthetic.main.activity_leave.*
+import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class LeaveActivity : BaseActivity<ActivityLeaveBinding, LeaveViewModel>(), ILeaveNavigation {
@@ -43,6 +45,7 @@ class LeaveActivity : BaseActivity<ActivityLeaveBinding, LeaveViewModel>(), ILea
         super.onCreate(savedInstanceState)
         mActivityLeaveBinding = viewDataBinding
         viewModel.navigator = this
+        activity_title_tv.setText("Leave History")
 
         activity_hr_leave_details_cl.setOnClickListener {
             val intent = LeaveDetailsActivity.newIntent(this)

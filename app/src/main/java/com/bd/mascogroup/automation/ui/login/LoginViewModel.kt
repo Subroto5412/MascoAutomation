@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.IDataManager
+import com.bd.mascogroup.automation.data.model.db.Searchlist
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
 import com.bd.mascogroup.automation.data.remote.domainModel.LoginByUserIdRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.LoginRequest
@@ -145,11 +146,27 @@ class LoginViewModel @Inject constructor(
                             navigator?.openHomeActivity()
                         }else{
                             loginResponse._permissionList.forEach { permissionListResponse->
+
                                 if (permissionListResponse.moduleName.equals("HRModule"))
                                     dataManager.HRModule = permissionListResponse.moduleName
 
 
                                 permissionListResponse._subMenuList.forEach {
+                                    var searchList = Searchlist()
+                                    searchList.activity_name = it.activityName
+                                    searchList.search_name = it.activityName
+                                    searchList.module_name = permissionListResponse.moduleName
+
+
+                                    compositeDisposable.add(
+                                            dataManager
+                                                    .insertSearchItem(searchList)
+                                                    .subscribeOn(schedulerProvider.io())
+                                                    .observeOn(schedulerProvider.ui())
+                                                    .subscribe({ response ->
+                                                        Log.e("-----------","----response------"+response)
+                                                    }, {}))
+
                                     if (it.activityName.equals("daily_attendance"))
                                         dataManager.dailyAttendance = it.activityName
 
