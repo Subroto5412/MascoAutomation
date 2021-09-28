@@ -154,7 +154,15 @@ class LoginViewModel @Inject constructor(
                                 permissionListResponse._subMenuList.forEach {
                                     var searchList = Searchlist()
                                     searchList.activity_name = it.activityName
-                                    searchList.search_name = it.activityName
+                                    var search_name:String=""
+                                    if (!it.activityName.isNullOrEmpty()){
+                                        val parts = it.activityName.split("_")
+                                        val part1 = parts[0]
+                                        val part2 = parts[1]
+                                         search_name = part1+ " "+part2
+                                    }
+
+                                    searchList.search_name = search_name
                                     searchList.module_name = permissionListResponse.moduleName
 
 

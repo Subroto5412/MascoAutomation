@@ -86,7 +86,7 @@ class HomeViewModel @Inject constructor(
                                 activityNames.put("search_name", "" + activityNamesList.get(i).search_name)
                                 activityNames.put("module_name", activityNamesList.get(i).module_name)
 
-                                activitySearchNames.add(activityNamesList.get(i).activity_name)
+                                activitySearchNames.add(activityNamesList.get(i).search_name)
                             }
 
                             val adapter = ArrayAdapter(context,
@@ -94,11 +94,11 @@ class HomeViewModel @Inject constructor(
                             search_name_actv.setAdapter(adapter)
 
                             search_name_actv.setOnDismissListener {
-                                if (search_name_actv.text.toString().equals("daily_attendance")){
+                                if (search_name_actv.text.toString().equals("daily attendance")){
                                     navigator?.openAttendanceActivity()
-                                }else if (search_name_actv.text.toString().equals("leave_history")){
+                                }else if (search_name_actv.text.toString().equals("leave history")){
                                     navigator?.openLeaveActivity()
-                                }else if (search_name_actv.text.toString().equals("tax_history")){
+                                }else if (search_name_actv.text.toString().equals("tax history")){
                                     navigator?.openTaxActivity()
                                 }
                             }
