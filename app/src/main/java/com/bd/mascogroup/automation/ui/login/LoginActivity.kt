@@ -20,8 +20,11 @@ import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.production_management.ProductionManagementActivity
 import com.bd.mascogroup.automation.ui.signup.SignupActivity
+import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.AppUtils
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.installations.FirebaseInstallations
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -51,7 +54,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
         get() = R.layout.activity_login
 
     override fun login() {}
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityLoginBinding = viewDataBinding
@@ -59,6 +61,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), ILog
 
         viewModel.setup(this,activity_login_user_id_et,activity_login_password_et, activity_login_logo_im,activity_login_user_im,activity_login_user_cl,
                 activity_login_user_name_tv, activity_login_unit_name_tv, activity_login_signin_btn,activity_login_signin_btn_hide,activity_login_remember_ck)
+
+                Log.e("AppConstants", "onComplete: new Token got: ===" +AppConstants.AppToken)
 
         activity_login_signup_tv.setOnClickListener {
             val intent = SignupActivity.newIntent(this@LoginActivity)

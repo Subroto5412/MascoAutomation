@@ -11,6 +11,8 @@ import com.bd.mascogroup.automation.databinding.ActivitySplashBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivity
+import com.bd.mascogroup.automation.utils.AppConstants
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -38,6 +40,14 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), I
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.navigator = this
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isComplete) {
+              //  token = task.result.toString()
+                AppConstants.AppToken = task.result.toString()
+                //  Log.e("AppConstants", "onComplete: new Token got: " + token)
+            }
+        }
 
         val animationZoom = AnimationUtils.loadAnimation(this, R.anim.zoom)
         activity_spalsh_down_logo_im2.startAnimation(animationZoom)

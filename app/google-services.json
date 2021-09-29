@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "907347110295",
+    "project_id": "mascoautomationapp",
+    "storage_bucket": "mascoautomationapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:907347110295:android:21c9e89ca22e8fadcb3cd2",
+        "android_client_info": {
+          "package_name": "com.bd.mascogroup.automation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "907347110295-fvtis6um7reevj7deskn1906mn81ill6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn8q7OzFGorB1FbAeHezoEwf8_clhnaMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "907347110295-fvtis6um7reevj7deskn1906mn81ill6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

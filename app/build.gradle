@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -116,4 +117,10 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:$rootProject.glideVersion")
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
     implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //firebase-messaging
+    implementation platform('com.google.firebase:firebase-bom:28.4.1')
+//    implementation 'com.google.firebase:firebase-messaging:21.0.1'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation 'com.google.firebase:firebase-core:19.0.0'
 }
