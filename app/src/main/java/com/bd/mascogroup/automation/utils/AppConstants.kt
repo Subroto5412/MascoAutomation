@@ -71,6 +71,6 @@ object AppConstants {
     var HasYearForLeaveList = ArrayList<HashMap<String, String>>()
     var HasYearTaxList = ArrayList<HashMap<String, String>>()
     var HasLeaveList = ArrayList<HashMap<String, String>>()
-    var AppToken = ""
+    var fcmToken = ""
 
 }

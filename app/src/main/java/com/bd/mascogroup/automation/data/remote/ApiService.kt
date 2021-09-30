@@ -30,6 +30,12 @@ interface ApiService {
     ): Observable<LoginResponse>
 
     @Headers("Content-Type: application/json")
+    @POST("v1/LoginAccess/set-fcm-token")
+    fun doFCMToken(
+            @Body tokenRequest: TokenRequest
+    ): Observable<TokenResponse>
+
+    @Headers("Content-Type: application/json")
     @GET("v1/LoginAccess/getImageById")
     fun getLoginImage(@Query("empCode") empCode: String): Observable<LoginImageResponse> // body data
 

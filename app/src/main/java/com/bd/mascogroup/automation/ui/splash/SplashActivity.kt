@@ -43,9 +43,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), I
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             if (task.isComplete) {
-              //  token = task.result.toString()
-                AppConstants.AppToken = task.result.toString()
-                //  Log.e("AppConstants", "onComplete: new Token got: " + token)
+                AppConstants.fcmToken = task.result.toString()
             }
         }
 

@@ -19,6 +19,7 @@ import com.bd.mascogroup.automation.data.model.db.Searchlist
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
 import com.bd.mascogroup.automation.data.remote.domainModel.LoginByUserIdRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.LoginRequest
+import com.bd.mascogroup.automation.data.remote.domainModel.TokenRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
@@ -172,7 +173,7 @@ class LoginViewModel @Inject constructor(
                                                     .subscribeOn(schedulerProvider.io())
                                                     .observeOn(schedulerProvider.ui())
                                                     .subscribe({ response ->
-                                                        Log.e("-----------","----response------"+response)
+                                                        Log.e("","response : "+response)
                                                     }, {}))
 
                                     if (it.activityName.equals("daily_attendance"))
@@ -185,13 +186,15 @@ class LoginViewModel @Inject constructor(
                                         dataManager.taxHistory = it.activityName
                                 }
                             }
-                            navigator?.openHomeActivity()
+                            UtilMethods.hideLoading()
+                            sendFCMToken(context)
                         }
 
                     }else{
-                        navigator?.ToastMSG()
+                        UtilMethods.hideLoading()
+                        UtilMethods.showLongToast(context, "UserId and Password isn't matching!")
                     }
-                    UtilMethods.hideLoading()
+
                 }, { error ->
                     UtilMethods.hideLoading()
                     // UtilMethods.showLongToast(context, error.message.toString())
@@ -234,6 +237,27 @@ class LoginViewModel @Inject constructor(
 //                        UtilMethods.hideLoading()
                     }, { error ->
 //                        UtilMethods.hideLoading()
+                        // UtilMethods.showLongToast(context, error.message.toString())
+                    }
+                    )
+        }else{
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
+    }
+
+    fun sendFCMToken(context: Context){
+        if(UtilMethods.isConnectedToInternet(context)){
+            UtilMethods.showLoading(context)
+            val observable = ApiServiceCalling.generalMisApiCall().doFCMToken(TokenRequest(AppConstants.fcmToken))
+
+            observable.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ fcmResponse ->
+                        UtilMethods.hideLoading()
+                        navigator?.openHomeActivity()
+                    }, { error ->
+                        UtilMethods.hideLoading()
+                        navigator?.openHomeActivity()
                         // UtilMethods.showLongToast(context, error.message.toString())
                     }
                     )
