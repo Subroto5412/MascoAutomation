@@ -305,4 +305,34 @@ class OTPViewModel @Inject constructor(
                         UtilMethods.showLongToast(context, "No Internet Connection!")
                 }
         }
+
+
+
+        fun doReSendOTP(context: Context) {
+                if (UtilMethods.isConnectedToInternet(context)) {
+                        UtilMethods.showLoading(context)
+                        val observable = ApiServiceCalling.generalMisApiCall().doSendOTP(OtpRequest(dataManager.empCode))
+
+                        observable.subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe({ otpResponse ->
+                                        if(!otpResponse.mobile.isNullOrEmpty()){
+
+                                                AppConstants.MOBILE_NO = otpResponse.mobile
+                                                dataManager.mobile = otpResponse.mobile
+                                        }
+
+                                        UtilMethods.hideLoading()
+                                        UtilMethods.showLongToast(context, "OTP send Successfully")
+                                }, { error ->
+
+                                        UtilMethods.hideLoading()
+                                        // UtilMethods.showLongToast(context, error.message.toString())
+                                }
+                                )
+                } else {
+                        UtilMethods.showLongToast(context, "No Internet Connection!")
+                }
+        }
+
 }

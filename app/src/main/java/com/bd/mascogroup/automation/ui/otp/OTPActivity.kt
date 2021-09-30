@@ -53,6 +53,10 @@ class OTPActivity : BaseActivity<ActivityOtpBinding, OTPViewModel>(), IOTPNaviga
             startActivity(intent)
             finish()
         }
+
+        activity_otp_forgot_resend_otp_tv.setOnClickListener {
+            viewModel.doReSendOTP(this)
+        }
     }
 
     companion object {

@@ -165,7 +165,6 @@
                     android:background="@drawable/otp_bg"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
-                    android:hint="4"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:textColor="@color/text_color"
@@ -185,7 +184,6 @@
                     android:background="@drawable/otp_bg"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
-                    android:hint="3"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:textColor="@color/text_color"
@@ -204,7 +202,6 @@
                     android:background="@drawable/otp_bg"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
-                    android:hint="1"
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:textColor="@color/text_color"
@@ -224,7 +221,6 @@
                     android:background="@drawable/otp_bg"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
-                    android:hint="6"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:textColor="@color/text_color"
@@ -238,7 +234,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/activity_otp_forgot_password_tv1"
+                android:id="@+id/activity_otp_forgot_resend_otp_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
@@ -267,7 +263,7 @@
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_otp_forgot_password_tv1" />
+                app:layout_constraintTop_toBottomOf="@+id/activity_otp_forgot_resend_otp_tv" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
