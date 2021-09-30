@@ -248,7 +248,7 @@ class LoginViewModel @Inject constructor(
     fun sendFCMToken(context: Context){
         if(UtilMethods.isConnectedToInternet(context)){
             UtilMethods.showLoading(context)
-            val observable = ApiServiceCalling.generalMisApiCall().doFCMToken(TokenRequest(AppConstants.fcmToken))
+            val observable = ApiServiceCalling.generalMisApiCallToken().doFCMToken(TokenRequest(AppConstants.fcmToken))
 
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())

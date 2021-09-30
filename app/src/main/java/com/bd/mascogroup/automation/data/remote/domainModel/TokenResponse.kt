@@ -4,5 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class TokenResponse(
         @SerializedName("error") var error: String = "",
-        @SerializedName("response") var response: String = ""
+        @SerializedName("success") var success: Boolean = false,
+        @SerializedName("mac") var mac: String = "",
+        @SerializedName("token") var token: String = "",
+        @SerializedName("token_id") var token_id: Int = 0
 )
