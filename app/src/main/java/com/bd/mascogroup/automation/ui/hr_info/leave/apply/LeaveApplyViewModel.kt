@@ -173,7 +173,7 @@ class LeaveApplyViewModel @Inject constructor(
             val dateAfter = myFormat.parse(activity_leave_apply_to_value)
             val difference = dateAfter.time - dateBefore.time
             val daysBetween = (difference / (1000 * 60 * 60 * 24)).toFloat()
-            activity_leave_apply_total_day_value.setText("${daysBetween.toInt()}")
+            activity_leave_apply_total_day_value.setText("${daysBetween.toInt()+1}")
         } catch (e: Exception) {
             e.printStackTrace()
         }

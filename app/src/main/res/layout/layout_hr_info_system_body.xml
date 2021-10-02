@@ -68,16 +68,16 @@
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:background="@drawable/hr_btn_bg_under"/>
+                                android:background="@drawable/hr_info_system_btn_under_bg"/>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/activity_hr_info_system_cl"
+                                android:id="@+id/layout_hr_info_system_cl"
                                 android:layout_width="@dimen/_177sdp"
                                 android:layout_height="@dimen/_65sdp"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:background="@drawable/hr_btn_bg">
+                                android:background="@drawable/hr_info_system_btn_bg">
 
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/activity_hr_info_system_tv"

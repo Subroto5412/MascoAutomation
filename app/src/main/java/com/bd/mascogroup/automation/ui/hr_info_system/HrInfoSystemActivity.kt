@@ -13,10 +13,15 @@ import com.bd.mascogroup.automation.ui.hr_info.HRInfoViewModel
 import com.bd.mascogroup.automation.ui.hr_info.attendance.AttendanceActivity
 import com.bd.mascogroup.automation.ui.hr_info.leave.LeaveActivity
 import com.bd.mascogroup.automation.ui.hr_info.tax.TaxActivity
+import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivity
 import kotlinx.android.synthetic.main.activity_attendance.*
+import kotlinx.android.synthetic.main.activity_hr_info_system.*
+import kotlinx.android.synthetic.main.activity_hr_info_system.activity_hr_info_system_cl
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import kotlinx.android.synthetic.main.layout_hr_body.*
+import kotlinx.android.synthetic.main.layout_hr_info_system_body.*
 import javax.inject.Inject
 
 class HrInfoSystemActivity : BaseActivity<ActivityHrInfoSystemBinding, HrInfoSystemViewModel>(), IHrInfoSystemNavigator {
@@ -47,9 +52,9 @@ class HrInfoSystemActivity : BaseActivity<ActivityHrInfoSystemBinding, HrInfoSys
   //      viewModel.getSearchName(this, layout_header_search_actv)
 //        viewModel.getSearchName(this)
 
-       /* activity_hr_daily_attendance_cl.setOnClickListener {
-            openAttendanceActivity()
-        }*/
+        layout_hr_info_system_cl.setOnClickListener {
+            openHrInfoSystemActivity()
+        }
 
         layout_header_back_im.setOnClickListener {
             val intent = HomeActivity.newIntent(this)
@@ -80,10 +85,10 @@ class HrInfoSystemActivity : BaseActivity<ActivityHrInfoSystemBinding, HrInfoSys
         return super.onKeyDown(keyCode, event)
     }
 
-    /*override fun openAttendanceActivity(){
-        val intent = AttendanceActivity.newIntent(this)
+     fun openHrInfoSystemActivity(){
+        val intent = LeaveApprovalActivity.newIntent(this)
         startActivity(intent)
         finish()
-    }*/
+    }
 
 }
