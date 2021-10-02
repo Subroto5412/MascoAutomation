@@ -21,6 +21,8 @@ import com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsA
 import com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsLeaveSummaryAdapterModule
 import com.bd.mascogroup.automation.ui.hr_info.tax.TaxActivity
 import com.bd.mascogroup.automation.ui.hr_info.tax.TaxModule
+import com.bd.mascogroup.automation.ui.hr_info_system.HrInfoSystemActivity
+import com.bd.mascogroup.automation.ui.hr_info_system.HrInfoSystemActivityModule
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivityModule
 import com.bd.mascogroup.automation.ui.otp.OTPActivity
@@ -38,7 +40,7 @@ import dagger.android.ContributesAndroidInjector
         includes =
         [SplashActivityModule::class, LoginActivityModule::class, SignupActivityModule::class, OTPActivityModule::class, HomeActivityModule::class,ProductionManagementActivityModule::class,
             HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class, AttendanceModule::class,
-            LeaveModule::class, TaxModule::class, LeaveApplyModule::class]
+            LeaveModule::class, TaxModule::class, LeaveApplyModule::class, HrInfoSystemActivityModule::class]
 )
 
 abstract class ActivityBuilder {
@@ -115,4 +117,9 @@ abstract class ActivityBuilder {
         modules = [LeaveApplyModule::class]
     )
     internal abstract fun bindLeaveApplyActivity(): LeaveApplyActivity
+
+    @ContributesAndroidInjector(
+            modules = [HrInfoSystemActivityModule::class]
+    )
+    internal abstract fun bindHrInfoSystemActivity(): HrInfoSystemActivity
 }

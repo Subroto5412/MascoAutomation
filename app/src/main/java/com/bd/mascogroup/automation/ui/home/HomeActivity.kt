@@ -19,6 +19,7 @@ import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
 import com.bd.mascogroup.automation.ui.hr_info.attendance.AttendanceActivity
 import com.bd.mascogroup.automation.ui.hr_info.leave.LeaveActivity
 import com.bd.mascogroup.automation.ui.hr_info.tax.TaxActivity
+import com.bd.mascogroup.automation.ui.hr_info_system.HrInfoSystemActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home_side_menu.*
@@ -104,6 +105,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
 
         layout_human_resource_cl.setOnClickListener {
             val intent = HRInfoActivity.newIntent(this@HomeActivity)
+            startActivity(intent)
+        }
+
+        layout_approval_management_cl.setOnClickListener {
+
+            val intent = HrInfoSystemActivity.newIntent(this@HomeActivity)
             startActivity(intent)
         }
         viewModel.sideMenuDisplayInfo(this, activity_side_menu_name_tv, activity_side_menu_empcode_tv, activity_side_menu_unit_tv, activity_side_menu_phone_tv, activity_side_menu_user_im, activity_home_side_menu_logout_layout)
