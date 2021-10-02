@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/leave_approval_row_item_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_46sdp"
+        android:background="#081B63">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checking_leave_ck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:buttonTint="@color/white"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/_270sdp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/name_col_cl"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/leave_approval_form_emp_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="1000" />
+
+                <View
+                    android:id="@+id/view_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.20dp"
+                    android:background="@color/white"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/leave_approval_form_emp_id" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/leave_approval_form_emp_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/view_one"
+                    tools:text="Md. Tauhidul Islam" />
+
+                <View
+                    android:id="@+id/view_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.20dp"
+                    android:background="@color/white"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/leave_approval_form_emp_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/leave_approval_form_emp_designation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/view_two"
+                    tools:text="Sr. Manager" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+             <androidx.constraintlayout.widget.ConstraintLayout
+                 android:id="@+id/date_col_cl"
+                android:layout_width="@dimen/_85sdp"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toEndOf="@+id/name_col_cl"
+                app:layout_constraintTop_toTopOf="parent">
+
+                 <androidx.appcompat.widget.AppCompatTextView
+                     android:id="@+id/leave_approval_form_from_date_tv"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:fontFamily="@font/montserrat_regular"
+                     android:textColor="@color/white"
+                     android:textSize="@dimen/_8sdp"
+                     app:layout_constraintTop_toTopOf="parent"
+                     tools:text="18-09-2021" />
+
+                 <View
+                     android:id="@+id/date_col_view_one"
+                     android:layout_width="match_parent"
+                     android:layout_height="0.20dp"
+                     android:background="@color/white"
+                     android:layout_marginEnd="@dimen/_10sdp"
+                     app:layout_constraintEnd_toEndOf="parent"
+                     app:layout_constraintStart_toStartOf="parent"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:layout_constraintBottom_toBottomOf="parent"/>
+
+                 <androidx.appcompat.widget.AppCompatTextView
+                     android:id="@+id/leave_approval_form_to_date_tv"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:fontFamily="@font/montserrat_regular"
+                     android:textColor="@color/white"
+                     android:textSize="@dimen/_8sdp"
+                     app:layout_constraintBottom_toBottomOf="parent"
+                     tools:text="19-09-2021" />
+
+             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/leave_col_cl"
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toEndOf="@+id/date_col_cl"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/leave_approval_form_leave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="CL - 7 Days" />
+
+                <View
+                    android:id="@+id/leave_col_view_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.20dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/leave_approval_form_leave" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/leave_approval_form_emp_balance_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/leave_col_view_one"
+                    tools:text="Bl - 6 Days" />
+
+                <View
+                    android:id="@+id/leave_col_view_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.20dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/leave_approval_form_emp_balance_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/leave_approval_form_emp_totalday_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/leave_col_view_two"
+                    tools:text="AP - 1 Day" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                   </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/leave_col_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.20dp"
+            android:background="@color/white"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!--</ScrollView>-->
+        <!-- </androidx.cardview.widget.CardView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
