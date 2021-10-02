@@ -102,6 +102,11 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ui.hr_info_system.leave_approval.leave_approval_form.LeaveApprovalFormActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".ui.login.push_notification.MyFirebaseMessagingService">
             <intent-filter>

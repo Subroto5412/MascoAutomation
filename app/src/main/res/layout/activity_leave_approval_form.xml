@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bd.mascogroup.automation.ui.hr_info.daily_attendance.HomeActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.leave_approval_form.LeaveApprovalFormViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_production_management_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#081B63">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_production_management_full_boby_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/activity_production_management_search"
+                layout="@layout/layout_common_header" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_90sdp"
+            android:layout_marginBottom="@dimen/_80sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_production_management_full_boby_cl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_production_management_top_cl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="ID :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteY="130dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_id_value"
+                    android:layout_width="@dimen/_133sdp"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_85sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteY="118dp"
+                    tools:text="109827" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Name :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_id_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_name_value"
+                    android:layout_width="@dimen/_133sdp"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_85sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_id_value"
+                    tools:text="Subroto  Mohonto" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/pic_bg"
+                    android:layout_width="@dimen/_64sdp"
+                    android:layout_height="@dimen/_64sdp"
+                    android:src="@drawable/picture_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/activity_leave_apply_id_value"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_leave_apply_pic_im"
+                    android:layout_width="@dimen/_61sdp"
+                    android:layout_height="@dimen/_62sdp"
+                    android:src="@drawable/side_profile_pic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/activity_leave_apply_id_value"
+                    android:layout_marginEnd="@dimen/_11sdp"
+                    android:layout_marginTop="@dimen/_11sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_designation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Designation :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_name_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_designation_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_85sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_name_value"
+                    tools:text="Asst. Manager" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Leave Type :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_designation_value" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/activity_leave_apply_apply_sp"
+                    android:layout_width="@dimen/_155sdp"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_85sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_leave_apply_rest_value"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/activity_leave_apply_type"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_designation_value"
+                    tools:text="Subroto  Mohonto" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/type_sp"
+                    app:layout_constraintEnd_toEndOf="@+id/activity_leave_apply_apply_sp"
+                    app:layout_constraintTop_toTopOf="@+id/activity_leave_apply_apply_sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/activity_leave_apply_apply_sp"
+                    android:layout_marginEnd="@dimen/_6sdp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_rest_value"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/activity_leave_apply_apply_sp"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_designation_value"
+                    tools:text="5 Days" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Apply From :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_apply_sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_from_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_85sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_apply_sp"
+                    tools:text="10.09.2021" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/calendar"
+                    app:layout_constraintEnd_toEndOf="@+id/activity_leave_apply_from_value"
+                    app:layout_constraintTop_toTopOf="@+id/activity_leave_apply_from_value"
+                    app:layout_constraintBottom_toBottomOf="@+id/activity_leave_apply_from_value"
+                    android:layout_margin="@dimen/_7sdp"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Apply To :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_from_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_to_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_85sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_from_value"
+                    tools:text="15.09.2021" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/calendar"
+                    app:layout_constraintEnd_toEndOf="@+id/activity_leave_apply_to_value"
+                    app:layout_constraintTop_toTopOf="@+id/activity_leave_apply_to_value"
+                    app:layout_constraintBottom_toBottomOf="@+id/activity_leave_apply_to_value"
+                    android:layout_margin="@dimen/_7sdp"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_total_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Total Days :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_to_value" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_total_day_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_85sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_to_value"
+                    android:hint="5"
+                    android:textColorHint="@color/white"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_leave_apply_reason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Reason :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_total_day_value" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/activity_leave_apply_reason_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_85sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_total_day_value"
+                    android:hint="write here please"
+                    android:textColorHint="@color/white"/>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/activity_leave_apply_btn"
+                    android:layout_width="@dimen/_125sdp"
+                    android:layout_height="@dimen/_31sdp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="32dp"
+                    android:outlineSpotShadowColor="#5AEC81"
+                    app:cardBackgroundColor="@color/human_resource_color"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="24dp"
+                    app:cardMaxElevation="40dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_leave_apply_reason_value"
+                    android:visibility="visible">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/signInBtnHide"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:text="SAVE"
+                        android:textColor="@color/text_color_35"
+                        android:textSize="@dimen/_12sdp" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_production_management_footer_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <include
+                android:id="@+id/activity_production_management_footer"
+                layout="@layout/layout_footer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

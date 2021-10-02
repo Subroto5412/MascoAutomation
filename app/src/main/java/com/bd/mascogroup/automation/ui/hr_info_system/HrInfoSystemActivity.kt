@@ -47,10 +47,6 @@ class HrInfoSystemActivity : BaseActivity<ActivityHrInfoSystemBinding, HrInfoSys
         super.onCreate(savedInstanceState)
         mActivityHrInfoSystemBinding = viewDataBinding
         viewModel.navigator = this
-    //    viewModel.accessToken()
-     //   viewModel.buttonPermission(this, activity_hr_main_daily_attendance_cl, activity_hr_main_leave_details_cl, activity_hr_main_income_tax_cl)
-  //      viewModel.getSearchName(this, layout_header_search_actv)
-//        viewModel.getSearchName(this)
 
         layout_hr_info_system_cl.setOnClickListener {
             openHrInfoSystemActivity()
