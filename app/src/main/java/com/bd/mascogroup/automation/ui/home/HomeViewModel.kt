@@ -14,6 +14,7 @@ import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.model.domainModel.SearchListCardData
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.ui.login.LoginActivity
+import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.rx.ISchedulerProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -54,7 +55,7 @@ class HomeViewModel @Inject constructor(
             builder.setTitle("Do You Want to Logout from App?")
             //  builder.setMessage("Are you want to set the app background color to RED?")
             builder.setPositiveButton("YES"){dialog, which ->
-                dataManager.empCode = ""
+                emptyData()
                 navigator?.openLoginScreen()
             }
             builder.setNegativeButton("No"){dialog,which ->
@@ -109,4 +110,16 @@ class HomeViewModel @Inject constructor(
         )
     }
 
+    fun emptyData(){
+        dataManager.empCode = ""
+        dataManager.mobile = ""
+        dataManager.empId = ""
+        dataManager.accessToken =""
+        dataManager.refreshToken = ""
+        AppConstants.acceessToken = ""
+        dataManager.HRModule = ""
+        dataManager.dailyAttendance = ""
+        dataManager.leaveHistory = ""
+        dataManager.taxHistory = ""
+    }
 }

@@ -95,7 +95,7 @@ class LoginViewModel @Inject constructor(
         })
 
         activity_login_signin_btn.setOnClickListener {
-
+            deleteAllSearchList()
             doLogin(context, activity_login_user_id_et.text.toString(), activity_login_password_et.text.toString())
         }
 
@@ -264,6 +264,17 @@ class LoginViewModel @Inject constructor(
         }else{
             UtilMethods.showLongToast(context, "No Internet Connection!")
         }
+    }
+
+    fun deleteAllSearchList(){
+        compositeDisposable.add(
+                dataManager
+                        .deleteAllSearchlists()
+                        .subscribeOn(schedulerProvider.io())
+                        .observeOn(schedulerProvider.ui())
+                        .subscribe({ response ->
+                            Log.e("","response : "+response)
+                        }, {}))
     }
 
     fun isUserIdAndPasswordValid(userId: String, password: String): Boolean {

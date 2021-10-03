@@ -12,10 +12,7 @@ import androidx.core.view.isGone
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
-import com.bd.mascogroup.automation.data.remote.domainModel.LoginRequest
-import com.bd.mascogroup.automation.data.remote.domainModel.OtpRequest
-import com.bd.mascogroup.automation.data.remote.domainModel.RegisterRequest
-import com.bd.mascogroup.automation.data.remote.domainModel.VerifyOTPRequest
+import com.bd.mascogroup.automation.data.remote.domainModel.*
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
 import com.bd.mascogroup.automation.utils.AppConstants
 import com.bd.mascogroup.automation.utils.UtilMethods
@@ -293,9 +290,8 @@ class OTPViewModel @Inject constructor(
                                         val image = parts[1]
                                         dataManager.customerPic = "https://mis-api.mascoknit.com/EmpImages/" + image
 
-                                        navigator?.openHomeScreen()
-
                                         UtilMethods.hideLoading()
+                                        sendFCMToken(context)
                                 }, { error ->
                                         UtilMethods.hideLoading()
                                         // UtilMethods.showLongToast(context, error.message.toString())
@@ -335,4 +331,24 @@ class OTPViewModel @Inject constructor(
                 }
         }
 
+        fun sendFCMToken(context: Context){
+                if(UtilMethods.isConnectedToInternet(context)){
+                        UtilMethods.showLoading(context)
+                        val observable = ApiServiceCalling.generalMisApiCallToken().doFCMToken(TokenRequest(AppConstants.fcmToken))
+
+                        observable.subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe({ fcmResponse ->
+                                        UtilMethods.hideLoading()
+                                        navigator?.openHomeScreen()
+                                }, { error ->
+                                        UtilMethods.hideLoading()
+                                        navigator?.openHomeScreen()
+                                        // UtilMethods.showLongToast(context, error.message.toString())
+                                }
+                                )
+                }else{
+                        UtilMethods.showLongToast(context, "No Internet Connection!")
+                }
+        }
 }

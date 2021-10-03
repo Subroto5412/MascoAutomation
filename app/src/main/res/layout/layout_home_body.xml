@@ -868,7 +868,7 @@
                                     android:id="@+id/layout_approval_management_top_im"
                                     android:layout_width="@dimen/_63sdp"
                                     android:layout_height="@dimen/_33sdp"
-                                    android:src="@drawable/idea_laboratory_icon"
+                                    android:src="@drawable/approval_management"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:layout_constraintBottom_toBottomOf="parent"
