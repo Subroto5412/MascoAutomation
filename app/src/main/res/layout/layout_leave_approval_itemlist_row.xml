@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionItemViewModel" />
+            type="com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.leave_approval_form.LeaveApprovalFormItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +31,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="@dimen/_270sdp"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_3sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,13 +55,14 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8sdp"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="1000" />
+                    tools:text="1000"
+                    android:text="@{viewModel.emP_CODE}"/>
 
                 <View
                     android:id="@+id/view_one"
                     android:layout_width="match_parent"
                     android:layout_height="0.20dp"
-                    android:background="@color/white"
+                    android:background="@color/bg_color_line"
                     android:layout_marginEnd="@dimen/_10sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -75,13 +76,14 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8sdp"
                     app:layout_constraintTop_toBottomOf="@+id/view_one"
-                    tools:text="Md. Tauhidul Islam" />
+                    tools:text="Md. Tauhidul Islam"
+                    android:text="@{viewModel.emP_ENAME}"/>
 
                 <View
                     android:id="@+id/view_two"
                     android:layout_width="match_parent"
                     android:layout_height="0.20dp"
-                    android:background="@color/white"
+                    android:background="@color/bg_color_line"
                     android:layout_marginEnd="@dimen/_10sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +97,8 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8sdp"
                     app:layout_constraintTop_toBottomOf="@+id/view_two"
-                    tools:text="Sr. Manager" />
+                    tools:text="Sr. Manager"
+                    android:text="@{viewModel.desigEName}"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -114,13 +117,14 @@
                      android:textColor="@color/white"
                      android:textSize="@dimen/_8sdp"
                      app:layout_constraintTop_toTopOf="parent"
-                     tools:text="18-09-2021" />
+                     tools:text="18-09-2021"
+                     android:text="@{viewModel.applyFromDate}"/>
 
                  <View
                      android:id="@+id/date_col_view_one"
                      android:layout_width="match_parent"
                      android:layout_height="0.20dp"
-                     android:background="@color/white"
+                     android:background="@color/bg_color_line"
                      android:layout_marginEnd="@dimen/_10sdp"
                      app:layout_constraintEnd_toEndOf="parent"
                      app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +139,8 @@
                      android:textColor="@color/white"
                      android:textSize="@dimen/_8sdp"
                      app:layout_constraintBottom_toBottomOf="parent"
-                     tools:text="19-09-2021" />
+                     tools:text="19-09-2021"
+                     android:text="@{viewModel.applyToDate}"/>
 
              </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -154,13 +159,14 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8sdp"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="CL - 7 Days" />
+                    tools:text="CL - 7 Days"
+                    android:text="@{viewModel.leaveType}"/>
 
                 <View
                     android:id="@+id/leave_col_view_one"
                     android:layout_width="match_parent"
                     android:layout_height="0.20dp"
-                    android:background="@color/white"
+                    android:background="@color/bg_color_line"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/leave_approval_form_leave" />
@@ -173,13 +179,14 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8sdp"
                     app:layout_constraintTop_toBottomOf="@+id/leave_col_view_one"
-                    tools:text="Bl - 6 Days" />
+                    tools:text="Bl - 6 Days"
+                    android:text="@{viewModel.leaveAvail}"/>
 
                 <View
                     android:id="@+id/leave_col_view_two"
                     android:layout_width="match_parent"
                     android:layout_height="0.20dp"
-                    android:background="@color/white"
+                    android:background="@color/bg_color_line"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/leave_approval_form_emp_balance_tv" />
@@ -192,7 +199,9 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_8sdp"
                     app:layout_constraintTop_toBottomOf="@+id/leave_col_view_two"
-                    tools:text="AP - 1 Day" />
+                    tools:text="AP - 1 Day"
+                    android:text="@{viewModel.applyDays}"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -204,8 +213,8 @@
             android:layout_width="match_parent"
             android:layout_height="0.20dp"
             android:background="@color/white"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />

@@ -9,6 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_color">#164193</color>
+    <color name="bg_color_line">#2952A1</color>
     <color name="text_color_user_id">#689CFF</color>
     <color name="text_color_35">#353535</color>
     <color name="human_resource_color">#5AEC81</color>

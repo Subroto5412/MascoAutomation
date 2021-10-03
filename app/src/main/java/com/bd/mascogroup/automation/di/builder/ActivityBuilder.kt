@@ -25,9 +25,7 @@ import com.bd.mascogroup.automation.ui.hr_info_system.HrInfoSystemActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.HrInfoSystemActivityModule
 import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivityModule
-import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.leave_approval_form.LeaveApprovalFormActivity
-import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.leave_approval_form.LeaveApprovalFormActivityModule
-import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.leave_approval_form.LeaveApprovalFormViewModel
+import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.leave_approval_form.*
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivityModule
 import com.bd.mascogroup.automation.ui.otp.OTPActivity
@@ -134,7 +132,7 @@ abstract class ActivityBuilder {
     internal abstract fun bindLeaveApprovalActivity(): LeaveApprovalActivity
 
     @ContributesAndroidInjector(
-            modules = [LeaveApprovalFormActivityModule::class]
+            modules = [LeaveApprovalFormActivityModule::class, LeaveApprovalFormAdapterModule::class]
     )
     internal abstract fun bindLeaveApprovalFormActivity(): LeaveApprovalFormActivity
 }
