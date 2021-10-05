@@ -5,10 +5,7 @@ import com.google.gson.Gson
 import io.reactivex.Observable
 import com.bd.mascogroup.automation.data.local.db.IDbHelper
 import com.bd.mascogroup.automation.data.local.prefs.IPreferencesHelper
-import com.bd.mascogroup.automation.data.model.db.Orderlist
-import com.bd.mascogroup.automation.data.model.db.Productlist
-import com.bd.mascogroup.automation.data.model.db.Searchlist
-import com.bd.mascogroup.automation.data.model.db.User
+import com.bd.mascogroup.automation.data.model.db.*
 import javax.inject.Inject
 
 class AppDataManager @Inject constructor(
@@ -158,6 +155,26 @@ class AppDataManager @Inject constructor(
 
     override fun getSearchByModuleAndActivityName(ActivityName: String, ModuleName: String): Observable<List<Searchlist>> {
         return  mDbHelper.getSearchByModuleAndActivityName(ActivityName, ModuleName)
+    }
+
+    override fun insertLeaveApproval(leaveapprovallist: Leaveapprovallist): Observable<Boolean> {
+        return mDbHelper.insertLeaveApproval(leaveapprovallist)
+    }
+
+    override fun deleteAllLeaveApprovalData(): Observable<Boolean> {
+        return  mDbHelper.deleteAllLeaveApprovalData()
+    }
+
+    override fun updateLeaveApprovalStatus(status: String, empCode: String): Observable<Boolean> {
+       return  mDbHelper.updateLeaveApprovalStatus(status, empCode)
+    }
+
+    override fun loadAllLeaveApproval(): Observable<List<Leaveapprovallist>> {
+        return  mDbHelper.loadAllLeaveApproval()
+    }
+
+    override fun getLeaveApprovalByStatus(status: String): Observable<List<Leaveapprovallist>> {
+        return  mDbHelper.getLeaveApprovalByStatus(status)
     }
 
 }

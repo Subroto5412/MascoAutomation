@@ -3,6 +3,7 @@ package com.bd.mascogroup.automation.data.remote
 
 
 import com.bd.mascogroup.automation.BuildConfig
+import com.bd.mascogroup.automation.utils.AppConstants
 import okhttp3.Interceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -16,7 +17,7 @@ object ApiServiceCalling {
 
         override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
             var request = chain.request()
-            request = request.newBuilder().header("Authorization", "$tokenType $acceessToken").build()
+            request = request.newBuilder().header("Authorization", "$tokenType ${AppConstants.acceessToken}").build()
 
             return chain.proceed(request)
         }

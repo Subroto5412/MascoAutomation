@@ -1,40 +1,44 @@
 package com.bd.mascogroup.automation.data.model.domainModel
 
-import com.bd.mascogroup.automation.data.remote.domainModel.LeavePendingListData
+import com.bd.mascogroup.automation.data.model.db.Leaveapprovallist
 
-class LeaveApprovalListCardData constructor(var leavePendingListData: LeavePendingListData) {
+class LeaveApprovalListCardData constructor(var leaveapprovallist: Leaveapprovallist) {
 
     val applyNo : Int
-        get() = leavePendingListData.applyNo
+        get() = leaveapprovallist.applyNo
 
     val emP_CODE : String
-        get() = leavePendingListData.emP_CODE
+        get() = leaveapprovallist.empCode
 
     val emP_ENAME : String
-        get() = leavePendingListData.emP_ENAME
+        get() = leaveapprovallist.empName
 
     val desigEName : String
-        get() = leavePendingListData.desigEName
+        get() = leaveapprovallist.designation
 
     val applyFromDate : String
-        get() = leavePendingListData.applyFromDate
+        get() = leaveapprovallist.applyFromDate
 
 
     val applyToDate : String
-        get() = leavePendingListData.applyToDate
+        get() = leaveapprovallist.applyToDate
 
     val applyDays : String
-        get() = leavePendingListData.applyDays
+        get() = leaveapprovallist.applyDays
 
     val leaveNo : Int
-        get() = leavePendingListData.leaveNo
+        get() = leaveapprovallist.leaveNo
 
     val leaveType : String
-        get() = leavePendingListData.leaveType
+        get() = leaveapprovallist.leaveType
 
     val leaveMax : Int
-        get() = leavePendingListData.leaveMax
+        get() = leaveapprovallist.leaveMax
 
     val leaveAvail : Int
-        get() = leavePendingListData.leaveAvail
+        get() = leaveapprovallist.leaveAvail
+
+
+    val status : String
+        get() = leaveapprovallist.status
 }

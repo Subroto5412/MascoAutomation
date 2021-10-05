@@ -16,6 +16,7 @@ import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionAdapter
 import com.bd.mascogroup.automation.ui.hr_info_system.HrInfoSystemActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivity
+import kotlinx.android.synthetic.main.activity_leave_approval_form.*
 import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
@@ -52,9 +53,11 @@ class LeaveApprovalFormActivity : BaseActivity<ActivityLeaveApprovalFormBinding,
         mLeaveApprovalFormAdapter.setListener(this)
         activity_title_tv.setText("Leave Approval")
 
-        viewModel.getLeaveApproval(this)
+//        viewModel.deleteAllLeaveApprovalData()
+        viewModel.deleteAllLeaveApprovalData(this)
         setUpLeaveApproval()
         subscribeToLiveDataLeaveApproval()
+
        /* layout_header_back_im.setOnClickListener {
             val intent = LeaveApprovalActivity.newIntent(this)
             startActivity(intent)
@@ -64,6 +67,15 @@ class LeaveApprovalFormActivity : BaseActivity<ActivityLeaveApprovalFormBinding,
             val intent = HomeActivity.newIntent(this)
             startActivity(intent)
             finish()
+        }
+
+        checking_all_leave_ck.setOnClickListener {
+
+            if (checking_all_leave_ck.isChecked==true){
+                viewModel.getAllLeaveApprovals(this, "true")
+            }else{
+                viewModel.getAllLeaveApprovals(this, "false")
+            }
         }
     }
 
@@ -101,5 +113,9 @@ class LeaveApprovalFormActivity : BaseActivity<ActivityLeaveApprovalFormBinding,
             mLeaveApprovalFormViewModel.addLeaveApprovalListItemToList(t)
             updateLeaveApprovalList(t)
         })
+    }
+
+    override fun onNext(empCode: String, ischeck: String) {
+        viewModel.getUpdateOrderNoListData(this, empCode, ischeck)
     }
 }

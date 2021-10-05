@@ -1,5 +1,7 @@
 package com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.leave_approval_form
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.databinding.ObservableField
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.model.domainModel.LeaveApprovalListCardData
@@ -9,7 +11,8 @@ class LeaveApprovalFormItemViewModel(
         leaveApprovalListCardData: LeaveApprovalListCardData,
         position: Int,
         listener: leaveApprovalFormItemViewModelListener,
-        dataManager: IDataManager
+        dataManager: IDataManager,
+        context: Context
 ) {
     val mListener: leaveApprovalFormItemViewModelListener
     val mPosition: ObservableField<Int>
@@ -22,6 +25,7 @@ class LeaveApprovalFormItemViewModel(
     val applyDays: ObservableField<String>
     val leaveType: ObservableField<String>
     val leaveAvail: ObservableField<String>
+    val check: ObservableField<Boolean>
 
 
     interface leaveApprovalFormItemViewModelListener {}
@@ -39,5 +43,9 @@ class LeaveApprovalFormItemViewModel(
         applyDays = ObservableField("AP-"+mLeaveApprovalListCardData.applyDays+"day")
         leaveType = ObservableField(mLeaveApprovalListCardData.leaveType+"-"+mLeaveApprovalListCardData.leaveAvail+"day")
         leaveAvail = ObservableField("Bl-"+(mLeaveApprovalListCardData.leaveAvail-mLeaveApprovalListCardData.applyDays.toInt()).toString()+"day")
+
+        var PRIVATE_MODE = 0
+        val sharedPref: SharedPreferences = context.getSharedPreferences(mLeaveApprovalListCardData.emP_CODE, PRIVATE_MODE)
+        check = ObservableField(sharedPref.getString(mLeaveApprovalListCardData.emP_CODE, "").toBoolean())
     }
 }

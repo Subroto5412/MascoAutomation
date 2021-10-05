@@ -149,7 +149,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/leave_approval_form_sl_tv" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/checking_leave_ck"
+                android:id="@+id/checking_all_leave_ck"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_18sdp"
                 app:layout_constraintBottom_toBottomOf="parent"

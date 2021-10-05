@@ -1,10 +1,7 @@
 package com.bd.mascogroup.automation.data.local.db
 
 
-import com.bd.mascogroup.automation.data.model.db.Orderlist
-import com.bd.mascogroup.automation.data.model.db.Productlist
-import com.bd.mascogroup.automation.data.model.db.Searchlist
-import com.bd.mascogroup.automation.data.model.db.User
+import com.bd.mascogroup.automation.data.model.db.*
 import io.reactivex.Observable
 import javax.inject.Inject
 
@@ -104,6 +101,39 @@ class AppDbHelper @Inject constructor(private val mAppDatabase: AppDatabase) : I
     override fun getSearchByModuleAndActivityName(ActivityName: String, ModuleName: String): Observable<List<Searchlist>> {
         return Observable.fromCallable {
             mAppDatabase.searchlistDao().findByActivityNameModuleName(ActivityName, ModuleName)
+        }
+    }
+
+    override fun insertLeaveApproval(leaveapprovallist: Leaveapprovallist): Observable<Boolean> {
+        return Observable.fromCallable {
+            mAppDatabase.leaveapprovallistDao().insert(leaveapprovallist)
+            true
+        }
+    }
+
+    override fun deleteAllLeaveApprovalData(): Observable<Boolean> {
+        return Observable.fromCallable{
+            mAppDatabase.leaveapprovallistDao().deleteAllLeaveApprovalList()
+            true
+        }
+    }
+
+    override fun updateLeaveApprovalStatus(status: String, empCode: String): Observable<Boolean> {
+        return Observable.fromCallable {
+            mAppDatabase.leaveapprovallistDao().updateLeaveApprovalStatus(status,empCode)
+            true
+        }
+    }
+
+    override fun loadAllLeaveApproval(): Observable<List<Leaveapprovallist>> {
+        return Observable.fromCallable {
+            mAppDatabase.leaveapprovallistDao().loadAllLeaveApprovalList()
+        }
+    }
+
+    override fun getLeaveApprovalByStatus(status: String): Observable<List<Leaveapprovallist>> {
+        return Observable.fromCallable {
+            mAppDatabase.leaveapprovallistDao().loadLeaveApprovalListByStatus(status)
         }
     }
 }

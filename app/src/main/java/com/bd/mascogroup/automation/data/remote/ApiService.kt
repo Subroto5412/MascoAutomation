@@ -112,4 +112,10 @@ interface ApiService {
             @Body leaveApplyRequest: LeaveApplyRequest
     ): Observable<LeaveApplyResponse>
 
+    @Headers("Content-Type: application/json")
+    @POST("v1/leave/pending")
+    fun getLeavePendingApproval(
+            @Body leavePendingApprovalRequest: LeavePendingApprovalRequest
+    ): Observable<LeaveApprovalList>
+
 }

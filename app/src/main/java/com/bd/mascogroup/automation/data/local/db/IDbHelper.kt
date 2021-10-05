@@ -1,10 +1,7 @@
 package com.bd.mascogroup.automation.data.local.db
 
-import com.bd.mascogroup.automation.data.model.db.Orderlist
-import com.bd.mascogroup.automation.data.model.db.Productlist
-import com.bd.mascogroup.automation.data.model.db.Searchlist
+import com.bd.mascogroup.automation.data.model.db.*
 import io.reactivex.Observable
-import com.bd.mascogroup.automation.data.model.db.User
 
 interface IDbHelper {
     fun insertUser(user: User): Observable<Boolean>
@@ -30,4 +27,12 @@ interface IDbHelper {
     fun deleteAllSearchlists(): Observable<Boolean>
     fun getSearchByActivityName(ActivityName: String):  Observable<List<Searchlist>>
     fun getSearchByModuleAndActivityName(ActivityName: String, ModuleName: String):  Observable<List<Searchlist>>
+
+    //leave approval list
+    fun insertLeaveApproval(leaveapprovallist: Leaveapprovallist): Observable<Boolean>
+    fun deleteAllLeaveApprovalData(): Observable<Boolean>
+    fun updateLeaveApprovalStatus(status: String, empCode: String):Observable<Boolean>
+    fun loadAllLeaveApproval():Observable<List<Leaveapprovallist>>
+    fun getLeaveApprovalByStatus(status: String):  Observable<List<Leaveapprovallist>>
+
 }

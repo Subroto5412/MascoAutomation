@@ -33,7 +33,9 @@ class HRInfoViewModel @Inject constructor(
     private var activityNamesList = ArrayList<SearchListCardData>()
 
     fun accessToken(){
+        AppConstants.acceessToken = ""
         AppConstants.acceessToken = dataManager.accessToken
+        Log.e("----------------","-----------AppConstants.acceessToken---------"+AppConstants.acceessToken)
     }
 
     fun buttonPermission(context: Context, activity_hr_main_daily_attendance_cl:ConstraintLayout, activity_hr_main_leave_details_cl:ConstraintLayout, activity_hr_main_income_tax_cl:ConstraintLayout){

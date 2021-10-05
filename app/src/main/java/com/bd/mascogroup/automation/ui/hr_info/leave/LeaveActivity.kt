@@ -46,6 +46,7 @@ class LeaveActivity : BaseActivity<ActivityLeaveBinding, LeaveViewModel>(), ILea
         mActivityLeaveBinding = viewDataBinding
         viewModel.navigator = this
         activity_title_tv.setText("Leave History")
+        viewModel.accessToken()
 
         activity_hr_leave_details_cl.setOnClickListener {
             val intent = LeaveDetailsActivity.newIntent(this)
