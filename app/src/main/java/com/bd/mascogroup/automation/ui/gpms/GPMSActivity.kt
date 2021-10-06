@@ -8,6 +8,7 @@ import androidx.databinding.library.baseAdapters.BR
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityGarmentsProductionManagementBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
+import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivity
 import kotlinx.android.synthetic.main.activity_garments_production_management.*
@@ -40,7 +41,7 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
         viewModel.navigator = this
 
         activity_line_wise_production_cl.setOnClickListener {
-//            openHrInfoSystemActivity()
+
         }
 
         activity_hourly_production_data_cl.setOnClickListener {
@@ -48,7 +49,7 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
         }
 
         activitybuyer_wise_production_data_cl.setOnClickListener {
-
+            openBuyerWiseProductionActivity()
         }
 
         layout_header_back_im.setOnClickListener {
@@ -86,4 +87,9 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
         finish()
     }
 
+    fun openBuyerWiseProductionActivity(){
+        val intent = BWPDActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
 }

@@ -1,5 +1,10 @@
 package com.bd.mascogroup.automation.di.builder
 
+import com.bd.mascogroup.automation.ui.gpms.GPMSActivity
+import com.bd.mascogroup.automation.ui.gpms.GPMSActivityModule
+import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
+import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivityModule
+import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDAdapterModule
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivityModule
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
@@ -43,7 +48,8 @@ import dagger.android.ContributesAndroidInjector
         includes =
         [SplashActivityModule::class, LoginActivityModule::class, SignupActivityModule::class, OTPActivityModule::class, HomeActivityModule::class,ProductionManagementActivityModule::class,
             HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class, AttendanceModule::class,
-            LeaveModule::class, TaxModule::class, LeaveApplyModule::class, HrInfoSystemActivityModule::class, LeaveApprovalActivityModule::class, LeaveApprovalFormActivityModule::class]
+            LeaveModule::class, TaxModule::class, LeaveApplyModule::class, HrInfoSystemActivityModule::class, LeaveApprovalActivityModule::class, LeaveApprovalFormActivityModule::class,
+        GPMSActivityModule::class]
 )
 
 abstract class ActivityBuilder {
@@ -135,4 +141,15 @@ abstract class ActivityBuilder {
             modules = [LeaveApprovalFormActivityModule::class, LeaveApprovalFormAdapterModule::class]
     )
     internal abstract fun bindLeaveApprovalFormActivity(): LeaveApprovalFormActivity
+
+    @ContributesAndroidInjector(
+            modules = [GPMSActivityModule::class]
+    )
+    internal abstract fun bindGPMSActivity(): GPMSActivity
+
+
+    @ContributesAndroidInjector(
+            modules = [BWPDActivityModule::class, BWPDAdapterModule::class]
+    )
+    internal abstract fun bindBWPDActivity(): BWPDActivity
 }

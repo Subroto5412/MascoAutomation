@@ -21,6 +21,7 @@ import com.bd.mascogroup.automation.ui.hr_info.leave.LeaveActivity
 import com.bd.mascogroup.automation.ui.hr_info.tax.TaxActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.HrInfoSystemActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivity
+import com.bd.mascogroup.automation.ui.production_management.ProductionManagementActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home_side_menu.*
 import kotlinx.android.synthetic.main.activity_home_side_menu_footer.*
@@ -69,7 +70,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
         viewModel.getSearchName(this, search_name_actv)
 
         layout_production_management_cl.setOnClickListener {
-            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
+            openProductManagement()
         }
 
         layout_supply_chain_down_cl.setOnClickListener {
@@ -226,6 +227,13 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
 
     override fun openTaxActivity(){
         val intent = TaxActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    fun openProductManagement(){
+
+        val intent = ProductionManagementActivity.newIntent(this)
         startActivity(intent)
         finish()
     }

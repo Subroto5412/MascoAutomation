@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionItemViewModel" />
+            type="com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +43,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="01." />
+                tools:text="01."
+                android:text="@{viewModel.sl}"/>
 
             <View
                 android:layout_width="@dimen/_15sdp"
@@ -69,7 +70,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buyer_wise_production_data_sl_tv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="H&amp;M" />
+                tools:text="H&amp;M"
+                android:text="@{viewModel.buyerName}"/>
 
             <View
                 android:layout_width="@dimen/_40sdp"
@@ -96,7 +98,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buyer_wise_production_data_buyer_tv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="000001" />
+                tools:text="000001"
+                android:text="@{viewModel.styleNo}"/>
 
             <View
                 android:layout_width="@dimen/_30sdp"
@@ -125,7 +128,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buyer_wise_production_data_style_tv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="A" />
+                tools:text="A"
+                android:text="@{viewModel.orderNo}"/>
 
             <View
                 android:layout_width="@dimen/_32sdp"
@@ -152,7 +156,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buyer_wise_production_data_order_tv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="500000" />
+                tools:text="500000"
+                android:text="@{viewModel.orderQty}"/>
 
             <View
                 android:layout_width="@dimen/_34sdp"
@@ -179,7 +184,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buyer_wise_production_data_order_qty_tv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="300000" />
+                tools:text="300000"
+                android:text="@{viewModel.sewingQty}"/>
 
             <View
                 android:layout_width="@dimen/_30sdp"
@@ -206,7 +212,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buyer_wise_production_data_sewing_qty_tv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="200000" />
+                tools:text="200000"
+                android:text="@{viewModel.balance}"/>
 
             <View
                 android:layout_width="@dimen/_37sdp"

@@ -129,4 +129,26 @@ interface ApiService {
     fun submitRejectList(
             @Body rejectListRequest: RejectListRequest
     ): Observable<RejectListResponse>
+
+    @Headers("Content-Type: application/json")
+    @GET("v1/gpms/production/load-unitname")
+    fun getUnitName(): Observable<UnitResponse> // body data
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/gpms/production/line-wise")
+    fun getLineWiseData(
+            @Body lineWiseRequest: LineWiseRequest
+    ): Observable<LineWiseResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/gpms/production/hour-wise-data")
+    fun getHourWiseData(
+            @Body hourWiseDataRequest: HourWiseDataRequest
+    ): Observable<HourWiseDataResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/gpms/production/buyer-wise-data")
+    fun getBuyerWiseData(
+            @Body buyerWiseDataRequest: BuyerWiseDataRequest
+    ): Observable<BuyerWiseDataResponse>
 }

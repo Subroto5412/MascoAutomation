@@ -7,6 +7,8 @@ import androidx.databinding.library.baseAdapters.BR
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityProductionManagementBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
+import com.bd.mascogroup.automation.ui.gpms.GPMSActivity
+import kotlinx.android.synthetic.main.layout_production_management.*
 import javax.inject.Inject
 
 class ProductionManagementActivity : BaseActivity<ActivityProductionManagementBinding, ProductionManagementViewModel>(), IProductionManagementNavigator {
@@ -35,6 +37,13 @@ class ProductionManagementActivity : BaseActivity<ActivityProductionManagementBi
         super.onCreate(savedInstanceState)
         mActivityProductionManagementBinding = viewDataBinding
         viewModel.navigator = this
+
+        layout_production_management_cl.setOnClickListener {
+
+            val intent = GPMSActivity.newIntent(this)
+            startActivity(intent)
+            finish()
+        }
     }
 
     companion object {
