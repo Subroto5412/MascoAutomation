@@ -37,6 +37,7 @@ class LeaveApplyViewModel @Inject constructor(
         activity_leave_apply_designation_value: TextView
     ) {
         leavelAvailListCardData.clear()
+        AppConstants.HasLeaveList.clear()
 
         if (UtilMethods.isConnectedToInternet(context)) {
             UtilMethods.showLoading(context)
