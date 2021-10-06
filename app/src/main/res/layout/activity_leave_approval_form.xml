@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <include
-                android:id="@+id/activity_production_management_search"
+                android:id="@+id/activity__approve_main_header"
                 layout="@layout/layout_common_header" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

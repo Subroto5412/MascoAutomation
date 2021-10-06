@@ -118,4 +118,15 @@ interface ApiService {
             @Body leavePendingApprovalRequest: LeavePendingApprovalRequest
     ): Observable<LeaveApprovalList>
 
+    @Headers("Content-Type: application/json")
+    @POST("v1/leave/approve")
+    fun submitApproveList(
+            @Body approveListRequest: ApproveListRequest
+    ): Observable<ApprovalResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/leave/reject")
+    fun submitRejectList(
+            @Body rejectListRequest: RejectListRequest
+    ): Observable<RejectListResponse>
 }

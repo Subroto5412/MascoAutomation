@@ -138,10 +138,6 @@ class LoginViewModel @Inject constructor(
                         dataManager.password = password
                         dataManager.saveEmpCode = loginResponse.empCode
 
-                        Log.e("------------","------accessToken &&----"+dataManager.accessToken)
-                        Log.e("------------","----refreshToken----&&--"+dataManager.refreshToken)
-                        Log.e("------------","------acceessTokenacceessToken--&&--"+AppConstants.acceessToken)
-
                         if (loginResponse._permissionList.isNullOrEmpty()){
                             dataManager.HRModule = ""
                             dataManager.dailyAttendance = ""

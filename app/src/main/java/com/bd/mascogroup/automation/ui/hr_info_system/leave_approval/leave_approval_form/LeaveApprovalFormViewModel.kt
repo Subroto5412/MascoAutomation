@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
@@ -40,29 +41,29 @@ class LeaveApprovalFormViewModel @Inject constructor(
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({ pendingApprovalResponse ->
-                        pendingApprovalResponse._leavePendingList.forEach {
-                            var leaveapprovallist = Leaveapprovallist()
-                            leaveapprovallist.applyNo = it.applyNo
-                            leaveapprovallist.empCode = it.emP_CODE
-                            leaveapprovallist.empName = it.emP_ENAME
-                            leaveapprovallist.designation = it.desigEName
-                            leaveapprovallist.applyFromDate = it.applyFromDate
-                            leaveapprovallist.applyToDate = it.applyToDate
-                            leaveapprovallist.applyDays = it.applyDays
-                            leaveapprovallist.leaveNo = it.leaveNo
-                            leaveapprovallist.leaveType = it.leaveType
-                            leaveapprovallist.leaveMax = it.leaveMax
-                            leaveapprovallist.leaveAvail = it.leaveAvail
-                            leaveapprovallist.status = "false"
 
-                            val sharedPref: SharedPreferences = context.getSharedPreferences( leaveapprovallist.empCode, PRIVATE_MODE)
-                            val editor = sharedPref.edit()
-                            editor.putString( leaveapprovallist.empCode, "false")
-                            editor.apply()
+                            pendingApprovalResponse._leavePendingList.forEach {
+                                var leaveapprovallist = Leaveapprovallist()
+                                leaveapprovallist.applyNo = it.applyNo
+                                leaveapprovallist.empCode = it.emP_CODE
+                                leaveapprovallist.empName = it.emP_ENAME
+                                leaveapprovallist.designation = it.desigEName
+                                leaveapprovallist.applyFromDate = it.applyFromDate
+                                leaveapprovallist.applyToDate = it.applyToDate
+                                leaveapprovallist.applyDays = it.applyDays
+                                leaveapprovallist.leaveNo = it.leaveNo
+                                leaveapprovallist.leaveType = it.leaveType
+                                leaveapprovallist.leaveMax = it.leaveMax
+                                leaveapprovallist.leaveAvail = it.leaveAvail
+                                leaveapprovallist.status = "false"
 
-                            insertOrderData(leaveapprovallist)
-                        }
+                                val sharedPref: SharedPreferences = context.getSharedPreferences( leaveapprovallist.empCode, PRIVATE_MODE)
+                                val editor = sharedPref.edit()
+                                editor.putString( leaveapprovallist.empCode, "false")
+                                editor.apply()
 
+                                insertOrderData(leaveapprovallist)
+                            }
                         UtilMethods.hideLoading()
                     }, { error ->
                         UtilMethods.hideLoading()
@@ -97,13 +98,13 @@ class LeaveApprovalFormViewModel @Inject constructor(
                         .subscribeOn(schedulerProvider.io())
                         .observeOn(schedulerProvider.ui())
                         .subscribe({ response ->
+
                             response.forEach {
                                 leaveApprovalListItems.add(LeaveApprovalListCardData(it))
                             }
                             leaveApprovalListLiveData.value = leaveApprovalListItems
 
                         }, {
-                            //navigator?.handleError(throwable)
                         })
         )
     }
@@ -161,6 +162,90 @@ class LeaveApprovalFormViewModel @Inject constructor(
         )
     }
 
+    fun submitLeaveApproveData(context: Context) {
+
+        val leaveApproveItems = ArrayList<ApproveDataRequest>()
+        if (UtilMethods.isConnectedToInternet(context)) {
+            compositeDisposable.add(
+                    dataManager
+                            .getLeaveApprovalByStatus("true")
+                            .subscribeOn(schedulerProvider.io())
+                            .observeOn(schedulerProvider.ui())
+                            .subscribe({ response ->
+                                response.forEach {
+                                    val leaveApproveItem =  ApproveDataRequest()
+                                    leaveApproveItem.ApplyNo = it.applyNo
+                                    leaveApproveItem.ApplyDays = it.applyDays
+                                    leaveApproveItem.ApproveFromDate = it.applyFromDate
+                                    leaveApproveItem.ApproveToDate = it.applyToDate
+                                    leaveApproveItem.EMP_CODE = it.empCode
+                                    leaveApproveItem.LeaveNo = it.leaveNo
+                                    leaveApproveItems.add(leaveApproveItem)
+                                }
+
+                                UtilMethods.showLoading(context)
+                                val leaveApproveListRequestSubmit = ApproveListRequest(leaveApproveItems)
+
+                                val observable = ApiServiceCalling.generalMisApiCallToken().submitApproveList(leaveApproveListRequestSubmit)
+                                observable.subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe({ responseData ->
+                                            if (responseData.response==true){
+                                                Toast.makeText(context, "Leave Approve Successfully", Toast.LENGTH_LONG).show()
+                                            }
+                                            UtilMethods.hideLoading()
+                                            navigator?.screenRefresh()
+                                        }, {
+                                            UtilMethods.hideLoading()
+                                        })
+                            }, {
+                                //navigator?.handleError(throwable)
+                            })
+            )
+        } else {
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
+    }
+
+    fun submitLeaveRejectData(context: Context) {
+
+        val leaveRejectItems = ArrayList<LeaveRejectData>()
+        if (UtilMethods.isConnectedToInternet(context)) {
+            compositeDisposable.add(
+                    dataManager
+                            .getLeaveApprovalByStatus("true")
+                            .subscribeOn(schedulerProvider.io())
+                            .observeOn(schedulerProvider.ui())
+                            .subscribe({ response ->
+                                response.forEach {
+                                    val leaveRejectItem =  LeaveRejectData()
+                                    leaveRejectItem.ApplyNo = it.applyNo
+                                    leaveRejectItems.add(leaveRejectItem)
+                                }
+
+                                UtilMethods.showLoading(context)
+                                val leaveRejectListRequestSubmit = RejectListRequest(dataManager.customerName, leaveRejectItems)
+
+                                val observable = ApiServiceCalling.generalMisApiCallToken().submitRejectList(leaveRejectListRequestSubmit)
+                                observable.subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe({ responseData ->
+                                            if (responseData.response==true){
+                                                Toast.makeText(context, "Leave Reject Successfully", Toast.LENGTH_LONG).show()
+                                            }
+                                            UtilMethods.hideLoading()
+                                           navigator?.screenRefresh()
+                                        }, {
+                                            UtilMethods.hideLoading()
+                                        })
+                            }, {
+                                //navigator?.handleError(throwable)
+                            })
+            )
+        } else {
+            UtilMethods.showLongToast(context, "No Internet Connection!")
+        }
+    }
 
     fun getleaveApprovalListLiveData(): MutableLiveData<List<LeaveApprovalListCardData>> {
         return leaveApprovalListLiveData
