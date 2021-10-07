@@ -9,8 +9,11 @@ import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityGarmentsProductionManagementBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
+import com.bd.mascogroup.automation.ui.gpms.hpd.HPDActivity
+import com.bd.mascogroup.automation.ui.gpms.lwp.LWPActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivity
+import com.bd.mascogroup.automation.ui.production_management.ProductionManagementActivity
 import kotlinx.android.synthetic.main.activity_garments_production_management.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
@@ -41,11 +44,11 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
         viewModel.navigator = this
 
         activity_line_wise_production_cl.setOnClickListener {
-
+            openLineWiseProductionActivity()
         }
 
         activity_hourly_production_data_cl.setOnClickListener {
-
+            openHourProductionDataActivity()
         }
 
         activitybuyer_wise_production_data_cl.setOnClickListener {
@@ -53,7 +56,7 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
         }
 
         layout_header_back_im.setOnClickListener {
-            val intent = HomeActivity.newIntent(this)
+            val intent = ProductionManagementActivity.newIntent(this)
             startActivity(intent)
             finish()
         }
@@ -73,7 +76,7 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-            val intent = HomeActivity.newIntent(this)
+            val intent = ProductionManagementActivity.newIntent(this)
             startActivity(intent)
             finish()
 
@@ -89,6 +92,18 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
 
     fun openBuyerWiseProductionActivity(){
         val intent = BWPDActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    fun openHourProductionDataActivity(){
+        val intent = HPDActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    fun openLineWiseProductionActivity(){
+        val intent = LWPActivity.newIntent(this)
         startActivity(intent)
         finish()
     }

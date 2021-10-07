@@ -69,8 +69,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_line_wise_production_unit_name_value_tv"
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/activity_line_wise_production_unit_name_value_sp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_33sdp"
                     android:layout_marginStart="@dimen/_85sdp"
@@ -80,8 +80,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_11sdp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Unit Name Goes Here" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

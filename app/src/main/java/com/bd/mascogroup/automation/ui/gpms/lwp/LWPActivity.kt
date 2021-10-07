@@ -1,9 +1,15 @@
 package com.bd.mascogroup.automation.ui.gpms.lwp
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
+import android.view.View
+import android.widget.AdapterView
+import android.widget.TextView
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -15,8 +21,16 @@ import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.gpms.GPMSActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivity
+import com.bd.mascogroup.automation.utils.AppConstants
+import kotlinx.android.synthetic.main.activity_leave_apply.*
+import kotlinx.android.synthetic.main.activity_leave_details.*
+import kotlinx.android.synthetic.main.activity_leave_details.leave_details_fyear_spinner
+import kotlinx.android.synthetic.main.activity_line_wise_production.*
+import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
+import java.util.*
 import javax.inject.Inject
 
 
@@ -42,13 +56,17 @@ class LWPActivity : BaseActivity<ActivityLineWiseProductionBinding, LWPViewModel
             return mLWPViewModel
         }
 
+    var lineWiseSpNo:Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityLineWiseProductionBinding = viewDataBinding
         viewModel.navigator = this
         mLWPAdapter.setListener(this)
-        viewModel.getLWP(this, 8,"2021-10-05")
+        activity_title_tv.setText("Line Wise Production")
 
+        activity_line_wise_production_date_value_tv.setText(viewModel.getCurrentDate())
+        viewModel.getUnitName(this, activity_line_wise_production_unit_name_value_sp)
 
         layout_header_back_im.setOnClickListener {
             val intent = GPMSActivity.newIntent(this)
@@ -59,6 +77,45 @@ class LWPActivity : BaseActivity<ActivityLineWiseProductionBinding, LWPViewModel
             val intent = HomeActivity.newIntent(this)
             startActivity(intent)
             finish()
+        }
+
+        val cFrom = Calendar.getInstance()
+        val yearFrom = cFrom.get(Calendar.YEAR)
+        val monthFrom = cFrom.get(Calendar.MONTH)
+        val dayFrom = cFrom.get(Calendar.DAY_OF_MONTH)
+
+        activity_line_wise_production_date_value_tv.setOnClickListener {
+
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                // Display Selected date in TextView
+                activity_line_wise_production_date_value_tv.setText("" + year + "-${monthOfYear + 1}-" + dayOfMonth)
+                viewModel.getLWP(this@LWPActivity, lineWiseSpNo,activity_line_wise_production_date_value_tv.text.toString())
+                setUpLineWises()
+                subscribeToLiveDataLineWises()
+            }, yearFrom, monthFrom, dayFrom)
+            dpd.show()
+        }
+
+        activity_line_wise_production_unit_name_value_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+            ) {
+
+                (parent!!.getChildAt(0) as TextView).setTextColor(Color.WHITE)
+                (parent!!.getChildAt(0) as TextView).setTextSize(13F)
+
+                val map: HashMap<String, String> = AppConstants.HasLWPUnitNameList.get(position)
+                lineWiseSpNo= map.get("unitNo")!!.toInt()
+
+                viewModel.getLWP(this@LWPActivity, lineWiseSpNo,activity_line_wise_production_date_value_tv.text.toString())
+                setUpLineWises()
+                subscribeToLiveDataLineWises()
+            }
         }
     }
 
