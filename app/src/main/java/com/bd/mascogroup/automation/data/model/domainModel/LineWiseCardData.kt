@@ -5,6 +5,9 @@ import com.bd.mascogroup.automation.data.remote.domainModel.LineWiseProduction
 
 class LineWiseCardData constructor(var lineWise: LineWiseProduction){
 
+    val sl : String
+        get() = lineWise.sl
+
     val goodGarments : Int
         get() = lineWise.goodGarments
 

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionItemViewModel" />
+            type="com.bd.mascogroup.automation.ui.gpms.hpd.HPDItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +43,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="01." />
+                tools:text="01."
+                android:text="@{viewModel.sl}"/>
 
             <View
                 android:layout_width="@dimen/_46sdp"
@@ -68,7 +69,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/hourly_production_data_sl_tv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="101" />
+                tools:text="101"
+                android:text="@{viewModel.hour}"/>
 
             <View
                 android:layout_width="@dimen/_104sdp"
@@ -95,7 +97,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/hourly_production_data_hours_tv"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="1,20,50,000" />
+                tools:text="1,20,50,000"
+                android:text="@{viewModel.output}"/>
 
             <View
                 android:layout_width="@dimen/_121sdp"

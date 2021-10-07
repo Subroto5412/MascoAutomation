@@ -5,7 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DefaultItemAnimator
 import com.bd.mascogroup.automation.R
+import com.bd.mascogroup.automation.data.model.domainModel.BuyerWiseCardData
+import com.bd.mascogroup.automation.data.model.domainModel.HourWiseCardData
 import com.bd.mascogroup.automation.databinding.ActivityGarmentsProductionManagementBinding
 import com.bd.mascogroup.automation.databinding.ActivityHourlyProductionDataBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
@@ -20,12 +24,15 @@ import kotlinx.android.synthetic.main.layout_header.*
 import javax.inject.Inject
 
 
-class HPDActivity : BaseActivity<ActivityHourlyProductionDataBinding, HPDViewModel>(), IHPDNavigator {
+class HPDActivity : BaseActivity<ActivityHourlyProductionDataBinding, HPDViewModel>(), IHPDNavigator, HPDAdapter.LeaveSummaryAdapterListener {
 
     private lateinit var mActivityHourlyProductionDataBinding: ActivityHourlyProductionDataBinding
 
     @Inject
     lateinit var mHPDViewModel: HPDViewModel
+
+    @Inject
+    lateinit var mHPDAdapter:HPDAdapter
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -43,6 +50,8 @@ class HPDActivity : BaseActivity<ActivityHourlyProductionDataBinding, HPDViewMod
         super.onCreate(savedInstanceState)
         mActivityHourlyProductionDataBinding = viewDataBinding
         viewModel.navigator = this
+        mHPDAdapter.setListener(this)
+        viewModel.getHPD(this, 8,"2021-10-05")
 
 
         layout_header_back_im.setOnClickListener {
@@ -80,4 +89,22 @@ class HPDActivity : BaseActivity<ActivityHourlyProductionDataBinding, HPDViewMod
         finish()
     }
 
+    fun setUpHourWises() {
+        mActivityHourlyProductionDataBinding.activityHourlyProductionDataListRv.itemAnimator = DefaultItemAnimator()
+        mActivityHourlyProductionDataBinding.activityHourlyProductionDataListRv.adapter = mHPDAdapter
+    }
+
+    fun updatHourWisesList(hourWiseCardData: List<HourWiseCardData>?) {
+        mHPDAdapter.clearItems()
+        if (!hourWiseCardData.isNullOrEmpty()) {
+            mHPDAdapter.addItem(hourWiseCardData)
+        }
+    }
+
+    fun subscribeToLiveDataHourWises() {
+        mHPDViewModel.getHPDLiveData().observe(this, Observer { t ->
+            mHPDViewModel.addHPDItemToList(t)
+            updatHourWisesList(t)
+        })
+    }
 }

@@ -5,7 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DefaultItemAnimator
 import com.bd.mascogroup.automation.R
+import com.bd.mascogroup.automation.data.model.domainModel.HourWiseCardData
+import com.bd.mascogroup.automation.data.model.domainModel.LineWiseCardData
 import com.bd.mascogroup.automation.databinding.ActivityLineWiseProductionBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.gpms.GPMSActivity
@@ -16,12 +20,15 @@ import kotlinx.android.synthetic.main.layout_header.*
 import javax.inject.Inject
 
 
-class LWPActivity : BaseActivity<ActivityLineWiseProductionBinding, LWPViewModel>(), ILWPNavigator {
+class LWPActivity : BaseActivity<ActivityLineWiseProductionBinding, LWPViewModel>(), ILWPNavigator, LWPAdapter.LWPAdapterListener {
 
     private lateinit var mActivityLineWiseProductionBinding: ActivityLineWiseProductionBinding
 
     @Inject
     lateinit var mLWPViewModel: LWPViewModel
+
+    @Inject
+    lateinit var mLWPAdapter: LWPAdapter
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -39,6 +46,8 @@ class LWPActivity : BaseActivity<ActivityLineWiseProductionBinding, LWPViewModel
         super.onCreate(savedInstanceState)
         mActivityLineWiseProductionBinding = viewDataBinding
         viewModel.navigator = this
+        mLWPAdapter.setListener(this)
+        viewModel.getLWP(this, 8,"2021-10-05")
 
 
         layout_header_back_im.setOnClickListener {
@@ -74,6 +83,25 @@ class LWPActivity : BaseActivity<ActivityLineWiseProductionBinding, LWPViewModel
         val intent = LeaveApprovalActivity.newIntent(this)
         startActivity(intent)
         finish()
+    }
+
+    fun setUpLineWises() {
+        mActivityLineWiseProductionBinding.activityLineWiseProductionListRv.itemAnimator = DefaultItemAnimator()
+        mActivityLineWiseProductionBinding.activityLineWiseProductionListRv.adapter = mLWPAdapter
+    }
+
+    fun updatLineWisesList(lineWiseCardData: List<LineWiseCardData>?) {
+        mLWPAdapter.clearItems()
+        if (!lineWiseCardData.isNullOrEmpty()) {
+            mLWPAdapter.addItem(lineWiseCardData)
+        }
+    }
+
+    fun subscribeToLiveDataLineWises() {
+        mLWPViewModel.getLWPLiveData().observe(this, Observer { t ->
+            mLWPViewModel.addLWPItemToList(t)
+            updatLineWisesList(t)
+        })
     }
 
 }

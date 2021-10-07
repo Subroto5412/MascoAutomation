@@ -3,24 +3,31 @@ package com.bd.mascogroup.automation.ui.gpms.lwp
 import androidx.databinding.ObservableField
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.model.domainModel.LeaveApprovalListCardData
+import com.bd.mascogroup.automation.data.model.domainModel.LineWiseCardData
 
 class LWPItemViewModel(
-        leaveApprovalListCardData: LeaveApprovalListCardData,
+        lineWiseCardData: LineWiseCardData,
         position: Int,
-        listener: leaveApprovalFormItemViewModelListener,
+        listener: LWPItemViewModelListener,
         dataManager: IDataManager
 ) {
-    val mListener: leaveApprovalFormItemViewModelListener
+    val mListener: LWPItemViewModelListener
     val mPosition: ObservableField<Int>
-    private val mLeaveApprovalListCardData: LeaveApprovalListCardData
+    private val mLineWiseCardData: LineWiseCardData
+    val sl: ObservableField<String>
+    val lineName: ObservableField<String>
+    val goodGarments: ObservableField<String>
 
 
-
-    interface leaveApprovalFormItemViewModelListener {}
+    interface LWPItemViewModelListener {}
 
     init {
-        mLeaveApprovalListCardData = leaveApprovalListCardData
+        mLineWiseCardData = lineWiseCardData
         mListener = listener
         mPosition = ObservableField(position)
+
+        sl = ObservableField(mLineWiseCardData.sl)
+        lineName = ObservableField(mLineWiseCardData.lineName)
+        goodGarments = ObservableField(mLineWiseCardData.goodGarments.toString())
     }
 }

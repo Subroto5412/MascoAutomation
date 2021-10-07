@@ -5,6 +5,12 @@ import com.bd.mascogroup.automation.ui.gpms.GPMSActivityModule
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivityModule
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDAdapterModule
+import com.bd.mascogroup.automation.ui.gpms.hpd.HPDActivity
+import com.bd.mascogroup.automation.ui.gpms.hpd.HPDActivityModule
+import com.bd.mascogroup.automation.ui.gpms.hpd.HPDAdapterModule
+import com.bd.mascogroup.automation.ui.gpms.lwp.LWPActivity
+import com.bd.mascogroup.automation.ui.gpms.lwp.LWPActivityModule
+import com.bd.mascogroup.automation.ui.gpms.lwp.LWPAdapterModule
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivityModule
 import com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity
@@ -49,7 +55,7 @@ import dagger.android.ContributesAndroidInjector
         [SplashActivityModule::class, LoginActivityModule::class, SignupActivityModule::class, OTPActivityModule::class, HomeActivityModule::class,ProductionManagementActivityModule::class,
             HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class, AttendanceModule::class,
             LeaveModule::class, TaxModule::class, LeaveApplyModule::class, HrInfoSystemActivityModule::class, LeaveApprovalActivityModule::class, LeaveApprovalFormActivityModule::class,
-        GPMSActivityModule::class]
+        GPMSActivityModule::class, BWPDActivityModule::class, HPDActivityModule::class, LWPActivityModule::class]
 )
 
 abstract class ActivityBuilder {
@@ -147,9 +153,18 @@ abstract class ActivityBuilder {
     )
     internal abstract fun bindGPMSActivity(): GPMSActivity
 
-
     @ContributesAndroidInjector(
             modules = [BWPDActivityModule::class, BWPDAdapterModule::class]
     )
     internal abstract fun bindBWPDActivity(): BWPDActivity
+
+    @ContributesAndroidInjector(
+            modules = [HPDActivityModule::class, HPDAdapterModule::class]
+    )
+    internal abstract fun bindHPDActivity(): HPDActivity
+
+    @ContributesAndroidInjector(
+            modules = [LWPActivityModule::class, LWPAdapterModule::class]
+    )
+    internal abstract fun bindLWPActivity(): LWPActivity
 }

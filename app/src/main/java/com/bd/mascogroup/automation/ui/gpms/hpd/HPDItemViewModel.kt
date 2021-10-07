@@ -2,26 +2,33 @@ package com.bd.mascogroup.automation.ui.gpms.hpd
 
 import androidx.databinding.ObservableField
 import com.bd.mascogroup.automation.data.IDataManager
+import com.bd.mascogroup.automation.data.model.domainModel.HourWiseCardData
 import com.bd.mascogroup.automation.data.model.domainModel.LeaveApprovalListCardData
 
 
 class HPDItemViewModel(
-        leaveApprovalListCardData: LeaveApprovalListCardData,
+        hourWiseCardData: HourWiseCardData,
         position: Int,
-        listener: leaveApprovalFormItemViewModelListener,
+        listener: HPDItemViewModelListener,
         dataManager: IDataManager
 ) {
-    val mListener: leaveApprovalFormItemViewModelListener
+    val mListener: HPDItemViewModelListener
     val mPosition: ObservableField<Int>
-    private val mLeaveApprovalListCardData: LeaveApprovalListCardData
+    private val mHourWiseCardData: HourWiseCardData
+    val sl: ObservableField<String>
+    val hour: ObservableField<String>
+    val output: ObservableField<String>
 
 
-
-    interface leaveApprovalFormItemViewModelListener {}
+    interface HPDItemViewModelListener {}
 
     init {
-        mLeaveApprovalListCardData = leaveApprovalListCardData
+        mHourWiseCardData = hourWiseCardData
         mListener = listener
         mPosition = ObservableField(position)
+
+        sl = ObservableField(mHourWiseCardData.sl)
+        hour = ObservableField(mHourWiseCardData.hour)
+        output = ObservableField(mHourWiseCardData.output.toString())
     }
 }

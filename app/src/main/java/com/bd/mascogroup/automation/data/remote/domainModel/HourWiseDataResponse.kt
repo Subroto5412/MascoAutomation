@@ -7,6 +7,7 @@ data class HourWiseDataResponse(
         @SerializedName("_hourWiseDataList") var _hourWiseDataList: List<ListHourWiseData>
 )
 data class ListHourWiseData(
+        @SerializedName("sl") var sl: String="",
         @SerializedName("hour") var hour: String="",
         @SerializedName("output") var output: Int = 0
 )

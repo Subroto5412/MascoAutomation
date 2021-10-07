@@ -9,5 +9,6 @@ data class LineWiseResponse(
 
 data class LineWiseProduction(
         @SerializedName("goodGarments") var goodGarments: Int = 0,
-        @SerializedName("lineName") var lineName: String=""
+        @SerializedName("lineName") var lineName: String="",
+        @SerializedName("sl") var sl: String=""
 )

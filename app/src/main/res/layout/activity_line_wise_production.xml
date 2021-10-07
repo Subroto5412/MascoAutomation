@@ -197,7 +197,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/activity_income_tax_deduction_list_rv"
+                    android:id="@+id/activity_line_wise_production_list_rv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_27sdp"

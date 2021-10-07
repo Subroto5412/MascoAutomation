@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.bd.mascogroup.automation.ui.hr_info.tax.income_tax.IncomeTaxDeductionItemViewModel" />
+            type="com.bd.mascogroup.automation.ui.gpms.lwp.LWPItemViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,10 +37,10 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="4dp"
                 android:background="@color/white"
+                android:textColor="@color/text_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
                 android:text="@{viewModel.sl}"
-                app:textColor="@{ContextCompat.getColor(context, viewModel.textColor)}"
                 android:textSize="@dimen/_11sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,10 +64,10 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="4dp"
                 android:background="@color/white"
+                android:textColor="@color/text_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
-                android:text="@{viewModel.month}"
-                app:textColor="@{ContextCompat.getColor(context, viewModel.textColor)}"
+                android:text="@{viewModel.lineName}"
                 android:textSize="@dimen/_11sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/line_wise_output_sl_tv"
@@ -91,12 +91,11 @@
                 android:layout_marginTop="1dp"
                 android:paddingRight="@dimen/_5sdp"
                 android:layout_marginBottom="4dp"
-                app:background="@{viewModel.bgColor}"
+                android:background="@color/white"
+                android:textColor="@color/text_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="right|center"
-                android:background="@color/white"
-                android:text="@{viewModel.deductionAmount}"
-                android:textColor="@color/text_color"
+                android:text="@{viewModel.goodGarments}"
                 android:textSize="@dimen/_11sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/line_wise_output_line_no_tv"
