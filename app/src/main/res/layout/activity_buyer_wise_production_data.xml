@@ -319,7 +319,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/buyer_wise_production_data_sewing_qty_tv"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:text="Balance" />
+                        android:text="Balance" />
 
                     <View
                         android:layout_width="@dimen/_37sdp"

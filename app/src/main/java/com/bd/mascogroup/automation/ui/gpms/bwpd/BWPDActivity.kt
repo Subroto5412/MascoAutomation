@@ -60,7 +60,7 @@ class BWPDActivity : BaseActivity<ActivityBuyerWiseProductionDataBinding, BWPDVi
         mActivityBuyerWiseProductionDataBinding = viewDataBinding
         viewModel.navigator = this
         mBWPDAdapter.setListener(this)
-        activity_title_tv.setText("Buyer Wise Production Data")
+        activity_title_tv.setText("Buyer Wise Production \nData")
 
         activity_buyer_wise_production_data_date_value_tv.setText(viewModel.getCurrentDate())
         viewModel.getUnitName(this, activity_buyer_wise_production_data_unit_name_value_sp)
