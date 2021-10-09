@@ -5,6 +5,9 @@ import com.bd.mascogroup.automation.ui.gpms.GPMSActivityModule
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivityModule
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDAdapterModule
+import com.bd.mascogroup.automation.ui.gpms.hp_details.HPDetailsActivity
+import com.bd.mascogroup.automation.ui.gpms.hp_details.HPDetailsActivityModule
+import com.bd.mascogroup.automation.ui.gpms.hp_details.HPDetailsAdapterModule
 import com.bd.mascogroup.automation.ui.gpms.hpd.HPDActivity
 import com.bd.mascogroup.automation.ui.gpms.hpd.HPDActivityModule
 import com.bd.mascogroup.automation.ui.gpms.hpd.HPDAdapterModule
@@ -55,7 +58,7 @@ import dagger.android.ContributesAndroidInjector
         [SplashActivityModule::class, LoginActivityModule::class, SignupActivityModule::class, OTPActivityModule::class, HomeActivityModule::class,ProductionManagementActivityModule::class,
             HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class, AttendanceModule::class,
             LeaveModule::class, TaxModule::class, LeaveApplyModule::class, HrInfoSystemActivityModule::class, LeaveApprovalActivityModule::class, LeaveApprovalFormActivityModule::class,
-        GPMSActivityModule::class, BWPDActivityModule::class, HPDActivityModule::class, LWPActivityModule::class]
+        GPMSActivityModule::class, BWPDActivityModule::class, HPDActivityModule::class, LWPActivityModule::class, HPDetailsActivityModule::class]
 )
 
 abstract class ActivityBuilder {
@@ -167,4 +170,9 @@ abstract class ActivityBuilder {
             modules = [LWPActivityModule::class, LWPAdapterModule::class]
     )
     internal abstract fun bindLWPActivity(): LWPActivity
+
+    @ContributesAndroidInjector(
+            modules = [HPDetailsActivityModule::class, HPDetailsAdapterModule::class]
+    )
+    internal abstract fun bindHPDetailsActivity(): HPDetailsActivity
 }

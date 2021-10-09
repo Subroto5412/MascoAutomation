@@ -151,4 +151,10 @@ interface ApiService {
     fun getBuyerWiseData(
             @Body buyerWiseDataRequest: BuyerWiseDataRequest
     ): Observable<BuyerWiseDataResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/gpms/production/hour-wise-production-details")
+    fun getHourlyProductionDetailsData(
+            @Body hourlyProductionDetailsRequest: HourlyProductionDetailsRequest
+    ): Observable<HourlyProductionDetailsResponse>
 }

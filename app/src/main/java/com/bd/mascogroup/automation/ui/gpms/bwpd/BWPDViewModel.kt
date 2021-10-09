@@ -55,7 +55,7 @@ class BWPDViewModel @Inject constructor(
                         buyerWiseResponse._listBuyerWiseData.forEach {
                            var ListBuyerWiseData =  ListBuyerWiseData()
                             sl = sl+1
-                            ListBuyerWiseData.buyerId = sl
+                            ListBuyerWiseData.sl = sl.toString()
                             ListBuyerWiseData.buyerName = it.buyerName
                             ListBuyerWiseData.styleNo = it.styleNo
                             ListBuyerWiseData.orderNo = it.orderNo

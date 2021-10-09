@@ -1,6 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.gpms.hp_details.HPDetailsItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hourly_production_details_row_item_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:background="#081B63">
+
+        <!-- <androidx.cardview.widget.CardView
+             android:id="@+id/daily_attendance_card_view"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/_85sdp"
+             android:layout_marginStart="@dimen/_5sdp"
+             android:layout_marginTop="@dimen/_3sdp"
+             android:layout_marginEnd="@dimen/_5sdp"
+             android:layout_marginBottom="@dimen/_2sdp"
+             android:foreground="@drawable/layout_daily_attendance_row_bg_hover"
+             app:cardBackgroundColor="#081B63"
+             app:cardCornerRadius="20dp"
+             app:cardElevation="4dp"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintBottom_toBottomOf="parent">-->
+
+        <!--<ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_20sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal">-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/hourly_production_details_item_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_sl_tv"
+                android:layout_width="@dimen/_31sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.sl}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="SL" />
+
+            <View
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_sl_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_sl_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_sl_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_hour_tv"
+                android:layout_width="@dimen/_47sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.hour}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hourly_production_details_sl_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Hour" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_hour_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_hour_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_hour_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_cutting_tv"
+                android:layout_width="@dimen/_47sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.cutting}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hourly_production_details_hour_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Cutting" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_cutting_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_cutting_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_cutting_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_line_input_tv"
+                android:layout_width="@dimen/_47sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.lineInput}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hourly_production_details_cutting_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Line Input" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_line_input_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_line_input_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_line_input_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_sewing_output_tv"
+                android:layout_width="@dimen/_47sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.sewingOutput}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hourly_production_details_line_input_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Sewing Output" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_sewing_output_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_sewing_output_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_sewing_output_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_iron_tv"
+                android:layout_width="@dimen/_47sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.iron}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hourly_production_details_sewing_output_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Iron" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_iron_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_iron_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_iron_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_folding_tv"
+                android:layout_width="@dimen/_47sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.folding}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hourly_production_details_iron_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Folding" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_folding_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_folding_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_folding_tv" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_poly_tv"
+                android:layout_width="@dimen/_47sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.ploy}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hourly_production_details_folding_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Poly" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_poly_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_poly_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_poly_tv" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hourly_production_details_carton_tv"
+                android:layout_width="@dimen/_47sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center"
+                android:text="@{viewModel.cartoon}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hourly_production_details_poly_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Carton" />
+
+            <View
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="0.20dp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/hourly_production_details_carton_tv"
+                app:layout_constraintStart_toStartOf="@+id/hourly_production_details_carton_tv"
+                app:layout_constraintTop_toBottomOf="@+id/hourly_production_details_carton_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--</ScrollView>-->
+        <!-- </androidx.cardview.widget.CardView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

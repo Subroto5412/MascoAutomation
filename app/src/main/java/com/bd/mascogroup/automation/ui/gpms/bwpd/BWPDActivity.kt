@@ -15,17 +15,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.model.domainModel.BuyerWiseCardData
-import com.bd.mascogroup.automation.data.model.domainModel.DailyAttendanceStatusCardData
 import com.bd.mascogroup.automation.databinding.ActivityBuyerWiseProductionDataBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.gpms.GPMSActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
-import com.bd.mascogroup.automation.ui.hr_info.leave.leave_details.LeaveDetailsLeaveSummaryAdapter
 import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivity
 import com.bd.mascogroup.automation.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_buyer_wise_production_data.*
 import kotlinx.android.synthetic.main.activity_line_wise_production.*
-import kotlinx.android.synthetic.main.activity_line_wise_production.activity_line_wise_production_unit_name_value_sp
 import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*

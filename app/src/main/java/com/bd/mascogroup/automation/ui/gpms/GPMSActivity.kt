@@ -9,6 +9,7 @@ import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityGarmentsProductionManagementBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
+import com.bd.mascogroup.automation.ui.gpms.hp_details.HPDetailsActivity
 import com.bd.mascogroup.automation.ui.gpms.hpd.HPDActivity
 import com.bd.mascogroup.automation.ui.gpms.lwp.LWPActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
@@ -53,6 +54,10 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
 
         activitybuyer_wise_production_data_cl.setOnClickListener {
             openBuyerWiseProductionActivity()
+        }
+
+        activity_hourly_production_details_cl.setOnClickListener {
+            openHourProductionDetailsActivity()
         }
 
         layout_header_back_im.setOnClickListener {
@@ -104,6 +109,12 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
 
     fun openLineWiseProductionActivity(){
         val intent = LWPActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    fun openHourProductionDetailsActivity(){
+        val intent = HPDetailsActivity.newIntent(this)
         startActivity(intent)
         finish()
     }
