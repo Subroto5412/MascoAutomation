@@ -210,7 +210,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/activity_income_tax_bottom_cl"
+                android:id="@+id/activity_line_wise_bottom_cl"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -218,35 +218,59 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_income_tax_total_tv"
+                    android:id="@+id/activity_line_wise_total_tv"
                     android:layout_width="@dimen/_110sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="@dimen/_65sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="1dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center"
+                    android:gravity="left|center"
                     android:text="Total ="
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_11sdp"
+                    android:textSize="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_income_tax_total_value_tv"
+                    android:id="@+id/activity_line_wise_output_value_tv"
                     android:layout_width="@dimen/_130sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="1dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center"
+                    android:gravity="right"
                     tools:text="800"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_11sdp"
+                    android:textSize="@dimen/_9sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/activity_income_tax_total_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <View
+                    android:layout_width="@dimen/_55sdp"
+                    android:layout_height="1dp"
+                    android:background="#C14FC5"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_line_wise_output_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    android:text="Output (pcs)"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

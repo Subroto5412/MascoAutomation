@@ -91,7 +91,8 @@ class HPDActivity : BaseActivity<ActivityHourlyProductionDataBinding, HPDViewMod
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Display Selected date in TextView
                 activity_hourly_production_data_date_value_tv.setText("" + year + "-${monthOfYear + 1}-" + dayOfMonth)
-                viewModel.getHPD(this@HPDActivity, HPDSpNo,activity_hourly_production_data_date_value_tv.text.toString())
+
+                viewModel.getHPD(this@HPDActivity, HPDSpNo,activity_hourly_production_data_date_value_tv.text.toString(),activity_hourly_wise_output_value_tv)
                 setUpHourWises()
                 subscribeToLiveDataHourWises()
 
@@ -114,9 +115,8 @@ class HPDActivity : BaseActivity<ActivityHourlyProductionDataBinding, HPDViewMod
 
                 val map: HashMap<String, String> = AppConstants.HasHPDUnitNameList.get(position)
                 HPDSpNo= map.get("unitNo")!!.toInt()
-                Log.e("----------","-----------"+HPDSpNo)
 
-                viewModel.getHPD(this@HPDActivity, HPDSpNo,activity_hourly_production_data_date_value_tv.text.toString())
+                viewModel.getHPD(this@HPDActivity, HPDSpNo,activity_hourly_production_data_date_value_tv.text.toString(),activity_hourly_wise_output_value_tv)
                 setUpHourWises()
                 subscribeToLiveDataHourWises()
 

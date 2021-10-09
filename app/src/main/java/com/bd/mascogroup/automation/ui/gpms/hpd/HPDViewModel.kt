@@ -4,6 +4,7 @@ import android.R
 import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
@@ -36,10 +37,11 @@ class HPDViewModel @Inject constructor(
     private var unitCardData = ArrayList<UnitCardData>()
     private var unitName = ArrayList<String>()
 
-    fun getHPD(context: Context, unitNo:Int, Date:String){
+    fun getHPD(context: Context, unitNo:Int, Date:String, activity_hourly_wise_output_value_tv:TextView){
         HPDListItems.clear()
 
         var sl:Int=0
+        var output:Double=0.0
         if(UtilMethods.isConnectedToInternet(context)){
             UtilMethods.showLoading(context)
             val observable = ApiServiceCalling.generalMisApiCall().getHourWiseData(HourWiseDataRequest(unitNo, Date))
@@ -50,14 +52,18 @@ class HPDViewModel @Inject constructor(
                         hourlyWiseResponse._hourWiseDataList.forEach {
                             var ListHourWiseData =  ListHourWiseData()
                             sl = sl+1
+                            output = output+it.output
                             ListHourWiseData.sl = sl.toString()
                             ListHourWiseData.hour = it.hour
                             ListHourWiseData.output = it.output
                             HPDListItems.add(HourWiseCardData(ListHourWiseData))
                         }
                         HPDListLiveData.value = HPDListItems
+                        activity_hourly_wise_output_value_tv.setText(output.toString())
+
                         UtilMethods.hideLoading()
                     }, { error ->
+                        activity_hourly_wise_output_value_tv.setText("")
                         UtilMethods.hideLoading()
                     }
                     )

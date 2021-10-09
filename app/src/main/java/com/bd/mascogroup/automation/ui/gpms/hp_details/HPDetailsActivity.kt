@@ -80,7 +80,11 @@ class HPDetailsActivity : BaseActivity<ActivityHourlyProductionDetailsBinding, H
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
 
                 activity_hourly_production_details_date_value_tv.setText("" + year + "-${monthOfYear + 1}-" + dayOfMonth)
-                viewModel.getHPDetails(this@HPDetailsActivity, hourlyProductionDetailsSpNo,activity_hourly_production_details_date_value_tv.text.toString())
+
+                viewModel.getHPDetails(this@HPDetailsActivity, hourlyProductionDetailsSpNo,activity_hourly_production_details_date_value_tv.text.toString(),
+                        activity_hourly_production_details_sew_output_value_tv, activity_hourly_production_details_line_input_value_tv_tv, activity_hourly_production_details_cutting_value_tv,
+                        activity_hourly_production_details_carton_value_tv,activity_hourly_production_details_total_ploy_value_tv, activity_hourly_production_details_folding_value_tv,
+                        activity_hourly_production_details_total_iron_value_tv)
                 setUpHourlyProductionDetails()
                 subscribeToLiveDataHourlyProductionDetails()
             }, yearFrom, monthFrom, dayFrom)
@@ -103,9 +107,11 @@ class HPDetailsActivity : BaseActivity<ActivityHourlyProductionDetailsBinding, H
 
                 val map: HashMap<String, String> = AppConstants.HasHPDetailsUnitNameList.get(position)
                 hourlyProductionDetailsSpNo= map.get("unitNo")!!.toInt()
-                Log.e("----------","-----------"+hourlyProductionDetailsSpNo)
 
-                viewModel.getHPDetails(this@HPDetailsActivity, hourlyProductionDetailsSpNo,activity_hourly_production_details_date_value_tv.text.toString())
+                viewModel.getHPDetails(this@HPDetailsActivity, hourlyProductionDetailsSpNo,activity_hourly_production_details_date_value_tv.text.toString(),
+                        activity_hourly_production_details_sew_output_value_tv, activity_hourly_production_details_line_input_value_tv_tv, activity_hourly_production_details_cutting_value_tv,
+                        activity_hourly_production_details_carton_value_tv,activity_hourly_production_details_total_ploy_value_tv, activity_hourly_production_details_folding_value_tv,
+                        activity_hourly_production_details_total_iron_value_tv)
                 setUpHourlyProductionDetails()
                 subscribeToLiveDataHourlyProductionDetails()
 

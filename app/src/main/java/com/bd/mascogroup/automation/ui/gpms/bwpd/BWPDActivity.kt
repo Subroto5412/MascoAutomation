@@ -83,7 +83,9 @@ class BWPDActivity : BaseActivity<ActivityBuyerWiseProductionDataBinding, BWPDVi
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Display Selected date in TextView
                 activity_buyer_wise_production_data_date_value_tv.setText("" + year + "-${monthOfYear + 1}-" + dayOfMonth)
-                viewModel.getBWPD(this@BWPDActivity, buyerWiseSpNo,activity_buyer_wise_production_data_date_value_tv.text.toString())
+
+                viewModel.getBWPD(this@BWPDActivity, buyerWiseSpNo,activity_buyer_wise_production_data_date_value_tv.text.toString(),
+                        activity_hourly_wise_total_order_qts_tv, activity_hourly_wise_total_sewing_qts_tv, activity_hourly_wise_balance_value_tv)
                 setUpStatus()
                 subscribeToLiveDataBuyerWiseProductionStatus()
             }, yearFrom, monthFrom, dayFrom)
@@ -106,9 +108,9 @@ class BWPDActivity : BaseActivity<ActivityBuyerWiseProductionDataBinding, BWPDVi
 
                 val map: HashMap<String, String> = AppConstants.HasBWPDUnitNameList.get(position)
                 buyerWiseSpNo= map.get("unitNo")!!.toInt()
-                Log.e("----------","-----------"+buyerWiseSpNo)
 
-                viewModel.getBWPD(this@BWPDActivity, buyerWiseSpNo,activity_buyer_wise_production_data_date_value_tv.text.toString())
+                viewModel.getBWPD(this@BWPDActivity, buyerWiseSpNo,activity_buyer_wise_production_data_date_value_tv.text.toString(),
+                        activity_hourly_wise_total_order_qts_tv, activity_hourly_wise_total_sewing_qts_tv, activity_hourly_wise_balance_value_tv)
                 setUpStatus()
                 subscribeToLiveDataBuyerWiseProductionStatus()
 

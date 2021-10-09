@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
@@ -41,10 +42,14 @@ class BWPDViewModel @Inject constructor(
     private var unitCardData = ArrayList<UnitCardData>()
     private var unitName = ArrayList<String>()
 
-    fun getBWPD(context: Context, unitNo:Int, Date:String){
+    fun getBWPD(context: Context, unitNo:Int, Date:String,activity_hourly_wise_total_order_qts_tv:TextView, activity_hourly_wise_total_sewing_qts_tv:TextView, activity_hourly_wise_balance_value_tv:TextView){
         BWPDListItems.clear()
 
         var sl:Int=0
+        var orderQty:Double=0.0
+        var sewingQty:Double=0.0
+        var balance:Double=0.0
+
         if(UtilMethods.isConnectedToInternet(context)){
             UtilMethods.showLoading(context)
             val observable = ApiServiceCalling.generalMisApiCall().getBuyerWiseData(BuyerWiseDataRequest(unitNo, Date))
@@ -55,6 +60,10 @@ class BWPDViewModel @Inject constructor(
                         buyerWiseResponse._listBuyerWiseData.forEach {
                            var ListBuyerWiseData =  ListBuyerWiseData()
                             sl = sl+1
+                            orderQty = orderQty+it.orderQty
+                            sewingQty = sewingQty+it.sewingQty
+                            balance = balance+it.balance
+
                             ListBuyerWiseData.sl = sl.toString()
                             ListBuyerWiseData.buyerName = it.buyerName
                             ListBuyerWiseData.styleNo = it.styleNo
@@ -65,8 +74,15 @@ class BWPDViewModel @Inject constructor(
                             BWPDListItems.add(BuyerWiseCardData(ListBuyerWiseData))
                         }
                         BWPDListLiveData.value = BWPDListItems
+                        activity_hourly_wise_total_order_qts_tv.setText(orderQty.toString())
+                        activity_hourly_wise_total_sewing_qts_tv.setText(sewingQty.toString())
+                        activity_hourly_wise_balance_value_tv.setText(balance.toString())
+
                         UtilMethods.hideLoading()
                     }, { error ->
+                        activity_hourly_wise_total_order_qts_tv.setText("")
+                        activity_hourly_wise_total_sewing_qts_tv.setText("")
+                        activity_hourly_wise_balance_value_tv.setText("")
                         UtilMethods.hideLoading()
                     }
                     )

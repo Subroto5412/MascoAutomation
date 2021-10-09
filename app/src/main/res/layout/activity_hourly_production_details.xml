@@ -128,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_120sdp"
-                android:layout_marginBottom="@dimen/_40sdp"
+                android:layout_marginBottom="@dimen/_70sdp"
                 app:layout_constraintBottom_toTopOf="@+id/activity_income_tax_bottom_cl"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -173,8 +173,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_hourly_production_details_bottom_cl"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="@dimen/_35sdp"
+                app:layout_constraintBottom_toTopOf="@+id/activity_hourly_production_details_bottom_cl2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -182,32 +182,312 @@
                     android:id="@+id/activity_hourly_production_details_total_tv"
                     android:layout_width="@dimen/_110sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="@dimen/_65sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="1dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center"
+                    android:gravity="left|center"
                     android:text="Total ="
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_11sdp"
+                    android:textSize="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_hourly_production_details_total_value_tv"
+                    android:id="@+id/activity_hourly_production_details_sew_output_value_tv"
                     android:layout_width="@dimen/_130sdp"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="1dp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="1dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center"
+                    android:gravity="right"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.083"
+                    tools:text="800" />
+
+                <View
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="1dp"
+                    android:background="#C14FC5"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_sew_output_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    android:text="Sew. Output"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_line_input_value_tv_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_90sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
                     tools:text="800"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_11sdp"
+                    android:textSize="@dimen/_9sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/activity_hourly_production_details_total_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <View
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="1dp"
+                    android:background="#C14FC5"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_85sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_line_input_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_85sdp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    android:text="Line Input"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_cutting_value_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_165sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    tools:text="800"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <View
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="1dp"
+                    android:background="#C14FC5"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_160sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_cutting_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_160sdp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    android:text="Cutting"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_hourly_production_details_bottom_cl2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_carton_value_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    tools:text="800"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <View
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="1dp"
+                    android:background="#C14FC5"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_hourly_production_details_carton_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    android:text="Carton"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_total_ploy_value_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_90sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    tools:text="800"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <View
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="1dp"
+                    android:background="#C14FC5"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_85sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_ploy_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_85sdp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    android:text="Poly"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_folding_value_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_165sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    tools:text="800"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <View
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="1dp"
+                    android:background="#C14FC5"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_160sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_folding_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_160sdp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    android:text="Folding"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_total_iron_value_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_240sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    tools:text="800"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <View
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="1dp"
+                    android:background="#C14FC5"
+                    android:layout_marginTop="@dimen/_23sdp"
+                    android:layout_marginEnd="@dimen/_235sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_hourly_production_details_iron_tv"
+                    android:layout_width="@dimen/_130sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginEnd="@dimen/_235sdp"
+                    android:layout_marginTop="55dp"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:gravity="right"
+                    android:text="Iron"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

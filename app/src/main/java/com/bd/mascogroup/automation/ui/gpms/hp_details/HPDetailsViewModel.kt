@@ -4,6 +4,7 @@ import android.R
 import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
@@ -37,10 +38,20 @@ class HPDetailsViewModel @Inject constructor(
     private var unitCardData = ArrayList<UnitCardData>()
     private var unitName = ArrayList<String>()
 
-    fun getHPDetails(context: Context, unitNo:Int, Date:String){
+    fun getHPDetails(context: Context, unitNo:Int, Date:String,activity_hourly_production_details_sew_output_value_tv:TextView, activity_hourly_production_details_line_input_value_tv_tv:TextView,
+                     activity_hourly_production_details_cutting_value_tv:TextView, activity_hourly_production_details_carton_value_tv:TextView, activity_hourly_production_details_total_ploy_value_tv:TextView,
+                     activity_hourly_production_details_folding_value_tv:TextView, activity_hourly_production_details_total_iron_value_tv:TextView){
         HPDetailsListItems.clear()
 
         var sl:Int=0
+        var cutting:Double=0.0
+        var lineInput:Double=0.0
+        var sewingOutput:Double=0.0
+        var iron:Double=0.0
+        var folding:Double=0.0
+        var ploy:Double=0.0
+        var cartoon:Double=0.0
+
         if(UtilMethods.isConnectedToInternet(context)){
             UtilMethods.showLoading(context)
             val observable = ApiServiceCalling.generalMisApiCall().getHourlyProductionDetailsData(HourlyProductionDetailsRequest(unitNo, Date))
@@ -51,6 +62,14 @@ class HPDetailsViewModel @Inject constructor(
                         buyerWiseResponse._productionDetailsList.forEach {
                             var hourlyProductionDetailsData =  HourlyProductionDetailsData()
                             sl = sl+1
+                            cutting = cutting+it.cutting
+                            lineInput = lineInput+it.lineInput
+                            sewingOutput = sewingOutput+it.sewingOutput
+                            iron = iron+it.iron
+                            folding = folding+it.folding
+                            ploy = ploy+it.ploy
+                            cartoon = cartoon+it.cartoon
+
                             hourlyProductionDetailsData.sl = sl.toString()
                             hourlyProductionDetailsData.timeSlot = it.timeSlot
                             hourlyProductionDetailsData.cutting = it.cutting
@@ -63,8 +82,22 @@ class HPDetailsViewModel @Inject constructor(
                             HPDetailsListItems.add(HourlyProductionDetailsCardData(hourlyProductionDetailsData))
                         }
                         HPDetailsListLiveData.value =HPDetailsListItems
+                        activity_hourly_production_details_sew_output_value_tv.setText(sewingOutput.toString())
+                        activity_hourly_production_details_line_input_value_tv_tv.setText(lineInput.toString())
+                        activity_hourly_production_details_cutting_value_tv.setText(cutting.toString())
+                        activity_hourly_production_details_carton_value_tv.setText(cartoon.toString())
+                        activity_hourly_production_details_total_ploy_value_tv.setText(ploy.toString())
+                        activity_hourly_production_details_folding_value_tv.setText(folding.toString())
+                        activity_hourly_production_details_total_iron_value_tv.setText(iron.toString())
                         UtilMethods.hideLoading()
                     }, { error ->
+                        activity_hourly_production_details_sew_output_value_tv.setText("")
+                        activity_hourly_production_details_line_input_value_tv_tv.setText("")
+                        activity_hourly_production_details_cutting_value_tv.setText("")
+                        activity_hourly_production_details_carton_value_tv.setText("")
+                        activity_hourly_production_details_total_ploy_value_tv.setText("")
+                        activity_hourly_production_details_folding_value_tv.setText("")
+                        activity_hourly_production_details_total_iron_value_tv.setText("")
                         UtilMethods.hideLoading()
                     }
                     )

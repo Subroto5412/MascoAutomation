@@ -89,7 +89,8 @@ class LWPActivity : BaseActivity<ActivityLineWiseProductionBinding, LWPViewModel
             val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Display Selected date in TextView
                 activity_line_wise_production_date_value_tv.setText("" + year + "-${monthOfYear + 1}-" + dayOfMonth)
-                viewModel.getLWP(this@LWPActivity, lineWiseSpNo,activity_line_wise_production_date_value_tv.text.toString())
+
+                viewModel.getLWP(this@LWPActivity, lineWiseSpNo,activity_line_wise_production_date_value_tv.text.toString(),activity_line_wise_output_value_tv)
                 setUpLineWises()
                 subscribeToLiveDataLineWises()
             }, yearFrom, monthFrom, dayFrom)
@@ -112,7 +113,7 @@ class LWPActivity : BaseActivity<ActivityLineWiseProductionBinding, LWPViewModel
                 val map: HashMap<String, String> = AppConstants.HasLWPUnitNameList.get(position)
                 lineWiseSpNo= map.get("unitNo")!!.toInt()
 
-                viewModel.getLWP(this@LWPActivity, lineWiseSpNo,activity_line_wise_production_date_value_tv.text.toString())
+                viewModel.getLWP(this@LWPActivity, lineWiseSpNo,activity_line_wise_production_date_value_tv.text.toString(),activity_line_wise_output_value_tv)
                 setUpLineWises()
                 subscribeToLiveDataLineWises()
             }

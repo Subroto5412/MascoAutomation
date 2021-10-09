@@ -4,6 +4,7 @@ import android.R
 import android.content.Context
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
 import androidx.lifecycle.MutableLiveData
@@ -37,10 +38,11 @@ class LWPViewModel @Inject constructor(
     private var unitCardData = ArrayList<UnitCardData>()
     private var unitName = ArrayList<String>()
 
-    fun getLWP(context: Context, unitNo:Int, Date:String){
+    fun getLWP(context: Context, unitNo:Int, Date:String, activity_line_wise_output_value_tv:TextView){
         LWPListItems.clear()
 
         var sl:Int=0
+        var goodGarments:Double=0.0
         if(UtilMethods.isConnectedToInternet(context)){
             UtilMethods.showLoading(context)
             val observable = ApiServiceCalling.generalMisApiCall().getLineWiseData(LineWiseRequest(unitNo, Date))
@@ -51,14 +53,17 @@ class LWPViewModel @Inject constructor(
                         hourlyWiseResponse._lineWiseProduction.forEach {
                             var LineWise =  LineWiseProduction()
                             sl = sl+1
+                            goodGarments = goodGarments+it.goodGarments
                             LineWise.sl = sl.toString()
                             LineWise.lineName = it.lineName
                             LineWise.goodGarments = it.goodGarments
                             LWPListItems.add(LineWiseCardData(LineWise))
                         }
                         LWPListLiveData.value = LWPListItems
+                        activity_line_wise_output_value_tv.setText(goodGarments.toString())
                         UtilMethods.hideLoading()
                     }, { error ->
+                        activity_line_wise_output_value_tv.setText("")
                         UtilMethods.hideLoading()
                     }
                     )
