@@ -10,6 +10,9 @@ import com.bd.mascogroup.automation.databinding.ActivityProductionManagementBind
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.gpms.GPMSActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
+import com.bd.mascogroup.automation.ui.hr_info.attendance.AttendanceActivity
+import com.bd.mascogroup.automation.ui.hr_info.leave.LeaveActivity
+import com.bd.mascogroup.automation.ui.hr_info.tax.TaxActivity
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
 import kotlinx.android.synthetic.main.layout_production_management.*
@@ -41,7 +44,7 @@ class ProductionManagementActivity : BaseActivity<ActivityProductionManagementBi
         super.onCreate(savedInstanceState)
         mActivityProductionManagementBinding = viewDataBinding
         viewModel.navigator = this
-
+        viewModel.getSearchName(this, layout_header_search_actv)
         layout_production_management_cl.setOnClickListener {
 
             val intent = GPMSActivity.newIntent(this)
@@ -78,4 +81,21 @@ class ProductionManagementActivity : BaseActivity<ActivityProductionManagementBi
         return super.onKeyDown(keyCode, event)
     }
 
+    override fun openAttendanceActivity(){
+        val intent = AttendanceActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openLeaveActivity(){
+        val intent = LeaveActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openTaxActivity(){
+        val intent = TaxActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
 }

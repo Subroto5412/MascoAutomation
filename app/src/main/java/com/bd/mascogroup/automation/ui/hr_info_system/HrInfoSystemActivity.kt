@@ -47,7 +47,7 @@ class HrInfoSystemActivity : BaseActivity<ActivityHrInfoSystemBinding, HrInfoSys
         super.onCreate(savedInstanceState)
         mActivityHrInfoSystemBinding = viewDataBinding
         viewModel.navigator = this
-
+        viewModel.getSearchName(this, layout_header_search_actv)
         layout_hr_info_system_cl.setOnClickListener {
             openHrInfoSystemActivity()
         }
@@ -87,4 +87,21 @@ class HrInfoSystemActivity : BaseActivity<ActivityHrInfoSystemBinding, HrInfoSys
         finish()
     }
 
+    override fun openAttendanceActivity(){
+        val intent = AttendanceActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openLeaveActivity(){
+        val intent = LeaveActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openTaxActivity(){
+        val intent = TaxActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
 }

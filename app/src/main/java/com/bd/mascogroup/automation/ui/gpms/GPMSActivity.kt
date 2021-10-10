@@ -16,8 +16,10 @@ import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.leave_approval.LeaveApprovalActivity
 import com.bd.mascogroup.automation.ui.production_management.ProductionManagementActivity
 import kotlinx.android.synthetic.main.activity_garments_production_management.*
+import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, GPMSViewModel>(), IGPMSNavigator {
@@ -43,6 +45,7 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
         super.onCreate(savedInstanceState)
         mActivityGarmentsProductionManagementBinding = viewDataBinding
         viewModel.navigator = this
+        activity_title_tv.setText("Garments Production \nManagement")
 
         activity_line_wise_production_cl.setOnClickListener {
             openLineWiseProductionActivity()
