@@ -47,6 +47,10 @@ class GPMSActivity : BaseActivity<ActivityGarmentsProductionManagementBinding, G
         viewModel.navigator = this
         activity_title_tv.setText("Garments Production \nManagement")
 
+        viewModel.buttonPermission(this, activity_line_wise_production_cl, activity_hourly_production_data_cl,
+                activitybuyer_wise_production_data_cl, activity_hourly_production_details_cl)
+
+
         activity_line_wise_production_cl.setOnClickListener {
             openLineWiseProductionActivity()
         }

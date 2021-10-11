@@ -48,13 +48,21 @@ class HrInfoSystemViewModel @Inject constructor(
                                         search_name_actv.setAdapter(adapter)
 
                                         search_name_actv.setOnDismissListener {
-                                                if (search_name_actv.text.toString().equals("daily attendance")){
-                                                        navigator?.openAttendanceActivity()
-                                                }else if (search_name_actv.text.toString().equals("leave history")){
-                                                        navigator?.openLeaveActivity()
-                                                }else if (search_name_actv.text.toString().equals("tax history")){
-                                                        navigator?.openTaxActivity()
-                                                }
+                                            if (search_name_actv.text.toString().trim().equals("daily attendance")){
+                                                navigator?.openAttendanceActivity()
+                                            }else if (search_name_actv.text.toString().trim().equals("leave history")){
+                                                navigator?.openLeaveActivity()
+                                            }else if (search_name_actv.text.toString().trim().equals("tax history")){
+                                                navigator?.openTaxActivity()
+                                            } else if (search_name_actv.text.toString().trim().equals("buyer wise production data")){
+                                                navigator?.openBWPDActivity()
+                                            } else if (search_name_actv.text.toString().trim().equals("hourly production data")){
+                                                navigator?.openHPDActivity()
+                                            } else if (search_name_actv.text.toString().trim().equals("hourly production details")){
+                                                navigator?.openHPDetailsActivity()
+                                            } else if (search_name_actv.text.toString().trim().equals("line wise production")){
+                                                navigator?.openLWPActivity()
+                                            }
                                         }
 
                                 }, {

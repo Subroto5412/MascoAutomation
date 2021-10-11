@@ -125,6 +125,8 @@ class LeaveApplyViewModel @Inject constructor(
                         if (leaveApplyResponse.response==true){
                             Toast.makeText(context,"Leave Successfully Submiited!",Toast.LENGTH_LONG).show()
                             navigator?.goToLeaveScreen()
+                        }else{
+                            Toast.makeText(context,leaveApplyResponse.error,Toast.LENGTH_LONG).show()
                         }
                     }, { error ->
                         UtilMethods.hideLoading()

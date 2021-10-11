@@ -70,6 +70,26 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         get() = mPrefs.getString(PREF_KEY_TAX_HISTORY,"").toString()
         set(taxHistory) = mPrefs.edit().putString(PREF_KEY_TAX_HISTORY, taxHistory).apply()
 
+    override var GPMSModule: String
+        get() = mPrefs.getString(PREF_KEY_GPMSMOUDLE,"").toString()
+        set(GPMSModule) = mPrefs.edit().putString(PREF_KEY_GPMSMOUDLE, GPMSModule).apply()
+
+    override var buyerWiseProductionData: String
+        get() = mPrefs.getString(PREF_KEY_BUYER_WISE_PRODUCT_DATA,"").toString()
+        set(buyerWiseProductionData) = mPrefs.edit().putString(PREF_KEY_BUYER_WISE_PRODUCT_DATA, buyerWiseProductionData).apply()
+
+    override var hourlyProductionData: String
+        get() = mPrefs.getString(PREF_KEY_HOURLY_PRODUCT_DATA,"").toString()
+        set(hourlyProductionData) = mPrefs.edit().putString(PREF_KEY_HOURLY_PRODUCT_DATA, hourlyProductionData).apply()
+
+    override var hourlyProductionDetails: String
+        get() = mPrefs.getString(PREF_KEY_HOURLY_PRODUCTION_DETAILS,"").toString()
+        set(hourlyProductionDetails) = mPrefs.edit().putString(PREF_KEY_HOURLY_PRODUCTION_DETAILS, hourlyProductionDetails).apply()
+
+    override var lineWiseProduction: String
+        get() = mPrefs.getString(PREF_KEY_LINE_PRODUCT_DATA,"").toString()
+        set(lineWiseProduction) = mPrefs.edit().putString(PREF_KEY_LINE_PRODUCT_DATA, lineWiseProduction).apply()
+
 
     companion object {
         private val PREF_KEY_CUSTOMER_PIC = "PREF_KEY_CUSTOMER_PIC"
@@ -87,5 +107,11 @@ class PreferencesHelper @Inject constructor(context: Context, @PreferenceInfo pr
         private val PREF_KEY_DAILY_ATTENDANCE = "PREF_KEY_DAILY_ATTENDANCE"
         private val PREF_KEY_LEAVE_HISTORY = "PREF_KEY_LEAVE_HISTORY"
         private val PREF_KEY_TAX_HISTORY = "PREF_KEY_TAX_HISTORY"
+
+        private val PREF_KEY_GPMSMOUDLE = "PREF_KEY_GPMSMOUDLE"
+        private val PREF_KEY_BUYER_WISE_PRODUCT_DATA = "PREF_KEY_BUYER_WISE_PRODUCT_DATA"
+        private val PREF_KEY_HOURLY_PRODUCT_DATA = "PREF_KEY_HOURLY_PRODUCT_DATA"
+        private val PREF_KEY_HOURLY_PRODUCTION_DETAILS = "PREF_KEY_HOURLY_PRODUCTION_DETAILS"
+        private val PREF_KEY_LINE_PRODUCT_DATA = "PREF_KEY_LINE_PRODUCT_DATA"
     }
 }

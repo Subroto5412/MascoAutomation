@@ -11,13 +11,11 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.GravityCompat
 import androidx.core.view.isGone
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.data.IDataManager
 import com.bd.mascogroup.automation.data.model.db.Searchlist
 import com.bd.mascogroup.automation.data.remote.ApiServiceCalling
-import com.bd.mascogroup.automation.data.remote.domainModel.LoginByUserIdRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.LoginRequest
 import com.bd.mascogroup.automation.data.remote.domainModel.TokenRequest
 import com.bd.mascogroup.automation.ui.base.BaseViewModel
@@ -39,7 +37,7 @@ class LoginViewModel @Inject constructor(
 ): BaseViewModel<ILoginNavigator>(dataManager, ISchedulerProvider) {
 
     fun setup(context: Context, activity_login_user_id_et: EditText, activity_login_password_et: EditText, activity_login_logo_im: ImageView, activity_login_user_im: ImageView, activity_login_user_cl: ConstraintLayout,
-              activity_login_user_name_tv: TextView, activity_login_unit_name_tv: TextView, activity_login_signin_btn: MaterialCardView, activity_login_signin_btn_hide: MaterialCardView, activity_login_remember_ck:CheckBox) {
+              activity_login_user_name_tv: TextView, activity_login_unit_name_tv: TextView, activity_login_signin_btn: MaterialCardView, activity_login_signin_btn_hide: MaterialCardView, activity_login_remember_ck: CheckBox) {
 
         activity_login_user_id_et.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -52,7 +50,7 @@ class LoginViewModel @Inject constructor(
 
                     if (s.toString().length > 0) {
                         Handler().postDelayed({
-                            doSetImage(context, s.toString(), activity_login_user_im,activity_login_user_name_tv,activity_login_unit_name_tv)
+                            doSetImage(context, s.toString(), activity_login_user_im, activity_login_user_name_tv, activity_login_unit_name_tv)
                         }, 300)
 
                     }
@@ -128,7 +126,7 @@ class LoginViewModel @Inject constructor(
             observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ loginResponse ->
-                    if (loginResponse.empId!=0){
+                    if (loginResponse.empId != 0) {
                         dataManager.mobile = loginResponse.mobile
                         dataManager.empId = loginResponse.empId.toString()
                         dataManager.empCode = loginResponse.empCode
@@ -138,29 +136,36 @@ class LoginViewModel @Inject constructor(
                         dataManager.password = password
                         dataManager.saveEmpCode = loginResponse.empCode
 
-                        if (loginResponse._permissionList.isNullOrEmpty()){
+                        if (loginResponse._permissionList.isNullOrEmpty()) {
                             dataManager.HRModule = ""
                             dataManager.dailyAttendance = ""
                             dataManager.leaveHistory = ""
                             dataManager.taxHistory = ""
+                            dataManager.lineWiseProduction = ""
+                            dataManager.GPMSModule = ""
+                            dataManager.hourlyProductionData = ""
+                            dataManager.hourlyProductionDetails = ""
+                            dataManager.buyerWiseProductionData = ""
 
                             navigator?.openHomeActivity()
-                        }else{
-                            loginResponse._permissionList.forEach { permissionListResponse->
+                        } else {
+                            loginResponse._permissionList.forEach { permissionListResponse ->
 
-                                if (permissionListResponse.moduleName.equals("HRModule"))
+                                if (permissionListResponse.moduleName.equals("HRModule")) {
                                     dataManager.HRModule = permissionListResponse.moduleName
-
+                                } else if (permissionListResponse.moduleName.equals("GPMSModule")) {
+                                    dataManager.GPMSModule = permissionListResponse.moduleName
+                                }
 
                                 permissionListResponse._subMenuList.forEach {
                                     var searchList = Searchlist()
                                     searchList.activity_name = it.activityName
-                                    var search_name:String=""
-                                    if (!it.activityName.isNullOrEmpty()){
-                                        val parts = it.activityName.split("_")
-                                        val part1 = parts[0]
-                                        val part2 = parts[1]
-                                         search_name = part1+ " "+part2
+                                    var search_name: String = ""
+                                    if (!it.activityName.isNullOrEmpty()) {
+                                          val parts = it.activityName.split("_")
+                                        for (i in 0 until  parts.size){
+                                            search_name = search_name+ " "+parts[i]
+                                        }
                                     }
 
                                     searchList.search_name = search_name
@@ -173,7 +178,7 @@ class LoginViewModel @Inject constructor(
                                                     .subscribeOn(schedulerProvider.io())
                                                     .observeOn(schedulerProvider.ui())
                                                     .subscribe({ response ->
-                                                        Log.e("","response : "+response)
+                                                        Log.e("", "response : " + response)
                                                     }, {}))
 
                                     if (it.activityName.equals("daily_attendance"))
@@ -184,13 +189,25 @@ class LoginViewModel @Inject constructor(
 
                                     if (it.activityName.equals("tax_history"))
                                         dataManager.taxHistory = it.activityName
+
+                                    if (it.activityName.equals("buyer_wise_production_data"))
+                                        dataManager.buyerWiseProductionData = it.activityName
+
+                                    if (it.activityName.equals("hourly_production_data"))
+                                        dataManager.hourlyProductionData = it.activityName
+
+                                    if (it.activityName.equals("hourly_production_details"))
+                                        dataManager.hourlyProductionDetails = it.activityName
+
+                                    if (it.activityName.equals("line_wise_production"))
+                                        dataManager.lineWiseProduction = it.activityName
                                 }
                             }
                             UtilMethods.hideLoading()
                             sendFCMToken(context)
                         }
 
-                    }else{
+                    } else {
                         UtilMethods.hideLoading()
                         UtilMethods.showLongToast(context, "UserId and Password isn't matching!")
                     }
@@ -206,7 +223,7 @@ class LoginViewModel @Inject constructor(
     }
 
 
-    fun doSetImage(context: Context, empCode: String, activity_login_user_im: ImageView,activity_login_user_name_tv:TextView, activity_login_unit_name_tv: TextView){
+    fun doSetImage(context: Context, empCode: String, activity_login_user_im: ImageView, activity_login_user_name_tv: TextView, activity_login_unit_name_tv: TextView){
         if(UtilMethods.isConnectedToInternet(context)){
 //            UtilMethods.showLoading(context)
             val observable = ApiServiceCalling.generalMisApiCall().getLoginImage(empCode)
@@ -216,11 +233,11 @@ class LoginViewModel @Inject constructor(
                     .subscribe({ loginByUserIdResponse ->
                         dataManager.unitName = loginByUserIdResponse.unitEName
                         dataManager.customerName = loginByUserIdResponse.emP_ENAME
-                        
+
                         val parts = loginByUserIdResponse.serverFileName.split("\\")
                         val image = parts[1]
 
-                        val url = "https://mis-api.mascoknit.com/EmpImages/"+image
+                        val url = "https://mis-api.mascoknit.com/EmpImages/" + image
                         dataManager.customerPic = url
 
                         val photoCornerRadius = 50
@@ -273,7 +290,7 @@ class LoginViewModel @Inject constructor(
                         .subscribeOn(schedulerProvider.io())
                         .observeOn(schedulerProvider.ui())
                         .subscribe({ response ->
-                            Log.e("","response : "+response)
+                            Log.e("", "response : " + response)
                         }, {}))
     }
 

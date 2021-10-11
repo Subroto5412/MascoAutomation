@@ -8,6 +8,11 @@ import androidx.databinding.library.baseAdapters.BR
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityHrInfoBinding
 import com.bd.mascogroup.automation.ui.base.BaseActivity
+import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
+import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivityModule
+import com.bd.mascogroup.automation.ui.gpms.hp_details.HPDetailsActivity
+import com.bd.mascogroup.automation.ui.gpms.hpd.HPDActivity
+import com.bd.mascogroup.automation.ui.gpms.lwp.LWPActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.hr_info.attendance.AttendanceActivity
 import com.bd.mascogroup.automation.ui.hr_info.attendance.daily_attendance.DailyAttendanceActivity
@@ -113,4 +118,29 @@ class HRInfoActivity : BaseActivity<ActivityHrInfoBinding, HRInfoViewModel>(), I
         startActivity(intent)
         finish()
     }
+
+    override fun openLWPActivity(){
+        val intent = LWPActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openHPDActivity(){
+        val intent = HPDActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+    override fun openHPDetailsActivity(){
+        val intent = HPDetailsActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    override fun openBWPDActivity(){
+        val intent = BWPDActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+
 }

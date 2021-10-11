@@ -95,6 +95,32 @@ class AppDataManager @Inject constructor(
             mPreferencesHelper.taxHistory = taxHistory
         }
 
+    override var GPMSModule: String
+        get() = mPreferencesHelper.GPMSModule
+        set(GPMSModule) {
+            mPreferencesHelper.GPMSModule = GPMSModule
+        }
+    override var buyerWiseProductionData: String
+        get() = mPreferencesHelper.buyerWiseProductionData
+        set(buyerWiseProductionData) {
+            mPreferencesHelper.buyerWiseProductionData = buyerWiseProductionData
+        }
+    override var hourlyProductionData: String
+        get() = mPreferencesHelper.hourlyProductionData
+        set(hourlyProductionData) {
+            mPreferencesHelper.hourlyProductionData = hourlyProductionData
+        }
+    override var hourlyProductionDetails: String
+        get() = mPreferencesHelper.hourlyProductionDetails
+        set(hourlyProductionDetails) {
+            mPreferencesHelper.hourlyProductionDetails = hourlyProductionDetails
+        }
+    override var lineWiseProduction: String
+        get() = mPreferencesHelper.lineWiseProduction
+        set(lineWiseProduction) {
+            mPreferencesHelper.lineWiseProduction = lineWiseProduction
+        }
+
     override var unitName: String
         get() = mPreferencesHelper.unitName
         set(unitName) {

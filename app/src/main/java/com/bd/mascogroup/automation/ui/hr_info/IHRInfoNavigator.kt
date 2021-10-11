@@ -7,4 +7,9 @@ interface IHRInfoNavigator: IBaseNavigator {
     fun openAttendanceActivity()
     fun openLeaveActivity()
     fun openTaxActivity()
+
+    fun openLWPActivity()
+    fun openHPDActivity()
+    fun openHPDetailsActivity()
+    fun openBWPDActivity()
 }

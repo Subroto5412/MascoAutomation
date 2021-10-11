@@ -16,4 +16,9 @@ interface IPreferencesHelper {
     var dailyAttendance: String
     var leaveHistory: String
     var taxHistory: String
+    var GPMSModule: String
+    var buyerWiseProductionData: String
+    var hourlyProductionData: String
+    var hourlyProductionDetails: String
+    var lineWiseProduction: String
 }
