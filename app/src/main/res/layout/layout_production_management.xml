@@ -111,8 +111,8 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_supply_chain_cl"
-                            android:layout_width="166dp"
-                            android:layout_height="149dp"
+                            android:layout_width="@dimen/_131sdp"
+                            android:layout_height="@dimen/_115sdp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
