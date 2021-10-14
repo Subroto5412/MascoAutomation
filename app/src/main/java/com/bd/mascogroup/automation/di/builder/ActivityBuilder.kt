@@ -2,6 +2,8 @@ package com.bd.mascogroup.automation.di.builder
 
 import com.bd.mascogroup.automation.ui.atm.ATMActivity
 import com.bd.mascogroup.automation.ui.atm.ATMActivityModule
+import com.bd.mascogroup.automation.ui.sem.communication_portal.CommunicationPortalActivity
+import com.bd.mascogroup.automation.ui.sem.communication_portal.CommunicationPortalActivityModule
 import com.bd.mascogroup.automation.ui.gpms.GPMSActivity
 import com.bd.mascogroup.automation.ui.gpms.GPMSActivityModule
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
@@ -62,7 +64,8 @@ import dagger.android.ContributesAndroidInjector
         [SplashActivityModule::class, LoginActivityModule::class, SignupActivityModule::class, OTPActivityModule::class, HomeActivityModule::class,ProductionManagementActivityModule::class,
             HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class, AttendanceModule::class,
             LeaveModule::class, TaxModule::class, LeaveApplyModule::class, HrInfoSystemActivityModule::class, LeaveApprovalActivityModule::class, LeaveApprovalFormActivityModule::class,
-        GPMSActivityModule::class, BWPDActivityModule::class, HPDActivityModule::class, LWPActivityModule::class, HPDetailsActivityModule::class, ATMActivityModule::class, SEMActivityModule::class]
+        GPMSActivityModule::class, BWPDActivityModule::class, HPDActivityModule::class, LWPActivityModule::class, HPDetailsActivityModule::class, ATMActivityModule::class, SEMActivityModule::class,
+        CommunicationPortalActivityModule::class]
 )
 
 abstract class ActivityBuilder {
@@ -189,4 +192,9 @@ abstract class ActivityBuilder {
             modules = [SEMActivityModule::class]
     )
     internal abstract fun bindSEMActivity(): SEMActivity
+
+    @ContributesAndroidInjector(
+            modules = [CommunicationPortalActivityModule::class]
+    )
+    internal abstract fun bindCommunicationPortalActivity(): CommunicationPortalActivity
 }

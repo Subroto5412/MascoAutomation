@@ -142,6 +142,11 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ui.sem.communication_portal.CommunicationPortalActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".ui.login.push_notification.MyFirebaseMessagingService">
             <intent-filter>

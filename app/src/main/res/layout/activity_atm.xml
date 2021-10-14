@@ -14,26 +14,26 @@
             type="com.bd.mascogroup.automation.ui.atm.ATMViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activity_production_management_parent_cl"
+        android:id="@+id/activity_atm_parent_cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/home_bg">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_production_management_full_boby_cl"
+            android:id="@+id/activity_atm_full_boby_cl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_38sdp"
             android:layout_marginTop="@dimen/_30sdp"
             app:layout_constraintTop_toTopOf="parent">
 
             <include
-                android:id="@+id/activity_leave_details"
+                android:id="@+id/activity_atm_details"
                 layout="@layout/layout_common_header" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_production_management_top_cl"
+            android:id="@+id/activity_atm_top_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_80sdp"
@@ -41,11 +41,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_production_management_full_boby_cl">
+            app:layout_constraintTop_toBottomOf="@+id/activity_atm_full_boby_cl">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/activity_hr_main_daily_attendance_cl"
+                android:id="@+id/activity_atm_main_asset_basic_data_cl"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_52sdp"
                 android:layout_marginTop="@dimen/_40sdp"
@@ -54,7 +54,7 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/activity_hr_daily_attendance_cl2"
+                    android:id="@+id/activity_atm_asset_basic_data_cl2"
                     android:layout_width="@dimen/_245sdp"
                     android:layout_height="@dimen/_46sdp"
                     android:layout_marginTop="@dimen/_5sdp"
@@ -64,7 +64,7 @@
                     android:background="@drawable/atm_btn_bg_under"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/activity_hr_daily_attendance_cl"
+                    android:id="@+id/activity_atm_asset_basic_data_cl"
                     android:layout_width="@dimen/_258sdp"
                     android:layout_height="@dimen/_46sdp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -73,7 +73,7 @@
                     android:background="@drawable/atm_btn_bg">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/activity_login_user_id_tv"
+                        android:id="@+id/activity_atm_asset_basic_data_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
@@ -91,13 +91,13 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_production_management_footer_cl"
+            android:id="@+id/activity_atm_footer_cl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_78sdp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <include
-                android:id="@+id/activity_production_management_footer"
+                android:id="@+id/activityatm_footer"
                 layout="@layout/layout_footer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

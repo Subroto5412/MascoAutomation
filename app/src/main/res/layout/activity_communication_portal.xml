@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bd.mascogroup.automation.ui.gpms.hpd.HPDActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.sem.communication_portal.CommunicationPortalViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_communication_portal_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/home_bg">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_communication_portal_full_boby_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/activity_communication_portal_header"
+                layout="@layout/layout_common_header" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_communication_portal_top_cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_90sdp"
+            android:layout_marginBottom="@dimen/_68sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_full_boby_cl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_communication_portal_unit_cl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_33sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_unit_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Unit :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/activity_communication_portal_unit_name_value_sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_55sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_communication_portal_cl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_33sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_unit_cl">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_date_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Name :"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_date_value_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_33sdp"
+                    android:layout_marginStart="@dimen/_55sdp"
+                    android:background="@drawable/input_bg_round_corner"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="4-10-2021" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_communication_portal_body_cl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_280sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_cl">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/pic_bg"
+                    android:layout_width="@dimen/_64sdp"
+                    android:layout_height="@dimen/_64sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/communication_portal_picture_bg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activity_communication_portal_pic_im"
+                    android:layout_width="@dimen/_61sdp"
+                    android:layout_height="@dimen/_62sdp"
+                    android:layout_marginTop="@dimen/_11sdp"
+                    android:src="@drawable/side_profile_pic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Name :"
+                    android:textColor="#FFEAA7"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_name_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_pic_im" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_name_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="Name"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_name_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_pic_im" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_designation_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Designation :"
+                    android:textColor="#FFEAA7"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_designation_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_name_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_designation_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="Designation"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_designation_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_name_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_section_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Section :"
+                    android:textColor="#FFEAA7"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_section_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_designation_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_section_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="Section"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_section_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_designation_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_email_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="E - Mail :"
+                    android:textColor="#FFEAA7"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_email_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_section_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_email_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="email"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_email_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_section_tv" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_mobile_personal_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Mobile (Personal) :"
+                    android:textColor="#FFEAA7"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_mobile_personal_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_email_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_mobile_personal_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="01716523366"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_mobile_personal_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_email_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_mobile_office_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Mobile (Office) :"
+                    android:textColor="#FFEAA7"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_mobile_office_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_mobile_personal_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_mobile_office_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="01716523366"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_mobile_office_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_mobile_personal_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_office_ip_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Office IP :"
+                    android:textColor="#FFEAA7"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_office_ip_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_mobile_office_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_office_ip_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="Office IP"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_office_ip_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_mobile_office_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_unit_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Unit :"
+                    android:textColor="#FFEAA7"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_unit_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_office_ip_tv" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/activity_communication_portal_unit_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    tools:text="Unit"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_unit_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_office_ip_tv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_communication_portal_footer_cl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_78sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <include
+                android:id="@+id/activitycommunication_portal_footer"
+                layout="@layout/layout_footer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
