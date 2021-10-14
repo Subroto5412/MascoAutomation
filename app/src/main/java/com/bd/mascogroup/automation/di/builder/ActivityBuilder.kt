@@ -1,5 +1,7 @@
 package com.bd.mascogroup.automation.di.builder
 
+import com.bd.mascogroup.automation.ui.atm.ATMActivity
+import com.bd.mascogroup.automation.ui.atm.ATMActivityModule
 import com.bd.mascogroup.automation.ui.gpms.GPMSActivity
 import com.bd.mascogroup.automation.ui.gpms.GPMSActivityModule
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
@@ -46,6 +48,8 @@ import com.bd.mascogroup.automation.ui.otp.OTPActivity
 import com.bd.mascogroup.automation.ui.otp.OTPActivityModule
 import com.bd.mascogroup.automation.ui.production_management.ProductionManagementActivity
 import com.bd.mascogroup.automation.ui.production_management.ProductionManagementActivityModule
+import com.bd.mascogroup.automation.ui.sem.SEMActivity
+import com.bd.mascogroup.automation.ui.sem.SEMActivityModule
 import com.bd.mascogroup.automation.ui.signup.SignupActivity
 import com.bd.mascogroup.automation.ui.signup.SignupActivityModule
 import com.bd.mascogroup.automation.ui.splash.SplashActivity
@@ -58,7 +62,7 @@ import dagger.android.ContributesAndroidInjector
         [SplashActivityModule::class, LoginActivityModule::class, SignupActivityModule::class, OTPActivityModule::class, HomeActivityModule::class,ProductionManagementActivityModule::class,
             HRInfoActivityModule::class, DailyAttendanceActivityModule::class, LeaveDetailsActivityModule::class, IncomeTaxDeductionActivityModule::class, AttendanceModule::class,
             LeaveModule::class, TaxModule::class, LeaveApplyModule::class, HrInfoSystemActivityModule::class, LeaveApprovalActivityModule::class, LeaveApprovalFormActivityModule::class,
-        GPMSActivityModule::class, BWPDActivityModule::class, HPDActivityModule::class, LWPActivityModule::class, HPDetailsActivityModule::class]
+        GPMSActivityModule::class, BWPDActivityModule::class, HPDActivityModule::class, LWPActivityModule::class, HPDetailsActivityModule::class, ATMActivityModule::class, SEMActivityModule::class]
 )
 
 abstract class ActivityBuilder {
@@ -175,4 +179,14 @@ abstract class ActivityBuilder {
             modules = [HPDetailsActivityModule::class, HPDetailsAdapterModule::class]
     )
     internal abstract fun bindHPDetailsActivity(): HPDetailsActivity
+
+    @ContributesAndroidInjector(
+            modules = [ATMActivityModule::class]
+    )
+    internal abstract fun bindATMActivity(): ATMActivity
+
+    @ContributesAndroidInjector(
+            modules = [SEMActivityModule::class]
+    )
+    internal abstract fun bindSEMActivity(): SEMActivity
 }

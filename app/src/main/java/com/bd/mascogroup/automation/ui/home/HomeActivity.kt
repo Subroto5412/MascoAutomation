@@ -14,6 +14,7 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bd.mascogroup.automation.R
 import com.bd.mascogroup.automation.databinding.ActivityHomeBinding
+import com.bd.mascogroup.automation.ui.atm.ATMActivity
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.gpms.bwpd.BWPDActivity
 import com.bd.mascogroup.automation.ui.gpms.hp_details.HPDetailsActivity
@@ -26,6 +27,7 @@ import com.bd.mascogroup.automation.ui.hr_info.tax.TaxActivity
 import com.bd.mascogroup.automation.ui.hr_info_system.HrInfoSystemActivity
 import com.bd.mascogroup.automation.ui.login.LoginActivity
 import com.bd.mascogroup.automation.ui.production_management.ProductionManagementActivity
+import com.bd.mascogroup.automation.ui.sem.SEMActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_home_side_menu.*
 import kotlinx.android.synthetic.main.activity_home_side_menu_footer.*
@@ -86,7 +88,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
         }
 
         layout_asset_tracking_cl.setOnClickListener {
-            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
+            openATM()
         }
 
         layout_automobile_management_cl.setOnClickListener {
@@ -94,7 +96,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
         }
 
         layout_search_engine_cl.setOnClickListener {
-            Toast.makeText(this, "under construction!", Toast.LENGTH_LONG).show()
+            openSEM()
         }
 
         layout_dispatch_slip_cl.setOnClickListener {
@@ -237,6 +239,18 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>(), IHomeNa
 
     fun openProductManagement(){
         val intent = ProductionManagementActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    fun openATM(){
+        val intent = ATMActivity.newIntent(this)
+        startActivity(intent)
+        finish()
+    }
+
+    fun openSEM(){
+        val intent = SEMActivity.newIntent(this)
         startActivity(intent)
         finish()
     }
