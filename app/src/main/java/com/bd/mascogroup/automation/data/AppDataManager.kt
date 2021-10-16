@@ -203,4 +203,16 @@ class AppDataManager @Inject constructor(
         return  mDbHelper.getLeaveApprovalByStatus(status)
     }
 
+    override fun insertEmpNameItem(empname: Empname): Observable<Boolean> {
+        return mDbHelper.insertEmpNameItem(empname)
+    }
+
+    override fun deleteAllEmpNameLists(): Observable<Boolean> {
+        return mDbHelper.deleteAllEmpNameLists()
+    }
+
+    override fun getSearchByEmpName(Name: String): Observable<List<Empname>> {
+        return mDbHelper.getSearchByEmpName(Name)
+    }
+
 }

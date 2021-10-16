@@ -6,11 +6,12 @@ import com.bd.mascogroup.automation.data.local.db.dao.*
 import com.bd.mascogroup.automation.data.model.db.*
 import com.bd.mascogroup.automation.utils.AppConstants.DB_VERSION
 
-@Database(entities = [User::class, Orderlist::class, Productlist::class, Searchlist::class, Leaveapprovallist::class], version = DB_VERSION)
+@Database(entities = [User::class, Orderlist::class, Productlist::class, Searchlist::class, Leaveapprovallist::class, Empname::class], version = DB_VERSION)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): IUserDao
     abstract fun orderlistDao(): IOrderlistDao
     abstract fun productlistDao(): IProductlistDao
     abstract fun searchlistDao(): ISearchlistDao
     abstract fun leaveapprovallistDao(): ILeaveapprovallistDao
+    abstract fun IEmpname(): IEmpnameDao
 }

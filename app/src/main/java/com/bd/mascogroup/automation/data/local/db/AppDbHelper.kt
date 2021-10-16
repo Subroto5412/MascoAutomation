@@ -136,4 +136,24 @@ class AppDbHelper @Inject constructor(private val mAppDatabase: AppDatabase) : I
             mAppDatabase.leaveapprovallistDao().loadLeaveApprovalListByStatus(status)
         }
     }
+
+    override fun insertEmpNameItem(empname: Empname): Observable<Boolean> {
+        return Observable.fromCallable {
+            mAppDatabase.IEmpname().insert(empname)
+            true
+        }
+    }
+
+    override fun deleteAllEmpNameLists(): Observable<Boolean> {
+        return Observable.fromCallable{
+            mAppDatabase.IEmpname().deleteAllEmpNameList()
+            true
+        }
+    }
+
+    override fun getSearchByEmpName(Name: String): Observable<List<Empname>> {
+        return Observable.fromCallable {
+            mAppDatabase.IEmpname().findByEmpName(Name)
+        }
+    }
 }

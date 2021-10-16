@@ -106,8 +106,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_date_value_tv"
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/activity_communication_portal_date_name_value_actv"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_33sdp"
                     android:layout_marginStart="@dimen/_55sdp"

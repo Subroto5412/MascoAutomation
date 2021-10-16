@@ -35,4 +35,8 @@ interface IDbHelper {
     fun loadAllLeaveApproval():Observable<List<Leaveapprovallist>>
     fun getLeaveApprovalByStatus(status: String):  Observable<List<Leaveapprovallist>>
 
+    //EmpName
+    fun insertEmpNameItem(empname: Empname): Observable<Boolean>
+    fun deleteAllEmpNameLists(): Observable<Boolean>
+    fun getSearchByEmpName(Name: String):  Observable<List<Empname>>
 }

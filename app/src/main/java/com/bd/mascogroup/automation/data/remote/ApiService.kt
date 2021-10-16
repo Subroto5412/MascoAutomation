@@ -157,4 +157,10 @@ interface ApiService {
     fun getHourlyProductionDetailsData(
             @Body hourlyProductionDetailsRequest: HourlyProductionDetailsRequest
     ): Observable<HourlyProductionDetailsResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/sem/communication-portal/load-emp-name-autocomplete")
+    fun getEmpName(
+            @Body searchEmpNameRequest: SearchEmpNameRequest
+    ): Observable<SearchEmpNameResponse>
 }
