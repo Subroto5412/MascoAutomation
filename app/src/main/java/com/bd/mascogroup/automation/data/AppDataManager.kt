@@ -211,8 +211,16 @@ class AppDataManager @Inject constructor(
         return mDbHelper.deleteAllEmpNameLists()
     }
 
-    override fun getSearchByEmpName(Name: String): Observable<List<Empname>> {
-        return mDbHelper.getSearchByEmpName(Name)
+    override fun getSearchByEmpName(Name: String, unitNo: String): Observable<List<Empname>> {
+        return mDbHelper.getSearchByEmpName(Name, unitNo)
+    }
+
+    override fun getSearchByAllEmpName(Name: String): Observable<List<Empname>> {
+        return mDbHelper.getSearchByAllEmpName(Name)
+    }
+
+    override fun getSearchCodeByEmpName(Name: String): Observable<List<Empname>> {
+        return mDbHelper.getSearchCodeByEmpName(Name)
     }
 
 }

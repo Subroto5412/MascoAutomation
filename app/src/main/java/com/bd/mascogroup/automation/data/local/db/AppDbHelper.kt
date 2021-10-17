@@ -139,21 +139,33 @@ class AppDbHelper @Inject constructor(private val mAppDatabase: AppDatabase) : I
 
     override fun insertEmpNameItem(empname: Empname): Observable<Boolean> {
         return Observable.fromCallable {
-            mAppDatabase.IEmpname().insert(empname)
+            mAppDatabase.empnameDao().insert(empname)
             true
         }
     }
 
     override fun deleteAllEmpNameLists(): Observable<Boolean> {
         return Observable.fromCallable{
-            mAppDatabase.IEmpname().deleteAllEmpNameList()
+            mAppDatabase.empnameDao().deleteAllEmpNameList()
             true
         }
     }
 
-    override fun getSearchByEmpName(Name: String): Observable<List<Empname>> {
+    override fun getSearchByEmpName(Name: String, unitNo:String): Observable<List<Empname>> {
         return Observable.fromCallable {
-            mAppDatabase.IEmpname().findByEmpName(Name)
+            mAppDatabase.empnameDao().findByEmpName(Name, unitNo)
+        }
+    }
+
+    override fun getSearchByAllEmpName(Name: String): Observable<List<Empname>> {
+        return Observable.fromCallable {
+            mAppDatabase.empnameDao().findByAll(Name)
+        }
+    }
+
+    override fun getSearchCodeByEmpName(Name: String):Observable<List<Empname>> {
+        return Observable.fromCallable {
+            mAppDatabase.empnameDao().findCodeByEmpName(Name)
         }
     }
 }

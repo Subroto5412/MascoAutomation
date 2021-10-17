@@ -15,7 +15,13 @@ interface IEmpnameDao {
     @Query("DELETE FROM empname")
     fun deleteAllEmpNameList()
 
+    @Query("SELECT * FROM empname WHERE unitNo LIKE :unitNo and emp_full LIKE '%' || :emp_full || '%'")
+    fun findByEmpName(emp_full: String, unitNo: String): List<Empname>
+
     @Query("SELECT * FROM empname WHERE emp_full LIKE '%' || :emp_full || '%'")
-    fun findByEmpName(emp_full: String): List<Empname>
+    fun findByAll(emp_full: String): List<Empname>
+
+    @Query("SELECT * FROM empname WHERE emp_full LIKE :emp_full")
+    fun findCodeByEmpName(emp_full: String): List<Empname>
 
 }

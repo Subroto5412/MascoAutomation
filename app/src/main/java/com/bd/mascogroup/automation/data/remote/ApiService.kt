@@ -163,4 +163,11 @@ interface ApiService {
     fun getEmpName(
             @Body searchEmpNameRequest: SearchEmpNameRequest
     ): Observable<SearchEmpNameResponse>
+
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/sem/communication-portal/get-emp-details")
+    fun getEmpDetails(
+            @Body searchEmpDetail: SearchEmpDetailRequest
+    ): Observable<SearchEmpDetailResponse>
 }

@@ -13,5 +13,5 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun productlistDao(): IProductlistDao
     abstract fun searchlistDao(): ISearchlistDao
     abstract fun leaveapprovallistDao(): ILeaveapprovallistDao
-    abstract fun IEmpname(): IEmpnameDao
+    abstract fun empnameDao(): IEmpnameDao
 }

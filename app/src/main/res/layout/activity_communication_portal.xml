@@ -145,7 +145,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/activity_communication_portal_pic_im"
+                    android:id="@+id/acp_pic_im"
                     android:layout_width="@dimen/_61sdp"
                     android:layout_height="@dimen/_62sdp"
                     android:layout_marginTop="@dimen/_11sdp"
@@ -163,13 +163,13 @@
                     android:text="Name :"
                     android:textColor="#FFEAA7"
                     android:textSize="@dimen/_11sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_name_value_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/acp_name_value_tv"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_pic_im" />
+                    app:layout_constraintTop_toBottomOf="@+id/acp_pic_im" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_name_value_tv"
+                    android:id="@+id/acp_name_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_25sdp"
@@ -180,7 +180,7 @@
                     android:textSize="@dimen/_9sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/activity_communication_portal_name_tv"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_pic_im" />
+                    app:layout_constraintTop_toBottomOf="@+id/acp_pic_im" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -192,13 +192,13 @@
                     android:text="Designation :"
                     android:textColor="#FFEAA7"
                     android:textSize="@dimen/_11sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_designation_value_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/acp_designation_value_tv"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_name_tv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_designation_value_tv"
+                    android:id="@+id/acp_designation_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_9sdp"
@@ -220,13 +220,13 @@
                     android:text="Section :"
                     android:textColor="#FFEAA7"
                     android:textSize="@dimen/_11sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_section_value_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/acp_section_value_tv"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_designation_tv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_section_value_tv"
+                    android:id="@+id/acp_section_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_9sdp"
@@ -248,13 +248,13 @@
                     android:text="E - Mail :"
                     android:textColor="#FFEAA7"
                     android:textSize="@dimen/_11sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_email_value_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/acp_email_value_tv"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_section_tv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_email_value_tv"
+                    android:id="@+id/acp_email_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_9sdp"
@@ -277,13 +277,13 @@
                     android:text="Mobile (Personal) :"
                     android:textColor="#FFEAA7"
                     android:textSize="@dimen/_11sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_mobile_personal_value_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/acp_mobile_personal_value_tv"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_email_tv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_mobile_personal_value_tv"
+                    android:id="@+id/acp_mobile_personal_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_9sdp"
@@ -305,13 +305,13 @@
                     android:text="Mobile (Office) :"
                     android:textColor="#FFEAA7"
                     android:textSize="@dimen/_11sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_mobile_office_value_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/acp_mobile_office_value_tv"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_mobile_personal_tv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_mobile_office_value_tv"
+                    android:id="@+id/acp_mobile_office_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_9sdp"
@@ -333,13 +333,13 @@
                     android:text="Office IP :"
                     android:textColor="#FFEAA7"
                     android:textSize="@dimen/_11sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_office_ip_value_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/acp_office_ip_value_tv"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_mobile_office_tv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_office_ip_value_tv"
+                    android:id="@+id/acp_office_ip_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_9sdp"
@@ -361,13 +361,13 @@
                     android:text="Unit :"
                     android:textColor="#FFEAA7"
                     android:textSize="@dimen/_11sdp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_communication_portal_unit_value_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/acp_unit_value_tv"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_office_ip_tv" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/activity_communication_portal_unit_value_tv"
+                    android:id="@+id/acp_unit_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_9sdp"

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SearchEmpDetailResponse(
         @SerializedName("emp_code") var emp_code: String = "",
-        @SerializedName("empDetails") var empDetails: List<EmpDetails>
+        @SerializedName("empDetails") var empDetails: EmpDetails
 )
 
 data class EmpDetails(

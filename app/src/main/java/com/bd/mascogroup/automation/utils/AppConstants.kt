@@ -76,6 +76,7 @@ object AppConstants {
     var HasHPDUnitNameList = ArrayList<HashMap<String, String>>()
     var HasHPDetailsUnitNameList = ArrayList<HashMap<String, String>>()
     var HasUnitNameList = ArrayList<HashMap<String, String>>()
+//    var HasEmpNameList = ArrayList<HashMap<String, String>>()
     var fcmToken = ""
 
 }

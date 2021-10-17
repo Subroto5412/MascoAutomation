@@ -38,5 +38,7 @@ interface IDbHelper {
     //EmpName
     fun insertEmpNameItem(empname: Empname): Observable<Boolean>
     fun deleteAllEmpNameLists(): Observable<Boolean>
-    fun getSearchByEmpName(Name: String):  Observable<List<Empname>>
+    fun getSearchByEmpName(Name: String, unitNo:String):  Observable<List<Empname>>
+    fun getSearchByAllEmpName(Name: String):  Observable<List<Empname>>
+    fun getSearchCodeByEmpName(Name: String):  Observable<List<Empname>>
 }

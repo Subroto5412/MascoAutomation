@@ -24,4 +24,9 @@ class Empname {
     @SerializedName("emp_full")
     @ColumnInfo(name = "emp_full")
     lateinit var emp_full: String
+
+    @Expose
+    @SerializedName("unitNo")
+    @ColumnInfo(name = "unitNo")
+    var unitNo: Int = 0
 }

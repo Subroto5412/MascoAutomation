@@ -10,5 +10,6 @@ data class SearchEmpNameResponse(
 
 data class listEmployee(
         @SerializedName("emP_CODE") var emP_CODE: String = "",
-        @SerializedName("emp_full") var emp_full: String = ""
+        @SerializedName("emp_full") var emp_full: String = "",
+        @SerializedName("unitNo") var unitNo: Int = 0
 )

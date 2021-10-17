@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.TextView
 import androidx.databinding.library.baseAdapters.BR
 import com.bd.mascogroup.automation.R
@@ -15,14 +17,12 @@ import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_atm.*
-import kotlinx.android.synthetic.main.activity_atm.activity_atm_asset_basic_data_cl
 import kotlinx.android.synthetic.main.activity_buyer_wise_production_data.*
 import kotlinx.android.synthetic.main.activity_communication_portal.*
 import kotlinx.android.synthetic.main.activity_sem.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
-import java.util.ArrayList
-import java.util.HashMap
+import java.util.*
 import javax.inject.Inject
 
 
@@ -45,29 +45,15 @@ class CommunicationPortalActivity : BaseActivity<ActivityCommunicationPortalBind
             return mCommunicationPortalViewModel
         }
 
-     var EmpNames = ArrayList<String>()
-     var EmpId = ArrayList<Int>()
-     var EmpNo:Int=0
+     var UnitNo:Int=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityCommunicationPortalBinding = viewDataBinding
         viewModel.navigator = this
-       // viewModel.getUnitName(this,activity_communication_portal_unit_name_value_sp)
-        viewModel.getSearchName(this@CommunicationPortalActivity, activity_communication_portal_date_name_value_actv, EmpNo)
-        //  viewModel.accessToken()
-        //  viewModel.buttonPermission(this, activity_hr_main_daily_attendance_cl, activity_hr_main_leave_details_cl, activity_hr_main_income_tax_cl)
-        //   viewModel.getSearchName(this, layout_header_search_actv)
-//        viewModel.getSearchName(this)
-
-
-        /* activity_hr_leave_details_cl.setOnClickListener {
-             openLeaveActivity()
-         }
-
-         activity_hr_income_tax_cl.setOnClickListener {
-             openTaxActivity()
-         }*/
+        viewModel.deleteAllEmpName()
+        viewModel.getUnitName(this, activity_communication_portal_unit_name_value_sp, activity_communication_portal_date_name_value_actv,acp_name_value_tv, acp_designation_value_tv,
+                acp_section_value_tv, acp_email_value_tv, acp_mobile_personal_value_tv, acp_mobile_office_value_tv, acp_office_ip_value_tv, acp_unit_value_tv, acp_pic_im)
 
         layout_header_back_im.setOnClickListener {
             val intent = HomeActivity.newIntent(this)
@@ -80,10 +66,7 @@ class CommunicationPortalActivity : BaseActivity<ActivityCommunicationPortalBind
             finish()
         }
 
-        EmpId.clear()
-        EmpNames.clear()
-        EmpId.add(0)
-        EmpNames.add("Select Unit")
+
         activity_communication_portal_unit_name_value_sp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
@@ -99,8 +82,15 @@ class CommunicationPortalActivity : BaseActivity<ActivityCommunicationPortalBind
 
                 val map: HashMap<String, String> = AppConstants.HasUnitNameList.get(position)
 
-                EmpNo = map.get("unitNo")!!.toInt()
-
+                UnitNo = map.get("unitNo")!!.toInt()
+                activity_communication_portal_date_name_value_actv.setText("")
+                if (UnitNo==0){
+                    viewModel.getSearchAllName(this@CommunicationPortalActivity, activity_communication_portal_date_name_value_actv,acp_name_value_tv, acp_designation_value_tv, acp_section_value_tv,
+                            acp_email_value_tv, acp_mobile_personal_value_tv, acp_mobile_office_value_tv, acp_office_ip_value_tv, acp_unit_value_tv,acp_pic_im)
+                }else{
+                    viewModel.getSearchName(this@CommunicationPortalActivity, activity_communication_portal_date_name_value_actv, UnitNo.toString(),acp_name_value_tv, acp_designation_value_tv, acp_section_value_tv,
+                            acp_email_value_tv, acp_mobile_personal_value_tv, acp_mobile_office_value_tv, acp_office_ip_value_tv, acp_unit_value_tv, acp_pic_im)
+                }
             }
         }
     }
