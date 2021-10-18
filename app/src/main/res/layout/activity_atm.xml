@@ -77,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
-                        android:text="Daily Attendance"
+                        android:text="Asset Basic Data"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_13sdp"
                         app:layout_constraintEnd_toEndOf="parent"

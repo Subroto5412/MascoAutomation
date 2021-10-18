@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.bd.mascogroup.automation.ui.hr_info.HRInfoActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.atm.asset.AssetViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialog_login_screen_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp">
+
+        <!--<androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="#164193"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/item_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_400sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/asset_scanner_bg"
+               >
+
+               <!-- <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/home_popup_menu_address_top_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@null">
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/home_atm_asset_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="Asset Details"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_17sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@null"
+                    />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/line_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:background="#74B9FF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/home_atm_asset_details" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_asset_no_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_46sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Asset No :"
+                    android:textColor="#74B9FF"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/aad_asset_no_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line_view"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_asset_no_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_48sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/aad_asset_no_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/line_view"
+                    tools:text="Asset"
+                    android:background="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_asset_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Asset Name :"
+                    android:textColor="#74B9FF"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/aad_asset_name_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_asset_no_tv"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_asset_name_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/aad_asset_name_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_asset_no_tv"
+                    tools:text="Asset Name"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_unit_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Unit :"
+                    android:textColor="#74B9FF"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/aad_unit_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_asset_name_tv"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_unit_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/aad_unit_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_asset_name_tv"
+                    tools:text="Unit"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_purchase_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Purchase Date :"
+                    android:textColor="#74B9FF"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/aad_purchase_date_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_unit_tv"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_purchase_date_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/aad_purchase_date_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_unit_tv"
+                    tools:text="Purchase Date"
+                    android:background="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_purchase_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Purchase Value :"
+                    android:textColor="#74B9FF"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/aad_purchase_value_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_purchase_date_tv"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_purchase_value_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/aad_purchase_value_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_purchase_date_tv"
+                    tools:text="Purchase Value"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_asset_entry_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="Asset Entry Date :"
+                    android:textColor="#74B9FF"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/aad_asset_entry_date_value_tv"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_purchase_value_tv"
+                    android:background="@null"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/aad_asset_entry_date_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_9sdp"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/aad_asset_entry_date_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_purchase_value_tv"
+                    tools:text="Asset Entry Date"
+                    android:background="@null"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/scan_another_qr_btn"
+                    android:layout_width="@dimen/_215sdp"
+                    android:layout_height="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_57sdp"
+                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:background="@drawable/scan_qr_btn_color"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="SCAN ANOTHER QR"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aad_asset_entry_date_tv" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/scan_popup_cancel_btn"
+                    android:layout_width="@dimen/_123sdp"
+                    android:layout_height="@dimen/_31sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_40sdp"
+                    android:background="@drawable/scan_qr_btn_color"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Cancel"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scan_another_qr_btn" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--</androidx.cardview.widget.CardView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

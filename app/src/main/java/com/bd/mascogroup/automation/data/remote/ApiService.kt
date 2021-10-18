@@ -170,4 +170,10 @@ interface ApiService {
     fun getEmpDetails(
             @Body searchEmpDetail: SearchEmpDetailRequest
     ): Observable<SearchEmpDetailResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("v1/atm/asset/basic-data")
+    fun getAssetDetails(
+            @Body assetDataDetailsRequest: AssetDataDetailsRequest
+    ): Observable<AssetDataDetailsResponse>
 }

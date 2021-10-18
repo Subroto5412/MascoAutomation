@@ -1,4 +1,6 @@
 package com.bd.mascogroup.automation.ui.atm.asset
 
-interface IAssetNavigator {
+import com.bd.mascogroup.automation.ui.base.IBaseNavigator
+
+interface IAssetNavigator:IBaseNavigator {
 }
