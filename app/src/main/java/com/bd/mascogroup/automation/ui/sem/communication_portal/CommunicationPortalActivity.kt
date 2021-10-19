@@ -20,8 +20,10 @@ import kotlinx.android.synthetic.main.activity_atm.*
 import kotlinx.android.synthetic.main.activity_buyer_wise_production_data.*
 import kotlinx.android.synthetic.main.activity_communication_portal.*
 import kotlinx.android.synthetic.main.activity_sem.*
+import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import java.util.*
 import javax.inject.Inject
 
@@ -51,6 +53,7 @@ class CommunicationPortalActivity : BaseActivity<ActivityCommunicationPortalBind
         super.onCreate(savedInstanceState)
         mActivityCommunicationPortalBinding = viewDataBinding
         viewModel.navigator = this
+        activity_title_tv.setText("Communication Portal")
         viewModel.deleteAllEmpName()
         viewModel.getUnitName(this, activity_communication_portal_unit_name_value_sp, activity_communication_portal_date_name_value_actv,acp_name_value_tv, acp_designation_value_tv,
                 acp_section_value_tv, acp_email_value_tv, acp_mobile_personal_value_tv, acp_mobile_office_value_tv, acp_office_ip_value_tv, acp_unit_value_tv, acp_pic_im)

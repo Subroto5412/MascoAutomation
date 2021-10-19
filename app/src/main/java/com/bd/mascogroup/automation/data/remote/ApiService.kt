@@ -176,4 +176,9 @@ interface ApiService {
     fun getAssetDetails(
             @Body assetDataDetailsRequest: AssetDataDetailsRequest
     ): Observable<AssetDataDetailsResponse>
+
+
+    @Headers("Content-Type: application/json")
+    @GET("v1/sem/communication-portal/load-unitname")
+    fun getAllUnitName(): Observable<UnitResponse> // body data
 }

@@ -13,8 +13,10 @@ import com.bd.mascogroup.automation.ui.atm.asset.AssetActivity
 import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_atm.*
+import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 class ATMActivity : BaseActivity<ActivityAtmBinding, ATMViewModel>(), IATMNavigator {
@@ -40,7 +42,7 @@ class ATMActivity : BaseActivity<ActivityAtmBinding, ATMViewModel>(), IATMNaviga
         super.onCreate(savedInstanceState)
         mActivityAtmBinding = viewDataBinding
         viewModel.navigator = this
-
+        activity_title_tv.setText("Asset Tracking Management")
         activity_atm_asset_basic_data_cl.setOnClickListener {
             val intent = AssetActivity.newIntent(this)
             startActivity(intent)

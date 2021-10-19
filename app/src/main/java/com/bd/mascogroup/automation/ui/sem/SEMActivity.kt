@@ -11,8 +11,10 @@ import com.bd.mascogroup.automation.ui.base.BaseActivity
 import com.bd.mascogroup.automation.ui.home.HomeActivity
 import com.bd.mascogroup.automation.ui.sem.communication_portal.CommunicationPortalActivity
 import kotlinx.android.synthetic.main.activity_sem.*
+import kotlinx.android.synthetic.main.layout_common_header.*
 import kotlinx.android.synthetic.main.layout_footer.*
 import kotlinx.android.synthetic.main.layout_header.*
+import kotlinx.android.synthetic.main.layout_header.layout_header_back_im
 import javax.inject.Inject
 
 
@@ -39,6 +41,7 @@ class SEMActivity : BaseActivity<ActivitySemBinding, SEMViewModel>(), ISEMNaviga
         super.onCreate(savedInstanceState)
         mActivitySemBinding = viewDataBinding
         viewModel.navigator = this
+        activity_title_tv.setText("Search Engine Management")
         //  viewModel.accessToken()
         //  viewModel.buttonPermission(this, activity_hr_main_daily_attendance_cl, activity_hr_main_leave_details_cl, activity_hr_main_income_tax_cl)
         //   viewModel.getSearchName(this, layout_header_search_actv)

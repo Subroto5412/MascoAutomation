@@ -50,7 +50,7 @@ class CommunicationPortalViewModel @Inject constructor(
         unitCardData.clear()
         if (UtilMethods.isConnectedToInternet(context)) {
             UtilMethods.showLoading(context)
-            val observable = ApiServiceCalling.generalMisApiCall().getUnitName()
+            val observable = ApiServiceCalling.generalMisApiCall().getAllUnitName()
 
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
