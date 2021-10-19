@@ -11,16 +11,15 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-permission android:name="android.permission.CAMERA"/>
 
-    <!--<uses-feature android:name="android.hardware.camera.autoFocus" />
+   <!-- <uses-feature android:name="android.hardware.camera.autoFocus" />
     <uses-feature android:name="android.hardware.camera" />-->
 
-    <uses-feature android:name="android.hardware.camera.autoFocus" android:required="false"/>
-    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <!--<uses-feature android:name="android.hardware.camera.autoFocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>-->
 
     <application
         android:name=".MascoGroupApp"
@@ -160,7 +159,7 @@
             android:theme="@style/Theme.AppCompat.Translucent"
             android:name=".ui.atm.asset.AssetActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="sensorPortrait"
+            android:screenOrientation="portrait"
             />
 
         <service
