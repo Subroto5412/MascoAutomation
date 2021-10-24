@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewModel"
+            type="com.bd.mascogroup.automation.ui.sem.communication_portal.NameItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/line_wise_output_row_item_parent_cl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_25sdp"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/line_wise_output_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/text_color"
+            android:paddingLeft="@dimen/_8sdp"
+            android:layout_marginTop="1dp">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/line_wise_output_sl_tv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_22sdp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Subroto Kumar Mohonto" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--</ScrollView>-->
+        <!-- </androidx.cardview.widget.CardView>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

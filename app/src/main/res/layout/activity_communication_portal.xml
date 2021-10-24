@@ -69,8 +69,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/activity_communication_portal_unit_name_value_sp"
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/acp_unit_name_value_actv"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_33sdp"
                     android:layout_marginStart="@dimen/_55sdp"
@@ -107,7 +107,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/activity_communication_portal_date_name_value_actv"
+                    android:id="@+id/acp_name_value_actv"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_33sdp"
                     android:layout_marginStart="@dimen/_55sdp"
@@ -121,6 +121,8 @@
                     tools:text="4-10-2021" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_communication_portal_body_cl"
@@ -382,6 +384,30 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <!--<androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_communication_portal_body_cl2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginStart="@dimen/_65sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@color/text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_communication_portal_cl">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/acp_name_list_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/layout_name_itemlist_row" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

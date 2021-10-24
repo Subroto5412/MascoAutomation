@@ -223,4 +223,20 @@ class AppDataManager @Inject constructor(
         return mDbHelper.getSearchCodeByEmpName(Name)
     }
 
+    override fun insertUnitItem(unitlist: Unitlist): Observable<Boolean> {
+        return mDbHelper.insertUnitItem(unitlist)
+    }
+
+    override fun deleteAllUnitLists(): Observable<Boolean> {
+        return  mDbHelper.deleteAllUnitLists()
+    }
+
+    override fun getSearchByUnit(unitName: String): Observable<List<Unitlist>> {
+        return  mDbHelper.getSearchByUnit(unitName)
+    }
+
+    override fun getSearchUnitNoByUnitName(unitName: String): Observable<List<Unitlist>> {
+        return  mDbHelper.getSearchUnitNoByUnitName(unitName)
+    }
+
 }

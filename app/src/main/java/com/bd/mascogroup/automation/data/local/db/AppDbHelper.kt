@@ -168,4 +168,30 @@ class AppDbHelper @Inject constructor(private val mAppDatabase: AppDatabase) : I
             mAppDatabase.empnameDao().findCodeByEmpName(Name)
         }
     }
+
+    override fun insertUnitItem(unitlist: Unitlist): Observable<Boolean> {
+        return Observable.fromCallable {
+            mAppDatabase.unitlistDao().insert(unitlist)
+            true
+        }
+    }
+
+    override fun deleteAllUnitLists(): Observable<Boolean> {
+        return Observable.fromCallable {
+            mAppDatabase.unitlistDao().deleteAllUnitList()
+            true
+        }
+    }
+
+    override fun getSearchByUnit(unitName: String): Observable<List<Unitlist>> {
+        return Observable.fromCallable {
+            mAppDatabase.unitlistDao().findByUnitName(unitName)
+        }
+    }
+
+    override fun getSearchUnitNoByUnitName(unitName: String): Observable<List<Unitlist>> {
+        return Observable.fromCallable {
+            mAppDatabase.unitlistDao().findCodeUnitName(unitName)
+        }
+    }
 }

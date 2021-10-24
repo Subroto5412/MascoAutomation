@@ -41,4 +41,10 @@ interface IDbHelper {
     fun getSearchByEmpName(Name: String, unitNo:String):  Observable<List<Empname>>
     fun getSearchByAllEmpName(Name: String):  Observable<List<Empname>>
     fun getSearchCodeByEmpName(Name: String):  Observable<List<Empname>>
+
+    //Unit
+    fun insertUnitItem(unitlist: Unitlist): Observable<Boolean>
+    fun deleteAllUnitLists(): Observable<Boolean>
+    fun getSearchByUnit(unitName: String):  Observable<List<Unitlist>>
+    fun getSearchUnitNoByUnitName(unitName: String):  Observable<List<Unitlist>>
 }
